@@ -1,2 +1,7 @@
-# solid-futurio-ru-game
-Игра по мотивам занятий на Fututio.Ru
+Игра по мотивам занятий на Fututio.ru
+=====================================
+
+Исходный репозиторий:  
+https://github.com/khusamov/solid-futurio-ru-lessons
+
+
