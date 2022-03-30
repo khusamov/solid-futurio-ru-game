@@ -1,0 +1,17 @@
+import IRegistrator from '../types/IRegistrator';
+import {TResolverFunction} from './IoC';
+
+export default class DependencyRegistrator implements IRegistrator {
+	constructor(
+		private dependencyMap: Map<string, TResolverFunction>,
+		private dependencyName: string,
+		private resolver: TResolverFunction
+	) {}
+
+	register(): void {
+		if (this.dependencyMap.has(this.dependencyName)) {
+			throw new Error(`Зависимость '${this.dependencyName}' уже зарегистрирована`)
+		}
+		this.dependencyMap.set(this.dependencyName, this.resolver)
+	}
+}

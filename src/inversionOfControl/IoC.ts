@@ -1,4 +1,4 @@
-import IRegistrator from '../types/IRegistrator';
+import createRegistratorResolver from './createRegistratorResolver';
 
 export type TResolverFunction = (...args: Array<any>) => any
 
@@ -10,12 +10,10 @@ export default class IoC {
 	private dependencyMap: Map<string, TResolverFunction> = new Map()
 
 	public constructor() {
-		const registratorResolver = (
-			(dependencyName: string, resolver: TResolverFunction): IRegistrator => {
-				return new Registrator(this.dependencyMap, dependencyName, resolver)
-			}
+		this.dependencyMap.set(
+			IoC.registratorDependencyName,
+			createRegistratorResolver(this.dependencyMap)
 		)
-		this.dependencyMap.set(IoC.registratorDependencyName, registratorResolver)
 	}
 
 	public resolve<T>(dependencyName: string, ...args: Array<any>): T {
@@ -29,17 +27,3 @@ export default class IoC {
 	}
 }
 
-class Registrator implements IRegistrator {
-	constructor(
-		private dependencyMap: Map<string, TResolverFunction>,
-		private dependencyName: string,
-		private resolver: TResolverFunction
-	) {}
-
-	register(): void {
-		if (this.dependencyMap.has(this.dependencyName)) {
-			throw new Error(`Зависимость '${this.dependencyName}' уже зарегистрирована`)
-		}
-		this.dependencyMap.set(this.dependencyName, this.resolver)
-	}
-}
