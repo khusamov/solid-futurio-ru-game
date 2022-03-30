@@ -4,23 +4,23 @@ adapterGenerator
 Генерирует код следующего вида:
 
 ```typescript
-// implements IMovable
-class {
-	constructor(universalObject) {
+class MovableAdapter {
+	constructor(universalObject, iocContainer) {
 		this.universalObject = universalObject;
+		this.iocContainer = iocContainer;
 	}
 
 	get position() {
-		return IoC.resolve('IMovable.position.getter', this.universalObject);
+		return this.iocContainer.resolve('IMovable.position.getter', this.universalObject);
 	}
 	get movementVelocity() {
-		return IoC.resolve('IMovable.movementVelocity.getter', this.universalObject);
+		return this.iocContainer.resolve('IMovable.movementVelocity.getter', this.universalObject);
 	}
-	set position() {
-		return IoC.resolve('IMovable.position.setter', this.universalObject).execute();
+	set position(value) {
+		return this.iocContainer.resolve('IMovable.position.setter', value).execute();
 	}
-	set movementVelocity() {
-		return IoC.resolve('IMovable.movementVelocity.setter', this.universalObject).execute();
+	set movementVelocity(value) {
+		return this.iocContainer.resolve('IMovable.movementVelocity.setter', value).execute();
 	}
 }
 ```
