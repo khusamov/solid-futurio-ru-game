@@ -1,29 +1,20 @@
 import 'reflect-metadata'
 import {reflect} from 'typescript-rtti'
-import IRegistrator from './types/IRegistrator';
 import IoC from './inversionOfControl/IoC';
-import adapterGenerator, {adapterSourceGenerator} from './adapterGenerator';
+import {AdapterGeneratorRegistrator, adapterSourceGenerator} from './adapterGenerator';
 import UniversalObject from './object/UniversalObject';
 
+const iocContainer = new IoC()
+new AdapterGeneratorRegistrator(iocContainer).register()
+
 interface IMovable {
-	position: string
+	position: number
 	readonly movementVelocity: string
 }
 
-const iocContainer = new IoC()
-
-iocContainer.resolve<IRegistrator>('Registrator', 'Adapter', adapterGenerator).register()
-iocContainer.resolve<IRegistrator>(
-	'Registrator',
-	'IMovable.position.getter',
-	(universalObject: UniversalObject): number => {
-		return universalObject.getValue('position')
-	}
-).register()
-
-const uObject = new UniversalObject()
-uObject.setValue('position', 100)
-const movableAdapter = iocContainer.resolve<IMovable>('Adapter', uObject, reflect<IMovable>())
+const universalObject = new UniversalObject()
+const movableAdapter = iocContainer.resolve<IMovable>('Adapter', universalObject, reflect<IMovable>())
+movableAdapter.position = 100
 
 const bodyElement = document.querySelector('body')
 if (bodyElement) {

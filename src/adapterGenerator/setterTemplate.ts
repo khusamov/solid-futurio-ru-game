@@ -2,11 +2,12 @@ import iocResolveTemplate from './iocResolveTemplate';
 
 // TODO Сделать поддержку readonly
 
-export default function setterTemplate(propertyName: string, interfaceName: string) {
+export default function setterTemplate(propertyName: string) {
 	const resultExpression = (
 		iocResolveTemplate(
-			`${interfaceName}.${propertyName}.setter`,
+			'Setter',
 			'this.universalObject',
+			`'${propertyName}'`,
 			'value'
 		)
 	)

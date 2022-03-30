@@ -1,10 +1,11 @@
 import iocResolveTemplate from './iocResolveTemplate';
 
-export default function getterTemplate(propertyName: string, interfaceName: string) {
+export default function getterTemplate(propertyName: string) {
 	const resultExpression = (
 		iocResolveTemplate(
-			`${interfaceName}.${propertyName}.getter`,
-			'this.universalObject'
+			'Getter',
+			'this.universalObject',
+			`'${propertyName}'`
 		)
 	)
 	return `get ${propertyName}() { return ${resultExpression} }`

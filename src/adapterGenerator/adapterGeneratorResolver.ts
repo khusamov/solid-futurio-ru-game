@@ -6,7 +6,7 @@ import IResolverContext from '../inversionOfControl/IResolverContext';
 import IAdapterClass from './IAdapterClass';
 
 export default (
-	function adapterGenerator(universalObject: UniversalObject, reflectedTypeRef: ReflectedTypeRef, context: IResolverContext) {
+	function adapterGeneratorResolver(universalObject: UniversalObject, reflectedTypeRef: ReflectedTypeRef, context: IResolverContext) {
 		const source = adapterSourceGenerator(reflectedTypeRef)
 		const AdapterClass = execFunctionScript<IAdapterClass>(source)
 		return new AdapterClass(universalObject, context.iocContainer)

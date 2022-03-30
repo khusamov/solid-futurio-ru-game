@@ -6,7 +6,7 @@ import {ReflectedTypeRef} from 'typescript-rtti';
 /**
  * Генератор адаптера. Генерация производится на основе интерфейса.
  */
-export default function adapterSourceGenerator(reflectedTypeRef: ReflectedTypeRef) {
+export default function adapterSourceGenerator(reflectedTypeRef: ReflectedTypeRef): string {
 	const reflectedInterface = reflectedTypeRef.as('interface').reflectedInterface
 	const {properties, class: {name: interfaceName}} = reflectedInterface
 	const adapterClassName = interfaceName.substring(1) + 'Adapter'
@@ -23,7 +23,7 @@ export default function adapterSourceGenerator(reflectedTypeRef: ReflectedTypeRe
 	)
 }
 
-function constructorTemplate() {
+function constructorTemplate(): string {
 	return `
 		constructor(universalObject, iocContainer) {
 			this.universalObject = universalObject

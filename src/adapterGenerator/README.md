@@ -11,16 +11,16 @@ class MovableAdapter {
 	}
 
 	get position() {
-		return this.iocContainer.resolve('IMovable.position.getter', this.universalObject);
+		return this.iocContainer.resolve('Getter', this.universalObject, 'position');
 	}
 	get movementVelocity() {
-		return this.iocContainer.resolve('IMovable.movementVelocity.getter', this.universalObject);
+		return this.iocContainer.resolve('Getter', this.universalObject, 'movementVelocity');
 	}
 	set position(value) {
-		return this.iocContainer.resolve('IMovable.position.setter', this.universalObject, value).execute();
+		return this.iocContainer.resolve('Setter', this.universalObject, 'position', value).execute();
 	}
 	set movementVelocity(value) {
-		return this.iocContainer.resolve('IMovable.movementVelocity.setter', this.universalObject, value).execute();
+		return this.iocContainer.resolve('Setter', this.universalObject, 'movementVelocity', value).execute();
 	}
 }
 ```
