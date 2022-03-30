@@ -6,6 +6,7 @@ export default function setterTemplate(propertyName: string, interfaceName: stri
 	const resultExpression = (
 		iocResolveTemplate(
 			`${interfaceName}.${propertyName}.setter`,
+			'this.universalObject',
 			'value'
 		)
 	)

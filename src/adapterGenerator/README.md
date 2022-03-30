@@ -17,10 +17,10 @@ class MovableAdapter {
 		return this.iocContainer.resolve('IMovable.movementVelocity.getter', this.universalObject);
 	}
 	set position(value) {
-		return this.iocContainer.resolve('IMovable.position.setter', value).execute();
+		return this.iocContainer.resolve('IMovable.position.setter', this.universalObject, value).execute();
 	}
 	set movementVelocity(value) {
-		return this.iocContainer.resolve('IMovable.movementVelocity.setter', value).execute();
+		return this.iocContainer.resolve('IMovable.movementVelocity.setter', this.universalObject, value).execute();
 	}
 }
 ```
