@@ -1,31 +1,24 @@
+import IRegistrator from '../types/IRegistrator';
+
 export type TResolverFunction = (...args: Array<any>) => any
 
 /**
  * Inversion Of Control Container.
  */
 export default class IoC {
-	private static readonly registerDependencyName = 'Register'
-	private static dependencyMap: Map<string, TResolverFunction> = new Map()
+	private static readonly registratorDependencyName = 'Registrator'
+	private dependencyMap: Map<string, TResolverFunction> = new Map()
 
-	public static register(dependencyName: string, resolver: TResolverFunction) {
-		console.warn('Метод register() устарел, используйте методы init() и resolve("Register")')
-		if (this.dependencyMap.has(dependencyName)) {
-			throw new Error(`Зависимость '${dependencyName}' уже зарегистрирована`)
-		}
-		this.dependencyMap.set(dependencyName, resolver)
-	}
-
-	public static init() {
-		const registerResolver = (dependencyName: string, resolver: TResolverFunction) => {
-			if (this.dependencyMap.has(dependencyName)) {
-				throw new Error(`Зависимость '${dependencyName}' уже зарегистрирована`)
+	public constructor() {
+		const registratorResolver = (
+			(dependencyName: string, resolver: TResolverFunction): IRegistrator => {
+				return new Registrator(this.dependencyMap, dependencyName, resolver)
 			}
-			this.dependencyMap.set(dependencyName, resolver)
-		}
-		this.dependencyMap.set(this.registerDependencyName, registerResolver)
+		)
+		this.dependencyMap.set(IoC.registratorDependencyName, registratorResolver)
 	}
 
-	public static resolve<T>(dependencyName: string, ...args: Array<any>): T {
+	public resolve<T>(dependencyName: string, ...args: Array<any>): T {
 		// TODO Сделать проверку соответствия типов аргументов args и resolver,
 		//  а также соответствие выходного типа и запрашиваемого типа.
 		const resolver = this.dependencyMap.get(dependencyName)
@@ -33,5 +26,20 @@ export default class IoC {
 			throw new Error(`Не найдена зависимость '${dependencyName}'`)
 		}
 		return resolver(...args)
+	}
+}
+
+class Registrator implements IRegistrator {
+	constructor(
+		private dependencyMap: Map<string, TResolverFunction>,
+		private dependencyName: string,
+		private resolver: TResolverFunction
+	) {}
+
+	register(): void {
+		if (this.dependencyMap.has(this.dependencyName)) {
+			throw new Error(`Зависимость '${this.dependencyName}' уже зарегистрирована`)
+		}
+		this.dependencyMap.set(this.dependencyName, this.resolver)
 	}
 }
