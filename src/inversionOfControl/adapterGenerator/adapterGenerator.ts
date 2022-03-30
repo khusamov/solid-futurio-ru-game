@@ -6,7 +6,7 @@ import IResolverContext from '../IResolverContext';
 import IAdapterClass from './IAdapterClass';
 
 export default (
-	function adapterGenerator(reflectedTypeRef: ReflectedTypeRef, universalObject: UniversalObject, context: IResolverContext) {
+	function adapterGenerator(universalObject: UniversalObject, reflectedTypeRef: ReflectedTypeRef, context: IResolverContext) {
 		const source = adapterSourceGenerator(reflectedTypeRef)
 		const AdapterClass = execFunctionScript<IAdapterClass>(source)
 		return new AdapterClass(universalObject, context.iocContainer)

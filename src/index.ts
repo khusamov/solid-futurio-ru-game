@@ -21,7 +21,7 @@ iocContainer.resolve<IRegistrator>(
 
 const uObject = new UniversalObject()
 uObject.setValue('position', 100)
-const movableAdapter = iocContainer.resolve<IMovable>('Adapter', reflect<IMovable>(), uObject)
+const movableAdapter = iocContainer.resolve<IMovable>('Adapter', uObject, reflect<IMovable>())
 
 const bodyElement = document.querySelector('body')
 if (bodyElement) {
