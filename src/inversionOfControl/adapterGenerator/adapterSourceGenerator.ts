@@ -9,11 +9,11 @@ import {ReflectedTypeRef} from 'typescript-rtti';
 export default function adapterSourceGenerator(reflectedTypeRef: ReflectedTypeRef) {
 	const reflectedInterface = reflectedTypeRef.as('interface').reflectedInterface
 	const {properties, class: {name: interfaceName}} = reflectedInterface
+	const adapterClassName = interfaceName.substring(1) + 'Adapter'
 	return (
 		formatCode(
 			`
-				// implements ${interfaceName}
-				class {
+				class ${adapterClassName} {
 					${constructorTemplate()}
 					${properties.map(property => getterTemplate(property.name, interfaceName)).join('')}
 					${properties.map(property => setterTemplate(property.name, interfaceName)).join('')}
@@ -25,8 +25,9 @@ export default function adapterSourceGenerator(reflectedTypeRef: ReflectedTypeRe
 
 function constructorTemplate() {
 	return `
-		constructor(universalObject) {
+		constructor(universalObject, iocContainer) {
 			this.universalObject = universalObject
+			this.iocContainer = iocContainer
 		}
 	`
 }

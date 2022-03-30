@@ -6,6 +6,6 @@ export default function iocResolveTemplate(dependencyName: string, ...argumentEx
 		)
 	)
 	return (
-		`IoC.resolve('${dependencyName}'${argumentSuffix})`
+		`this.iocContainer.resolve('${dependencyName}'${argumentSuffix})`
 	)
 }
