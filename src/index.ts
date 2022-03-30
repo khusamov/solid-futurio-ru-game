@@ -1,12 +1,14 @@
-import "reflect-metadata" // Обязательный для использования typescript-rtti импорт!
+import 'reflect-metadata'
 import {reflect} from 'typescript-rtti'
-
-import IMovable from './IMovable';
-import adapterGenerator from './adapterGenerator';
-import IoC from './inversionOfControl/IoC';
-import UniversalObject from './object/UniversalObject';
 import IRegistrator from './types/IRegistrator';
-import adapterSourceGenerator from './adapterGenerator/adapterSourceGenerator';
+import IoC from './inversionOfControl/IoC';
+import adapterGenerator, {adapterSourceGenerator} from './adapterGenerator';
+import UniversalObject from './object/UniversalObject';
+
+interface IMovable {
+	position: string
+	readonly movementVelocity: string
+}
 
 const iocContainer = new IoC()
 
