@@ -1,4 +1,4 @@
-import formatCode from '../../formatCode';
+import formatCode from '../formatCode';
 import getterTemplate from './getterTemplate';
 import setterTemplate from './setterTemplate';
 import {ReflectedTypeRef} from 'typescript-rtti';

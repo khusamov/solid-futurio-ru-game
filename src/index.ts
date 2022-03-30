@@ -2,11 +2,11 @@ import "reflect-metadata" // Обязательный для использов�
 import {reflect} from 'typescript-rtti'
 
 import IMovable from './IMovable';
-import adapterGenerator from './inversionOfControl/adapterGenerator';
+import adapterGenerator from './adapterGenerator';
 import IoC from './inversionOfControl/IoC';
 import UniversalObject from './object/UniversalObject';
 import IRegistrator from './types/IRegistrator';
-import adapterSourceGenerator from './inversionOfControl/adapterGenerator/adapterSourceGenerator';
+import adapterSourceGenerator from './adapterGenerator/adapterSourceGenerator';
 
 const iocContainer = new IoC()
 

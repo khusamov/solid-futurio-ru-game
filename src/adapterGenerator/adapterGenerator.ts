@@ -1,8 +1,8 @@
 import {ReflectedTypeRef} from 'typescript-rtti';
 import adapterSourceGenerator from './adapterSourceGenerator';
-import UniversalObject from '../../object/UniversalObject';
-import execFunctionScript from '../../functions/execFunctionScript';
-import IResolverContext from '../IResolverContext';
+import UniversalObject from '../object/UniversalObject';
+import execFunctionScript from '../functions/execFunctionScript';
+import IResolverContext from '../inversionOfControl/IResolverContext';
 import IAdapterClass from './IAdapterClass';
 
 export default (
