@@ -1,5 +1,6 @@
 import createRegistratorResolver from './createRegistratorResolver';
 
+export type TDependencyMap = Map<string, TResolverFunction>
 export type TResolverFunction = (...args: Array<any>) => any
 
 /**
@@ -7,7 +8,7 @@ export type TResolverFunction = (...args: Array<any>) => any
  */
 export default class IoC {
 	private static readonly registratorDependencyName = 'Registrator'
-	private dependencyMap: Map<string, TResolverFunction> = new Map()
+	private dependencyMap: TDependencyMap = new Map()
 
 	public constructor() {
 		this.dependencyMap.set(
