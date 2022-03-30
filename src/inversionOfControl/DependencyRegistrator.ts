@@ -1,5 +1,5 @@
 import IRegistrator from '../types/IRegistrator';
-import {TResolverFunction} from './IoC';
+import {TResolverFunction} from './types';
 
 export default class DependencyRegistrator implements IRegistrator {
 	constructor(
