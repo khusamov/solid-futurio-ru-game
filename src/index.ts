@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import {reflect} from 'typescript-rtti'
-import IoC from './inversionOfControl/IoC';
+import {IoC} from './inversionOfControl';
 import {AdapterGeneratorRegistrator, adapterSourceGenerator} from './adapterGenerator';
 import UniversalObject from './object/UniversalObject';
 
