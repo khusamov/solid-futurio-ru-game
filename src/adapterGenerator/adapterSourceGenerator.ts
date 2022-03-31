@@ -15,8 +15,8 @@ export default function adapterSourceGenerator(reflectedTypeRef: ReflectedTypeRe
 			`
 				class ${adapterClassName} {
 					${constructorTemplate()}
-					${properties.map(property => getterTemplate(property.name, interfaceName)).join('')}
-					${properties.map(property => setterTemplate(property.name, interfaceName)).join('')}
+					${properties.map(property => getterTemplate(property.name)).join('')}
+					${properties.map(property => setterTemplate(property.name)).join('')}
 				}
 			`
 		)
