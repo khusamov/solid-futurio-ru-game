@@ -6,7 +6,7 @@ export default function execFunctionScript<T>(source: string): T {
 	}
 
 	try {
-		const code = new Function('', `return ${source}`)
+		const code = new Function('', `return (${source})`)
 		return code()
 	} catch (error) {
 		if (error instanceof SyntaxError) {
