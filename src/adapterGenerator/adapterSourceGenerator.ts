@@ -1,4 +1,3 @@
-import formatCode from '../formatCode';
 import getterTemplate from './getterTemplate';
 import setterTemplate from './setterTemplate';
 import {ReflectedTypeRef} from 'typescript-rtti';
@@ -11,15 +10,13 @@ export default function adapterSourceGenerator(reflectedTypeRef: ReflectedTypeRe
 	const {properties, class: {name: interfaceName}} = reflectedInterface
 	const adapterClassName = interfaceName.substring(1) + 'Adapter'
 	return (
-		formatCode(
-			`
-				class ${adapterClassName} {
-					${constructorTemplate()}
-					${properties.map(property => getterTemplate(property.name)).join('')}
-					${properties.map(property => setterTemplate(property.name)).join('')}
-				}
-			`
-		)
+		`
+			class ${adapterClassName} {
+				${constructorTemplate()}
+				${properties.map(property => getterTemplate(property.name)).join('')}
+				${properties.map(property => setterTemplate(property.name)).join('')}
+			}
+		`
 	)
 }
 
