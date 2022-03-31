@@ -1,7 +1,44 @@
 adapterGenerator
 ================
 
-Генерирует код следующего вида:
+Специальная функция, которая на основе интерфейса генерирует класс Адаптер для извлечения 
+свойств из объектов, которые реализуют интерфейс `IUniversalObject`:
+
+```typescript
+interface IUniversalObject {
+	getValue<T>(name: string): T
+	setValue<T>(name: string, value: T): void
+}
+```
+
+Для извлечения используется контейнер `IoC`, сохраненный в свойстве `this.iocContainer`.
+
+Пример использования:
+---------------------
+
+```typescript
+import {reflect} from 'typescript-rtti'
+import {AdapterGeneratorRegistrator} from './adapterGenerator';
+import UniversalObject from './object/UniversalObject';
+import IUniversalObject from '../types/IUniversalObject';
+
+const iocContainer = new IoC()
+new AdapterGeneratorRegistrator(iocContainer).register()
+
+interface IMovable {
+	position: number
+	readonly movementVelocity: string
+}
+
+const universalObject: IUniversalObject = new UniversalObject()
+const movableAdapter = iocContainer.resolve<IMovable>('Adapter', universalObject, reflect<IMovable>())
+movableAdapter.position = 100
+```
+
+Пример генерируемого кода адаптера:
+-----------------------------------
+
+Вот так выглядит адаптер для интерфейса `IMovable`:
 
 ```typescript
 class MovableAdapter {
