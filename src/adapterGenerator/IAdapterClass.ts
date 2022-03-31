@@ -1,6 +1,6 @@
-import UniversalObject from '../object/UniversalObject';
-import IoC from '../inversionOfControl/IoC';
+import IUniversalObject from '../types/IUniversalObject';
+import {IoC} from '../inversionOfControl';
 
 export default interface IAdapterClass {
-	new(universalObject: UniversalObject, iocContainer: IoC): void
+	new(universalObject: IUniversalObject, iocContainer: IoC): void
 }
