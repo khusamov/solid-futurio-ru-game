@@ -16,19 +16,17 @@ interface IUniversalObject {
 Для этого следует создать интерфейс с именами и типами требуемых свойств и создать адаптер. Адаптер сгенерирует
 объект с запрошенными посредством интерфейса свойствами.
 
-Для извлечения используется контейнер `IoC`, сохраненный в свойстве `this.iocContainer`.
-
 Пример использования:
 ---------------------
 
 ```typescript
 import {reflect} from 'typescript-rtti'
-import {AdapterGeneratorRegistrator} from './adapterGenerator';
+import {adapterGeneratorResolver} from './adapterGenerator';
 import UniversalObject from './object/UniversalObject';
 import IUniversalObject from '../types/IUniversalObject';
 
 const iocContainer = new IoC()
-new AdapterGeneratorRegistrator(iocContainer).register()
+iocContainer.resolve<IRegistrator>('Registrator', 'Adapter', adapterGeneratorResolver).register()
 
 interface IMovable {
 	position: number
@@ -49,23 +47,22 @@ movableAdapter.position = 100
 class MovableAdapter {
 	constructor(universalObject, iocContainer) {
 		this.universalObject = universalObject;
-		this.iocContainer = iocContainer;
 	}
 
 	get position() {
-		return this.iocContainer.resolve('Getter', this.universalObject, 'position');
+		return this.universalObject.getValue('position');
 	}
 
 	set position(value) {
-		return this.iocContainer.resolve('Setter', this.universalObject, 'position', value).execute();
+		this.universalObject.setValue('position');
 	}
 
 	get movementVelocity() {
-		return this.iocContainer.resolve('Getter', this.universalObject, 'movementVelocity');
+		return this.universalObject.getValue('movementVelocity');
 	}
 
 	set movementVelocity(value) {
-		return this.iocContainer.resolve('Setter', this.universalObject, 'movementVelocity', value).execute();
+		this.universalObject.setValue('movementVelocity');
 	}
 }
 ```

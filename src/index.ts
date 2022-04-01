@@ -1,12 +1,13 @@
 import 'reflect-metadata'
 import {reflect} from 'typescript-rtti'
 import {IoC} from './inversionOfControl';
-import {AdapterGeneratorRegistrator, adapterSourceGenerator} from './adapterGenerator';
+import {adapterGeneratorResolver, adapterSourceGenerator} from './adapterGenerator';
 import UniversalObject from './object/UniversalObject';
 import formatCode from './formatCode';
+import IRegistrator from './types/IRegistrator';
 
 const iocContainer = new IoC()
-new AdapterGeneratorRegistrator(iocContainer).register()
+iocContainer.resolve<IRegistrator>('Registrator', 'Adapter', adapterGeneratorResolver).register()
 
 interface IMovable {
 	position: number

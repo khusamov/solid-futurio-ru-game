@@ -12,8 +12,8 @@ export default function adapterSourceGenerator(reflectedTypeRef: ReflectedTypeRe
 			class ${adapterClassName} {
 				constructor(universalObject, iocContainer) {
 					this.universalObject = universalObject
-					this.iocContainer = iocContainer
 				}
+				
 				${properties.reduce((result, {name}) => acessorTempale(result, name), '')}
 			}
 		`
@@ -24,11 +24,11 @@ function acessorTempale(result: string, propertyName: string) {
 	const acessors = (
 		`
 			get ${propertyName}() {
-				return this.iocContainer.resolve('Getter', this.universalObject, '${propertyName}');
+				return this.universalObject.getValue('${propertyName}')
 			}
 			
 			set ${propertyName}(value) {
-				return this.iocContainer.resolve('Setter', this.universalObject, '${propertyName}', value).execute();
+				this.universalObject.setValue('${propertyName}')
 			}
 		`
 	)
