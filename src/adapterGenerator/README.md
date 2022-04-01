@@ -55,12 +55,15 @@ class MovableAdapter {
 	get position() {
 		return this.iocContainer.resolve('Getter', this.universalObject, 'position');
 	}
-	get movementVelocity() {
-		return this.iocContainer.resolve('Getter', this.universalObject, 'movementVelocity');
-	}
+
 	set position(value) {
 		return this.iocContainer.resolve('Setter', this.universalObject, 'position', value).execute();
 	}
+
+	get movementVelocity() {
+		return this.iocContainer.resolve('Getter', this.universalObject, 'movementVelocity');
+	}
+
 	set movementVelocity(value) {
 		return this.iocContainer.resolve('Setter', this.universalObject, 'movementVelocity', value).execute();
 	}
