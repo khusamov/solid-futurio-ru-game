@@ -30,6 +30,7 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
+    "ttypescript": "^1.5.13",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.0.3",
     "@rollup/plugin-html": "^0.2.4",
