@@ -1,19 +1,14 @@
+import {RollupHtmlTemplateOptions} from '@rollup/plugin-html';
+
 /**
  * Шаблон HTML-файла.
  * @link https://github.com/rollup/plugins/tree/master/packages/html#template
  * @link https://github.com/rollup/plugins/blob/master/packages/html/lib/index.js#L27
- * @param attributes
- * @param attributes.script
- * @param attributes.link
- * @param attributes.html
- * @param files
- * @param files.js
- * @param files.css
- * @param publicPath
- * @param title
- * @returns {Promise<string>}
  */
-export async function htmlTemplate({attributes, files, publicPath, title}) {
+export default function htmlTemplate(options?: RollupHtmlTemplateOptions): string {
+	if (!options) throw new Error('Ожидаются опции')
+	const {attributes, files, publicPath, title} = options
+
 	const scripts = (
 		(files.js || [])
 			.map(({ fileName }) => {
@@ -58,7 +53,7 @@ export async function htmlTemplate({attributes, files, publicPath, title}) {
 	`);
 }
 
-function makeHtmlAttributes(attributes) {
+function makeHtmlAttributes(attributes: any) {
 	if (!attributes) {
 		return '';
 	}

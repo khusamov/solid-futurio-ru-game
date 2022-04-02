@@ -13,7 +13,7 @@ import postcss from 'rollup-plugin-postcss';
 import deleteDist from 'rollup-plugin-delete';
 import progress from 'rollup-plugin-progress';
 
-import {isRollupWatch} from './isRollupWatch';
+import {isRollupWatch} from '../isRollupWatch';
 
 interface IOptions {
 	npmPackageJsonFile: JSONSchemaForNPMPackageJsonFiles;
