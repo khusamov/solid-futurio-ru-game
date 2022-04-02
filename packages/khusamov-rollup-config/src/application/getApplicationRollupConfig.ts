@@ -49,6 +49,7 @@ export default function getApplicationRollupConfig(options: IGetApplicationRollu
 			commonjs(),
 			livereload(outDir),
 			typescript({
+				outDir,
 				tsconfig,
 				typescript: ttypescript
 			}),

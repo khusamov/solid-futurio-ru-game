@@ -39,12 +39,11 @@ export default function getPlugins({tsconfig = false, outDir, npmPackageJsonFile
 		resolve(),
 		progress(),
 		commonjs(),
+		typescript({tsconfig, outDir}),
 
 		postcss({
 			modules: true
 		}),
-
-		typescript({tsconfig}),
 
 		// https://github.com/vladshcherbin/rollup-plugin-delete
 		!isRollupWatch && deleteDist({
