@@ -5,6 +5,8 @@ import IGetLibraryRollupConfigOptions from './IGetLibraryRollupConfigOptions';
 import {isRollupWatch} from './isRollupWatch';
 import getPlugins from './getPlugins';
 
+export {IGetLibraryRollupConfigOptions}
+
 /**
  * Генератор конфигурационного файла RollupJS для сборки библиотеки ReactJS компонент.
  */
