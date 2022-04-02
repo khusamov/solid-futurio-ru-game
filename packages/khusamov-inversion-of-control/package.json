@@ -16,11 +16,15 @@
 		"prepublishOnly": "yarn build"
 	},
 	"devDependencies": {
+		"@types/prettier": "^2.4.4",
 		"khusamov-rollup-config": "workspace:*",
 		"reflect-metadata": "^0.1.13",
 		"rollup": "^2.70.1",
 		"ttypescript": "^1.5.13",
 		"typescript": "^4.6.3",
 		"typescript-rtti": "^0.5.4"
+	},
+	"dependencies": {
+		"prettier": "^2.6.1"
 	}
 }
