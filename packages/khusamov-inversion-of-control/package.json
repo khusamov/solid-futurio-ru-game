@@ -3,9 +3,9 @@
 	"version": "0.0.0",
 	"packageManager": "yarn@3.1.1",
 	"license": "MIT",
-	"main": "dist/index.es5.js",
-	"module": "dist/index.next.js",
-	"jsnext:main": "dist/index.next.js",
+	"main": "dist/index.js",
+	"module": "dist/index.es.js",
+	"jsnext:main": "dist/index.es.js",
 	"typings": "dist/src/index.d.ts",
 	"files": [
 		"dist"
