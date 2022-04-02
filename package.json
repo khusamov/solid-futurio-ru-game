@@ -6,9 +6,9 @@
 	],
 	"scripts": {
 		"inversion-of-control:build": "yarn workspaces foreach --include 'khusamov-inversion-of-control' run build",
-		"inversion-of-control:build:watch": "lerna run --no-prefix --parallel --scope '*inversion-of-control' build:watch",
+		"inversion-of-control:build:watch": "yarn workspaces foreach --include 'khusamov-inversion-of-control' run build:watch",
 		"rollup-config:build": "yarn workspaces foreach --include 'khusamov-rollup-config' run build",
-		"rollup-config:build:watch": "lerna run --no-prefix --parallel --scope '*rollup-config' build:watch"
+		"rollup-config:build:watch": "yarn workspaces foreach --include 'khusamov-rollup-config' run build:watch"
 	},
 	"devDependencies": {
 		"lerna": "^4.0.0"
