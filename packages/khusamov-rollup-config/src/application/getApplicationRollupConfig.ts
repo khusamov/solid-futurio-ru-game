@@ -1,3 +1,4 @@
+import {OutputPlugin} from 'rollup';
 import ttypescript from "ttypescript";
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -6,37 +7,56 @@ import json from '@rollup/plugin-json';
 import html from '@rollup/plugin-html';
 import livereload from 'rollup-plugin-livereload';
 import serve from 'rollup-plugin-serve';
+import {terser} from 'rollup-plugin-terser';
+import {isRollupWatch} from '../isRollupWatch';
 import htmlTemplate from './htmlTemplate';
+import IGetApplicationRollupConfigOptions from './IGetApplicationRollupConfigOptions';
 
-const distPath = 'build';
+export default function getApplicationRollupConfig(options: IGetApplicationRollupConfigOptions) {
+	const {title, tsconfig, outDir = 'dist', terserPluginEnabled = false, npmPackageJsonFile} = options
+	const {description, name, main, module} = npmPackageJsonFile;
 
-export default function getApplicationRollupConfig() {
+	console.log(`Сборка приложения '${description || name}'.`);
+
+	const outputPlugins: (OutputPlugin | null | false | undefined)[] = [
+		...!isRollupWatch && terserPluginEnabled ? [terser()] : []
+	]
+
 	return {
 		input: {
 			index: 'src/index.ts',
 		},
-		output: {
-			entryFileNames: '[name].js',
-			dir: distPath,
-			format: 'es',
-			sourcemap: true
-		},
+		output: [
+			{
+				file: module,
+				format: 'es',
+				sourcemap: true,
+				plugins: outputPlugins
+			},
+			{
+				file: main,
+				format: 'cjs',
+				exports: 'auto',
+				sourcemap: true,
+				plugins: outputPlugins
+			}
+		],
 		plugins: [
 			json(),
 			resolve(),
 			commonjs(),
-			typescript({typescript: ttypescript}),
-
+			livereload(outDir),
+			typescript({
+				tsconfig,
+				typescript: ttypescript
+			}),
 			html({
 				template: htmlTemplate,
-				title: 'reflection-for-typescript'
+				title: title || description || name
 			}),
-
-			livereload(distPath),
-
 			serve({
 				//open: true,
-				contentBase: distPath
+				contentBase: outDir
 			})
 		]
 	}
