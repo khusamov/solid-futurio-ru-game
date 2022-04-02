@@ -1,36 +1,18 @@
-import {JSONSchemaForNPMPackageJsonFiles} from '@schemastore/package';
-import {OutputOptions, RollupOptions} from 'rollup';
-// import {terser} from 'rollup-plugin-terser';
-import plugins from './plugins';
-import {cyan} from 'chalk'; // Новая версия chalk не работает, приходится использовать 4.0.0.
-
-/**
- * Флаги с типами окружения.
- */
-//const isRollupWatch = process.env.ROLLUP_WATCH === 'true';
-
-interface IGetLibraryRollupConfigOptions {
-	outDir: string;
-	npmPackageJsonFile: JSONSchemaForNPMPackageJsonFiles;
-}
+import {OutputPlugin, RollupOptions} from 'rollup';
+import {terser} from 'rollup-plugin-terser';
+import {cyan} from 'chalk';
+import IGetLibraryRollupConfigOptions from './IGetLibraryRollupConfigOptions';
+import {isRollupWatch} from './isRollupWatch';
+import getPlugins from './getPlugins';
 
 /**
  * Генератор конфигурационного файла RollupJS для сборки библиотеки ReactJS компонент.
  */
-export function getLibraryRollupConfig({outDir = 'dist', npmPackageJsonFile}: IGetLibraryRollupConfigOptions): RollupOptions {
-	const {peerDependencies, description, name} = npmPackageJsonFile;
+export function getLibraryRollupConfig(options: IGetLibraryRollupConfigOptions): RollupOptions {
+	const {tsconfig = false, outDir = 'dist', terserPluginEnabled = false, npmPackageJsonFile} = options;
+	const {peerDependencies, description, name, main, module} = npmPackageJsonFile;
 
 	console.log(`Сборка пакета '${description || name}'.`);
-
-	/**
-	 * Настройки выходных файлов.
-	 */
-	const output: OutputOptions = {
-		dir: outDir,
-		sourcemap: true,
-		// Плагин terser временно пока отключен, мешает отладке, т.к. весь код зашифрован.
-		// plugins: [...!isRollupWatch ? [terser()] : []]
-	};
 
 	/**
 	 * Внешние библиотеки.
@@ -39,18 +21,52 @@ export function getLibraryRollupConfig({outDir = 'dist', npmPackageJsonFile}: IG
 	 * @link https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency
 	 */
 	const external = Object.keys(peerDependencies || {});
-	console.log('Внешние пакеты (на основе peerDependencies):', cyan(external.join(', ') + '.'));
+	if (external.length > 0) {
+		console.log(
+			'Внешние пакеты (на основе peerDependencies):',
+			cyan(external.join(', ') + '.')
+		);
+	}
+
+	const outputPlugins: (OutputPlugin | null | false | undefined)[] = [
+		...!isRollupWatch && terserPluginEnabled ? [terser()] : []
+	]
 
 	return {
-		external: id => external.includes(id[0] === '@' ? id.split('/')[0] + '/' + id.split('/')[1] : id.split('/')[0]),
-		// external,
 		input: 'src/index.ts',
-		plugins: plugins({target: 'es2019', npmPackageJsonFile, outDir}),
-		output: {
-			...output,
-			sourcemap: true,
-			format: 'es',
-			entryFileNames: '[name].next.js'
-		}
+		plugins: getPlugins({tsconfig, npmPackageJsonFile, outDir}),
+		// output: {
+		// 	dir: outDir,
+		// 	format: 'es',
+		// 	sourcemap: true,
+		// 	entryFileNames: '[name].next.js',
+		// 	plugins: [...!isRollupWatch && terserPluginEnabled ? [terser()] : []],
+		// },
+
+		output: [
+			{
+				file: module,
+				format: 'es',
+				sourcemap: true,
+				plugins: outputPlugins
+			},
+			{
+				file: main,
+				format: 'cjs',
+				exports: 'auto',
+				sourcemap: true,
+				plugins: outputPlugins
+			}
+		],
+
+
+
+		external: (
+			id => external.includes(
+				id[0] === '@'
+					? id.split('/')[0] + '/' + id.split('/')[1]
+					: id.split('/')[0]
+			)
+		)
 	};
 }
