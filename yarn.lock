@@ -1308,13 +1308,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:^2.4.4":
-  version: 2.4.4
-  resolution: "@types/prettier@npm:2.4.4"
-  checksum: 2c2cc57efd49c7d8907415a72f96c84a6dd8696dd3bf8aa4ca3a667427bebf71cbfbc912673624bdfc935d272d1c008c639cf155f6449315990a4dc110f0d216
-  languageName: node
-  linkType: hard
-
 "@types/resolve@npm:1.17.1":
   version: 1.17.1
   resolution: "@types/resolve@npm:1.17.1"
@@ -3973,6 +3966,9 @@ __metadata:
 "khusamov-inversion-of-control-sample@workspace:packages/khusamov-inversion-of-control-sample":
   version: 0.0.0-use.local
   resolution: "khusamov-inversion-of-control-sample@workspace:packages/khusamov-inversion-of-control-sample"
+  dependencies:
+    khusamov-rollup-config: "workspace:*"
+    rollup: ^2.70.1
   languageName: unknown
   linkType: soft
 
@@ -3980,9 +3976,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-inversion-of-control@workspace:packages/khusamov-inversion-of-control"
   dependencies:
-    "@types/prettier": ^2.4.4
     khusamov-rollup-config: "workspace:*"
-    prettier: ^2.6.1
     reflect-metadata: ^0.1.13
     rollup: ^2.70.1
     ttypescript: ^1.5.13
@@ -4016,6 +4010,7 @@ __metadata:
     rollup-plugin-smart-asset: ^2.1.2
     rollup-plugin-terser: ^7.0.2
     tslib: ^2.3.1
+    ttypescript: ^1.5.13
     typescript: ^4.6.3
   peerDependencies:
     rollup: ^2.70.1
@@ -5826,15 +5821,6 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 248e3d0f9bbb8efaafcfda7f91627a29bdc9a19f456896886330beb28c5abea0e14c7901b35191928602e2eccbed496b1e94097d27a0b2a980854cd00c7a835f
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^2.6.1":
-  version: 2.6.1
-  resolution: "prettier@npm:2.6.1"
-  bin:
-    prettier: bin-prettier.js
-  checksum: 78be1f8a3ddfad7c3d8a854b6c8941a3bb1ddfca4225c38d778e0fe1029a55368f71b3bbefff82c689015fbb4d391ec44add957f01308ad2725e01a7c1f37cb6
   languageName: node
   linkType: hard
 
