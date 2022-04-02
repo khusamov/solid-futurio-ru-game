@@ -1,0 +1,26 @@
+{
+	"name": "khusamov-inversion-of-control",
+	"version": "0.0.0",
+	"packageManager": "yarn@3.1.1",
+	"license": "MIT",
+	"main": "dist/index.es5.js",
+	"module": "dist/index.next.js",
+	"jsnext:main": "dist/index.next.js",
+	"typings": "dist/src/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "rollup -c",
+		"build:watch": "rollup -c -w",
+		"prepublishOnly": "yarn build"
+	},
+	"devDependencies": {
+		"khusamov-rollup-config": "workspace:*",
+		"reflect-metadata": "^0.1.13",
+		"rollup": "^2.70.1",
+		"ttypescript": "^1.5.13",
+		"typescript": "^4.6.3",
+		"typescript-rtti": "^0.5.4"
+	}
+}

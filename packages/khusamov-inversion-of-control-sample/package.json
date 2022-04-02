@@ -1,0 +1,10 @@
+{
+  "name": "khusamov-inversion-of-control-sample",
+  "version": "0.0.0",
+  "packageManager": "yarn@3.1.1",
+  "license": "MIT",
+  "scripts": {
+    "!start": "rollup --config --watch",
+    "!adapter-generator": "ts-node scripts/adapter-generator"
+  }
+}

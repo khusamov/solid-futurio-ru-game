@@ -1,4 +1,6 @@
 {
+	"extends": "../tsconfig.json",
+	"include": ["src/**/*"],
 	"compilerOptions": {
 		"moduleResolution": "Node",
 		"module": "ES2020",
@@ -12,6 +14,5 @@
 				"transform": "typescript-rtti/dist/transformer"
 			}
 		]
-	},
-	"include": ["src/**/*"]
+	}
 }

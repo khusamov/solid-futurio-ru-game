@@ -1,0 +1,49 @@
+{
+  "name": "khusamov-rollup-config",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Генератор конфигурационных файлов Rollup.js для создания библиотек",
+  "author": "Khusamov Sukhrob <khusamov@yandex.ru>",
+  "packageManager": "yarn@3.1.1",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "",
+    "prepublishOnly": "yarn build"
+  },
+  "peerDependencies": {
+    "rollup": "^2.70.1"
+  },
+  "devDependencies": {
+    "@schemastore/package": "^0.0.6",
+    "@types/rollup-plugin-postcss": "^3.1.4",
+    "@types/rollup-plugin-progress": "^1.1.1",
+    "postcss": "^8.4.12",
+    "rollup": "^2.70.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.0.3",
+    "@rollup/plugin-html": "^0.2.4",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-typescript": "^8.3.1",
+    "chalk": "4.0.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-progress": "^1.1.2",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-smart-asset": "^2.1.2",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
