@@ -1,6 +1,13 @@
 Инструкции для разработчика
 ===========================
 
+Внимание! Надо рассмотреть замены инструментария:
+Lerna -> Rush https://rushjs.io/
+Rollup -> ESBuild https://esbuild.github.io/
+
+По поводу ESBuild:
+https://uproger.com/sozdajte-prilozhenie-react-js-s-pomoshhyu-esbuild-i-node/
+
 Внимание! Lerna имеет проблемы:
 1. Не работает bootstrap из-за несовместимости с последней версией Yarn.
 2. Не работает запуск `lerna run --scope`.
