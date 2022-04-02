@@ -1308,6 +1308,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/prettier@npm:^2.4.4":
+  version: 2.4.4
+  resolution: "@types/prettier@npm:2.4.4"
+  checksum: 2c2cc57efd49c7d8907415a72f96c84a6dd8696dd3bf8aa4ca3a667427bebf71cbfbc912673624bdfc935d272d1c008c639cf155f6449315990a4dc110f0d216
+  languageName: node
+  linkType: hard
+
 "@types/resolve@npm:1.17.1":
   version: 1.17.1
   resolution: "@types/resolve@npm:1.17.1"
@@ -3967,12 +3974,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-inversion-of-control-sample@workspace:packages/khusamov-inversion-of-control-sample"
   dependencies:
+    "@types/prettier": ^2.4.4
+    khusamov-inversion-of-control: "workspace:*"
     khusamov-rollup-config: "workspace:*"
+    prettier: ^2.6.2
     rollup: ^2.70.1
   languageName: unknown
   linkType: soft
 
-"khusamov-inversion-of-control@workspace:packages/khusamov-inversion-of-control":
+"khusamov-inversion-of-control@workspace:*, khusamov-inversion-of-control@workspace:packages/khusamov-inversion-of-control":
   version: 0.0.0-use.local
   resolution: "khusamov-inversion-of-control@workspace:packages/khusamov-inversion-of-control"
   dependencies:
@@ -5821,6 +5831,15 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 248e3d0f9bbb8efaafcfda7f91627a29bdc9a19f456896886330beb28c5abea0e14c7901b35191928602e2eccbed496b1e94097d27a0b2a980854cd00c7a835f
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "prettier@npm:2.6.2"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 48d08dde8e9fb1f5bccdd205baa7f192e9fc8bc98f86e1b97d919de804e28c806b0e6cc685e4a88211aa7987fa9668f30baae19580d87ced3ed0f2ec6572106f
   languageName: node
   linkType: hard
 
