@@ -5,6 +5,8 @@
 		"packages/*"
 	],
 	"scripts": {
+		"inversion-of-control-sample:build": "yarn workspaces foreach --include 'khusamov-inversion-of-control-sample' run build",
+		"inversion-of-control-sample:build:watch": "yarn workspaces foreach --include 'khusamov-inversion-of-control-sample' run build:watch",
 		"inversion-of-control:build": "yarn workspaces foreach --include 'khusamov-inversion-of-control' run build",
 		"inversion-of-control:build:watch": "yarn workspaces foreach --include 'khusamov-inversion-of-control' run build:watch",
 		"rollup-config:build": "yarn workspaces foreach --include 'khusamov-rollup-config' run build",
