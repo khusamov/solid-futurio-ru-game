@@ -13,7 +13,7 @@
   "scripts": {
     "build": "rollup --config",
     "build:watch": "rollup --config --watch",
-    "!adapter-generator": "ts-node scripts/adapter-generator"
+    "prepublishOnly": "yarn build"
   },
   "devDependencies": {
     "@types/prettier": "^2.4.4",
