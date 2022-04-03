@@ -4,8 +4,6 @@ import {IoC, IRegistrator, UniversalObject} from 'khusamov-inversion-of-control'
 import {adapterGeneratorResolver, adapterSourceGenerator} from 'khusamov-inversion-of-control';
 import formatCode from './formatCode';
 
-const {querySelector, createElement} = document
-
 const iocContainer = new IoC()
 iocContainer.resolve<IRegistrator>('Registrator', 'Adapter', adapterGeneratorResolver).register()
 
@@ -20,12 +18,12 @@ movableAdapter.position = 100
 
 const adapterSource = adapterSourceGenerator(reflect<IMovable>())
 
-const bodyElement = querySelector('body')
+const bodyElement = document.querySelector('body')
 if (bodyElement) {
-	const preElement = bodyElement.appendChild(createElement('pre'))
+	const preElement = bodyElement.appendChild(document.createElement('pre'))
 	preElement.style.tabSize = String(3)
 	preElement.innerText = formatCode(adapterSource)
 
-	const pElement = bodyElement.appendChild(createElement('p'))
+	const pElement = bodyElement.appendChild(document.createElement('p'))
 	pElement.innerText = `movableAdapter.position = ${movableAdapter.position}`
 }
