@@ -1,6 +1,16 @@
 Инструкции для разработчика
 ===========================
 
+Сейчас работают пакеты
+- khusamov-inversion-of-control-sample
+- khusamov-inversion-of-control
+
+Идея с пакетом khusamov-rollup-config не удалась. Надо будет позже переделать на основе:
+- packages/htmlTemplate.js
+- packages/RollupConfigGenerator.js
+
+Внимание! ESBuild как Parcel не совместим с typescript-rtti.
+
 Внимание! Надо рассмотреть замены инструментария:
 Lerna -> Rush https://rushjs.io/
 Rollup -> ESBuild https://esbuild.github.io/
