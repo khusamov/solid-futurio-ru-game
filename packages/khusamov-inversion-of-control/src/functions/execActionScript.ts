@@ -1,5 +1,9 @@
 import syntaxErrorHandler from './syntaxErrorHandler';
 
+/**
+ * Выполнить скрипт из текста, который ничего не возвращает.
+ * @param source
+ */
 export default function execActionScript(source: string | undefined) {
 	if (source) {
 		try {
