@@ -30,15 +30,16 @@ export default function getApplicationRollupConfig(options: IGetApplicationRollu
 			{
 				entryFileNames: '[name].js',
 				dir: outDir,
-				// file: module,
+				//file: module,
 				format: 'es',
 				sourcemap: true,
-				plugins: outputPlugins
+				plugins: outputPlugins,
+				//exports: 'none'
 			},
 			// {
 			// 	file: main,
 			// 	format: 'cjs',
-			// 	exports: 'auto',
+			// 	exports: 'none',
 			// 	sourcemap: true,
 			// 	plugins: outputPlugins
 			// }

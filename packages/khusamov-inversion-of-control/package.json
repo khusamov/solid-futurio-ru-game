@@ -16,7 +16,6 @@
 		"prepublishOnly": "yarn build"
 	},
 	"devDependencies": {
-		"khusamov-rollup-config": "workspace:*",
 		"reflect-metadata": "^0.1.13",
 		"rollup": "^2.70.1",
 		"ttypescript": "^1.5.13",
