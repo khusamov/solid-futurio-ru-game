@@ -1,3 +1,4 @@
+export {default as Lazy} from './types/Lazy'
 export {default as Queue, IQueue} from './types/Queue'
 export {default as Vector} from './types/Vector'
 export {default as IRegistrator} from './types/IRegistrator'
