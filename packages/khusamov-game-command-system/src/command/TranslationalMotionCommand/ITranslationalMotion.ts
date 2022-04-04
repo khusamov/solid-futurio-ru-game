@@ -1,13 +1,20 @@
 import {Vector} from 'khusamov-base-types';
 
 export default interface ITranslationalMotion {
-	mass: number
-	position: Vector
+	/**
+	 * Масса движущегося объекта.
+	 */
+	readonly mass: number
 
 	/**
 	 * Приложенная сила.
 	 */
-	appliedForce: Vector
+	readonly appliedForce: Vector
+
+	/**
+	 * Линейное ускорение.
+	 */
+	linearAcceleration: Vector
 
 	/**
 	 * Линейная скорость.
@@ -15,7 +22,7 @@ export default interface ITranslationalMotion {
 	linearVelocity: Vector
 
 	/**
-	 * Линейное ускорение.
+	 * Координаты движущегося объекта.
 	 */
-	linearAcceleration: Vector
+	position: Vector
 }
