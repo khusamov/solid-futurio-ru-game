@@ -3964,9 +3964,27 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"khusamov-base-types@workspace:packages/khusamov-base-types":
+  version: 0.0.0-use.local
+  resolution: "khusamov-base-types@workspace:packages/khusamov-base-types"
+  dependencies:
+    reflect-metadata: ^0.1.13
+    rollup: ^2.70.1
+    ttypescript: ^1.5.13
+    typescript: ^4.6.3
+    typescript-rtti: ^0.5.4
+  languageName: unknown
+  linkType: soft
+
 "khusamov-command-system@workspace:packages/khusamov-command-system":
   version: 0.0.0-use.local
   resolution: "khusamov-command-system@workspace:packages/khusamov-command-system"
+  dependencies:
+    reflect-metadata: ^0.1.13
+    rollup: ^2.70.1
+    ttypescript: ^1.5.13
+    typescript: ^4.6.3
+    typescript-rtti: ^0.5.4
   languageName: unknown
   linkType: soft
 
@@ -3976,7 +3994,6 @@ __metadata:
   dependencies:
     "@types/prettier": ^2.4.4
     khusamov-inversion-of-control: "workspace:*"
-    khusamov-rollup-config: "workspace:*"
     prettier: ^2.6.2
     rollup: ^2.70.1
   languageName: unknown
@@ -3986,7 +4003,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-inversion-of-control@workspace:packages/khusamov-inversion-of-control"
   dependencies:
-    khusamov-rollup-config: "workspace:*"
     reflect-metadata: ^0.1.13
     rollup: ^2.70.1
     ttypescript: ^1.5.13
@@ -3995,7 +4011,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"khusamov-rollup-config@workspace:*, khusamov-rollup-config@workspace:packages/khusamov-rollup-config":
+"khusamov-rollup-config@workspace:packages/khusamov-rollup-config":
   version: 0.0.0-use.local
   resolution: "khusamov-rollup-config@workspace:packages/khusamov-rollup-config"
   dependencies:
