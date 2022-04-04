@@ -3964,7 +3964,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"khusamov-base-types@workspace:packages/khusamov-base-types":
+"khusamov-base-types@workspace:*, khusamov-base-types@workspace:packages/khusamov-base-types, khusamov-base-types@workspaces:*":
   version: 0.0.0-use.local
   resolution: "khusamov-base-types@workspace:packages/khusamov-base-types"
   dependencies:
@@ -3976,10 +3976,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"khusamov-command-system@workspace:packages/khusamov-command-system":
+"khusamov-command-system@workspace:packages/khusamov-command-system, khusamov-command-system@workspaces:*":
   version: 0.0.0-use.local
   resolution: "khusamov-command-system@workspace:packages/khusamov-command-system"
   dependencies:
+    khusamov-base-types: "workspace:*"
+    khusamov-inversion-of-control: "workspace:*"
+    reflect-metadata: ^0.1.13
+    rollup: ^2.70.1
+    ttypescript: ^1.5.13
+    typescript: ^4.6.3
+    typescript-rtti: ^0.5.4
+  languageName: unknown
+  linkType: soft
+
+"khusamov-game-command-system@workspace:packages/khusamov-game-command-system":
+  version: 0.0.0-use.local
+  resolution: "khusamov-game-command-system@workspace:packages/khusamov-game-command-system"
+  dependencies:
+    khusamov-base-types: "workspaces:*"
+    khusamov-command-system: "workspaces:*"
     reflect-metadata: ^0.1.13
     rollup: ^2.70.1
     ttypescript: ^1.5.13
