@@ -1,3 +1,4 @@
+import {Lazy} from 'khusamov-base-types';
 import createRegistratorResolver from './createRegistratorResolver';
 import IResolverContext from './IResolverContext';
 import {TDependencyMap} from './types';
@@ -8,7 +9,15 @@ import {TDependencyMap} from './types';
  */
 export default class IoC {
 	private static readonly registratorDependencyName = 'Registrator'
+	private static instanceHolder: Lazy<IoC> = new Lazy(() => new IoC)
 	private dependencyMap: TDependencyMap = new Map()
+
+	/**
+	 * Работа с контейнером по шаблону Синглтон.
+	 */
+	public static resolve<T>(dependencyName: string, ...args: Array<any>): T {
+		return this.instanceHolder.value.resolve<T>(dependencyName, ...args)
+	}
 
 	/**
 	 * Конструктор контейнера IoC.
