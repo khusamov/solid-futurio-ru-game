@@ -12,10 +12,10 @@
 Внимание! ESBuild как Parcel не совместим с typescript-rtti.
 
 Внимание! Надо рассмотреть замены инструментария:
-Lerna -> Rush https://rushjs.io/
-Rollup -> ESBuild https://esbuild.github.io/
+- Lerna -> Rush https://rushjs.io/
+- Rollup -> ESBuild https://esbuild.github.io/
 
-По поводу ESBuild:
+По поводу ESBuild:  
 https://uproger.com/sozdajte-prilozhenie-react-js-s-pomoshhyu-esbuild-i-node/
 
 Внимание! Lerna имеет проблемы:
