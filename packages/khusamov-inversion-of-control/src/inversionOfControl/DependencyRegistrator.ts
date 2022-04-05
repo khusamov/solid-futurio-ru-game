@@ -1,4 +1,4 @@
-import IRegistrator from '../types/IRegistrator';
+import {IRegistrator} from 'khusamov-base-types';
 import {TResolverFunction} from './types';
 
 export default class DependencyRegistrator implements IRegistrator {

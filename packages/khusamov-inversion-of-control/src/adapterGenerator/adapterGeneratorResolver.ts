@@ -13,7 +13,7 @@ export default (
 	 * @param context Контекст от IoC-контейнера. Добавляется автоматически.
 	 * @return adapter Возвращается адаптер, реализующий интерфейс из reflectedTypeRef.
 	 */
-	function adapterGeneratorResolver(universalObject: UniversalObject, reflectedTypeRef: ReflectedTypeRef, context: IResolverContext) {
+	function adapterGeneratorResolver(universalObject: UniversalObject<any>, reflectedTypeRef: ReflectedTypeRef, context: IResolverContext) {
 		const source = adapterSourceGenerator(reflectedTypeRef)
 		const AdapterClass = execFunctionScript<IAdapterClass>(source)
 		return new AdapterClass(universalObject)

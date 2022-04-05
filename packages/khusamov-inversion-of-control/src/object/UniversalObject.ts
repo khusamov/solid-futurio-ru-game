@@ -1,5 +1,6 @@
-import {Convert} from 'khusamov-base-types';
-import IUniversalObject, {TValueName} from '../types/IUniversalObject';
+import {Convert, IUniversalObject, TUniversalObjectValueName} from 'khusamov-base-types';
+
+type TValueName = TUniversalObjectValueName
 
 export default class UniversalObject<V> implements IUniversalObject<V> {
 	#map: Map<TValueName, V> = new Map

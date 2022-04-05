@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 import {reflect} from 'typescript-rtti'
-import {IoC, IRegistrator, UniversalObject} from 'khusamov-inversion-of-control';
+import {IRegistrator} from 'khusamov-base-types';
+import {IoC, UniversalObject} from 'khusamov-inversion-of-control';
 import {adapterGeneratorResolver, adapterSourceGenerator} from 'khusamov-inversion-of-control';
 import formatCode from './formatCode';
 

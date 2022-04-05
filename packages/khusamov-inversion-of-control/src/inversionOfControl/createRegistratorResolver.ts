@@ -1,4 +1,4 @@
-import IRegistrator from '../types/IRegistrator';
+import {IRegistrator} from 'khusamov-base-types';
 import DependencyRegistrator from './DependencyRegistrator';
 import {TDependencyMap, TResolverFunction} from './types';
 

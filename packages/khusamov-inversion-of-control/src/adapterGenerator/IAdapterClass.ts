@@ -1,6 +1,5 @@
-import IUniversalObject from '../types/IUniversalObject';
-import {IoC} from '../inversionOfControl';
+import {IUniversalObject} from 'khusamov-base-types';
 
 export default interface IAdapterClass {
-	new(universalObject: IUniversalObject): void
+	new(universalObject: IUniversalObject<any>): void
 }
