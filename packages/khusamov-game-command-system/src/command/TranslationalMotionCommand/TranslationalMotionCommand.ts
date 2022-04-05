@@ -11,8 +11,9 @@ export default class TranslationalMotionCommand implements ICommand {
 
 	public execute(): void {
 		const timeInterval = 1
-		this.movable.linearAcceleration = this.movable.appliedForce.scale(1 / this.movable.mass)
-		this.movable.linearVelocity = this.movable.linearVelocity.add(this.movable.linearAcceleration.scale(timeInterval))
-		this.movable.position = this.movable.position.add(this.movable.linearVelocity)
+		const {mass, position, linearAcceleration, linearVelocity, appliedForce} = this.movable
+		this.movable.linearAcceleration = appliedForce.scale(1 / mass)
+		this.movable.linearVelocity = linearVelocity.add(linearAcceleration.scale(timeInterval))
+		this.movable.position = position.add(linearVelocity)
 	}
 }
