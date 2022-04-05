@@ -16,6 +16,7 @@ config.plugins.push(
 	}),
 	generator.isRollupWatch && serve({
 		open: true,
+		verbose: true,
 		contentBase: generator.outDir
 	})
 )
