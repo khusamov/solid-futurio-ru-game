@@ -28,7 +28,7 @@ function acessorTempale(result: string, propertyName: string) {
 			}
 			
 			set ${propertyName}(value) {
-				this.universalObject.setValue('${propertyName}')
+				this.universalObject.setValue('${propertyName}', value)
 			}
 		`
 	)
