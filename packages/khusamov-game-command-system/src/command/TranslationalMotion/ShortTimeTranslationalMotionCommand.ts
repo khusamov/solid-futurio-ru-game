@@ -3,8 +3,9 @@ import ITranslationalMotion from './ITranslationalMotion';
 
 /**
  * Поступательное движение.
+ * Рассчитывается за определенный промежуток времени.
  */
-export default class TranslationalMotionCommand implements ICommand {
+export default class ShortTimeTranslationalMotionCommand implements ICommand {
 	constructor(
 		private movable: ITranslationalMotion
 	) {}

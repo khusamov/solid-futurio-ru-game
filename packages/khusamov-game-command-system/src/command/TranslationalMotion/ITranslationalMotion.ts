@@ -4,12 +4,12 @@ export default interface ITranslationalMotion {
 	/**
 	 * Масса движущегося объекта.
 	 */
-	readonly mass: number
+	mass: number
 
 	/**
 	 * Приложенная сила.
 	 */
-	readonly appliedForce: Vector
+	appliedForce: Vector
 
 	/**
 	 * Линейное ускорение.
