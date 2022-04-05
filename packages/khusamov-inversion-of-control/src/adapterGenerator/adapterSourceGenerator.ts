@@ -10,7 +10,7 @@ export default function adapterSourceGenerator(reflectedTypeRef: ReflectedTypeRe
 	return (
 		`
 			class ${adapterClassName} {
-				constructor(universalObject, iocContainer) {
+				constructor(universalObject) {
 					this.universalObject = universalObject
 				}
 				
