@@ -1,5 +1,5 @@
-import {IoC} from 'khusamov-inversion-of-control';
-import {ICommand, IRegistrator, IUniversalObject} from 'khusamov-base-types';
+import {register as _register, resolve} from 'khusamov-inversion-of-control';
+import {ICommand, IUniversalObject} from 'khusamov-base-types';
 import IMovable from './MoveCommand/IMovable';
 import {reflect} from 'typescript-rtti';
 import {StartCommand} from 'khusamov-command-system';
@@ -28,9 +28,9 @@ const commandInfoList = [{
 
 export default function register() {
 	for (const {commandName, CommandClass} of commandInfoList) {
-		IoC.resolve<IRegistrator>('Register', commandName, (
+		_register(commandName, (
 			(universalObject: IUniversalObject): ICommand => {
-				const movable = IoC.resolve<IMovable>('Adapter', universalObject, reflect<IMovable>())
+				const movable = resolve<IMovable>('Adapter', universalObject, reflect<IMovable>())
 				return new StartCommand(universalObject, new CommandClass(movable), commandName)
 			}
 		))
