@@ -7,6 +7,7 @@ export default interface IResolverContext {
 	/**
 	 * Временно сделан не обязательным. Ждем решения:
 	 * https://github.com/typescript-rtti/typescript-rtti/issues/48
+	 * TODO Посмотреть typescript-rtti/issues/48 (автор сообщил что уже исправил).
 	 */
 	reflectedTypeRef?: ReflectedTypeRef
 }
