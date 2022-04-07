@@ -13,7 +13,7 @@ export default class StopCommand implements ICommand {
 	 * @param stoppableCommandName Имя останавливаемой команды.
 	 */
 	constructor(
-		private targetObject: IUniversalObject<any>,
+		private targetObject: IUniversalObject,
 		private stoppableCommandName: string
 	) {}
 
