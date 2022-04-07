@@ -1,6 +1,11 @@
 import {Vector} from 'khusamov-base-types';
 
-export default interface ITranslationalMotion {
+export default interface IMovable {
+	/**
+	 * Текущее время миллисекундах.
+	 */
+	time: number
+
 	/**
 	 * Масса движущегося объекта.
 	 */
