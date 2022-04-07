@@ -1,5 +1,4 @@
 import {IQueue, ICommand} from 'khusamov-base-types';
-import {IoC} from 'khusamov-inversion-of-control';
 
 /**
  * Повторение команд.
@@ -7,12 +6,13 @@ import {IoC} from 'khusamov-inversion-of-control';
  * Предназначена для создания повторяющихся команд.
  */
 export default class RepeatCommand implements ICommand {
+	public commandQueue?: IQueue<ICommand>
+
 	constructor(
 		private targetCommand: ICommand
 	) {}
 
 	public execute(): void {
-		const commandQueue = IoC.resolve<IQueue<ICommand>>('CommandQueue')
-		commandQueue.enqueue(this.targetCommand)
+		this.commandQueue?.enqueue(this.targetCommand)
 	}
 }
