@@ -6,7 +6,16 @@ import {IQueue, ICommand} from 'khusamov-base-types';
  * Предназначена для создания повторяющихся команд.
  */
 export default class RepeatCommand implements ICommand {
-	public commandQueue?: IQueue<ICommand>
+	#commandQueue?: IQueue<ICommand>
+
+	get commandQueue() {
+		return this.#commandQueue
+	}
+
+	set commandQueue(commandQueue) {
+		this.#commandQueue = commandQueue
+		this.targetCommand.commandQueue = commandQueue
+	}
 
 	constructor(
 		private targetCommand: ICommand

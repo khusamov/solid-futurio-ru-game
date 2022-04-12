@@ -1,4 +1,4 @@
-import {ICommand, IInjectableCommand} from 'khusamov-base-types';
+import {ICommand, IInjectableCommand, IQueue} from 'khusamov-base-types';
 
 /**
  * Команда, которая выполняет другую команду.
@@ -6,15 +6,40 @@ import {ICommand, IInjectableCommand} from 'khusamov-base-types';
  * Предназначена для создания повторяющихся команд.
  */
 export default class BridgeCommand implements IInjectableCommand {
+
+	private internalCommand?: ICommand
+
+	#commandQueue?: IQueue<ICommand>
+
+	get commandQueue() {
+		return this.#commandQueue
+	}
+
+	set commandQueue(commandQueue) {
+		this.#commandQueue = commandQueue
+		this.updateInternalCommandQueue()
+	}
+
 	constructor(
-		private internalCommand?: ICommand
-	) {}
+		internalCommand?: ICommand
+	) {
+		if (internalCommand) {
+			this.inject(internalCommand)
+		}
+	}
 
 	public inject(internalCommand: ICommand) {
 		this.internalCommand = internalCommand
+		this.updateInternalCommandQueue()
 	}
 
 	public execute() {
 		this.internalCommand?.execute()
+	}
+
+	private updateInternalCommandQueue() {
+		if (this.internalCommand) {
+			this.internalCommand.commandQueue = this.commandQueue
+		}
 	}
 }
