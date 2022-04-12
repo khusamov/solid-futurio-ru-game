@@ -45,6 +45,7 @@ export default class IoC {
 
 	private getContext(): IResolverContext {
 		return {
+			resolve: this.resolve.bind(this),
 			iocContainer: this
 		}
 	}

@@ -2,6 +2,7 @@ import {ReflectedTypeRef} from 'typescript-rtti';
 import IoC from './IoC';
 
 export default interface IResolverContext {
+	resolve<T>(dependencyName: string, ...args: Array<any>): T
 	iocContainer: IoC
 
 	/**
