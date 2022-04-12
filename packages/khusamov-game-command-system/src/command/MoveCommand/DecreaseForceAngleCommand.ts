@@ -1,5 +1,5 @@
 import {ICommand} from 'khusamov-base-types';
-import IMovable from './MoveCommand/IMovable';
+import IMovable from './IMovable';
 
 export default class DecreaseForceAngleCommand implements ICommand {
 	constructor(
