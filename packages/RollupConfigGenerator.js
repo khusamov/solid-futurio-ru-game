@@ -66,9 +66,14 @@ export default class RollupConfigGenerator {
 			input: 'src/index.ts',
 			plugins: [
 				json(),
-				resolve(),
 				progress(),
 				commonjs(),
+
+				resolve({
+					// Используется events из https://www.npmjs.com/package/events
+					// Поэтому требуется установить опцию preferBuiltins в значение true, чтобы не спутать со встроенным модулем events.
+					preferBuiltins: true
+				}),
 
 				typescript({
 					outDir: this.outDir,
