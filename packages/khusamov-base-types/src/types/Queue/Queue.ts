@@ -1,3 +1,5 @@
+import EventEmitter from 'events';
+import IEventEmitter from '../IEventEmitter';
 import IQueue from './IQueue';
 
 /**
@@ -10,20 +12,30 @@ import IQueue from './IQueue';
  *
  * @link https://bit.ly/3tPM13G
  */
-export default class Queue<T> implements IQueue<T> {
-	protected storage: Array<T> = [];
+export default class Queue<T> implements IQueue<T>, IEventEmitter {
+	private eventEmitter = new EventEmitter
+	protected storage: Array<T> = []
 
 	constructor() {}
 
 	enqueue(...items: T[]): void {
+		this.eventEmitter.emit('before-enqueue', this, ...items)
 		this.storage.push(...items);
+		this.eventEmitter.emit('enqueue', this, ...items)
 	}
 
 	dequeue(): T | undefined {
-		return this.storage.shift();
+		const removed = this.storage.shift()
+		this.eventEmitter.emit('dequeue', this, removed)
+		return removed
 	}
 
 	size(): number {
-		return this.storage.length;
+		return this.storage.length
+	}
+
+	on(eventName: string | symbol, listener: (...args: any[]) => void): this {
+		this.eventEmitter.on(eventName, listener)
+		return this
 	}
 }

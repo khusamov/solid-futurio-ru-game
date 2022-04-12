@@ -1,5 +1,6 @@
 export {default as Lazy} from './types/Lazy'
 export {default as Queue, IQueue} from './types/Queue'
+export {default as IEventEmitter} from './types/IEventEmitter'
 export {default as Vector} from './types/Vector'
 export {default as IRegistrator} from './types/IRegistrator'
 export {default as IUniversalObject, TValueName as TUniversalObjectValueName} from './types/IUniversalObject'
