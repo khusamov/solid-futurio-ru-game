@@ -1,1 +1,2 @@
-export {createStopTranslationalMotionCommand, createStartTranslationalMotionCommand, ITranslationalMotion} from './command/TranslationalMotion'
+export {IMovable, MoveCommand} from './command/MoveCommand'
+export {DecreaseForceAngleCommand, DecreaseForceCommand, IncreaseForceAngleCommand, IncreaseForceCommand} from './command/MoveCommand'
