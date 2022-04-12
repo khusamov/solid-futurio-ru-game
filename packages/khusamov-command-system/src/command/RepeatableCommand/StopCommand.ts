@@ -9,12 +9,12 @@ import {reflect} from 'typescript-rtti';
 export default class StopCommand implements ICommand {
 	/**
 	 * Конструктор.
-	 * @param targetObject Объект, для которого требуется остановка определенной команды.
 	 * @param stoppableCommandName Имя останавливаемой команды.
+	 * @param targetObject Объект, для которого требуется остановка определенной команды.
 	 */
 	constructor(
-		private targetObject: IUniversalObject,
-		private stoppableCommandName: string
+		private stoppableCommandName: string,
+		private targetObject: IUniversalObject
 	) {}
 
 	public execute(): void {

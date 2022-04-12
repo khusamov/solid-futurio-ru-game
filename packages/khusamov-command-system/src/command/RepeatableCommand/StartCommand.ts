@@ -1,6 +1,6 @@
 import {reflect} from 'typescript-rtti';
 import {ICommand, IQueue, IUniversalObject} from 'khusamov-base-types';
-import {IoC} from 'khusamov-inversion-of-control';
+import {IoC, resolve} from 'khusamov-inversion-of-control';
 import IObjectWithStoppable from './IObjectWithStoppable';
 import RepeatableCommand from './RepeatableCommand';
 
@@ -8,25 +8,31 @@ import RepeatableCommand from './RepeatableCommand';
  * Запуск длительной команды.
  */
 export default class StartCommand implements ICommand {
+	public commandQueue?: IQueue<ICommand>
+	private readonly repeatableCommand: RepeatableCommand
+
 	/**
 	 * Конструктор.
-	 * @param targetObject Объект, для которого требуется запуск определенной команды.
-	 * @param targetCommand Команда, которую надо запустить и в будущем по имени остановить.
 	 * @param stoppableCommandName Имя запускаемой команды, по которому можно в будущем остановить.
+	 * @param targetObject Объект, для которого требуется запуск определенной команды.
+	 * @param args
 	 */
 	constructor(
+		private stoppableCommandName: string,
 		private targetObject: IUniversalObject,
-		private targetCommand: ICommand,
-		private stoppableCommandName: string
-	) {}
+		...args: Array<any>
+	) {
+		const targetCommand = resolve<ICommand>(this.stoppableCommandName, this.targetObject, ...args)
+		this.repeatableCommand = new RepeatableCommand(targetCommand)
+	}
 
 	public execute(): void {
-		const repeatableCommand = new RepeatableCommand(this.targetCommand)
-
-		const commandQueue = IoC.resolve<IQueue<ICommand>>('CommandQueue')
-		commandQueue.enqueue(repeatableCommand)
-
-		this.stoppableCommandMap.set(this.stoppableCommandName, repeatableCommand)
+		if (this.commandQueue) {
+			// Размещение повторяемой команды в очереди команд.
+			this.commandQueue.enqueue(this.repeatableCommand)
+			// Сохранить ссылку на повторяемую команду, чтобы была возможность ее остановить по ссылке.
+			this.stoppableCommandMap.set(this.stoppableCommandName, this.repeatableCommand)
+		}
 	}
 
 	private get stoppableCommandMap() {
