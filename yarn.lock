@@ -1654,6 +1654,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browser-event-emitter@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "browser-event-emitter@npm:1.0.2"
+  checksum: 7d98f9032dc646218473ffcab6a0fa2125378cebe795dbd886e0a1a1ec4fda2169931cfb08639cee65d8cd6e5e486e194cff274658285831f35afc3038350cb4
+  languageName: node
+  linkType: hard
+
 "browserslist@npm:^4.0.0, browserslist@npm:^4.16.6":
   version: 4.20.2
   resolution: "browserslist@npm:4.20.2"
@@ -2752,6 +2759,13 @@ __metadata:
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
   checksum: 1875311c42fcfe9c707b2712c32664a245629b42bb0a5a84439762dd0fd637fc54d078155ea83c2af9e0323c9ac13687e03cfba79b03af9f40c89b4960099374
+  languageName: node
+  linkType: hard
+
+"events@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "events@npm:3.3.0"
+  checksum: f6f487ad2198aa41d878fa31452f1a3c00958f46e9019286ff4787c84aac329332ab45c9cdc8c445928fc6d7ded294b9e005a7fce9426488518017831b272780
   languageName: node
   linkType: hard
 
@@ -3968,6 +3982,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-base-types@workspace:packages/khusamov-base-types"
   dependencies:
+    browser-event-emitter: ^1.0.2
+    events: ^3.3.0
     reflect-metadata: ^0.1.13
     rollup: ^2.70.1
     ttypescript: ^1.5.13
