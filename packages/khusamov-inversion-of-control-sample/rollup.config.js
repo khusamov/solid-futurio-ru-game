@@ -4,10 +4,24 @@ import RollupConfigGenerator from '../RollupConfigGenerator'
 import htmlTemplate from '../htmlTemplate'
 import npmPackageJsonFile from './package.json';
 
-const {description, name} = npmPackageJsonFile
+const {description, name, main} = npmPackageJsonFile
 const generator = new RollupConfigGenerator({npmPackageJsonFile})
 
 const config = generator.generate()
+
+config.input = 'src/index.tsx'
+
+config.output = [{
+	file: main,
+	// Для приложений оказывается надо выбирать формат UMD. Иначе странные проблемы с подключением зависимостей.
+	format: 'umd',
+	sourcemap: true,
+	plugins: generator.outputPlugins,
+	// globals: {
+	// 	'react-dom': 'ReactDOM',
+	// 	react: 'React'
+	// }
+}]
 
 config.plugins.push(
 	generator.isRollupWatch && html({
@@ -20,8 +34,6 @@ config.plugins.push(
 		contentBase: generator.outDir
 	})
 )
-
-config.output = config.output.filter(item => item.format = 'es')
 
 export default config
 
