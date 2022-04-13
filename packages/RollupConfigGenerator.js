@@ -8,7 +8,6 @@ import json from '@rollup/plugin-json';
 import smartAsset from 'rollup-plugin-smart-asset';
 import postcss from 'rollup-plugin-postcss';
 import deleteDist from 'rollup-plugin-delete';
-import progress from 'rollup-plugin-progress';
 import {terser} from 'rollup-plugin-terser';
 
 import ttypescript from 'ttypescript';
@@ -66,7 +65,6 @@ export default class RollupConfigGenerator {
 			input: 'src/index.ts',
 			plugins: [
 				json(),
-				progress(),
 				commonjs(),
 
 				resolve({
