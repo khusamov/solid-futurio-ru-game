@@ -1315,6 +1315,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/prop-types@npm:*":
+  version: 15.7.5
+  resolution: "@types/prop-types@npm:15.7.5"
+  checksum: 5b43b8b15415e1f298243165f1d44390403bb2bd42e662bca3b5b5633fdd39c938e91b7fce3a9483699db0f7a715d08cef220c121f723a634972fdf596aec980
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:^18.0.0":
+  version: 18.0.0
+  resolution: "@types/react-dom@npm:18.0.0"
+  dependencies:
+    "@types/react": "*"
+  checksum: 0d8c9cb3e72aefe0dd2b58a49845a200369f01ae92f3f11f642e04efc95dfd1c9380b6592d4273dd6113fb8707947d15b66d56c75c41f39f28bd897f0c08dfa9
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*, @types/react@npm:^18.0.3":
+  version: 18.0.3
+  resolution: "@types/react@npm:18.0.3"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 4bd1f088b4650af95fa3c6f592221b5d151af96ea619d34536fdc4f8bbf7c0807a5154c4e75911ed851e654da3a99d7c138f5f14aa17e00d39d3258af89c0d98
+  languageName: node
+  linkType: hard
+
 "@types/resolve@npm:1.17.1":
   version: 1.17.1
   resolution: "@types/resolve@npm:1.17.1"
@@ -1340,6 +1367,13 @@ __metadata:
     "@types/node": "*"
     rollup: ^0.63.4
   checksum: 4d6450bc23a6b8a044cf087f0f4224777eff7b81226b8e8963561a634a5b793adc84861439646137e67f19a8c3f6efb7d38ea0734fc238aec0b8aed0da7ce785
+  languageName: node
+  linkType: hard
+
+"@types/scheduler@npm:*":
+  version: 0.16.2
+  resolution: "@types/scheduler@npm:0.16.2"
+  checksum: b6b4dcfeae6deba2e06a70941860fb1435730576d3689225a421280b7742318d1548b3d22c1f66ab68e414f346a9542f29240bc955b6332c5b11e561077583bc
   languageName: node
   linkType: hard
 
@@ -1651,13 +1685,6 @@ __metadata:
   dependencies:
     fill-range: ^7.0.1
   checksum: e2a8e769a863f3d4ee887b5fe21f63193a891c68b612ddb4b68d82d1b5f3ff9073af066c343e9867a393fe4c2555dcb33e89b937195feb9c1613d259edfcd459
-  languageName: node
-  linkType: hard
-
-"browser-event-emitter@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "browser-event-emitter@npm:1.0.2"
-  checksum: 7d98f9032dc646218473ffcab6a0fa2125378cebe795dbd886e0a1a1ec4fda2169931cfb08639cee65d8cd6e5e486e194cff274658285831f35afc3038350cb4
   languageName: node
   linkType: hard
 
@@ -2368,6 +2395,13 @@ __metadata:
   dependencies:
     css-tree: ^1.1.2
   checksum: 380ba9663da3bcea58dee358a0d8c4468bb6539be3c439dc266ac41c047217f52fd698fb7e4b6b6ccdfb8cf53ef4ceed8cc8ceccb8dfca2aa628319826b5b998
+  languageName: node
+  linkType: hard
+
+"csstype@npm:^3.0.2":
+  version: 3.0.11
+  resolution: "csstype@npm:3.0.11"
+  checksum: 95e56abfe9ca219ae065acb4e43f61771a03170eed919127f558dfa168240867aba7629c8d98a201a0dd06d9a5ce82686f0570031c928516c61816adbc7c877f
   languageName: node
   linkType: hard
 
@@ -3891,7 +3925,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-tokens@npm:^4.0.0":
+"js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
   checksum: 8a95213a5a77deb6cbe94d86340e8d9ace2b93bc367790b260101d2f36a2eaf4e4e22d9fa9cf459b38af3a32fb4190e638024cf82ec95ef708680e405ea7cc78
@@ -3982,7 +4016,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-base-types@workspace:packages/khusamov-base-types"
   dependencies:
-    browser-event-emitter: ^1.0.2
     events: ^3.3.0
     reflect-metadata: ^0.1.13
     rollup: ^2.70.1
@@ -4025,8 +4058,12 @@ __metadata:
   resolution: "khusamov-inversion-of-control-sample@workspace:packages/khusamov-inversion-of-control-sample"
   dependencies:
     "@types/prettier": ^2.4.4
+    "@types/react": ^18.0.3
+    "@types/react-dom": ^18.0.0
     khusamov-inversion-of-control: "workspace:*"
     prettier: ^2.6.2
+    react: ^18.0.0
+    react-dom: ^18.0.0
     rollup: ^2.70.1
   languageName: unknown
   linkType: soft
@@ -4278,6 +4315,17 @@ __metadata:
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
+  languageName: node
+  linkType: hard
+
+"loose-envify@npm:^1.1.0":
+  version: 1.4.0
+  resolution: "loose-envify@npm:1.4.0"
+  dependencies:
+    js-tokens: ^3.0.0 || ^4.0.0
+  bin:
+    loose-envify: cli.js
+  checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
   languageName: node
   linkType: hard
 
@@ -6017,6 +6065,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-dom@npm:^18.0.0":
+  version: 18.0.0
+  resolution: "react-dom@npm:18.0.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    scheduler: ^0.21.0
+  peerDependencies:
+    react: ^18.0.0
+  checksum: dd0ba9f2f31dd728076c892a95b2f5a8dfe79136431b0289afb46eec39d0ca6b6f0f40a60fd8aa6ef702c98ce7c26100d3d4dbc35c7c9e87429cd04f84cb58bd
+  languageName: node
+  linkType: hard
+
+"react@npm:^18.0.0":
+  version: 18.0.0
+  resolution: "react@npm:18.0.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 293020b96536b3c7113ee57ca5c990a3f25649d1751b1c7a3aabd16dff0691fe9f1eed1206616d0906d05933536052037340a0c8d0941ff870b0eb469a2f975b
+  languageName: node
+  linkType: hard
+
 "read-cmd-shim@npm:^2.0.0":
   version: 2.0.0
   resolution: "read-cmd-shim@npm:2.0.0"
@@ -6502,6 +6571,15 @@ __metadata:
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
   checksum: cab8f25ae6f1434abee8d80023d7e72b598cf1327164ddab31003c51215526801e40b66c5e65d658a0af1e9d6478cadcb4c745f4bd6751f97d8644786c0978b0
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.21.0":
+  version: 0.21.0
+  resolution: "scheduler@npm:0.21.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 4f8285076041ed2c81acdd1faa987f1655fdbd30554bc667c1ea64743fc74fb3a04ca7d27454b3d678735df5a230137a3b84756061b43dc5796e80701b66d124
   languageName: node
   linkType: hard
 
