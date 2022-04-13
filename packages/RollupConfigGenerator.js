@@ -70,6 +70,8 @@ export default class RollupConfigGenerator {
 				resolve({
 					// Используется events из https://www.npmjs.com/package/events
 					// Поэтому требуется установить опцию preferBuiltins в значение false, чтобы не спутать со встроенным модулем events.
+					// https://github.com/rollup/plugins/tree/master/packages/node-resolve#preferbuiltins
+					// Если false, плагин будет искать локально установленные одноименные модули.
 					preferBuiltins: false
 				}),
 
