@@ -48,7 +48,7 @@ export default function htmlTemplate(options) {
 				${links}
 			</head>
 			<body>
-				<div id='root'></div>
+				<div id='application'></div>
 				${scripts}
 			</body>
 		</html>

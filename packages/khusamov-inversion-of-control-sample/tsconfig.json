@@ -3,6 +3,7 @@
 	"exclude": ["dist", "node_modules"],
 	"include": ["src/**/*"],
 	"compilerOptions": {
+		"jsx": "react-jsx",
 		"lib": ["DOM"],
 		"outDir": "dist",
 		"baseUrl": "src",
