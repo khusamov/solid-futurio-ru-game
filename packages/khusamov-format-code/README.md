@@ -8,7 +8,7 @@
 ---------------------
 
 ```typescript
-import formatCode from '../formatCode';
+import {formatCode} from 'khusamov-format-code';
 
 console.log(formatCode(`
     class Hello {
