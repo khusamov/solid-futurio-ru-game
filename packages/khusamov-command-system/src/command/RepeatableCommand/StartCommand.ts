@@ -13,16 +13,17 @@ export default class StartCommand implements ICommand {
 
 	/**
 	 * Конструктор.
-	 * @param stoppableCommandName Имя запускаемой команды, по которому можно в будущем остановить.
+	 * @param targetCommand Запускаемая команда, которую можно в будущем остановить.
+	 * @param targetCommandName Имя запускаемой команды, по которому можно в будущем остановить.
 	 * @param targetObject Объект, для которого требуется запуск определенной команды.
 	 * @param args
 	 */
 	constructor(
-		private stoppableCommandName: string,
+		targetCommand: ICommand,
+		private targetCommandName: string,
 		private targetObject: IUniversalObject,
 		...args: Array<any>
 	) {
-		const targetCommand = resolve<ICommand>(this.stoppableCommandName, this.targetObject, ...args)
 		this.repeatableCommand = new RepeatableCommand(targetCommand)
 	}
 
