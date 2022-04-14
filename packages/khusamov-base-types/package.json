@@ -15,12 +15,14 @@
 		"build:watch": "rollup --config --watch",
 		"prepublishOnly": "yarn build"
 	},
-	"devDependencies": {
+	"dependencies": {
 		"events": "^3.3.0",
 		"reflect-metadata": "^0.1.13",
+		"typescript-rtti": "^0.5.4"
+	},
+	"devDependencies": {
 		"rollup": "^2.70.1",
 		"ttypescript": "^1.5.13",
-		"typescript": "^4.6.3",
-		"typescript-rtti": "^0.5.4"
+		"typescript": "^4.6.3"
 	}
 }
