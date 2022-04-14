@@ -14,11 +14,14 @@ export default class RepeatCommand implements ICommand {
 
 	set commandQueue(commandQueue) {
 		this.#commandQueue = commandQueue
-		this.targetCommand.commandQueue = commandQueue
+		if (this.recursion) {
+			this.targetCommand.commandQueue = commandQueue
+		}
 	}
 
 	constructor(
-		private targetCommand: ICommand
+		private targetCommand: ICommand,
+		private recursion: boolean = true
 	) {}
 
 	public execute(): void {
