@@ -21,5 +21,6 @@ export default class StopCommand implements ICommand {
 		const withStoppable = IoC.resolve<IObjectWithStoppable>('Adapter', this.targetObject, reflect<IObjectWithStoppable>())
 		const stoppableCommand = withStoppable.stoppableCommandMap?.get(this.stoppableCommandName)
 		stoppableCommand?.stop()
+		withStoppable.stoppableCommandMap?.delete(this.stoppableCommandName)
 	}
 }
