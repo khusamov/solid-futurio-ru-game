@@ -6,3 +6,4 @@ export {default as adapterSourceGenerator} from './adapterGenerator/adapterSourc
 
 export {default as register} from './inversionOfControl/register'
 export {default as resolve} from './inversionOfControl/resolve'
+export {default as adapter} from './inversionOfControl/adapter'
