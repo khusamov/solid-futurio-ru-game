@@ -23,7 +23,7 @@ export default class IoC {
 	 * Конструктор контейнера IoC.
 	 * Автоматически добавляется зависимость Registrator.
 	 */
-	public constructor() {
+	private constructor() {
 		this.dependencyMap.set(
 			IoC.registratorDependencyName,
 			createRegistratorResolver(this.dependencyMap)
