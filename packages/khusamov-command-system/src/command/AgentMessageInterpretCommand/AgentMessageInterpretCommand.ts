@@ -1,8 +1,8 @@
 import {reflect} from 'typescript-rtti';
 import {ICommand, IQueue, IUniversalObject} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
-import {repeatable} from 'khusamov-command-system';
 import IAgentMessage from './IAgentMessage';
+import {repeatable} from '../RepeatableCommand';
 
 type TAgentMessageQueue = IQueue<IUniversalObject>
 

@@ -1,4 +1,4 @@
-import {IAgentMessage} from '../AgentMessageInterpretCommand';
+import {IAgentMessage} from 'khusamov-command-system';
 
 export default interface ITransformForceAgentMessage extends IAgentMessage {
 	type: 'TransformForce'
