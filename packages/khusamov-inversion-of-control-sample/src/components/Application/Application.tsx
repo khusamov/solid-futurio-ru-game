@@ -1,9 +1,13 @@
 import Canvas from '../Canvas';
+import useApplication from './useApplication';
 
 export default function Application() {
+	useApplication()
 	return (
 		<div>
-			<Canvas/>
+			<div>
+				<Canvas/>
+			</div>
 		</div>
 	)
 }
