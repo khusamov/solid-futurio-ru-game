@@ -1,30 +1,36 @@
 import {reflect} from 'typescript-rtti';
 import {ICommand, IQueue, IUniversalObject} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
-import {NotOperationCommand, repeatable} from 'khusamov-command-system';
+import {repeatable} from 'khusamov-command-system';
 import IAgentMessage from './IAgentMessage';
 
 type TAgentMessageQueue = IQueue<IUniversalObject>
 
+function dequeueAgentMessageObject(): IUniversalObject | undefined {
+	const agentMessageQueue = resolve<TAgentMessageQueue | undefined>('Agent.MessageQueue')
+	return agentMessageQueue ? agentMessageQueue.dequeue() : undefined
+}
+
+function convertAgentMessage(agentMessageObject: IUniversalObject): ICommand {
+	const message = resolve<IAgentMessage>('Adapter', agentMessageObject, reflect<IAgentMessage>())
+	return  resolve<ICommand>(message.type, agentMessageObject)
+}
+
 /**
- * Интерпретация сообщений от клиентов.
+ * Интерпретация сообщения от клиента.
+ * Сообщение от клиента превращается в команду, которая затем размещается в очереди команд.
  * https://stepik.org/lesson/664251/step/1?unit=662137
  */
 @repeatable
 export default class AgentMessageInterpretCommand implements ICommand {
+	commandQueue?: IQueue<ICommand>
+
 	execute(): void {
-		let agentCommand: ICommand = new NotOperationCommand
-
-		const agentMessageQueue = resolve<TAgentMessageQueue | undefined>('Agent.MessageQueue')
-		if (agentMessageQueue) {
-			const agentMessageObject = agentMessageQueue.dequeue()
-
-			if (agentMessageObject) {
-				const message = resolve<IAgentMessage>('Adapter', agentMessageObject, reflect<IAgentMessage>())
-				agentCommand = resolve<ICommand>(message.type, agentMessageObject)
-			}
+		const agentMessageObject = dequeueAgentMessageObject()
+		if (agentMessageObject) {
+			const agentCommand = convertAgentMessage(agentMessageObject)
+			agentCommand.commandQueue = this.commandQueue
+			this.commandQueue?.enqueue(agentCommand)
 		}
-
-		agentCommand.execute()
 	}
 }
