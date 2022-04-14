@@ -12,6 +12,18 @@ export default class IoC {
 	private static instanceHolder: Lazy<IoC> = new Lazy(() => new IoC)
 	private dependencyMap: TDependencyMap = new Map()
 
+	public static get instance(): IoC {
+		return this.instanceHolder.value
+	}
+
+	public get dependencyNames(): string[] {
+		const result: string[] = []
+		for (const key of this.dependencyMap.keys()) {
+			result.push(key)
+		}
+		return result
+	}
+
 	/**
 	 * Работа с контейнером по шаблону Синглтон.
 	 */
