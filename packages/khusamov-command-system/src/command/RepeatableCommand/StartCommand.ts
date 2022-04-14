@@ -31,7 +31,10 @@ export default class StartCommand implements ICommand {
 			// Размещение повторяемой команды в очереди команд.
 			this.commandQueue.enqueue(this.repeatableCommand)
 			// Сохранить ссылку на повторяемую команду, чтобы была возможность ее остановить по ссылке.
-			this.stoppableCommandMap.set(this.stoppableCommandName, this.repeatableCommand)
+			if (this.stoppableCommandMap.has(this.targetCommandName)) {
+				throw new Error(`Попытка запустить повторно длительную команду '${this.targetCommandName}'`)
+			}
+			this.stoppableCommandMap.set(this.targetCommandName, this.repeatableCommand)
 		}
 	}
 
