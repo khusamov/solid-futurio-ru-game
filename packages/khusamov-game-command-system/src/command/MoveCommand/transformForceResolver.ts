@@ -9,7 +9,7 @@ import ITransformForceAgentMessage from './ITransformForceAgentMessage';
 export default function transformForceResolver(agentMessageObject: IUniversalObject): ICommand {
 	const message = resolve<ITransformForceAgentMessage>('Adapter', agentMessageObject, reflect<ITransformForceAgentMessage>())
 	const gameObject = resolve<IUniversalObject>(message.targetObject.type, message.targetObject.id)
-	const movable = resolve<IMovable>('Adapter', gameObject)
+	const movable = resolve<IMovable>('Adapter', gameObject, reflect<IMovable>())
 	const transformForceCommand = new TransformForceCommand(movable, message.scale, message.angle)
 	return new StartCommand(transformForceCommand, 'TransformForce', gameObject)
 }
