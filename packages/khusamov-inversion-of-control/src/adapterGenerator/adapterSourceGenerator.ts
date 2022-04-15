@@ -11,6 +11,9 @@ export default function adapterSourceGenerator(reflectedTypeRef: ReflectedTypeRe
 		`
 			class ${adapterClassName} {
 				constructor(universalObject) {
+					if (!universalObject) {
+						throw new Error("На входе конструктора '${adapterClassName}' ожидается определенный universalObject")
+					}
 					this.universalObject = universalObject
 				}
 				
