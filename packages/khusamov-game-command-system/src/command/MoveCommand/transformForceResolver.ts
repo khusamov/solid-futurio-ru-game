@@ -7,9 +7,25 @@ import TransformForceCommand from './TransformForceCommand';
 import ITransformForceAgentMessage from './ITransformForceAgentMessage';
 
 export default function transformForceResolver(agentMessageObject: IUniversalObject): ICommand {
-	const message = resolve<ITransformForceAgentMessage>('Adapter', agentMessageObject, reflect<ITransformForceAgentMessage>())
-	const gameObject = resolve<IUniversalObject>(message.targetObject.type, message.targetObject.id)
-	const movable = resolve<IMovable>('Adapter', gameObject, reflect<IMovable>())
-	const transformForceCommand = new TransformForceCommand(movable, message.scale, message.angle)
-	return new StartCommand(transformForceCommand, 'TransformForce', gameObject)
+	const {targetObject: targetObjectData, scale, angle} = (
+		resolve<ITransformForceAgentMessage>(
+			'Adapter',
+			agentMessageObject,
+			reflect<ITransformForceAgentMessage>()
+		)
+	)
+
+	const targetObject = getTargetObject(targetObjectData)
+
+	const movable = resolve<IMovable>('Adapter', targetObject, reflect<IMovable>())
+	const transformForceCommand = new TransformForceCommand(movable, scale, angle)
+
+	return new StartCommand(transformForceCommand, 'TransformForce', targetObject)
+}
+
+function getTargetObject({type, name}: {type: string, name?: string}): IUniversalObject {
+	if (!name) throw new Error(`Ожидается имя запрашиваемого объекта`)
+	const targetObject = resolve<IUniversalObject | undefined>(type, name)
+	if (!targetObject) throw new Error(`Для TransformForce не найден объект '${name}' типа '${type}'`)
+	return targetObject
 }
