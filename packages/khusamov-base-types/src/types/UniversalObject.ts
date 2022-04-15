@@ -12,10 +12,6 @@ export default class UniversalObject implements IUniversalObject {
 	}
 
 	public getValue<V>(name: TValueName): V | undefined {
-		if (!this.#map.has(name)) {
-			throw new Error(`Не найден ключ ${name}`)
-		}
-
 		return this.#map.get(name)
 	}
 
