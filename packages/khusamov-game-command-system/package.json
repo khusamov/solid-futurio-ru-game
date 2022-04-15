@@ -20,7 +20,7 @@
 		"khusamov-command-system": "workspaces:*",
 		"khusamov-inversion-of-control": "workspace:*",
 		"reflect-metadata": "^0.1.13",
-		"typescript-rtti": "^0.5.4"
+		"typescript-rtti": "^0.5.6"
 	},
 	"devDependencies": {
 		"rollup": "^2.70.1",

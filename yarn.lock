@@ -4103,11 +4103,11 @@ __metadata:
     rollup: ^2.70.1
     ttypescript: ^1.5.13
     typescript: ^4.6.3
-    typescript-rtti: ^0.5.4
+    typescript-rtti: ^0.5.6
   languageName: unknown
   linkType: soft
 
-"khusamov-command-system@workspace:packages/khusamov-command-system, khusamov-command-system@workspaces:*":
+"khusamov-command-system@workspace:*, khusamov-command-system@workspace:packages/khusamov-command-system, khusamov-command-system@workspaces:*":
   version: 0.0.0-use.local
   resolution: "khusamov-command-system@workspace:packages/khusamov-command-system"
   dependencies:
@@ -4117,7 +4117,7 @@ __metadata:
     rollup: ^2.70.1
     ttypescript: ^1.5.13
     typescript: ^4.6.3
-    typescript-rtti: ^0.5.4
+    typescript-rtti: ^0.5.6
   languageName: unknown
   linkType: soft
 
@@ -4130,17 +4130,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"khusamov-game-command-system@workspace:packages/khusamov-game-command-system":
+"khusamov-game-command-system@workspace:*, khusamov-game-command-system@workspace:packages/khusamov-game-command-system":
   version: 0.0.0-use.local
   resolution: "khusamov-game-command-system@workspace:packages/khusamov-game-command-system"
   dependencies:
     khusamov-base-types: "workspaces:*"
     khusamov-command-system: "workspaces:*"
+    khusamov-inversion-of-control: "workspace:*"
     reflect-metadata: ^0.1.13
     rollup: ^2.70.1
     ttypescript: ^1.5.13
     typescript: ^4.6.3
-    typescript-rtti: ^0.5.4
+    typescript-rtti: ^0.5.6
   languageName: unknown
   linkType: soft
 
@@ -4151,12 +4152,16 @@ __metadata:
     "@types/prettier": ^2.4.4
     "@types/react": ^18.0.3
     "@types/react-dom": ^18.0.0
+    khusamov-base-types: "workspace:*"
+    khusamov-command-system: "workspace:*"
+    khusamov-game-command-system: "workspace:*"
     khusamov-inversion-of-control: "workspace:*"
     node-sass: ^7.0.1
     prettier: ^2.6.2
     react: ^18.0.0
     react-dom: ^18.0.0
     rollup: ^2.70.1
+    typescript-rtti: ^0.5.6
   languageName: unknown
   linkType: soft
 
@@ -4168,7 +4173,7 @@ __metadata:
     rollup: ^2.70.1
     ttypescript: ^1.5.13
     typescript: ^4.6.3
-    typescript-rtti: ^0.5.4
+    typescript-rtti: ^0.5.6
   languageName: unknown
   linkType: soft
 
@@ -7559,13 +7564,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript-rtti@npm:^0.5.4":
-  version: 0.5.4
-  resolution: "typescript-rtti@npm:0.5.4"
+"typescript-rtti@npm:^0.5.6":
+  version: 0.5.6
+  resolution: "typescript-rtti@npm:0.5.6"
   peerDependencies:
     reflect-metadata: ^0.1.13
     typescript: 4.6
-  checksum: 01cce502ab1acb82773dcefe5f9cf33a57a6979ac996bc1726073d2e34472f14c1b15e58988050e6ef7f8bfe9240d053a7d52ebcd4285dabbd760648651104a3
+  checksum: c844b9e6cfa4353f36685c89fd7d59f3e84fa39a7a585d9675e23319d280e11bd3aabbf129a055b75558c46d9bb33792464dee620a8153955eef60a138501479
   languageName: node
   linkType: hard
 
