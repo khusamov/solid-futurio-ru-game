@@ -1,5 +1,6 @@
 import html from '@rollup/plugin-html';
 import serve from 'rollup-plugin-serve';
+import livereload from 'rollup-plugin-livereload';
 import RollupConfigGenerator from '../RollupConfigGenerator'
 import htmlTemplate from '../htmlTemplate'
 import npmPackageJsonFile from './package.json';
@@ -24,6 +25,9 @@ config.output = [{
 }]
 
 config.plugins.push(
+	generator.isRollupWatch && livereload(
+		generator.outDir
+	),
 	generator.isRollupWatch && html({
 		title: description || name,
 		template: htmlTemplate
