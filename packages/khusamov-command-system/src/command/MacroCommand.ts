@@ -19,6 +19,10 @@ export default class MacroCommand implements ICommand {
 		}
 	}
 
+	get name(): string {
+		return 'MacroCommand: ' + (this.commands.map(command => command.name).join(', ') || '<empty>')
+	}
+
 	constructor(
 		private commands: ICommand[]
 	) {}

@@ -1,4 +1,4 @@
-import {IStoppable} from 'khusamov-base-types';
+import {ICommand, IStoppable} from 'khusamov-base-types';
 
 /**
  * Ключ к останавливаемой команде. Уникальное имя команды.
@@ -12,5 +12,5 @@ import {IStoppable} from 'khusamov-base-types';
 export type TStoppableKey = string
 
 export default interface IObjectWithStoppable {
-	stoppableCommandMap: Map<TStoppableKey, IStoppable> | undefined
+	stoppableCommandMap: Map<TStoppableKey, IStoppable & ICommand> | undefined
 }

@@ -1,11 +1,14 @@
 import {ICommand} from 'khusamov-base-types';
 import IMovable from './IMovable';
+import TransformForceCommand from './TransformForceCommand';
 
 /**
  * Поступательное движение.
  * Рассчитывается за определенный промежуток времени.
  */
 export default class MoveCommand implements ICommand {
+	public readonly name = 'MoveCommand'
+
 	constructor(
 		private movable: IMovable
 	) {}

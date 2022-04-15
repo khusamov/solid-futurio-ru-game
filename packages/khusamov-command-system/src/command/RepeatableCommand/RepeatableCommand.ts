@@ -10,7 +10,11 @@ import RepeatCommand from '../RepeatCommand';
  * Можно остановить вызвав метод stop().
  */
 export default class RepeatableCommand extends BridgeCommand implements IStoppable {
-	constructor(targetCommand: ICommand) {
+	get name(): string {
+		return 'RepeatableCommand: ' + this.targetCommand.name
+	}
+
+	constructor(private targetCommand: ICommand) {
 		super()
 		this.inject(
 			new MacroCommand([

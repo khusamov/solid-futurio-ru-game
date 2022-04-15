@@ -19,6 +19,10 @@ export default class RepeatCommand implements ICommand {
 		}
 	}
 
+	get name(): string {
+		return 'RepeatCommand: ' + this.targetCommand.name
+	}
+
 	constructor(
 		private targetCommand: ICommand,
 		private recursion: boolean = true

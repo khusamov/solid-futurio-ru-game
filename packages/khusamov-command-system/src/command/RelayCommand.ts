@@ -5,6 +5,8 @@ import {ICommand} from 'khusamov-base-types';
  * @link https://docs.microsoft.com/en-us/windows/communitytoolkit/mvvm/relaycommand
  */
 export default class RelayCommand implements ICommand {
+	public readonly name = 'RelayCommand'
+
 	constructor(
 		private action: () => void
 	) {}

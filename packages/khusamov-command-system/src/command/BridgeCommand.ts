@@ -6,9 +6,7 @@ import {ICommand, IInjectableCommand, IQueue} from 'khusamov-base-types';
  * Предназначена для создания повторяющихся команд.
  */
 export default class BridgeCommand implements IInjectableCommand {
-
 	private internalCommand?: ICommand
-
 	#commandQueue?: IQueue<ICommand>
 
 	get commandQueue() {
@@ -18,6 +16,10 @@ export default class BridgeCommand implements IInjectableCommand {
 	set commandQueue(commandQueue) {
 		this.#commandQueue = commandQueue
 		this.updateInternalCommandQueue()
+	}
+
+	get name(): string {
+		return 'BridgeCommand: ' + (this.internalCommand?.name || '<empty>')
 	}
 
 	constructor(

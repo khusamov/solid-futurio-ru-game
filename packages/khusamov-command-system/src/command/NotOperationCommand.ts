@@ -5,6 +5,7 @@ import {ICommand} from 'khusamov-base-types';
  * Используется для создания повторяющихся команд.
  */
 export default class NotOperationCommand implements ICommand {
-	constructor() {}
+	public readonly name = 'NotOperationCommand'
+	public constructor() {}
 	public execute(): void {}
 }

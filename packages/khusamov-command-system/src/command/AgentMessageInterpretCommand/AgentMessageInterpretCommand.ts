@@ -23,6 +23,7 @@ function convertAgentMessage(agentMessageObject: IUniversalObject): ICommand {
  */
 @repeatable
 export default class AgentMessageInterpretCommand implements ICommand {
+	public readonly name = 'AgentMessageInterpretCommand'
 	commandQueue?: IQueue<ICommand>
 
 	execute(): void {

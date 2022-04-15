@@ -11,6 +11,10 @@ export default class StartCommand implements ICommand {
 	public commandQueue?: IQueue<ICommand>
 	private readonly repeatableCommand: RepeatableCommand
 
+	get name(): string {
+		return 'StartCommand: ' + this.targetCommand.name
+	}
+
 	/**
 	 * Конструктор.
 	 * @param targetCommand Запускаемая команда, которую можно в будущем остановить.
@@ -19,7 +23,7 @@ export default class StartCommand implements ICommand {
 	 * @param args
 	 */
 	constructor(
-		targetCommand: ICommand,
+		private targetCommand: ICommand,
 		private targetCommandName: string,
 		private targetObject: IUniversalObject,
 		...args: Array<any>
