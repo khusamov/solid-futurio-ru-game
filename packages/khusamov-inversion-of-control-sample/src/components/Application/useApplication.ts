@@ -1,23 +1,31 @@
-import {createUniversalObject, IUniversalObject, KeyUpDownProcessor, Queue, Timer, UniversalObject} from 'khusamov-base-types';
+import {createUniversalObject, IUniversalObject, KeyUpDownProcessor, Queue, Timer, UniversalObject, Vector} from 'khusamov-base-types';
 import {adapterGeneratorResolver, register} from 'khusamov-inversion-of-control';
 import {AgentMessageInterpretCommand, CommandQueue, IStopAgentMessage, RepeatablePlugin, stopCommandResolver} from 'khusamov-command-system';
-import {ITransformForceAgentMessage, transformForceResolver} from 'khusamov-game-command-system';
+import {IMovable, ITransformForceAgentMessage, transformForceResolver} from 'khusamov-game-command-system';
 
 export default function useApplication() {
-	const universalObjectList: UniversalObject[] = []
-	const theSpaceship = new UniversalObject
-	theSpaceship.setValue('name', 'theSpaceship')
-	universalObjectList.push(theSpaceship)
-
 	register('Adapter', adapterGeneratorResolver)
 	register('StopCommand', stopCommandResolver)
 	register('TransformForce', transformForceResolver)
+
+	const universalObjectList: UniversalObject[] = []
+	universalObjectList.push(
+		createUniversalObject<IMovable & {name: string}>({
+			name: 'theSpaceship',
+			time: 0,
+			mass: 1000,
+			position: new Vector(0, 0),
+			appliedForce: new Vector(0, 0),
+			linearVelocity: new Vector(0, 0),
+			linearAcceleration: new Vector(0, 0)
+		})
+	)
+
 	register('GameObject', (name: string): IUniversalObject | undefined => {
 		return universalObjectList.find(object => object.getValue('name') === name)
 	})
 
 	const commandQueue = new CommandQueue
-
 	commandQueue.addPlugin(new RepeatablePlugin)
 
 	const keyUpDownProcessor = new KeyUpDownProcessor
