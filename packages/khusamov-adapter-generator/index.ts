@@ -1,15 +1,26 @@
 import {createPrinter, EmitHint, factory, NodeFlags, SyntaxKind} from 'typescript'
 
-const sourceFile2 = factory.createSourceFile([
-	factory.createClassDeclaration([], [], 'MovableAdapter', [], [],
+function createAdapterClassDeclaration(className: string) {
+	return factory.createClassDeclaration([], [], className, [], [],
 		[
 			factory.createConstructorDeclaration([], [], [],
 				factory.createBlock([])
 			)
 		]
 	)
-], factory.createToken(SyntaxKind.EndOfFileToken), NodeFlags.None)
+}
+
+const movableAdapterSourceFile = factory.createSourceFile(
+	[createAdapterClassDeclaration('MovableAdapter')],
+	factory.createToken(SyntaxKind.EndOfFileToken),
+	NodeFlags.None
+)
 
 console.log(
-	createPrinter().printNode(EmitHint.Unspecified, sourceFile2, sourceFile2)
+	createPrinter()
+		.printNode(
+			EmitHint.Unspecified,
+			movableAdapterSourceFile,
+			movableAdapterSourceFile
+		)
 )
