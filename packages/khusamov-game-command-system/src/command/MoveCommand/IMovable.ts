@@ -1,5 +1,8 @@
 import {Vector} from 'khusamov-base-types';
 
+/**
+ * @adaptable
+ */
 export default interface IMovable {
 	/**
 	 * Текущее время миллисекундах.
