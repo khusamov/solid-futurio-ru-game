@@ -1,6 +1,7 @@
 import {Vector} from 'khusamov-base-types';
 
 /**
+ * Интерфейс объекта, который может поступательно перемещаться.
  * @adaptable
  */
 export default interface IMovable {
