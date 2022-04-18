@@ -1,9 +1,5 @@
 import {join, resolve} from 'path'
 import {
-	isJSDoc,
-	JSDoc,
-	getAllJSDocTags,
-	Identifier,
 	convertCompilerOptionsFromJson,
 	createCompilerHost,
 	createProgram,
@@ -18,6 +14,13 @@ import {
 	SyntaxKind,
 	sys, getJSDocTags
 } from 'typescript'
+
+// Задача: получить из проекта все интерфейсы.
+// Далее получить из каждого интерфейса информацию:
+// - JSDoc-теги
+// - поля (имя, тип, модификаторы)
+// - методы (имя, параметры с типам, выходной тип, модификаторы)
+// - путь к файлу
 
 const formatHost = {
 	getCanonicalFileName: (path: string) => path,
@@ -98,11 +101,13 @@ console.log('Интерфейсы:', interfaceList)
 const movableInterfaceInfo = interfaceList.find(item => item.name === 'IMovable')
 if (movableInterfaceInfo) {
 	// https://github.com/microsoft/TypeScript/issues/7393#issuecomment-425525334
+	// Этот способ работает только при установке setParentNodes = true.
 	console.log(
 		'getJSDocTags(movableInterfaceInfo.interfaceDeclaration)',
 		getJSDocTags(movableInterfaceInfo.interfaceDeclaration)[0].tagName.escapedText
 	)
 	// https://github.com/microsoft/TypeScript/issues/13498
+	// Этот способ работает вне завимости от значения опции setParentNodes.
 	const checker = program.getTypeChecker()
 	const symbol = checker.getSymbolAtLocation(movableInterfaceInfo.interfaceDeclaration.name)
 	if (symbol) {
