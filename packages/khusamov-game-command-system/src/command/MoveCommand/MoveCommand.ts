@@ -1,6 +1,5 @@
 import {ICommand} from 'khusamov-base-types';
 import IMovable from './IMovable';
-import TransformForceCommand from './TransformForceCommand';
 
 /**
  * Поступательное движение.

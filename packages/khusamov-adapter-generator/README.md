@@ -55,6 +55,8 @@ class MovableAdapter {
 Ссылки по теме:
 ---------------
 
+https://ast.carlosroso.com/
+
 https://learning-notes.mistermicheels.com/javascript/typescript/compiler-api#programmatically-creating-ast-nodes  
 https://github.com/microsoft/TypeScript/blob/main/src/testRunner/unittests/printer.ts  
 https://yandex.ru/search/?text=typescript+factory.createClassDeclaration&lr=161407&clid=2063712&noreask=1&nomisspell=1  

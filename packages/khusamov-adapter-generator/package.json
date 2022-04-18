@@ -4,7 +4,7 @@
 	"packageManager": "yarn@3.1.1",
 	"license": "MIT",
 	"scripts": {
-		"!start": "ts-node scripts/adapter-generator",
+		"index.ts": "ts-node index.ts",
 		"index3.ts": "ts-node index3.ts"
 	},
 	"devDependencies": {
