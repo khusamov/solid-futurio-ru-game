@@ -4,6 +4,9 @@
 Uncaught ReferenceError: LΦ_0 is not defined
 --------------------------------------------
 
+Автор исправляет ошибку:  
+ttps://github.com/typescript-rtti/typescript-rtti/issues/56
+
 ```
 Uncaught ReferenceError: LΦ_0 is not defined
     at Object.LΦ (index.es.js:1597:36)
