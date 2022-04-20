@@ -4164,6 +4164,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-adapter-generator@workspace:packages/khusamov-adapter-generator"
   dependencies:
+    khusamov-format-code: "workspaces:*"
     ts-node: ^10.7.0
   languageName: unknown
   linkType: soft
@@ -4195,10 +4196,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"khusamov-format-code@workspace:packages/khusamov-format-code":
+"khusamov-format-code@workspace:packages/khusamov-format-code, khusamov-format-code@workspaces:*":
   version: 0.0.0-use.local
   resolution: "khusamov-format-code@workspace:packages/khusamov-format-code"
   dependencies:
+    "@types/prettier": ^2.4.4
+    prettier: ^2.6.2
     rollup: ^2.70.1
     typescript: ^4.6.3
   languageName: unknown
@@ -4231,7 +4234,6 @@ __metadata:
     khusamov-game-command-system: "workspace:*"
     khusamov-inversion-of-control: "workspace:*"
     node-sass: ^7.0.1
-    prettier: ^2.6.2
     react: ^18.0.0
     react-dom: ^18.0.0
     rollup: ^2.70.1
