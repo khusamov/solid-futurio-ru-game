@@ -90,12 +90,16 @@ export default class MovableAdapter implements IMovable {
 }
 ```
 
-Ссылки по теме
----------------
+Способы изучения TypeScript Compiler API
+----------------------------------------
 
-https://ast.carlosroso.com/
+Изучение генерации AST-дерева при помощи:  
+https://ast.carlosroso.com/  
 
-https://learning-notes.mistermicheels.com/javascript/typescript/compiler-api#programmatically-creating-ast-nodes  
-https://github.com/microsoft/TypeScript/blob/main/src/testRunner/unittests/printer.ts  
-https://yandex.ru/search/?text=typescript+factory.createClassDeclaration&lr=161407&clid=2063712&noreask=1&nomisspell=1  
+Поиск функций в репозитории microsoft/TypeScript:  
+https://github.com/microsoft/TypeScript/search?q=factory.createImportDeclaration&type=code  
+
+Статьи:  
 https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API  
+https://learning-notes.mistermicheels.com/javascript/typescript/compiler-api/  
+https://habr.com/ru/post/508484/  
