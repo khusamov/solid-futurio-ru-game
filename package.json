@@ -5,6 +5,7 @@
 		"packages/*"
 	],
 	"scripts": {
+		"format-code:build": "yarn workspaces foreach --include 'khusamov-format-code' run build",
 		"base-types:build": "yarn workspaces foreach --include 'khusamov-base-types' run build",
 		"base-types:build:watch": "yarn workspaces foreach --include 'khusamov-base-types' run build:watch",
 		"command-system:build": "yarn workspaces foreach --include 'khusamov-command-system' run build",
