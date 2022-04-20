@@ -27,7 +27,70 @@
 
 Осталось сделать ввод данных (конфигурационный файл генератора) и сохранение результатов.
 
-Ссылки по теме:
+Пример генерации адаптера
+-------------------------
+
+Путь к файлу: `src/command/MoveCommand/MovableAdapter.ts`
+
+```typescript
+import { Vector } from 'khusamov-base-types';
+
+/**
+ * Интерфейс объекта, который может поступательно перемещаться. */
+export default class MovableAdapter implements IMovable {
+        constructor(private universalObject: IUniversalObject) {}
+        /**
+         * Текущее время миллисекундах. */
+        get time(): number {
+                return this.universalObject.getValue<number>('time');
+        }
+        set time(value: number) {
+                return this.universalObject.setValue<number>('time', value);
+        }
+        /**
+         * Масса движущегося объекта. */
+        get mass(): number {
+                return this.universalObject.getValue<number>('mass');
+        }
+        set mass(value: number) {
+                return this.universalObject.setValue<number>('mass', value);
+        }
+        /**
+         * Координаты движущегося объекта. */
+        get position(): Vector {
+                return this.universalObject.getValue<Vector>('position');
+        }
+        set position(value: Vector) {
+                return this.universalObject.setValue<Vector>('position', value);
+        }
+        /**
+         * Приложенная сила. */
+        get appliedForce(): Vector {
+                return this.universalObject.getValue<Vector>('appliedForce');
+        }
+        set appliedForce(value: Vector) {
+                return this.universalObject.setValue<Vector>('appliedForce', value);
+        }
+        /**
+         * Линейное ускорение. */
+        get linearAcceleration(): Vector {
+                return this.universalObject.getValue<Vector>('linearAcceleration');
+        }
+        set linearAcceleration(value: Vector) {
+                return this.universalObject.setValue<Vector>('linearAcceleration', value);
+        }
+        /**
+         * Линейная скорость. */
+        get linearVelocity(): Vector {
+                return this.universalObject.getValue<Vector>('linearVelocity');
+        }
+        set linearVelocity(value: Vector) {
+                return this.universalObject.setValue<Vector>('linearVelocity', value);
+        }
+}
+```
+
+Ссылки по теме
 ---------------
 
 https://ast.carlosroso.com/
