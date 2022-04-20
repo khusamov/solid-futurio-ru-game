@@ -22,7 +22,6 @@
     "khusamov-game-command-system": "workspace:*",
     "khusamov-inversion-of-control": "workspace:*",
     "node-sass": "^7.0.1",
-    "prettier": "^2.6.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "rollup": "^2.70.1",
