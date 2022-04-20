@@ -6,11 +6,6 @@
 		"lib": ["DOM"],
 		"outDir": "dist",
 		"baseUrl": "src",
-		"declarationDir": ".",
-		"plugins": [
-			{
-				"transform": "typescript-rtti/dist/transformer"
-			}
-		]
+		"declarationDir": "."
 	}
 }

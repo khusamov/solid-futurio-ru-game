@@ -1,1 +1,1 @@
-export {default} from './formatCode'
+export {default as formatCode} from './formatCode'
