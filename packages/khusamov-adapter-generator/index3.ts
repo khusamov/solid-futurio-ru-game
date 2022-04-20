@@ -11,6 +11,7 @@ import adapterFactory from './factory/adapterFactory';
 import getComment from './functions/getComment';
 import {getImportInfoFromPropertySignature, removeImportInfoDuplicates} from './functions/parseImportDeclaration';
 import {formatCode} from 'khusamov-format-code';
+import createSetAccessorDeclaration from './factory/adapterFactory/createSetAccessorDeclaration';
 
 // Загрузка проекта в память.
 const projectPath = resolve('../../', 'packages/khusamov-game-command-system')
@@ -56,6 +57,7 @@ const adapterInfoList = (
 						result.push(factory.createJSDocComment(comment) as ClassElement)
 					}
 					result.push(adapterFactory.createGetAccessorDeclaration(propertySignature))
+					result.push(adapterFactory.createSetAccessorDeclaration(propertySignature))
 					return result
 				}, [])
 			)
