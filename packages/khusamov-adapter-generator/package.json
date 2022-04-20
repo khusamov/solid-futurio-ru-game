@@ -8,6 +8,7 @@
 		"index3.ts": "ts-node index3.ts"
 	},
 	"devDependencies": {
+		"khusamov-format-code": "workspaces:*",
 		"ts-node": "^10.7.0"
 	}
 }

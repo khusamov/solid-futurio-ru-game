@@ -1,4 +1,4 @@
-import {factory, SyntaxKind, InterfaceDeclaration, ClassElement} from 'typescript';
+import {factory, SyntaxKind, InterfaceDeclaration, ClassElement, Statement} from 'typescript';
 import createConstructorDeclaration from './createConstructorDeclaration';
 
 /**
