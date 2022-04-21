@@ -90,4 +90,19 @@ export default function generateProjectAdapters(projectPath: string) {
 			)
 		)
 	}
+
+	return adapterInfoList.map(adapterInfo => ({
+		filename: adapterInfo.fileName,
+		sourceFile: adapterInfo.sourceFile,
+		sourceText: (
+			formatCode(
+				createPrinter({omitTrailingSemicolon: true})
+					.printNode(
+						EmitHint.Unspecified,
+						adapterInfo.sourceFile,
+						adapterInfo.sourceFile
+					)
+			)
+		)
+	}))
 }
