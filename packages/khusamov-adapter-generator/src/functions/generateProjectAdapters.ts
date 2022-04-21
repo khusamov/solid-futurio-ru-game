@@ -9,6 +9,12 @@ import getComment from './getComment';
 import getInterfaceDeclarations from './getInterfaceDeclarations';
 import {getImportInfoFromPropertySignature, removeImportInfoDuplicates} from './parseImportDeclaration';
 
+/**
+ * На вход подается абсолютный путь к директории TypeScript-проекта, в котором есть файл tsconfig.json.
+ * Предполагается что в проекте есть входной файл 'src/index.ts'.
+ * На выходе возвращается массив с абсолютными путями адаптеров для сохранения и тексты классов адаптеров.
+ * @param projectPath
+ */
 export default function generateProjectAdapters(projectPath: string) {
 	// Загрузка проекта в память.
 	const program = getProgram(projectPath, 'src/index.ts')
