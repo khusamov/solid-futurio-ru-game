@@ -4,8 +4,12 @@
 	"workspaces": [
 		"packages/*"
 	],
+	"devDependencies": {
+		"lerna": "^4.0.0"
+	},
 	"scripts": {
 		"format-code:build": "yarn workspaces foreach --include 'khusamov-format-code' run build",
+		"format-code:build:watch": "yarn workspaces foreach --include 'khusamov-format-code' run build:watch",
 		"base-types:build": "yarn workspaces foreach --include 'khusamov-base-types' run build",
 		"base-types:build:watch": "yarn workspaces foreach --include 'khusamov-base-types' run build:watch",
 		"command-system:build": "yarn workspaces foreach --include 'khusamov-command-system' run build",
@@ -18,8 +22,5 @@
 		"inversion-of-control-sample:build:watch": "yarn workspaces foreach --include 'khusamov-inversion-of-control-sample' run build:watch",
 		"rollup-config:build": "yarn workspaces foreach --include 'khusamov-rollup-config' run build",
 		"rollup-config:build:watch": "yarn workspaces foreach --include 'khusamov-rollup-config' run build:watch"
-	},
-	"devDependencies": {
-		"lerna": "^4.0.0"
 	}
 }
