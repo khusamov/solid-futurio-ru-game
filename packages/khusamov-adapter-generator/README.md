@@ -103,3 +103,5 @@ https://github.com/microsoft/TypeScript/search?q=factory.createImportDeclaration
 https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API  
 https://learning-notes.mistermicheels.com/javascript/typescript/compiler-api/  
 https://habr.com/ru/post/508484/  
+https://levelup.gitconnected.com/typescript-compiler-and-compiler-api-part-1-4bb0d24a565e  
+https://levelup.gitconnected.com/typescript-compiler-and-compiler-api-part-2-c71f90a1b313  
