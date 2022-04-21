@@ -27,6 +27,9 @@ export async function generate() {
 	for (const projectDirectory of projectDirectories) {
 		console.log('- - - - - - - - - - - - - - - - - - - - - - - - - -')
 		console.log('Генерация адаптеров для проекта:', projectDirectory)
-		generateProjectAdapters(resolve(options.directoryOfProjects, projectDirectory))
+		const generateResult = generateProjectAdapters(resolve(options.directoryOfProjects, projectDirectory))
+		for (const info of generateResult) {
+			// TODO Сделать сохранение файлов адаптеров.
+		}
 	}
 }
