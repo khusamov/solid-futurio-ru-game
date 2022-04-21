@@ -17,7 +17,7 @@
 		"build": "rollup --config",
 		"build:watch": "rollup --config --watch",
 		"prepublishOnly": "yarn build",
-		"start": "ts-node src/index.ts"
+		"start": "ts-node src/index.ts --directory-of-projects ../../packages"
 	},
 	"dependencies": {
 		"commander": "^9.2.0",

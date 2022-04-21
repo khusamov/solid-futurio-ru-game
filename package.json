@@ -8,7 +8,7 @@
 		"lerna": "^4.0.0"
 	},
 	"scripts": {
-		"generate": "generate --project packages/khusamov-game-command-system",
+		"generate": "generate",
 		"adapter-generator:build": "yarn workspaces foreach --include 'khusamov-adapter-generator' run build",
 		"adapter-generator:build:watch": "yarn workspaces foreach --include 'khusamov-adapter-generator' run build:watch",
 		"format-code:build": "yarn workspaces foreach --include 'khusamov-format-code' run build",

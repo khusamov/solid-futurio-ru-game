@@ -1,4 +1,5 @@
 import {resolve} from 'path'
+import {readdir, stat} from 'fs/promises'
 import {
 	getJSDocTags,
 	isPropertySignature,
@@ -13,16 +14,35 @@ import {getImportInfoFromPropertySignature, removeImportInfoDuplicates} from './
 import {formatCode} from 'khusamov-format-code';
 import {program as commanderProgram} from 'commander'
 
-export function generate() {
+if (require.main === module) {
+	generate()
+}
+
+export async function generate() {
 	interface IOptions{
-		project: string
+		directoryOfProjects: string
 	}
-	commanderProgram.option('--project <char>')
+	commanderProgram.option('--directory-of-projects <char>', 'Директория, где каждая папка есть TS-проект', 'packages')
 	commanderProgram.parse()
 	const options = commanderProgram.opts<IOptions>()
 
-	const projectPath = resolve(options.project)
+	const isDirectory = async (item: string) => (await stat(resolve(options.directoryOfProjects, item))).isDirectory()
+	const projectDirectories = (
+		(await Promise.all(
+			(await readdir(resolve(options.directoryOfProjects)))
+				.map(async (item) => (await isDirectory(item)) ? item : null)
+		))
+			.filter((item): item is string => item !== null)
+	)
 
+	for (const projectDirectory of projectDirectories) {
+		console.log('- - - - - - - - - - - - - - - - - - - - - - - - - -')
+		console.log('Генерация адаптеров для проекта:', projectDirectory)
+		generateForProject(resolve(options.directoryOfProjects, projectDirectory))
+	}
+}
+
+function generateForProject(projectPath: string) {
 	// Загрузка проекта в память.
 	const program = getProgram(projectPath, 'src/index.ts')
 	const projectSourceFiles = program.getSourceFiles().filter(sourceFile => sourceFile.fileName.startsWith(projectPath))
