@@ -1,7 +1,15 @@
 import {createUniversalObject, IUniversalObject, KeyUpDownProcessor, Queue, Timer, UniversalObject, Vector} from 'khusamov-base-types';
 import {adapterGeneratorResolver, register} from 'khusamov-inversion-of-control';
-import {AgentMessageInterpretCommand, CommandQueue, IStopAgentMessage, RepeatablePlugin, stopCommandResolver} from 'khusamov-command-system';
 import {IMovable, ITransformForceAgentMessage, transformForceResolver} from 'khusamov-game-command-system';
+import {
+	AgentMessageInterpretCommand,
+	CommandQueue,
+	IStopAgentMessage,
+	RepeatableCommand,
+	RepeatablePlugin,
+	stopCommandResolver,
+	RelayCommand
+} from 'khusamov-command-system';
 
 register('Adapter', adapterGeneratorResolver)
 register('StopCommand', stopCommandResolver)
@@ -77,6 +85,16 @@ document.onkeyup = event => {
 		}
 	})
 }
+
+
+// Повторяемая команда отрисовки корабля.
+commandQueue.enqueue(
+	new RepeatableCommand(
+		new RelayCommand('DrawTheSpaceship', () => {
+			// TODO Сделать отрисовку корабля.
+		})
+	)
+)
 
 gameTimer.start()
 
