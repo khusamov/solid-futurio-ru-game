@@ -1,4 +1,5 @@
 import IAgentMessage from '../AgentMessageInterpretCommand/IAgentMessage';
+import ITargetObject from './ITargetObject';
 
 /**
  * @adaptable
@@ -6,9 +7,5 @@ import IAgentMessage from '../AgentMessageInterpretCommand/IAgentMessage';
 export default interface IStopAgentMessage extends IAgentMessage {
 	type: 'StopCommand'
 	commandName: string
-	targetObject: {
-		type: 'GameObject'
-		name?: string
-		id?: number
-	}
+	targetObject: ITargetObject
 }
