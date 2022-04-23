@@ -6,6 +6,12 @@ import {resolve} from 'khusamov-inversion-of-control';
 import {IMovable, IMovableReflectedTypeRef} from 'khusamov-game-command-system';
 import createSpaceship from '../../game/createSpaceship';
 
+interface IParam {
+	title: string
+	value: string
+	unit: string
+}
+
 const game = new Game()
 game.start()
 
@@ -33,13 +39,7 @@ export default function Application() {
 
 	timer.start() // TODO Избавиться от этого вызова start() - так как он вызывается на каждый рендеринг, а должен быть вызван один раз!
 
-	interface IParam {
-		title: string
-		value: string
-		unit: string
-	}
-
-	const params = [{
+	const params: IParam[] = [{
 		title: 'Время',
 		value: new Date(game.gameTimer.interval).getMinutes() + ':' + new Date(game.gameTimer.interval).getSeconds(),
 		unit: ''
