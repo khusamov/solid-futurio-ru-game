@@ -34,6 +34,15 @@ export default class Vector implements IPoint {
 		return new Vector(this.x * scale, this.y * scale);
 	}
 
+	public get angle(): number {
+		return Math.atan2(this.y, this.x)
+	}
+
+	public set angle(angle: number) {
+		this.x = this.length * Math.cos(angle)
+		this.y = this.length * Math.sin(angle)
+	}
+
 	/**
 	 * Модуль (длина) вектора.
 	 */
