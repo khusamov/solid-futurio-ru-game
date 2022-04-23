@@ -8,6 +8,7 @@ import getProgram from './getProgram';
 import getComment from './getComment';
 import getInterfaceDeclarations from './getInterfaceDeclarations';
 import {getImportInfoFromPropertySignature, removeImportInfoDuplicates} from './parseImportDeclaration';
+import {createConstructorImportDeclaration} from '../factory/adapterFactory/createConstructorDeclaration';
 
 /**
  * На вход подается абсолютный путь к директории TypeScript-проекта, в котором есть файл tsconfig.json.
@@ -34,6 +35,9 @@ export default function generateProjectAdapters(projectPath: string) {
 			const statements: Statement[] = []
 
 			const propertySignatures = interfaceDeclaration.members.filter(isPropertySignature)
+
+			// Импорт параметров конструктора Адаптера.
+			statements.push(...createConstructorImportDeclaration())
 
 			// Импорты типов свойств интерфейса.
 			const importInfoList = removeImportInfoDuplicates(propertySignatures.map(getImportInfoFromPropertySignature))

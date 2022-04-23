@@ -20,3 +20,14 @@ export default function createConstructorDeclaration() {
 		factory.createBlock([])
 	)
 }
+
+export function createConstructorImportDeclaration() {
+	return [
+		factory.createImportDeclaration(
+			undefined,
+			undefined,
+			factory.createImportClause(false, factory.createIdentifier('IUniversalObject'), undefined),
+			factory.createStringLiteral('khusamov-base-types')
+		)
+	]
+}
