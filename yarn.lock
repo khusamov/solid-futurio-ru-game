@@ -4190,7 +4190,7 @@ __metadata:
     rollup: ^2.70.1
     ttypescript: ^1.5.13
     typescript: ^4.6.3
-    typescript-rtti: ^0.5.6
+    typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
 
@@ -4204,7 +4204,7 @@ __metadata:
     rollup: ^2.70.1
     ttypescript: ^1.5.13
     typescript: ^4.6.3
-    typescript-rtti: ^0.5.6
+    typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
 
@@ -4230,7 +4230,7 @@ __metadata:
     rollup: ^2.70.1
     ttypescript: ^1.5.13
     typescript: ^4.6.3
-    typescript-rtti: ^0.5.6
+    typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
 
@@ -4249,7 +4249,7 @@ __metadata:
     react: ^18.0.0
     react-dom: ^18.0.0
     rollup: ^2.70.1
-    typescript-rtti: ^0.5.6
+    typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
 
@@ -4261,7 +4261,7 @@ __metadata:
     rollup: ^2.70.1
     ttypescript: ^1.5.13
     typescript: ^4.6.3
-    typescript-rtti: ^0.5.6
+    typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
 
@@ -7697,13 +7697,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript-rtti@npm:^0.5.6":
-  version: 0.5.6
-  resolution: "typescript-rtti@npm:0.5.6"
+"typescript-rtti@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "typescript-rtti@npm:0.6.0"
   peerDependencies:
     reflect-metadata: ^0.1.13
     typescript: 4.6
-  checksum: c844b9e6cfa4353f36685c89fd7d59f3e84fa39a7a585d9675e23319d280e11bd3aabbf129a055b75558c46d9bb33792464dee620a8153955eef60a138501479
+  checksum: 143e83c6b93b1078e9ec400c97cff09c7b240e0d832c512e82ddbd954ff37455a7381455879f777ca7c54f88f57ac0d9edd8ee299ce31f9ac7837108df771acc
   languageName: node
   linkType: hard
 
