@@ -15,6 +15,7 @@ export default function init() {
 	const agentMessageQueue: TAgentMessageQueue = new Queue
 	const gameObjectList: IUniversalObject[] = []
 	const commandQueue = new CommandQueue({plugins: [new RepeatablePlugin]})
+	const gameTimer = createGameTimer(commandQueue)
 
 	register(
 		'Agent.MessageQueue',
@@ -26,8 +27,6 @@ export default function init() {
 		(name: string): IUniversalObject | undefined =>
 			gameObjectList.find(object => object.getValue('name') === name)
 	)
-
-	const gameTimer = createGameTimer(commandQueue)
 
 	return {
 		keyUpDownProcessor,
