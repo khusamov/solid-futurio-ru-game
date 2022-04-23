@@ -17,12 +17,12 @@ register('TransformForce', transformForceResolver)
 
 const keyUpDownProcessor = new KeyUpDownProcessor
 const agentMessageQueue: Queue<IUniversalObject> = new Queue
-const universalObjectList: UniversalObject[] = []
+const gameObjectList: UniversalObject[] = []
 const commandQueue = new CommandQueue({plugins: [new RepeatablePlugin]})
 
 register('Agent.MessageQueue', (): Queue<IUniversalObject> => agentMessageQueue)
 register('GameObject', (name: string): IUniversalObject | undefined => {
-	return universalObjectList.find(object => object.getValue('name') === name)
+	return gameObjectList.find(object => object.getValue('name') === name)
 })
 
 commandQueue.enqueue(new AgentMessageInterpretCommand)
@@ -35,7 +35,7 @@ const gameTimer = new Timer(1000, () => {
 	}
 })
 
-universalObjectList.push(
+gameObjectList.push(
 	createUniversalObject<IMovable & {name: string}>({
 		name: 'theSpaceship',
 		time: 0,
