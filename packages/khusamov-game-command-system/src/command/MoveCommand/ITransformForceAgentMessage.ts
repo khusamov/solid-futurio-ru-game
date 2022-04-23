@@ -1,5 +1,8 @@
 import {IAgentMessage} from 'khusamov-command-system';
 
+/**
+ * @adaptable
+ */
 export default interface ITransformForceAgentMessage extends IAgentMessage {
 	type: 'TransformForce'
 	targetObject: {
