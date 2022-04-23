@@ -6,6 +6,9 @@ const repeatableSymbol = Symbol('repeatable')
  * Если команду пометить декоратором repeatable, то при добавлении
  * этой команды в очередь будет производиться обертка:
  * new RepeatableCommand(MyCommand)
+ *
+ * Не забудьте добавить в очередь команд CommandQueue плагин RepeatablePlugin,
+ * который собственно и производит данную обертку.
  */
 const repeatable: ClassDecorator = (
 	target => {
