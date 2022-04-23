@@ -20,6 +20,10 @@ export default class Vector implements IPoint {
 		)
 	}
 
+	/**
+	 * Вращение вектора.
+	 * @param angle
+	 */
 	public rotate(angle: number) {
 		return new Vector(
 			this.x * Math.cos(angle) - this.y * Math.sin(angle),
