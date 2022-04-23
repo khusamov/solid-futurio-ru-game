@@ -13,7 +13,26 @@ export default class Vector implements IPoint {
 		return Math.sqrt(Math.pow(point.x, 2) + Math.pow(point.y, 2));
 	}
 
-	public add(vector: Vector): Vector {
+	/**
+	 * Создать вектор на основе угла и длины.
+	 */
+	public static create(angle: number, length: number): Vector {
+		return new Vector(
+			length * Math.cos(angle),
+			length * Math.sin(angle)
+		)
+	}
+
+	public constructor(
+		public x: number = 0,
+		public y: number = 0
+	) {}
+
+	/**
+	 * Сложение векторов.
+	 * @param vector
+	 */
+	public translate(vector: Vector): Vector {
 		return new Vector(
 			this.x + vector.x,
 			this.y + vector.y
