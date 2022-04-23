@@ -1,8 +1,19 @@
 import {ICommand, Queue} from 'khusamov-base-types';
 import ICommandQueuePlugin, {isProcessingBeforeEnqueuePlugin} from './ICommandQueuePlugin';
 
+export interface ICommandQueueProps {
+	plugins?: ICommandQueuePlugin[]
+}
+
 export default class CommandQueue extends Queue<ICommand> {
 	private plugins: ICommandQueuePlugin[] = []
+
+	constructor(props: ICommandQueueProps = {}) {
+		super();
+		if (props.plugins) {
+			props.plugins.forEach(plugin => this.addPlugin(plugin))
+		}
+	}
 
 	enqueue(...commands: ICommand[]) {
 		commands = this.processingBeforeEnqueue(commands)
