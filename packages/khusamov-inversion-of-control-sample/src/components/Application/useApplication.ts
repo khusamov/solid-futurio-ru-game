@@ -33,7 +33,7 @@ export default function useApplication() {
 	const gameTimer = new Timer(1000, () => {
 		const command = commandQueue.dequeue()
 		if (command) {
-			console.log(command.name)
+			console.log(gameTimer.interval, command.name)
 			command.execute()
 		}
 	})
