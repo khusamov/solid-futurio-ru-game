@@ -1,11 +1,12 @@
-import {factory, SyntaxKind, TypeNode, PropertySignature} from 'typescript';
+import {factory, PropertySignature} from 'typescript';
+import cloneTypeNode from './cloneTypeNode';
 
 /**
  * get param1(): string { return this.universalObject.getValue<string>('param1'); }
  */
 export default function createGetAccessorDeclaration(propertySignature: PropertySignature) {
 	const name = propertySignature.name.getText()
-	const type = propertySignature.type
+	const type = propertySignature.type ? cloneTypeNode(propertySignature.type) : propertySignature.type
 	return factory.createGetAccessorDeclaration(
 		[],
 		[],
@@ -22,7 +23,7 @@ export default function createGetAccessorDeclaration(propertySignature: Property
 						),
 						'getValue'
 					),
-					type ? [type] : [],
+					type ? [type] : undefined,
 					[factory.createStringLiteral(name, true)]
 				)
 			)
