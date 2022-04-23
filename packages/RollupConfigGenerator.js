@@ -49,8 +49,8 @@ export default class RollupConfigGenerator {
 		this.external = Object.keys(dependencies || {});
 		if (this.external.length > 0) {
 			console.log(
-				'Внешние пакеты (на основе dependencies):',
-				cyan(this.external.join(', ') + '.')
+				cyan('Внешние пакеты (на основе dependencies):'),
+				this.external
 			);
 		}
 
