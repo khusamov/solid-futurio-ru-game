@@ -1,4 +1,4 @@
-import {ICommand} from 'khusamov-base-types';
+import {ICommand, Vector} from 'khusamov-base-types';
 import IMovable from './IMovable';
 
 export default class TransformForceCommand implements ICommand {
@@ -6,11 +6,12 @@ export default class TransformForceCommand implements ICommand {
 
 	constructor(
 		private movable: IMovable,
-		private scale: number,
-		private angle: number
+		private translate: Vector,
+		private rotate: number,
+		private scale: number
 	) {}
 
 	execute(): void {
-		this.movable.appliedForce = this.movable.appliedForce.scale(this.scale).rotate(this.angle)
+		this.movable.appliedForce = this.movable.appliedForce.translate(this.translate).rotate(this.rotate).scale(this.scale)
 	}
 }
