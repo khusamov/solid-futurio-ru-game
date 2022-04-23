@@ -1,0 +1,42 @@
+import init from './init';
+import {IUniversalObject, KeyUpDownProcessor, Queue, Timer} from 'khusamov-base-types';
+import {AgentMessageInterpretCommand, CommandQueue, StartCommand} from 'khusamov-command-system';
+import createSpaceship from './createSpaceship';
+import createKeyboardHandlers from './createKeyboardHandlers';
+import {IMovable, IMovableReflectedTypeRef, MoveCommand} from 'khusamov-game-command-system';
+import {resolve} from 'khusamov-inversion-of-control';
+
+export default class Game {
+	public gameTimer: Timer
+	public gameObjectList: IUniversalObject[]
+	public commandQueue: CommandQueue
+	public agentMessageQueue: Queue<IUniversalObject>
+	public keyUpDownProcessor: KeyUpDownProcessor
+	public theSpaceship: IUniversalObject
+
+	public constructor() {
+		const {gameTimer, gameObjectList, commandQueue, agentMessageQueue, keyUpDownProcessor} = init()
+		this.gameTimer = gameTimer
+		this.gameObjectList = gameObjectList
+		this.commandQueue = commandQueue
+		this.agentMessageQueue = agentMessageQueue
+		this.keyUpDownProcessor = keyUpDownProcessor
+
+		this.theSpaceship = createSpaceship()
+		gameObjectList.push(this.theSpaceship)
+		commandQueue.enqueue( // Создаем команду Поступательное движение космолета. Может это упростить?
+			new StartCommand(
+				new MoveCommand(resolve<IMovable>('Adapter', this.theSpaceship, IMovableReflectedTypeRef)),
+				'MoveCommand',
+				this.theSpaceship
+			)
+		)
+
+		commandQueue.enqueue(new AgentMessageInterpretCommand)
+		createKeyboardHandlers(keyUpDownProcessor, agentMessageQueue)
+	}
+
+	public start() {
+		this.gameTimer.start()
+	}
+}
