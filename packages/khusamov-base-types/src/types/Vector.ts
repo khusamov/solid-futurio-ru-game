@@ -46,15 +46,13 @@ export default class Vector implements IPoint {
 	/**
 	 * Модуль (длина) вектора.
 	 */
-	get length(): number {
+	public get length(): number {
 		return Vector.distance(this)
 	}
 
-	set length(length: number) {
-		// noinspection JSSuspiciousNameCombination
-		const scale = length * Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
-		this.x /= scale
-		this.y /= scale
+	public set length(length: number) {
+		this.x = length * Math.cos(this.angle)
+		this.y = length * Math.sin(this.angle)
 	}
 
 	public toString() {
