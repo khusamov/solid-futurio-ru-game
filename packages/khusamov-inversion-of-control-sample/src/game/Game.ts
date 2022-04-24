@@ -1,5 +1,5 @@
 import init from './init';
-import {IUniversalObject, KeyUpDownProcessor, Queue, Timer} from 'khusamov-base-types';
+import {IUniversalObject, KeyUpDownProcessor, Queue, Timer, Vector} from 'khusamov-base-types';
 import {AgentMessageInterpretCommand, CommandQueue, StartCommand} from 'khusamov-command-system';
 import createSpaceship from './createSpaceship';
 import createKeyboardHandlers from './createKeyboardHandlers';
