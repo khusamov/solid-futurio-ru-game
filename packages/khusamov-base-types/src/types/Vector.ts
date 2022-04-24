@@ -40,6 +40,26 @@ export default class Vector implements IPoint {
 	}
 
 	/**
+	 * Получить обратный вектор (инверсия вектора).
+	 */
+	public get inverse(): Vector {
+		return new Vector(-this.x, -this.y)
+	}
+
+	/**
+	 * Нормаль вектора (единичный вектор, перпендикулярный исходному).
+	 * Создается новый вектор, а исходный вектор не меняется.
+	 */
+	public get normal(): Vector {
+		return this.clone().rotate(Math.PI / 2).identity
+		// TODO Проверить эту формулу нахождения перпендикулярного вектора.
+		/*
+			a: 1 / parallel.x(),
+			b: -1 / parallel.y(),
+		*/
+	}
+
+	/**
 	 * Сложение векторов.
 	 * @param vector
 	 */
@@ -99,13 +119,6 @@ export default class Vector implements IPoint {
 	}
 
 	/**
-	 * Инверсия вектора (обратный вектор).
-	 */
-	public inverse() {
-		return new Vector(-this.x, -this.y)
-	}
-
-	/**
 	 * Угол между вектором и положительной осью.
 	 */
 	public get angle(): number {
@@ -131,16 +144,15 @@ export default class Vector implements IPoint {
 		this.y = length * Math.sin(angle)
 	}
 
-	public toString() {
-		const digits = 2
-		return `[${this.x.toFixed(digits)}, ${this.y.toFixed(digits)}]`
+	public clone() {
+		return new Vector(this.x, this.y)
 	}
 
 	public toArray() {
 		return [this.x, this.y]
 	}
 
-	public clone() {
-		return new Vector(this.x, this.y)
+	public toString(digits: number = 2) {
+		return `[${this.x.toFixed(digits)}, ${this.y.toFixed(digits)}]`
 	}
 }
