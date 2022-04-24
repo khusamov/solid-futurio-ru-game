@@ -12,7 +12,6 @@ export default class Game {
 	public commandQueue: CommandQueue
 	public agentMessageQueue: Queue<IUniversalObject>
 	public keyUpDownProcessor: KeyUpDownProcessor
-	public theSpaceship: IUniversalObject
 
 	public constructor() {
 		const {gameTimer, gameObjectList, commandQueue, agentMessageQueue, keyUpDownProcessor} = init()
@@ -22,15 +21,9 @@ export default class Game {
 		this.agentMessageQueue = agentMessageQueue
 		this.keyUpDownProcessor = keyUpDownProcessor
 
-		this.theSpaceship = createSpaceship()
-		gameObjectList.push(this.theSpaceship)
-		commandQueue.enqueue( // Создаем команду Поступательное движение космолета. Может это упростить?
-			new StartCommand(
-				new MoveCommand(resolve<IMovable>('Adapter', this.theSpaceship, IMovableReflectedTypeRef)),
-				'MoveCommand',
-				this.theSpaceship
-			)
-		)
+		const theSpaceship = createSpaceship()
+		gameObjectList.push(theSpaceship)
+		commandQueue.enqueue(createSpaceshipStartMoveCommand(theSpaceship))
 
 		commandQueue.enqueue(new AgentMessageInterpretCommand)
 		createKeyboardHandlers(keyUpDownProcessor, agentMessageQueue)
@@ -39,4 +32,20 @@ export default class Game {
 	public start() {
 		this.gameTimer.start()
 	}
+}
+
+
+/**
+ * Создаем команду Поступательное движение космолета.
+ * TODO Может это упростить? Создание абстрактной команды StartCommand.
+ * @param theSpaceship
+ */
+function createSpaceshipStartMoveCommand(theSpaceship: IUniversalObject) {
+	return (
+		new StartCommand(
+			new MoveCommand(resolve<IMovable>('Adapter', theSpaceship, IMovableReflectedTypeRef)),
+			'MoveCommand',
+			theSpaceship
+		)
+	)
 }
