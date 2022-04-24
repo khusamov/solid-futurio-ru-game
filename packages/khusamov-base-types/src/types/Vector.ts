@@ -69,6 +69,14 @@ export default class Vector implements IPoint {
 	}
 
 	/**
+	 * Увеличить длину вектора.
+	 * @param length
+	 */
+	public inc(length: number): Vector {
+		return this.identity.scale(this.length).translate(this)
+	}
+
+	/**
 	 * Скалярное произведение векторов.
 	 * @param vector
 	 */
