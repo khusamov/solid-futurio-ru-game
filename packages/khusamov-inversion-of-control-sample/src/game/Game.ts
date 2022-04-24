@@ -5,6 +5,7 @@ import createSpaceship from './createSpaceship';
 import createKeyboardHandlers from './createKeyboardHandlers';
 import {IMovable, IMovableReflectedTypeRef, MoveCommand} from 'khusamov-game-command-system';
 import {resolve} from 'khusamov-inversion-of-control';
+import IGameOptions from './IGameOptions';
 
 export default class Game {
 	public gameTimer: Timer
@@ -13,8 +14,8 @@ export default class Game {
 	public agentMessageQueue: Queue<IUniversalObject>
 	public keyUpDownProcessor: KeyUpDownProcessor
 
-	public constructor() {
-		const {gameTimer, gameObjectList, commandQueue, agentMessageQueue, keyUpDownProcessor} = init()
+	public constructor(options: IGameOptions) {
+		const {gameTimer, gameObjectList, commandQueue, agentMessageQueue, keyUpDownProcessor} = init(options)
 		this.gameTimer = gameTimer
 		this.gameObjectList = gameObjectList
 		this.commandQueue = commandQueue
