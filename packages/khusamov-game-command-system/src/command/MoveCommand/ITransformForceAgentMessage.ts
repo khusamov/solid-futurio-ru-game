@@ -7,6 +7,7 @@ import ITargetObject from './ITargetObject';
  */
 export default interface ITransformForceAgentMessage extends IAgentMessage {
 	type: 'TransformForce'
+	commandName: string
 	targetObject: ITargetObject
 	translate: Vector
 	rotate: number
