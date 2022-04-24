@@ -12,4 +12,5 @@ export default interface ITransformForceAgentMessage extends IAgentMessage {
 	translate: Vector
 	rotate: number
 	scale: number
+	length: number
 }

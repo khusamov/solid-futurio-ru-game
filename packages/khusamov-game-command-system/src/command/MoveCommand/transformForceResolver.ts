@@ -7,7 +7,7 @@ import TransformForceCommand from './TransformForceCommand';
 import ITransformForceAgentMessage from './ITransformForceAgentMessage';
 
 export default function transformForceResolver(agentMessageObject: IUniversalObject): ICommand {
-	const {targetObject: targetObjectData, translate, rotate, scale, commandName} = (
+	const {targetObject: targetObjectData, translate, rotate, scale, length, commandName} = (
 		resolve<ITransformForceAgentMessage>(
 			'Adapter',
 			agentMessageObject,
@@ -18,7 +18,7 @@ export default function transformForceResolver(agentMessageObject: IUniversalObj
 	const targetObject = getTargetObject(targetObjectData)
 
 	const movable = resolve<IMovable>('Adapter', targetObject, reflect<IMovable>())
-	const transformForceCommand = new TransformForceCommand(movable, translate, rotate, scale)
+	const transformForceCommand = new TransformForceCommand(movable, translate, rotate, scale, length)
 
 	return new StartCommand(transformForceCommand, commandName, targetObject)
 }

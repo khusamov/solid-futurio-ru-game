@@ -1,7 +1,7 @@
 import {createUniversalObject, Vector} from 'khusamov-base-types';
 import {ITransformForceAgentMessage} from 'khusamov-game-command-system';
 
-export default function createTransformForceStartMessage(commandName: string, translate: Vector, rotate: number = 0, scale: number = 1) {
+export default function createTransformForceStartMessage(commandName: string, translate: Vector, rotate: number = 0, scale: number = 1, length: number = 0) {
 	return (
 		createUniversalObject<ITransformForceAgentMessage>({
 			type: 'TransformForce',
@@ -12,7 +12,8 @@ export default function createTransformForceStartMessage(commandName: string, tr
 			},
 			translate,
 			rotate,
-			scale
+			scale,
+			length
 		})
 	)
 }
