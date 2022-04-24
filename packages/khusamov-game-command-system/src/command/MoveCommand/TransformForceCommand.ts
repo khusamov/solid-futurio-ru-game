@@ -19,7 +19,6 @@ export default class TransformForceCommand implements ICommand {
 		if (this.movable.appliedForce.length + this.length < 0) {
 			this.movable.appliedForce.length = 0
 		} else {
-			//this.movable.appliedForce = this.movable.appliedForce.identity.scale(this.length).translate(this.movable.appliedForce)
 			this.movable.appliedForce.length += this.length
 		}
 	}
