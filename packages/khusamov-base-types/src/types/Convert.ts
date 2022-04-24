@@ -1,11 +1,17 @@
-export interface IMapConvertResult<K, V> {
-	key: K
-	value: V | undefined
-}
+import IKeyValueObject from './IKeyValueObject';
 
+type TMapConvertResult<K, V> = IKeyValueObject<K, V | undefined>[]
+
+/**
+ * Конвертация разнообразных значений.
+ */
 export default class Convert {
-	public static toArray<K, V>(map: Map<K, V>): IMapConvertResult<K, V>[] {
-		const result: IMapConvertResult<K, V>[] = []
+	/**
+	 * Конвертировать карту в массив key/value-объектов.
+	 * @param map
+	 */
+	public static toArray<K, V>(map: Map<K, V>): TMapConvertResult<K, V> {
+		const result: TMapConvertResult<K, V> = []
 		for (const [key, value] of map) {
 			result.push({key, value})
 		}
