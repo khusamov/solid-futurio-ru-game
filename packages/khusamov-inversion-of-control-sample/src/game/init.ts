@@ -3,10 +3,11 @@ import {CommandQueue, RepeatablePlugin, stopCommandResolver} from 'khusamov-comm
 import {transformForceResolver} from 'khusamov-game-command-system';
 import {IUniversalObject, KeyUpDownProcessor, Queue} from 'khusamov-base-types';
 import createGameTimer from './createGameTimer';
+import IGameOptions from './IGameOptions';
 
 type TAgentMessageQueue = Queue<IUniversalObject>
 
-export default function init() {
+export default function init({timeout}: IGameOptions) {
 	register('Adapter', adapterGeneratorResolver)
 	register('StopCommand', stopCommandResolver)
 	register('TransformForce', transformForceResolver)
@@ -15,7 +16,7 @@ export default function init() {
 	const agentMessageQueue: TAgentMessageQueue = new Queue
 	const gameObjectList: IUniversalObject[] = []
 	const commandQueue = new CommandQueue({plugins: [new RepeatablePlugin]})
-	const gameTimer = createGameTimer(commandQueue)
+	const gameTimer = createGameTimer(timeout, commandQueue)
 
 	register(
 		'Agent.MessageQueue',
