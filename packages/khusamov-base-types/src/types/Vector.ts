@@ -29,6 +29,17 @@ export default class Vector implements IPoint {
 	) {}
 
 	/**
+	 * Получить единичный вектор, равный по направлению исходному.
+	 * Он же направляющий вектор (единичный, равный по направлению).
+	 * Создается новый вектор, а исходный вектор не меняется.
+	 */
+	public get identity(): Vector {
+		const clone = this.clone()
+		clone.length = 1
+		return clone
+	}
+
+	/**
 	 * Сложение векторов.
 	 * @param vector
 	 */
@@ -57,6 +68,38 @@ export default class Vector implements IPoint {
 		return new Vector(this.x * scale, this.y * scale);
 	}
 
+	/**
+	 * Скалярное произведение векторов.
+	 * @param vector
+	 */
+	public multiply(vector: Vector): Vector {
+		return new Vector(
+			this.x * vector.x,
+			this.y * vector.y
+		)
+	}
+
+	/**
+	 * Взятие остатка от деления.
+	 * @param vector
+	 */
+	public mod(vector: Vector): Vector {
+		return new Vector(
+			this.x % vector.x,
+			this.y % vector.y
+		)
+	}
+
+	/**
+	 * Инверсия вектора (обратный вектор).
+	 */
+	public inverse() {
+		return new Vector(-this.x, -this.y)
+	}
+
+	/**
+	 * Угол между вектором и положительной осью.
+	 */
 	public get angle(): number {
 		return Math.atan2(this.y, this.x)
 	}
