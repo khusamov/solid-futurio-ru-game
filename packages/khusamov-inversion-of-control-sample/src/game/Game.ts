@@ -44,7 +44,10 @@ export default class Game {
 function createSpaceshipStartMoveCommand(theSpaceship: IUniversalObject) {
 	return (
 		new StartCommand(
-			new MoveCommand(resolve<IMovable>('Adapter', theSpaceship, IMovableReflectedTypeRef)),
+			new MoveCommand(
+				resolve<IMovable>('Adapter', theSpaceship, IMovableReflectedTypeRef),
+				new Vector(500, 500)
+			),
 			'MoveCommand',
 			theSpaceship
 		)
