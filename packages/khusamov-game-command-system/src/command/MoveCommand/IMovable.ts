@@ -22,6 +22,7 @@ export default interface IMovable {
 
 	/**
 	 * Приложенная сила.
+	 * TODO Сделать отдельное хранение угла и модуля приложенной силы.
 	 */
 	appliedForce: Vector
 
