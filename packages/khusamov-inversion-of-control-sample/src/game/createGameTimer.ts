@@ -14,7 +14,7 @@ export default function createGameTimer(timeout: number, commandQueue: CommandQu
 
 		if (command) {
 			// Контроль для отладки.
-			console.log(gameTimer.interval, command.name)
+			//console.log(gameTimer.interval, command.name)
 
 			// Выполнить команду.
 			command.execute()
