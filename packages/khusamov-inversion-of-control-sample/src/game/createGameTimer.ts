@@ -4,10 +4,10 @@ import {Timer} from 'khusamov-base-types';
 /**
  * Создать игровой таймер.
  * Это бесконечный цикл по извлечению и выполнению команд из очереди команд.
- * @param commandQueue
  * @param timeout
+ * @param commandQueue
  */
-export default function createGameTimer(commandQueue: CommandQueue, timeout: number = 10): Timer {
+export default function createGameTimer(timeout: number, commandQueue: CommandQueue): Timer {
 	const gameTimer = new Timer(timeout, () => {
 		// Извлечь очередную команду.
 		const command = commandQueue.dequeue()
