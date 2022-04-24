@@ -1,18 +1,25 @@
 import createTransformForceStartMessage from './createTransformForceStartMessage';
 import createTransformForceStopMessage from './createTransformForceStopMessage';
-import {IUniversalObject, KeyUpDownProcessor, Queue, Vector} from 'khusamov-base-types';
+import {Angle, IUniversalObject, KeyUpDownProcessor, Queue, Vector} from 'khusamov-base-types';
 
-// TODO Оказывается одна и та же команда может быть вызвана несколько раз!
+const rotateIncrement = Angle.toRadian(1)
+const translateIncrement = Vector.create(Angle.toRadian(45), 10)
 
 export default function createKeyboardHandlers(keyUpDownProcessor: KeyUpDownProcessor, agentMessageQueue: Queue<IUniversalObject>) {
 	document.onkeydown = event => {
 		keyUpDownProcessor.onKeyDown(event, () => {
 			switch (event.code) {
 				case 'KeyW':
-					agentMessageQueue.enqueue(createTransformForceStartMessage(new Vector(100, 100)))
+					agentMessageQueue.enqueue(createTransformForceStartMessage('IncreaseForce', translateIncrement))
 					break
 				case 'KeyS':
-					agentMessageQueue.enqueue(createTransformForceStartMessage(new Vector(-100, -100)))
+					agentMessageQueue.enqueue(createTransformForceStartMessage('DecreaseForce', translateIncrement.scale(-1)))
+					break
+				case 'KeyA':
+					agentMessageQueue.enqueue(createTransformForceStartMessage('СlockwiseRotateForce', new Vector(0, 0), rotateIncrement))
+					break
+				case 'KeyD':
+					agentMessageQueue.enqueue(createTransformForceStartMessage('СounterclockwiseRotateForce', new Vector(0, 0), -rotateIncrement))
 					break
 			}
 		})
@@ -22,10 +29,16 @@ export default function createKeyboardHandlers(keyUpDownProcessor: KeyUpDownProc
 		keyUpDownProcessor.onKeyUp(event, () => {
 			switch (event.code) {
 				case 'KeyW':
-					agentMessageQueue.enqueue(createTransformForceStopMessage())
+					agentMessageQueue.enqueue(createTransformForceStopMessage('IncreaseForce'))
 					break
 				case 'KeyS':
-					agentMessageQueue.enqueue(createTransformForceStopMessage())
+					agentMessageQueue.enqueue(createTransformForceStopMessage('DecreaseForce'))
+					break
+				case 'KeyA':
+					agentMessageQueue.enqueue(createTransformForceStopMessage('СlockwiseRotateForce'))
+					break
+				case 'KeyD':
+					agentMessageQueue.enqueue(createTransformForceStopMessage('СounterclockwiseRotateForce'))
 					break
 			}
 		})
