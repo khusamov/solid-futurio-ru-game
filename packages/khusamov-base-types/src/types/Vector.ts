@@ -117,8 +117,9 @@ export default class Vector implements IPoint {
 	}
 
 	public set length(length: number) {
-		this.x = length * Math.cos(this.angle)
-		this.y = length * Math.sin(this.angle)
+		const angle = this.angle
+		this.x = length * Math.cos(angle)
+		this.y = length * Math.sin(angle)
 	}
 
 	public toString() {
