@@ -32,13 +32,14 @@ export default class StartCommand implements ICommand {
 	}
 
 	public execute(): void {
+		// Проверка добавляемой команды.
+		if (this.stoppableCommandMap.has(this.targetCommandName)) {
+			throw new Error(`Попытка запустить повторно длительную команду '${this.targetCommandName}'`)
+		}
 		if (this.commandQueue) {
 			// Размещение повторяемой команды в очереди команд.
 			this.commandQueue.enqueue(this.repeatableCommand)
-			// Сохранить ссылку на повторяемую команду, чтобы была возможность ее остановить по ссылке.
-			if (this.stoppableCommandMap.has(this.targetCommandName)) {
-				throw new Error(`Попытка запустить повторно длительную команду '${this.targetCommandName}'`)
-			}
+			// Сохранение ссылки на повторяемую команду, чтобы была возможность ее остановить по ссылке.
 			this.stoppableCommandMap.set(this.targetCommandName, this.repeatableCommand)
 		}
 	}
