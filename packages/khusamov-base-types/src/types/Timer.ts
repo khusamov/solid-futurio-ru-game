@@ -1,11 +1,57 @@
 import IStartable from './IStartable';
 import IStoppable from './IStoppable';
 
-export type TAction = (this: Timer) => void
+export type TTimerAction = (this: Timer) => void
 
+export enum ETimerState {
+	Started = 'started',
+	Paused = 'paused',
+	Stopped = 'stopped'
+}
+
+interface IStateHandlers<R> {
+	started?: () => R
+	paused?: () => R
+	stopped?: () => R
+}
+
+function handleByState<R = any>(state: ETimerState, stateHandlers: IStateHandlers<R>): R | undefined {
+	switch (state) {
+		case ETimerState.Started: return stateHandlers.started ? stateHandlers.started() : undefined
+		case ETimerState.Paused: return stateHandlers.paused ? stateHandlers.paused() : undefined
+		case ETimerState.Stopped: return stateHandlers.stopped ? stateHandlers.stopped() : undefined
+	}
+}
+
+/**
+ * Простая реализация таймера.
+ */
 export default class Timer implements IStartable, IStoppable {
 	private timerId: number | undefined
-	private time: Date | undefined
+
+	/**
+	 * Время запуска таймера. В миллисекундах.
+	 * @private
+	 */
+	private time: number = 0
+
+	/**
+	 * Время постановки на паузу. В миллисекундах.
+	 * @private
+	 */
+	private pauseTime: number = 0
+
+	/**
+	 * Общее время остановки таймера. В миллисекундах.
+	 * @private
+	 */
+	private pauseInterval: number = 0
+
+	/**
+	 * Текущее состояние таймера
+	 * @private
+	 */
+	private state: ETimerState = ETimerState.Stopped
 
 	/**
 	 * Внимание, внутри action определена this как Timer.
@@ -14,28 +60,77 @@ export default class Timer implements IStartable, IStoppable {
 	 */
 	constructor(
 		private timeout: number,
-		private action: TAction
+		private action: TTimerAction
 	) {}
 
+	/**
+	 * Запуск таймера.
+	 * Стартовать таймер сначала или продолжить с паузы.
+	 */
 	public start() {
-		if (this.timerId === undefined) {
-			this.timerId = window.setInterval(this.action.bind(this), this.timeout)
-			this.time = new Date
-		}
+		handleByState(this.state, {
+			paused: () => {
+				this.state = ETimerState.Started
+				this.pauseInterval += Date.now() - this.pauseTime
+			},
+			stopped: () => {
+				this.state = ETimerState.Started
+				this.timerId = window.setInterval(this.tick.bind(this), this.timeout)
+				this.time = Date.now()
+			}
+		})
 	}
 
+	/**
+	 * Поставить на паузу таймер.
+	 * Состояние сохраняется, счет приостанавливается.
+	 */
+	public pause() {
+		handleByState(this.state, {
+			started: () => {
+				this.state = ETimerState.Paused
+				this.pauseTime = Date.now()
+			}
+		})
+	}
+
+	/**
+	 * Остановить таймер.
+	 * Полный сброс таймера.
+	 */
 	public stop() {
-		if (this.timerId !== undefined) {
+		const stop = () => {
+			this.state = ETimerState.Stopped
 			clearInterval(this.timerId)
 			this.timerId = undefined
-			this.time = undefined
+			this.time = 0
 		}
+		handleByState(this.state, {
+			started: stop,
+			paused: stop
+		})
 	}
 
 	/**
 	 * Количество миллисекунд с начала старта таймера.
+	 * С учетом всех пауз.
 	 */
 	public get interval(): number {
-		return this.time ? new Date().getTime() - this.time.getTime() : 0
+		const result = handleByState(this.state, {
+			started: () => Date.now() - this.time - this.pauseTime,
+			paused: () => this.time - this.pauseTime,
+			stopped: () => 0
+		})
+		return result === undefined ? 0 : result
+	}
+
+	/**
+	 * Выполняемая нагрузка таймера.
+	 * @private
+	 */
+	private tick() {
+		handleByState(this.state, {
+			started: () => this.action.call(this)
+		})
 	}
 }
