@@ -8,9 +8,12 @@ import {reflect} from 'typescript-rtti';
  */
 export default class StopCommand implements ICommand {
 	private withStoppable: IObjectWithStoppable
-	private stoppableCommand: ICommand & IStoppable | undefined
 
-	get name(): string {
+	private get stoppableCommand(): ICommand & IStoppable | undefined {
+		return this.withStoppable.stoppableCommandMap?.get(this.stoppableCommandName)
+	}
+
+	public get name(): string {
 		return 'StopCommand: ' + (this.stoppableCommand?.name || `[not found '${this.stoppableCommandName}']`)
 	}
 
@@ -19,12 +22,11 @@ export default class StopCommand implements ICommand {
 	 * @param stoppableCommandName Имя останавливаемой команды.
 	 * @param targetObject Объект, для которого требуется остановка определенной команды.
 	 */
-	constructor(
+	public constructor(
 		private stoppableCommandName: string,
 		private targetObject: IUniversalObject
 	) {
 		this.withStoppable = resolve<IObjectWithStoppable>('Adapter', this.targetObject, reflect<IObjectWithStoppable>())
-		this.stoppableCommand = this.withStoppable.stoppableCommandMap?.get(this.stoppableCommandName)
 	}
 
 	public execute(): void {
