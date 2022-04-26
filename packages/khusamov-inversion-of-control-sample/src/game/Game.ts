@@ -33,6 +33,14 @@ export default class Game {
 	public start() {
 		this.gameTimer.start()
 	}
+
+	public pause() {
+		this.gameTimer.pause()
+	}
+
+	public stop() {
+		this.gameTimer.stop()
+	}
 }
 
 
