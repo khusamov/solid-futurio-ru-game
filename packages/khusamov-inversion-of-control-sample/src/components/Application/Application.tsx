@@ -4,6 +4,9 @@ import {resolve} from 'khusamov-inversion-of-control';
 import {IMovable, IMovableReflectedTypeRef} from 'khusamov-game-command-system';
 import {findGameObjectByName} from '../../game/findGameObject';
 import useGame from '../../game/useGame';
+import styles from './Application.module.scss'
+import Game from '../../game/Game';
+import useResizeObserver from 'use-resize-observer';
 
 interface IParam {
 	title: string
@@ -11,10 +14,10 @@ interface IParam {
 	unit: string
 }
 
-export default function Application() {
-	const [game] = useGame({renderTimeout: 10, gameTimeout: 10})
+const game = new Game({timeout: 10})
 
-	if (!game) return null
+export default function Application() {
+	useGame({renderTimeout: 10, game})
 
 	const theSpaceshipObject = findGameObjectByName(game.gameObjectList, 'theSpaceship')
 	const theSpaceship = theSpaceshipObject ? resolve<IMovable>('Adapter', theSpaceshipObject, IMovableReflectedTypeRef) : undefined
@@ -43,20 +46,26 @@ export default function Application() {
 		unit: 'Ньютон, градус'
 	}]
 
+	const {ref} = useResizeObserver({
+		onResize({width, height}) {
+			if (width !== undefined && height !== undefined) {
+				game.size = {width, height}
+			}
+		}
+	})
+
 	return (
-		<div>
-			<div>
-				<table>
-					{params.map(param => (
-						<tr>
-							<td>{param.title}:</td>
-							<td>{param.value}</td>
-							<td>{param.unit}</td>
-						</tr>
-					))}
-				</table>
-				<Canvas theSpaceshipPosition={theSpaceship.position}/>
-			</div>
+		<div className={styles.Application}>
+			<table className={styles.Params}>
+				{params.map(param => (
+					<tr>
+						<td>{param.title}:</td>
+						<td>{param.value}</td>
+						<td>{param.unit}</td>
+					</tr>
+				))}
+			</table>
+			<Canvas refWrap={ref} theSpaceshipPosition={theSpaceship.position}/>
 		</div>
 	)
 }
