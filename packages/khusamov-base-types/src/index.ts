@@ -1,4 +1,5 @@
 export {default as IPoint} from './types/IPoint'
+export {default as ISize} from './types/ISize'
 export {default as IEventEmitter} from './types/IEventEmitter'
 export {default as IRegistrator} from './types/IRegistrator'
 export {default as ICommand} from './types/ICommand'
