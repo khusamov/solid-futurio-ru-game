@@ -23,6 +23,11 @@ export default class RepeatCommand implements ICommand {
 		return 'RepeatCommand: ' + this.targetCommand.name
 	}
 
+	/**
+	 * Конструктор повторяющей команды.
+	 * @param targetCommand
+	 * @param recursion Если true, то очередь команд будет устанавливаться и у зависимой команды targetCommand.
+	 */
 	constructor(
 		private targetCommand: ICommand,
 		private recursion: boolean = true
