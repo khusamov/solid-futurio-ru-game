@@ -25,6 +25,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "rollup": "^2.70.1",
-    "typescript-rtti": "^0.6.0"
+    "typescript-rtti": "^0.6.0",
+    "use-resize-observer": "^8.0.0"
   }
 }
