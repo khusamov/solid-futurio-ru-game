@@ -14,7 +14,7 @@ const defaultSpaceship: ISpaceship = {
 	linearAcceleration: new Vector(0, 0)
 }
 
-export default function createSpaceship(params: Partial<ISpaceship> = {}): IUniversalObject {
+export default function createSpaceshipObject(params: Partial<ISpaceship> = {}): IUniversalObject {
 	return createUniversalObject<ISpaceship>(Object.assign({}, defaultSpaceship, params))
 }
 
