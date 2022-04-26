@@ -1,27 +1,7 @@
-import IStartable from './IStartable';
-import IStoppable from './IStoppable';
-
-export type TTimerAction = (this: Timer) => void
-
-export enum ETimerState {
-	Started = 'started',
-	Paused = 'paused',
-	Stopped = 'stopped'
-}
-
-interface IStateHandlers<R> {
-	started?: () => R
-	paused?: () => R
-	stopped?: () => R
-}
-
-function handleByState<R = any>(state: ETimerState, stateHandlers: IStateHandlers<R>): R | undefined {
-	switch (state) {
-		case ETimerState.Started: return stateHandlers.started ? stateHandlers.started() : undefined
-		case ETimerState.Paused: return stateHandlers.paused ? stateHandlers.paused() : undefined
-		case ETimerState.Stopped: return stateHandlers.stopped ? stateHandlers.stopped() : undefined
-	}
-}
+import IStoppable from '../IStoppable';
+import IStartable from '../IStartable';
+import handleByState from './handleByState';
+import {ETimerState, TTimerAction} from './timerTypes';
 
 /**
  * Простая реализация таймера.
