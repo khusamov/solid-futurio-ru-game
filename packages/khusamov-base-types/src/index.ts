@@ -2,11 +2,11 @@ export {default as IPoint} from './types/IPoint'
 export {default as ISize} from './types/ISize'
 export {default as IEventEmitter} from './types/IEventEmitter'
 export {default as IRegistrator} from './types/IRegistrator'
-export {default as ICommand} from './types/ICommand'
-export {default as IInjectableCommand} from './types/IInjectableCommand'
 export {default as IStartable} from './types/IStartable'
 export {default as IStoppable} from './types/IStoppable'
 export {default as IKeyValueObject} from './types/IKeyValueObject'
+
+export {default as ICommand, IInjectableCommand} from './types/ICommand'
 
 export {default as Timer} from './types/Timer'
 export {default as Lazy} from './types/Lazy'

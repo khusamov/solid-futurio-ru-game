@@ -1,5 +1,11 @@
-import {IQueue} from './Queue';
+import {IQueue} from '../Queue';
 
+/**
+ * Общий интерфейс команд.
+ *
+ * У каждой команды могут быть определены дополнительные методы,
+ * которые могут менять состояние команды (например inject()).
+ */
 export default interface ICommand {
 	/**
 	 * Выполнить команду.
@@ -8,6 +14,7 @@ export default interface ICommand {
 
 	/**
 	 * Ссылка на очередь команд.
+	 * Определяется непосредственно перед помещением команды в очередь команд.
 	 */
 	commandQueue?: IQueue<ICommand>
 
