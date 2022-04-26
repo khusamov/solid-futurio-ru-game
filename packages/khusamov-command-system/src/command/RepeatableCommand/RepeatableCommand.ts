@@ -19,7 +19,7 @@ export default class RepeatableCommand extends BridgeCommand implements IStoppab
 		this.inject(
 			new MacroCommand([
 				targetCommand,
-				new RepeatCommand(this, false)
+				new RepeatCommand(this)
 			])
 		)
 	}
