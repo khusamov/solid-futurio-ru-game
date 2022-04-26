@@ -14,20 +14,22 @@ function createRenderTimer(timeout: number, game: Game, setGameWrap: Dispatch<Se
 	)
 }
 
-export interface IGameParams {
+export interface IUseGameParams {
 	renderTimeout: number
-	gameTimeout: number
+	game: Game
 }
 
-export default function useGame({renderTimeout, gameTimeout}: IGameParams) {
-	const [gameWrap, setGameWrap] = useState<IGameWrap>({game: undefined})
-
+export default function useGame({renderTimeout, game}: IUseGameParams) {
+	const [_, setGameWrap] = useState<IGameWrap>({game: undefined})
 	useEffect(() => {
-		const game = new Game({timeout: gameTimeout})
 		const renderTimer = createRenderTimer(renderTimeout, game, setGameWrap)
 		game.start()
 		renderTimer.start()
+		return () => {
+			// TODO Подумать как поменять на stop(), потому что здесь нужно уничтожать таймер, а не ставить на паузу.
+			//  Возможно стоит сделать GameState для возможности восстановления игры при помощи new Game(savedGameState).
+			game.pause()
+			renderTimer.pause()
+		}
 	}, [])
-
-	return [gameWrap.game]
 }
