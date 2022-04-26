@@ -1,4 +1,4 @@
-export {IMovable, MoveCommand} from './command/MoveCommand'
+export {IMovable, MoveCommand, MoveCorrectionCommand} from './command/MoveCommand'
 export {ITransformForceAgentMessage, TransformForceCommand, transformForceResolver} from './command/MoveCommand'
 
 /**
