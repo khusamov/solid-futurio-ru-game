@@ -1,7 +1,7 @@
 import {ICommand, IEventEmitter, IQueue} from 'khusamov-base-types';
 
 export default interface ICommandQueuePlugin {
-	init?(commandQueue: IQueue<ICommand> & IEventEmitter): void
+	init?(commandQueue: IQueue<ICommand>): void
 	processingBeforeEnqueue?(command: ICommand): ICommand
 }
 
