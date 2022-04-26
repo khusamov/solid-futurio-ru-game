@@ -4,6 +4,11 @@ export type TAction = () => void
 
 /**
  * Команда с пользовательской функцией.
+ *
+ * Так как данная команда может выполнять разные действия, в зависимости
+ * от пользовательской функции, то есть возможность изменять имя команды
+ * при помощи первого аргумента конструктора.
+ *
  * @link https://metanit.com/sharp/wpf/22.3.php
  * @link https://docs.microsoft.com/en-us/windows/communitytoolkit/mvvm/relaycommand
  */
