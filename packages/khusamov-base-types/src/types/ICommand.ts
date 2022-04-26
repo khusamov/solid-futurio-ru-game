@@ -16,4 +16,6 @@ export default interface ICommand {
 	 * Используется в отладочных целях.
 	 */
 	readonly name: string
+
+	// TODO Может стоить добавить description? Чтобы name содержало идентификатор, а все пояснения были в description.
 }
