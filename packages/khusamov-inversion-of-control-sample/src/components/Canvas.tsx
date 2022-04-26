@@ -1,5 +1,5 @@
 import {LegacyRef, SVGProps, Fragment} from 'react';
-import {ISize, Vector} from 'khusamov-base-types';
+import {Angle, ISize, Vector} from 'khusamov-base-types';
 import styles from './Canvas.module.scss'
 import useResizeObserver from 'use-resize-observer';
 
@@ -14,6 +14,7 @@ const props: SVGProps<SVGSVGElement> = {
 
 export interface ICanvasProps {
 	theSpaceshipPosition: Vector
+	theSpaceshipAppliedForce: Vector
 	refWrap?: LegacyRef<HTMLDivElement>
 }
 
@@ -46,13 +47,18 @@ function CircleClones({position: {x, y}, size: {width, height}, radius}: ICircle
 /**
  * Пока просто выводим кружочек, обозначающий местоположение корабля.
  */
-export default function Canvas({refWrap, theSpaceshipPosition: {x, y}}: ICanvasProps) {
+export default function Canvas({refWrap, theSpaceshipPosition: {x, y}, theSpaceshipAppliedForce}: ICanvasProps) {
 	const {ref, width = 0, height = 0} = useResizeObserver()
-	const radius = 50
+	const radius = 10
 	return (
 		<div ref={refWrap} className={styles.Wrap}>
 			<div ref={ref} className={styles.Wrap}>
 				<svg {...props}>
+					<line
+						x1={0} y1={0}
+						x2={theSpaceshipAppliedForce.length} y2={0}
+						transform={`translate(${x} ${y}), rotate(${Angle.toDegree(theSpaceshipAppliedForce.angle)})`}
+					/>
 					<circle cx={x} cy={y} r={radius}/>
 					<CircleClones radius={radius} size={{width, height}} position={new Vector(x, y)}/>
 				</svg>

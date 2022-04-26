@@ -65,7 +65,11 @@ export default function Application() {
 					</tr>
 				))}
 			</table>
-			<Canvas refWrap={ref} theSpaceshipPosition={theSpaceship.position}/>
+			<Canvas
+				refWrap={ref}
+				theSpaceshipAppliedForce={theSpaceship.appliedForce}
+				theSpaceshipPosition={theSpaceship.position}
+			/>
 		</div>
 	)
 }
