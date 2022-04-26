@@ -16,7 +16,8 @@ export {default as KeyUpDownProcessor} from './types/KeyUpDownProcessor'
 
 export {
 	default as Queue,
-	IQueue
+	IQueue,
+	QueueWithEventEmitter
 } from './types/Queue'
 
 export {
