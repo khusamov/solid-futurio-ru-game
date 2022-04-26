@@ -8,22 +8,22 @@ import {ICommand, IQueue} from 'khusamov-base-types';
 export default class MacroCommand implements ICommand {
 	#commandQueue?: IQueue<ICommand>
 
-	get commandQueue() {
+	public get commandQueue() {
 		return this.#commandQueue
 	}
 
-	set commandQueue(commandQueue) {
+	public set commandQueue(commandQueue) {
 		this.#commandQueue = commandQueue
 		for (const command of this.commands) {
 			command.commandQueue = this.commandQueue
 		}
 	}
 
-	get name(): string {
+	public get name(): string {
 		return 'MacroCommand: ' + (this.commands.map(command => command.name).join(', ') || '<empty>')
 	}
 
-	constructor(
+	public constructor(
 		private commands: ICommand[]
 	) {}
 

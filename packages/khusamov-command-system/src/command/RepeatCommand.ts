@@ -8,18 +8,18 @@ import {IQueue, ICommand} from 'khusamov-base-types';
 export default class RepeatCommand implements ICommand {
 	#commandQueue?: IQueue<ICommand>
 
-	get commandQueue() {
+	public get commandQueue() {
 		return this.#commandQueue
 	}
 
-	set commandQueue(commandQueue) {
+	public set commandQueue(commandQueue) {
 		this.#commandQueue = commandQueue
 		if (this.recursion) {
 			this.targetCommand.commandQueue = commandQueue
 		}
 	}
 
-	get name(): string {
+	public get name(): string {
 		return 'RepeatCommand: ' + this.targetCommand.name
 	}
 
@@ -28,7 +28,7 @@ export default class RepeatCommand implements ICommand {
 	 * @param targetCommand
 	 * @param recursion Если true, то очередь команд будет устанавливаться и у зависимой команды targetCommand.
 	 */
-	constructor(
+	public constructor(
 		private targetCommand: ICommand,
 		private recursion: boolean = true
 	) {}

@@ -21,13 +21,13 @@ export default class RelayCommand implements ICommand {
 	 * @param nameOrAction Имя команды или пользовательская функция.
 	 * @param action Пользовательская функция.
 	 */
-	constructor(nameOrAction: string | TAction, action?: TAction) {
+	public constructor(nameOrAction: string | TAction, action?: TAction) {
 		const [_name, _action] = parseConstructorArguments(nameOrAction, action)
 		this.#name = _name
 		this.action = _action
 	}
 
-	execute(): void {
+	public execute(): void {
 		this.action()
 	}
 }
