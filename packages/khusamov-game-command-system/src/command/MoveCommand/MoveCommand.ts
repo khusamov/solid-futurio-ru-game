@@ -11,18 +11,16 @@ export default class MoveCommand implements ICommand {
 	/**
 	 * Конструктор команды поступательного движения.
 	 * @param movable Движущийся объект.
-	 * @param modVector Ограничительный вектор (размер мира), чтобы создать замкнутое пространство-бублик.
 	 */
 	constructor(
-		private movable: IMovable,
-		private modVector: Vector = new Vector(Infinity, Infinity)
+		private movable: IMovable
 	) {}
 
 	public execute(): void {
 		const {mass, position, linearAcceleration, linearVelocity, appliedForce} = this.movable
 		this.movable.linearAcceleration = appliedForce.scale(1 / mass)
 		this.movable.linearVelocity = linearVelocity.translate(linearAcceleration.scale(this.timeInterval))
-		this.movable.position = position.translate(linearVelocity).mod(this.modVector)
+		this.movable.position = position.translate(linearVelocity)
 	}
 
 	private get timeInterval(): number {
