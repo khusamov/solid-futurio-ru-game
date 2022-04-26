@@ -14,10 +14,10 @@ interface IParam {
 	unit: string
 }
 
-const game = new Game({timeout: 10})
+const game = new Game({timeout: 1})
 
 export default function Application() {
-	useGame({renderTimeout: 10, game})
+	useGame({renderTimeout: 1, game})
 
 	const theSpaceshipObject = findGameObjectByName(game.gameObjectList, 'theSpaceship')
 	const theSpaceship = theSpaceshipObject ? resolve<IMovable>('Adapter', theSpaceshipObject, IMovableReflectedTypeRef) : undefined
