@@ -23,6 +23,8 @@ export default class StartCommand implements ICommand {
 	 * @param args
 	 */
 	constructor(
+		// TODO Изменить порядок аргументов на targetObject targetCommandName targetCommand
+		//  targetCommand обязательно поселдней сделать
 		private targetCommand: ICommand,
 		private targetCommandName: string,
 		private targetObject: IUniversalObject,
