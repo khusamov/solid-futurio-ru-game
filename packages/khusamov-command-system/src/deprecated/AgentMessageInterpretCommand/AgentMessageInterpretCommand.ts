@@ -2,7 +2,6 @@ import {reflect} from 'typescript-rtti';
 import {ICommand, IQueue, IUniversalObject} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import IAgentMessage from './IAgentMessage';
-import {repeatable} from '../RepeatableCommand';
 
 type TAgentMessageQueue = IQueue<IUniversalObject>
 
@@ -21,7 +20,6 @@ function convertAgentMessage(agentMessageObject: IUniversalObject): ICommand {
  * Сообщение от клиента превращается в команду, которая затем размещается в очереди команд.
  * https://stepik.org/lesson/664251/step/1?unit=662137
  */
-@repeatable
 export default class AgentMessageInterpretCommand implements ICommand {
 	public readonly name = 'AgentMessageInterpretCommand'
 	commandQueue?: IQueue<ICommand>
