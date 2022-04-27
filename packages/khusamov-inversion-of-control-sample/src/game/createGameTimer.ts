@@ -1,5 +1,4 @@
-import {CommandQueue} from 'khusamov-command-system';
-import {Timer} from 'khusamov-base-types';
+import {ICommand, IQueue, Timer} from 'khusamov-base-types';
 
 /**
  * Создать игровой таймер.
@@ -7,7 +6,7 @@ import {Timer} from 'khusamov-base-types';
  * @param timeout
  * @param commandQueue
  */
-export default function createGameTimer(timeout: number, commandQueue: CommandQueue): Timer {
+export default function createGameTimer(timeout: number, commandQueue: IQueue<ICommand>): Timer {
 	return new Timer(
 		timeout,
 		() => commandQueue.dequeue()?.execute()

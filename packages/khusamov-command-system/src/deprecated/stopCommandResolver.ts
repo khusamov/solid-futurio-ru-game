@@ -2,7 +2,8 @@ import {reflect} from 'typescript-rtti';
 import {ICommand, IUniversalObject} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import IStopAgentMessage from './IStopAgentMessage';
-import StopCommand from './StopCommand';
+import StopCommand from '../command/StopCommand';
+
 
 export default function stopCommandResolver(agentMessageObject: IUniversalObject): ICommand {
 	const {commandName, targetObject: targetObjectData} = (

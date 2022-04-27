@@ -2,25 +2,35 @@ import {ICommand, IUniversalObject} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import {reflect} from 'typescript-rtti';
 import IMovable from './IMovable';
-import {StartCommand} from 'khusamov-command-system';
+import {RepeatableCommand, StartCommand} from 'khusamov-command-system';
 import TransformForceCommand from './TransformForceCommand';
-import ITransformForceAgentMessage from './ITransformForceAgentMessage';
+import ITransformForceOrder from './ITransformForceOrder';
 
 export default function transformForceResolver(agentMessageObject: IUniversalObject): ICommand {
-	const {targetObject: targetObjectData, translate, rotate, scale, length, commandName} = (
-		resolve<ITransformForceAgentMessage>(
+	const transformForceOrder = (
+		resolve<ITransformForceOrder>(
 			'Adapter',
 			agentMessageObject,
-			reflect<ITransformForceAgentMessage>()
+			reflect<ITransformForceOrder>()
 		)
 	)
 
+	const {targetObject: targetObjectData, translate, rotate, scale, length, commandName} = transformForceOrder
+
 	const targetObject = getTargetObject(targetObjectData)
 
-	const movable = resolve<IMovable>('Adapter', targetObject, reflect<IMovable>())
-	const transformForceCommand = new TransformForceCommand(movable, translate, rotate, scale, length)
-
-	return new StartCommand(transformForceCommand, commandName, targetObject)
+	return new StartCommand(
+		commandName,
+		targetObject,
+		new RepeatableCommand(
+			new TransformForceCommand(
+				resolve<IMovable>('Adapter', targetObject, reflect<IMovable>()),
+				translate,
+				rotate,
+				scale,
+				length)
+		)
+	)
 }
 
 function getTargetObject({type, name}: {type: string, name?: string}): IUniversalObject {

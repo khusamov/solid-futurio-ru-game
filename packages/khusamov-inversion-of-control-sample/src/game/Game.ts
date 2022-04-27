@@ -1,6 +1,6 @@
 import init from './init';
-import {ISize, IUniversalObject, KeyUpDownProcessor, Queue, Timer, Vector} from 'khusamov-base-types';
-import {AgentMessageInterpretCommand, CommandQueue, StartCommand} from 'khusamov-command-system';
+import {ICommand, IQueue, ISize, IUniversalObject, KeyUpDownProcessor, Timer, Vector} from 'khusamov-base-types';
+import {InterpretOrderCommand, RepeatableCommand, StartCommand} from 'khusamov-command-system';
 import createSpaceshipObject from './createSpaceshipObject';
 import createKeyboardHandlers from './createKeyboardHandlers';
 import {IMovable, IMovableReflectedTypeRef, MoveCommand, MoveCorrectionCommand} from 'khusamov-game-command-system';
@@ -11,17 +11,17 @@ import positionCorrectionForToroid from './positionCorrectionForToroid';
 export default class Game {
 	public gameTimer: Timer
 	public gameObjectList: IUniversalObject[]
-	public commandQueue: CommandQueue
-	public agentMessageQueue: Queue<IUniversalObject>
+	public commandQueue: IQueue<ICommand>
+	public orderQueue: IQueue<IUniversalObject>
 	public keyUpDownProcessor: KeyUpDownProcessor
 	public size: ISize = {width: 0, height: 0}
 
 	public constructor(options: IGameOptions) {
-		const {gameTimer, gameObjectList, commandQueue, agentMessageQueue, keyUpDownProcessor} = init(options)
+		const {gameTimer, gameObjectList, commandQueue, orderQueue, keyUpDownProcessor} = init(options)
 		this.gameTimer = gameTimer
 		this.gameObjectList = gameObjectList
 		this.commandQueue = commandQueue
-		this.agentMessageQueue = agentMessageQueue
+		this.orderQueue = orderQueue
 		this.keyUpDownProcessor = keyUpDownProcessor
 
 		const theSpaceshipObject = createSpaceshipObject({position: new Vector(500, 200)})
@@ -29,8 +29,8 @@ export default class Game {
 		commandQueue.enqueue(createSpaceshipStartMoveCommand(theSpaceshipObject))
 		commandQueue.enqueue(createSpaceshipStartMoveCorrectionCommand(theSpaceshipObject, () => this.size))
 
-		commandQueue.enqueue(new AgentMessageInterpretCommand)
-		createKeyboardHandlers(keyUpDownProcessor, agentMessageQueue)
+		commandQueue.enqueue(new RepeatableCommand(new InterpretOrderCommand))
+		createKeyboardHandlers(keyUpDownProcessor, orderQueue)
 	}
 
 	public start() {
@@ -54,9 +54,9 @@ export default class Game {
 function createSpaceshipStartMoveCommand(theSpaceship: IUniversalObject) {
 	return (
 		new StartCommand(
-			new MoveCommand(resolve<IMovable>('Adapter', theSpaceship, IMovableReflectedTypeRef)),
 			'MoveSpaceshipCommand',
-			theSpaceship
+			theSpaceship,
+			new RepeatableCommand(new MoveCommand(resolve<IMovable>('Adapter', theSpaceship, IMovableReflectedTypeRef)))
 		)
 	)
 }
@@ -69,14 +69,16 @@ function createSpaceshipStartMoveCommand(theSpaceship: IUniversalObject) {
 function createSpaceshipStartMoveCorrectionCommand(theSpaceship: IUniversalObject, getSize: () => ISize) {
 	return (
 		new StartCommand(
-			new MoveCorrectionCommand(
-				resolve<IMovable>('Adapter', theSpaceship, IMovableReflectedTypeRef),
-				movable => {
-					movable.position = positionCorrectionForToroid(movable.position, getSize)
-				}
-			),
 			'MoveCorrectionSpaceshipCommand',
-			theSpaceship
+			theSpaceship,
+			new RepeatableCommand(
+				new MoveCorrectionCommand(
+					resolve<IMovable>('Adapter', theSpaceship, IMovableReflectedTypeRef),
+					movable => {
+						movable.position = positionCorrectionForToroid(movable.position, getSize)
+					}
+				)
+			)
 		)
 	)
 }

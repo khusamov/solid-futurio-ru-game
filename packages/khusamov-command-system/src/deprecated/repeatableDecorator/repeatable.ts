@@ -1,4 +1,8 @@
+import {ICommand} from 'khusamov-base-types';
+
 const repeatableSymbol = Symbol('repeatable')
+
+// TODO Этот декоратор, плагин и плагинируемую очередь надо удалить!
 
 /**
  * Пометка команды, что она является повторяемой.
@@ -20,7 +24,13 @@ const repeatable: ClassDecorator = (
 	}
 )
 
+/**
+ * Проверка, имеет ли конструктор команды пометку 'repeatable' или нет.
+ * @param command
+ */
+const isMarkedAsRepeatable = (command: ICommand) => repeatableSymbol in command.constructor
+
 export {
 	repeatable as default,
-	repeatableSymbol
+	isMarkedAsRepeatable
 }

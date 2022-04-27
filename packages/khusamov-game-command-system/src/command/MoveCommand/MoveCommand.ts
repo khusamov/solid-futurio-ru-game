@@ -1,4 +1,4 @@
-import {ICommand, Vector} from 'khusamov-base-types';
+import {ICommand} from 'khusamov-base-types';
 import IMovable from './IMovable';
 
 /**

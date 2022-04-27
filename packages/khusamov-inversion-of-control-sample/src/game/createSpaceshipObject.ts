@@ -4,7 +4,7 @@ import IGameObject from './IGameObject';
 
 interface ISpaceship extends IGameObject, IMovable {}
 
-const defaultSpaceship: ISpaceship = {
+const SPACESHIP_DEFAULT: ISpaceship = {
 	name: 'theSpaceship',
 	time: 0,
 	mass: 1000,
@@ -15,6 +15,14 @@ const defaultSpaceship: ISpaceship = {
 }
 
 export default function createSpaceshipObject(params: Partial<ISpaceship> = {}): IUniversalObject {
-	return createUniversalObject<ISpaceship>(Object.assign({}, defaultSpaceship, params))
+	return (
+		createUniversalObject<ISpaceship>(
+			Object.assign(
+				{},
+				SPACESHIP_DEFAULT,
+				params
+			)
+		)
+	)
 }
 

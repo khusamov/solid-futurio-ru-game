@@ -1,7 +1,8 @@
 import {ICommand} from 'khusamov-base-types';
-import ICommandQueuePlugin from '../../CommandQueue/ICommandQueuePlugin';
-import RepeatableCommand from './RepeatableCommand';
-import {repeatableSymbol} from './repeatable';
+
+import {isMarkedAsRepeatable} from './repeatable';
+import {ICommandQueuePlugin} from '../CommandQueue';
+import RepeatableCommand from '../../command/RepeatableCommand';
 
 /**
  * Данный плагин перехватывает команды, которые помечены декоратором @repeatable
@@ -9,7 +10,7 @@ import {repeatableSymbol} from './repeatable';
  */
 export default class RepeatablePlugin implements ICommandQueuePlugin {
 	processingBeforeEnqueue(command: ICommand): ICommand {
-		if (repeatableSymbol in command.constructor) {
+		if (isMarkedAsRepeatable(command)) {
 			command = new RepeatableCommand(command)
 		}
 		return command

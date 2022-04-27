@@ -1,11 +1,14 @@
 import {adapterGeneratorResolver, register} from 'khusamov-inversion-of-control';
-import {CommandQueue, RepeatablePlugin, stopCommandResolver} from 'khusamov-command-system';
+import {stopCommandResolver} from 'khusamov-command-system';
 import {transformForceResolver} from 'khusamov-game-command-system';
-import {IUniversalObject, KeyUpDownProcessor, Queue} from 'khusamov-base-types';
+import {ICommand, IQueue, IUniversalObject, KeyUpDownProcessor, Queue} from 'khusamov-base-types';
 import createGameTimer from './createGameTimer';
 import IGameOptions from './IGameOptions';
+import universalObjectResolver from 'khusamov-command-system/dist/UniversalObjectList/universalObjectResolver';
 
-type TAgentMessageQueue = Queue<IUniversalObject>
+type TOrderQueue = IQueue<IUniversalObject>
+type TCommandQueue = IQueue<ICommand>
+type TGameObjectList = IUniversalObject[]
 
 export default function init({timeout}: IGameOptions) {
 	register('Adapter', adapterGeneratorResolver)
@@ -13,27 +16,26 @@ export default function init({timeout}: IGameOptions) {
 	register('TransformForce', transformForceResolver)
 
 	const keyUpDownProcessor = new KeyUpDownProcessor
-	const agentMessageQueue: TAgentMessageQueue = new Queue
-	const gameObjectList: IUniversalObject[] = []
-	const commandQueue = new CommandQueue({plugins: [new RepeatablePlugin]})
+	const orderQueue: TOrderQueue = new Queue
+	const commandQueue: TCommandQueue = new Queue
+	const gameObjectList: TGameObjectList = []
+
 	const gameTimer = createGameTimer(timeout, commandQueue)
 
-	register(
-		'Agent.MessageQueue',
-		(): TAgentMessageQueue => agentMessageQueue
-	)
-
-	register(
-		'GameObject',
-		(name: string): IUniversalObject | undefined =>
-			gameObjectList.find(object => object.getValue('name') === name)
-	)
+	register('OrderQueue', (): TOrderQueue => orderQueue)
+	register('GameObjectList', (): TGameObjectList => gameObjectList)
+	register('GameObject', universalObjectResolver)
+	// register(
+	// 	'GameObject',
+	// 	(name: string): IUniversalObject | undefined =>
+	// 		gameObjectList.find(object => object.getValue('name') === name)
+	// )
 
 	return {
 		keyUpDownProcessor,
-		agentMessageQueue,
-		gameObjectList,
+		orderQueue,
 		commandQueue,
+		gameObjectList,
 		gameTimer
 	}
 }

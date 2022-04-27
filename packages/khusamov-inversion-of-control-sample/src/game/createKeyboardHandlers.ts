@@ -1,26 +1,26 @@
-import createTransformForceStartMessage from './createTransformForceStartMessage';
+import createTransformForceStartOrder from './createTransformForceStartOrder';
 import createTransformForceStopMessage from './createTransformForceStopMessage';
-import {Angle, IUniversalObject, KeyUpDownProcessor, Queue, Vector} from 'khusamov-base-types';
+import {Angle, IQueue, IUniversalObject, KeyUpDownProcessor, Vector} from 'khusamov-base-types';
 
 const nullVector = new Vector
 const rotateIncrement = Angle.toRadian(1)
 const lengthIncrement = 10
 
-export default function createKeyboardHandlers(keyUpDownProcessor: KeyUpDownProcessor, agentMessageQueue: Queue<IUniversalObject>) {
+export default function createKeyboardHandlers(keyUpDownProcessor: KeyUpDownProcessor, orderQueue: IQueue<IUniversalObject>) {
 	document.onkeydown = event => {
 		keyUpDownProcessor.onKeyDown(event, () => {
 			switch (event.code) {
 				case 'KeyW':
-					agentMessageQueue.enqueue(createTransformForceStartMessage('IncreaseForce', nullVector, 0, 1, lengthIncrement))
+					orderQueue.enqueue(createTransformForceStartOrder('IncreaseForce', nullVector, 0, 1, lengthIncrement))
 					break
 				case 'KeyS':
-					agentMessageQueue.enqueue(createTransformForceStartMessage('DecreaseForce', nullVector, 0, 1, -lengthIncrement))
+					orderQueue.enqueue(createTransformForceStartOrder('DecreaseForce', nullVector, 0, 1, -lengthIncrement))
 					break
 				case 'KeyA':
-					agentMessageQueue.enqueue(createTransformForceStartMessage('СlockwiseRotateForce', new Vector(0, 0), rotateIncrement))
+					orderQueue.enqueue(createTransformForceStartOrder('СlockwiseRotateForce', new Vector(0, 0), rotateIncrement))
 					break
 				case 'KeyD':
-					agentMessageQueue.enqueue(createTransformForceStartMessage('СounterclockwiseRotateForce', new Vector(0, 0), -rotateIncrement))
+					orderQueue.enqueue(createTransformForceStartOrder('СounterclockwiseRotateForce', new Vector(0, 0), -rotateIncrement))
 					break
 			}
 		})
@@ -30,16 +30,16 @@ export default function createKeyboardHandlers(keyUpDownProcessor: KeyUpDownProc
 		keyUpDownProcessor.onKeyUp(event, () => {
 			switch (event.code) {
 				case 'KeyW':
-					agentMessageQueue.enqueue(createTransformForceStopMessage('IncreaseForce'))
+					orderQueue.enqueue(createTransformForceStopMessage('IncreaseForce'))
 					break
 				case 'KeyS':
-					agentMessageQueue.enqueue(createTransformForceStopMessage('DecreaseForce'))
+					orderQueue.enqueue(createTransformForceStopMessage('DecreaseForce'))
 					break
 				case 'KeyA':
-					agentMessageQueue.enqueue(createTransformForceStopMessage('СlockwiseRotateForce'))
+					orderQueue.enqueue(createTransformForceStopMessage('СlockwiseRotateForce'))
 					break
 				case 'KeyD':
-					agentMessageQueue.enqueue(createTransformForceStopMessage('СounterclockwiseRotateForce'))
+					orderQueue.enqueue(createTransformForceStopMessage('СounterclockwiseRotateForce'))
 					break
 			}
 		})

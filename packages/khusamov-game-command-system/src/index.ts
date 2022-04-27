@@ -1,5 +1,5 @@
 export {IMovable, MoveCommand, MoveCorrectionCommand} from './command/MoveCommand'
-export {ITransformForceAgentMessage, TransformForceCommand, transformForceResolver} from './command/MoveCommand'
+export {ITransformForceOrder, TransformForceCommand, transformForceResolver} from './command/MoveCommand'
 
 /**
  * На данный момент вызывать reflect() на типах из внешних пакетов нельзя.

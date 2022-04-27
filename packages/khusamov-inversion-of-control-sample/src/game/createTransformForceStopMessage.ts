@@ -1,12 +1,12 @@
 import {createUniversalObject} from 'khusamov-base-types';
-import {IStopAgentMessage} from 'khusamov-command-system';
+import {IStopOrder} from 'khusamov-command-system';
 
-export default function createTransformForceStopMessage(commandName: string) {
+export default function createTransformForceStopMessage(stoppableCommandName: string) {
 	return (
-		createUniversalObject<IStopAgentMessage>({
+		createUniversalObject<IStopOrder>({
 			type: 'StopCommand',
-			commandName,
-			targetObject: {
+			stoppableCommandName,
+			targetObjectSearchData: {
 				type: 'GameObject',
 				name: 'theSpaceship'
 			}

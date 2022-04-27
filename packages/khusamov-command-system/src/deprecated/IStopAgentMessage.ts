@@ -1,5 +1,6 @@
-import IAgentMessage from '../AgentMessageInterpretCommand/IAgentMessage';
+
 import ITargetObject from './ITargetObject';
+import {IAgentMessage} from './AgentMessageInterpretCommand';
 
 /**
  * @adaptable

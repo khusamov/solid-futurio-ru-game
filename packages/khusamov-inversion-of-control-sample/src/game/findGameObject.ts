@@ -4,6 +4,8 @@ import IGameObject from './IGameObject';
 type TGameObjectList = IUniversalObject[]
 type TParams = Partial<IGameObject>
 
+// TODO Функцию findGameObject следует удалить. Она реализована в khusamov-base-types.
+
 export default function findGameObject(gameObjectList: TGameObjectList, params: TParams): IUniversalObject | undefined {
 	return (
 		gameObjectList.find(
