@@ -8,6 +8,7 @@
 		"lerna": "^4.0.0"
 	},
 	"scripts": {
+		"start": "yarn inversion-of-control-sample:build:watch",
 		"generate": "generate",
 		"adapter-generator:build": "yarn workspaces foreach --include 'khusamov-adapter-generator' run build",
 		"adapter-generator:build:watch": "yarn workspaces foreach --include 'khusamov-adapter-generator' run build:watch",
