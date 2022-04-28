@@ -4305,6 +4305,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"khusamov-universal-object@workspace:packages/khusamov-universal-object":
+  version: 0.0.0-use.local
+  resolution: "khusamov-universal-object@workspace:packages/khusamov-universal-object"
+  dependencies:
+    khusamov-base-types: "workspace:*"
+    reflect-metadata: ^0.1.13
+    rollup: ^2.70.1
+    ttypescript: ^1.5.13
+    typescript: ^4.6.3
+    typescript-rtti: ^0.6.0
+  languageName: unknown
+  linkType: soft
+
 "kind-of@npm:^6.0.2, kind-of@npm:^6.0.3":
   version: 6.0.3
   resolution: "kind-of@npm:6.0.3"
