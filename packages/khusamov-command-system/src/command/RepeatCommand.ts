@@ -37,6 +37,10 @@ export default class RepeatCommand implements ICommand {
 	) {}
 
 	public execute(): void {
-		this.commandQueue?.enqueue(this.targetCommand)
+		if (!this.commandQueue) {
+			throw new Error(`RepeatCommand: Не найдена очередь команд для добавления в нее команды '${this.targetCommand.name}'`)
+		}
+
+		this.commandQueue.enqueue(this.targetCommand)
 	}
 }
