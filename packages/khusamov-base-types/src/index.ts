@@ -24,10 +24,3 @@ export {
 	IQueue,
 	QueueWithEventEmitter
 } from './types/Queue'
-
-export {
-	default as UniversalObject,
-	IUniversalObject,
-	createUniversalObject,
-	fillUniversalObject
-} from './types/UniversalObject'

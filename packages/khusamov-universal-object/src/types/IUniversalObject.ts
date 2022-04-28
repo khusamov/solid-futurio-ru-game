@@ -1,4 +1,4 @@
-import IKeyValueObject from '../IKeyValueObject';
+import {IKeyValueObject} from 'khusamov-base-types';
 
 export type TUniversalValueName = string
 export type TUniversalItems = IKeyValueObject<TUniversalValueName, any | undefined>

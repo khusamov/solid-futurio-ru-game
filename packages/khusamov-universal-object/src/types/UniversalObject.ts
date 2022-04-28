@@ -1,4 +1,4 @@
-import Convert from '../Convert';
+import {Convert} from 'khusamov-base-types';
 import IUniversalObject, {TUniversalValueName} from './IUniversalObject';
 
 type TValueName = TUniversalValueName

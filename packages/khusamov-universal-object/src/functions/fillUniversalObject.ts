@@ -1,11 +1,11 @@
-import IUniversalObject from './IUniversalObject';
+import IUniversalObject from '../types/IUniversalObject';
 
 /**
  * Заполнить универсальный объект значениями свойств plane-объекта.
  * @param universalObject
  * @param object
  */
-export default function fillUniversalObject<T extends object>(universalObject: IUniversalObject, object: T): IUniversalObject {
+export default function fillUniversalObject<T extends object, U extends IUniversalObject>(universalObject: U, object: T): U {
 	const result = universalObject
 	for (const key in object) {
 		if (object.hasOwnProperty(key)) {

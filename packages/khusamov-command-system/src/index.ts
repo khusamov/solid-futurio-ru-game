@@ -13,7 +13,4 @@ export {default as IStopOrder} from './order/IStopOrder'
 export {default as IStartOrder} from './order/IStartOrder'
 export {default as stopCommandResolver} from './order/stopCommandResolver'
 
-export {default as universalObjectResolver} from './UniversalObjectList/universalObjectResolver'
-export {default as findUniversalObject} from './UniversalObjectList/findUniversalObject'
-
 export {default as createCommandQueue} from './functions/createCommandQueue'

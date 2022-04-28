@@ -1,6 +1,9 @@
 import {ITyped, IUniversalObject} from 'khusamov-base-types';
-import findUniversalObject from './findUniversalObject';
 import {resolve} from 'khusamov-inversion-of-control';
+import findUniversalObject from './findUniversalObject';
+import withoutType from './withoutType';
+
+type TUniversalObjectList = IUniversalObject[]
 
 /**
  * Разрешение зависимости вида <Тип объекта>.
@@ -15,10 +18,6 @@ import {resolve} from 'khusamov-inversion-of-control';
  * @param params Параметры искомого объекта. Поле type не участвует в поиске.
  */
 export default function universalObjectResolver<T extends ITyped>(params: T): IUniversalObject | undefined {
-	const universalObjectList = resolve<IUniversalObject[]>(params.type + 'List')
-
-	const paramsWithoutType: Partial<T> = Object.assign({}, params)
-	delete paramsWithoutType.type
-
-	return findUniversalObject(universalObjectList, paramsWithoutType)
+	const universalObjectList = resolve<TUniversalObjectList>(params.type + 'List')
+	return findUniversalObject(universalObjectList, withoutType(params))
 }

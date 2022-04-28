@@ -1,4 +1,4 @@
-import {IUniversalObject} from 'khusamov-base-types';
+import IUniversalObject from '../types/IUniversalObject';
 
 /**
  * Поиск объекта.
