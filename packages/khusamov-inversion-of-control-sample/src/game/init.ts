@@ -11,6 +11,7 @@ export default function init({timeout}: IGameOptions) {
 	register('StopCommand', stopCommandResolver)
 	register('TransformForce', transformForceResolver)
 
+	// TODO Вполне возможно эти переменные надо зарегистрировать в IoC.
 	const keyUpDownProcessor = new KeyUpDownProcessor
 	const orderQueue: TOrderQueue = new Queue
 	const commandQueue: TCommandQueue = createCommandQueue()
