@@ -6,18 +6,10 @@ import {RepeatableCommand, StartCommand} from 'khusamov-command-system';
 import TransformForceCommand from './TransformForceCommand';
 import ITransformForceOrder from './ITransformForceOrder';
 
-export default function transformForceResolver(agentMessageObject: IUniversalObject): ICommand {
-	const transformForceOrder = (
-		resolve<ITransformForceOrder>(
-			'Adapter',
-			agentMessageObject,
-			reflect<ITransformForceOrder>()
-		)
-	)
-
-	const {targetObject: targetObjectData, translate, rotate, scale, length, commandName} = transformForceOrder
-
-	const targetObject = getTargetObject(targetObjectData)
+export default function transformForceResolver(orderObject: IUniversalObject): ICommand {
+	const transformForceOrder = resolve<ITransformForceOrder>('Adapter', orderObject, reflect<ITransformForceOrder>())
+	const {targetObjectSearchData, translate, rotate, scale, length, commandName} = transformForceOrder
+	const targetObject = resolve<IUniversalObject>(targetObjectSearchData.type, targetObjectSearchData)
 
 	return new StartCommand(
 		commandName,
@@ -28,14 +20,8 @@ export default function transformForceResolver(agentMessageObject: IUniversalObj
 				translate,
 				rotate,
 				scale,
-				length)
+				length
+			)
 		)
 	)
-}
-
-function getTargetObject({type, name}: {type: string, name?: string}): IUniversalObject {
-	if (!name) throw new Error(`Ожидается имя запрашиваемого объекта`)
-	const targetObject = resolve<IUniversalObject | undefined>(type, name)
-	if (!targetObject) throw new Error(`Для TransformForce не найден объект '${name}' типа '${type}'`)
-	return targetObject
 }

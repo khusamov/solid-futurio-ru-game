@@ -6,7 +6,7 @@ export default function createTransformForceStartOrder(commandName: string, tran
 		createUniversalObject<ITransformForceOrder>({
 			type: 'TransformForce',
 			commandName,
-			targetObject: {
+			targetObjectSearchData: {
 				type: 'GameObject',
 				name: 'theSpaceship'
 			},

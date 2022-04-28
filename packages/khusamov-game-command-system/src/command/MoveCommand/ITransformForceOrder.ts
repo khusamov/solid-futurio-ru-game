@@ -1,6 +1,5 @@
-import {Vector} from 'khusamov-base-types';
+import {ITyped, Vector} from 'khusamov-base-types';
 import {IOrder} from 'khusamov-command-system';
-import ITargetObject from './ITargetObject';
 
 /**
  * @adaptable
@@ -8,7 +7,7 @@ import ITargetObject from './ITargetObject';
 export default interface ITransformForceOrder extends IOrder {
 	type: 'TransformForce'
 	commandName: string
-	targetObject: ITargetObject
+	targetObjectSearchData: ITyped & Record<string, any>
 	translate: Vector
 	rotate: number
 	scale: number
