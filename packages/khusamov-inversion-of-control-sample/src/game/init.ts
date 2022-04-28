@@ -1,5 +1,5 @@
 import {adapterGeneratorResolver, register} from 'khusamov-inversion-of-control';
-import {stopCommandResolver, universalObjectResolver} from 'khusamov-command-system';
+import {createCommandQueue, stopCommandResolver, universalObjectResolver} from 'khusamov-command-system';
 import {transformForceResolver} from 'khusamov-game-command-system';
 import {KeyUpDownProcessor, Queue} from 'khusamov-base-types';
 import createGameTimer from './createGameTimer';
@@ -13,7 +13,7 @@ export default function init({timeout}: IGameOptions) {
 
 	const keyUpDownProcessor = new KeyUpDownProcessor
 	const orderQueue: TOrderQueue = new Queue
-	const commandQueue: TCommandQueue = new Queue
+	const commandQueue: TCommandQueue = createCommandQueue()
 	const gameObjectList: TGameObjectList = []
 
 	const gameTimer = createGameTimer(timeout, commandQueue)
