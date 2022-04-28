@@ -1,10 +1,9 @@
 import {adapterGeneratorResolver, register} from 'khusamov-inversion-of-control';
-import {stopCommandResolver} from 'khusamov-command-system';
+import {stopCommandResolver, universalObjectResolver} from 'khusamov-command-system';
 import {transformForceResolver} from 'khusamov-game-command-system';
 import {ICommand, IQueue, IUniversalObject, KeyUpDownProcessor, Queue} from 'khusamov-base-types';
 import createGameTimer from './createGameTimer';
 import IGameOptions from './IGameOptions';
-import universalObjectResolver from 'khusamov-command-system/dist/UniversalObjectList/universalObjectResolver';
 
 type TOrderQueue = IQueue<IUniversalObject>
 type TCommandQueue = IQueue<ICommand>
