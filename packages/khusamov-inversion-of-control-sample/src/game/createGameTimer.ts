@@ -3,6 +3,8 @@ import {TCommandQueue} from './types';
 
 const DEBUG_DEFAULT = false
 
+// TODO Заменить createGameTimer() на GameLoop.
+
 /**
  * Создать игровой таймер.
  * Это бесконечный цикл по извлечению и выполнению команд из очереди команд.
