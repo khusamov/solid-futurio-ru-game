@@ -18,6 +18,7 @@ export {default as Vector} from './types/Vector'
 export {default as Angle} from './types/Angle'
 export {default as Convert} from './types/Convert'
 export {default as KeyUpDownProcessor} from './types/KeyUpDownProcessor'
+export {default as GameLoop} from './types/GameLoop'
 
 export {
 	default as Queue,
