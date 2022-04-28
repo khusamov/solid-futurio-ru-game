@@ -1,5 +1,5 @@
 export default interface IQueue<T> {
-	enqueue(item: T): void
+	enqueue(...items: T[]): void
 	dequeue(): T | undefined
 	readonly items: Readonly<Array<T>>
 }
