@@ -15,3 +15,5 @@ export {default as stopCommandResolver} from './order/stopCommandResolver'
 
 export {default as universalObjectResolver} from './UniversalObjectList/universalObjectResolver'
 export {default as findUniversalObject} from './UniversalObjectList/findUniversalObject'
+
+export {default as createCommandQueue} from './functions/createCommandQueue'
