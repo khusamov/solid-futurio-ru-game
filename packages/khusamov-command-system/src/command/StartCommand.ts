@@ -28,13 +28,15 @@ export default class StartCommand implements ICommand {
 
 	public execute(): void {
 		if (this.stoppableCommandMap.has(this.stoppableCommandName)) {
-			throw new Error(`Попытка запустить повторно команду '${this.stoppableCommandFullName}'`)
+			throw new Error(`StartCommand: Попытка запустить повторно команду '${this.stoppableCommandFullName}'`)
 		}
-		if (this.commandQueue) {
-			this.commandQueue.enqueue(this.stoppableCommand)
-			// Сохранение ссылки на команду, чтобы была возможность ее остановить по ссылке.
-			this.stoppableCommandMap.set(this.stoppableCommandName, this.stoppableCommand)
+		if (!this.commandQueue) {
+			throw new Error(`StartCommand: Не найдена очередь команд для добавления в нее команды '${this.stoppableCommandFullName}'`)
 		}
+
+		this.commandQueue.enqueue(this.stoppableCommand)
+		// Сохранение ссылки на команду, чтобы была возможность ее остановить по ссылке.
+		this.stoppableCommandMap.set(this.stoppableCommandName, this.stoppableCommand)
 	}
 
 	private get stoppableCommandMap() {
