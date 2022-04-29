@@ -1,12 +1,12 @@
-import Canvas from '../Canvas';
+import useResizeObserver from 'use-resize-observer';
 import {Angle} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import {IMovable, IMovableReflectedTypeRef} from 'khusamov-game-command-system';
 import {findGameObjectByName} from '../../game/findGameObject';
 import useGame from '../../game/useGame';
-import styles from './Application.module.scss'
 import Game from '../../game/Game';
-import useResizeObserver from 'use-resize-observer';
+import Canvas from '../Canvas';
+import styles from './Application.module.scss'
 
 interface IParam {
 	title: string
@@ -65,11 +65,7 @@ export default function Application() {
 					</tr>
 				))}
 			</table>
-			<Canvas
-				refWrap={ref}
-				theSpaceshipAppliedForce={theSpaceship.appliedForce}
-				theSpaceshipPosition={theSpaceship.position}
-			/>
+			<Canvas refWrap={ref} theSpaceship={theSpaceship}/>
 		</div>
 	)
 }
