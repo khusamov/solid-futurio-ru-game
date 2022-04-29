@@ -1,6 +1,7 @@
+import {Angle, IQueue, KeyUpDownProcessor, Vector} from 'khusamov-base-types';
+import {IUniversalObject} from 'khusamov-universal-object';
 import createTransformForceStartOrder from './createTransformForceStartOrder';
 import createTransformForceStopMessage from './createTransformForceStopMessage';
-import {Angle, IQueue, IUniversalObject, KeyUpDownProcessor, Vector} from 'khusamov-base-types';
 
 const nullVector = new Vector
 const rotateIncrement = Angle.toRadian(1)

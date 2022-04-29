@@ -1,4 +1,5 @@
-import {ICommand, IUniversalObject} from 'khusamov-base-types';
+import {ICommand} from 'khusamov-base-types';
+import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {reflect} from 'typescript-rtti';
 import IMovable from './IMovable';

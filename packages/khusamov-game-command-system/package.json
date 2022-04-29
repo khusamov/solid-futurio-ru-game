@@ -19,6 +19,7 @@
 		"khusamov-base-types": "workspaces:*",
 		"khusamov-command-system": "workspaces:*",
 		"khusamov-inversion-of-control": "workspace:*",
+		"khusamov-universal-object": "workspace:*",
 		"reflect-metadata": "^0.1.13",
 		"typescript-rtti": "^0.6.0"
 	},

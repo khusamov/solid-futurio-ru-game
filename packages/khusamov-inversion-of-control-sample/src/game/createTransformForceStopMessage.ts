@@ -1,4 +1,4 @@
-import {createUniversalObject} from 'khusamov-base-types';
+import {createUniversalObject} from 'khusamov-universal-object';
 import {IStopOrder} from 'khusamov-command-system';
 
 export default function createTransformForceStopMessage(stoppableCommandName: string) {

@@ -21,6 +21,7 @@
     "khusamov-command-system": "workspace:*",
     "khusamov-game-command-system": "workspace:*",
     "khusamov-inversion-of-control": "workspace:*",
+    "khusamov-universal-object": "workspace:*",
     "node-sass": "^7.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

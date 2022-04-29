@@ -1,4 +1,5 @@
-import {createUniversalObject, IUniversalObject, Vector} from 'khusamov-base-types';
+import {Vector} from 'khusamov-base-types';
+import {createUniversalObject, IUniversalObject} from 'khusamov-universal-object';
 import {IMovable} from 'khusamov-game-command-system';
 import IGameObject from './IGameObject';
 

@@ -1,5 +1,6 @@
 import {reflect} from 'typescript-rtti';
-import {ITyped, IUniversalObject, toOneLine} from 'khusamov-base-types';
+import {ITyped, toOneLine} from 'khusamov-base-types';
+import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import StopCommand from '../command/StopCommand';
 import IStopOrder from './IStopOrder';

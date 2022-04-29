@@ -1,5 +1,6 @@
 import {reflect} from 'typescript-rtti';
-import {ICommand, IQueue, IUniversalObject} from 'khusamov-base-types';
+import {ICommand, IQueue} from 'khusamov-base-types';
+import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import IAgentMessage from './IAgentMessage';
 

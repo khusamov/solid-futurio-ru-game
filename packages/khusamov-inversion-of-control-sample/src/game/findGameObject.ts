@@ -1,4 +1,4 @@
-import {IUniversalObject} from 'khusamov-base-types';
+import {IUniversalObject} from 'khusamov-universal-object';
 import IGameObject from './IGameObject';
 
 type TGameObjectList = IUniversalObject[]

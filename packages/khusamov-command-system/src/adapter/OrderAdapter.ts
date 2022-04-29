@@ -1,4 +1,4 @@
-import {IUniversalObject} from 'khusamov-base-types';
+import {IUniversalObject} from 'khusamov-universal-object';
 import {IOrder} from '../command/InterpretOrderCommand';
 
 export default class OrderAdapter implements Partial<IOrder> {
