@@ -1,5 +1,6 @@
-import {ITyped, IUniversalObject} from 'khusamov-base-types';
+import {ITyped} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
+import IUniversalObject from '../types/IUniversalObject';
 import findUniversalObject from './findUniversalObject';
 import withoutType from './withoutType';
 
