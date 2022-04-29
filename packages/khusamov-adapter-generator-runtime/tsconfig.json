@@ -1,0 +1,17 @@
+{
+	"extends": "../tsconfig.json",
+	"exclude": ["dist", "node_modules"],
+	"include": ["src/**/*"],
+	"compilerOptions": {
+		"lib": ["DOM"],
+		"outDir": "dist",
+		"baseUrl": "src",
+		"declarationDir": ".",
+		"removeComments": true,
+		"plugins": [
+			{
+				"transform": "typescript-rtti/dist/transformer"
+			}
+		]
+	}
+}

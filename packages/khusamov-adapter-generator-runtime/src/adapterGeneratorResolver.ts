@@ -1,7 +1,7 @@
 import {ReflectedTypeRef} from 'typescript-rtti';
-import {IUniversalObject} from 'khusamov-base-types';
-import execFunctionScript from '../functions/execFunctionScript';
-import IResolverContext from '../inversionOfControl/IResolverContext';
+import {execFunctionScript} from 'khusamov-base-types';
+import {IUniversalObject} from 'khusamov-universal-object';
+import {IResolverContext} from 'khusamov-inversion-of-control';
 import adapterSourceGenerator from './adapterSourceGenerator';
 import IAdapterClass from './IAdapterClass';
 
