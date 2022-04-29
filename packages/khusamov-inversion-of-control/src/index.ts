@@ -5,4 +5,20 @@ export {default as adapterSourceGenerator} from './adapterGenerator/adapterSourc
 
 export {default as register} from './inversionOfControl/register'
 export {default as resolve} from './inversionOfControl/resolve'
-export {default as adapter} from './inversionOfControl/adapter'
+
+// Проверка на повторную загрузку пакета.
+// Нельзя класс IoC определять более одного раза.
+
+const inversionOfControlPackageName = 'khusamov-inversion-of-control'
+const inversionOfControlPackageSymbol = Symbol.for(inversionOfControlPackageName)
+
+if (Reflect.get(window, inversionOfControlPackageSymbol) === inversionOfControlPackageName) {
+	console.warn(`Пакет '${inversionOfControlPackageName}' загружен повторно!`)
+}
+
+if (Reflect.get(window, inversionOfControlPackageSymbol) !== inversionOfControlPackageName) {
+	Object.defineProperty(window, inversionOfControlPackageSymbol, {
+		writable: true,
+		value: inversionOfControlPackageName
+	})
+}
