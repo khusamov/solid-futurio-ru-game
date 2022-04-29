@@ -1,5 +1,4 @@
 import useResizeObserver from 'use-resize-observer';
-import {Angle} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import {IMovable, IMovableReflectedTypeRef} from 'khusamov-game-command-system';
 import {findGameObjectByName} from '../../game/findGameObject';
@@ -7,44 +6,21 @@ import useGame from '../../game/useGame';
 import Game from '../../game/Game';
 import Canvas from '../Canvas';
 import styles from './Application.module.scss'
-
-interface IParam {
-	title: string
-	value: string
-	unit: string
-}
+import Params from '../Params';
 
 const game = new Game({timeout: 1})
+const theSpaceshipObject = findGameObjectByName(game.gameObjectList, 'theSpaceship')
 
 export default function Application() {
 	useGame({renderTimeout: 1, game})
 
-	const theSpaceshipObject = findGameObjectByName(game.gameObjectList, 'theSpaceship')
-	const theSpaceship = theSpaceshipObject ? resolve<IMovable>('Adapter', theSpaceshipObject, IMovableReflectedTypeRef) : undefined
+	const theSpaceship = (
+		theSpaceshipObject
+			? resolve<IMovable>('Adapter', theSpaceshipObject, IMovableReflectedTypeRef)
+			: undefined
+	)
 
 	if (!theSpaceship) return null
-
-	const params: IParam[] = [{
-		title: 'Время',
-		value: new Date(game.gameTimer.interval).getMinutes() + ':' + new Date(game.gameTimer.interval).getSeconds(),
-		unit: ''
-	}, {
-		title: 'Координаты',
-		value: theSpaceship.position.toString(),
-		unit: 'Метры'
-	}, {
-		title: 'Скорость',
-		value: theSpaceship.linearVelocity.toString(),
-		unit: 'Метры в секунду'
-	}, {
-		title: 'Ускорение',
-		value: theSpaceship.linearAcceleration.toString(),
-		unit: 'Метры в секунду в квадрате'
-	}, {
-		title: 'Сила',
-		value: `${theSpaceship.appliedForce.length.toFixed(2)}, ${Angle.toDegree(theSpaceship.appliedForce.angle).toFixed(2)}`,
-		unit: 'Ньютон, градус'
-	}]
 
 	const {ref} = useResizeObserver({
 		onResize({width, height}) {
@@ -56,15 +32,7 @@ export default function Application() {
 
 	return (
 		<div className={styles.Application}>
-			<table className={styles.Params}>
-				{params.map(param => (
-					<tr>
-						<td>{param.title}:</td>
-						<td>{param.value}</td>
-						<td>{param.unit}</td>
-					</tr>
-				))}
-			</table>
+			<Params game={game} theSpaceship={theSpaceship}/>
 			<Canvas refWrap={ref} theSpaceship={theSpaceship}/>
 		</div>
 	)
