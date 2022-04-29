@@ -1,12 +1,13 @@
-import init from './init';
-import {ICommand, IQueue, ISize, IUniversalObject, KeyUpDownProcessor, Timer, Vector} from 'khusamov-base-types';
+import {ICommand, IQueue, ISize, KeyUpDownProcessor, Timer, Vector} from 'khusamov-base-types';
+import {IUniversalObject} from 'khusamov-universal-object';
+import {resolve} from 'khusamov-inversion-of-control';
 import {InterpretOrderCommand, RepeatableCommand, StartCommand} from 'khusamov-command-system';
+import {IMovable, IMovableReflectedTypeRef, MoveCommand, MoveCorrectionCommand} from 'khusamov-game-command-system';
+import IGameOptions from './IGameOptions';
 import createSpaceshipObject from './createSpaceshipObject';
 import createKeyboardHandlers from './createKeyboardHandlers';
-import {IMovable, IMovableReflectedTypeRef, MoveCommand, MoveCorrectionCommand} from 'khusamov-game-command-system';
-import {resolve} from 'khusamov-inversion-of-control';
-import IGameOptions from './IGameOptions';
 import positionCorrectionForToroid from './positionCorrectionForToroid';
+import init from './init';
 
 export default class Game {
 	public gameTimer: Timer
