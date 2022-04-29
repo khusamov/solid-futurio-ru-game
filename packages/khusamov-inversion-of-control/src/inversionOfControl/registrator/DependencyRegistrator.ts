@@ -1,5 +1,5 @@
 import {IRegistrator} from 'khusamov-base-types';
-import {TResolverFunction} from './types';
+import {TResolverFunction} from '../types';
 
 export default class DependencyRegistrator implements IRegistrator {
 	constructor(

@@ -1,6 +1,6 @@
 import {IRegistrator} from 'khusamov-base-types';
 import DependencyRegistrator from './DependencyRegistrator';
-import {TDependencyMap, TResolverFunction} from './types';
+import {TDependencyMap, TResolverFunction} from '../types';
 
 export default (
 	function createRegistratorResolver(dependencyMap: TDependencyMap): TResolverFunction {
