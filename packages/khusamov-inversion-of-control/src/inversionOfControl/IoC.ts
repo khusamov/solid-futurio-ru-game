@@ -1,5 +1,6 @@
 import {Lazy} from 'khusamov-base-types';
-import createRegistratorResolver from './createRegistratorResolver';
+import InversionOfControlError from './InversionOfControlError';
+import createRegistratorResolver from './registrator/createRegistratorResolver';
 import IResolverContext from './IResolverContext';
 import {TDependencyMap} from './types';
 
@@ -9,11 +10,18 @@ import {TDependencyMap} from './types';
  */
 export default class IoC {
 	private static readonly registratorDependencyName = 'Registrator'
-	private static instanceHolder: Lazy<IoC> = new Lazy(() => new IoC)
-	private dependencyMap: TDependencyMap = new Map()
+	private static readonly instanceHolder: Lazy<IoC> = new Lazy(() => new IoC)
+	private readonly dependencyMap: TDependencyMap = new Map()
 
 	public static get instance(): IoC {
 		return this.instanceHolder.value
+	}
+
+	/**
+	 * Статическая функция разрешения зависимости.
+	 */
+	public static resolve<T>(dependencyName: string, ...args: Array<any>): T {
+		return this.instance.resolve<T>(dependencyName, ...args)
 	}
 
 	public get dependencyNames(): string[] {
@@ -22,13 +30,6 @@ export default class IoC {
 			result.push(key)
 		}
 		return result
-	}
-
-	/**
-	 * Работа с контейнером по шаблону Синглтон.
-	 */
-	public static resolve<T>(dependencyName: string, ...args: Array<any>): T {
-		return this.instanceHolder.value.resolve<T>(dependencyName, ...args)
 	}
 
 	/**
@@ -52,10 +53,10 @@ export default class IoC {
 		if (!resolver) {
 			throw new Error(`Не найдена зависимость '${dependencyName}'`)
 		}
-		return resolver(...args, this.getContext())
+		return resolver(...args, this.getResolverContext())
 	}
 
-	private getContext(): IResolverContext {
+	private getResolverContext(): IResolverContext {
 		return {
 			resolve: this.resolve.bind(this),
 			iocContainer: this
