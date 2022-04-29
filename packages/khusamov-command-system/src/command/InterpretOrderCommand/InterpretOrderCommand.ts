@@ -1,7 +1,6 @@
-import {reflect} from 'typescript-rtti';
 import {ICommand, IQueue} from 'khusamov-base-types';
-import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
+import {IUniversalObject} from 'khusamov-universal-object';
 import OrderAdapter from '../../adapter/OrderAdapter';
 
 export type TOrderQueue = IQueue<IUniversalObject>
@@ -20,24 +19,14 @@ export default class InterpretOrderCommand implements ICommand {
 	public execute(): void {
 		const orderObject = resolve<TOrderQueue>('OrderQueue').dequeue()
 		if (orderObject) {
-			const orderCommand = this.convertToCommand(orderObject)
+			const orderCommand = convertToCommand(orderObject)
 			this.commandQueue?.enqueue(orderCommand)
 		}
 	}
+}
 
-	private convertToCommand(orderObject: IUniversalObject): ICommand {
-
-		// Нет возможности добраться до родительского интерфейса ITyped и в итоге свойство type недоступно для адаптера.
-		// https://github.com/typescript-rtti/typescript-rtti/issues/60
-		//const order = resolve<IOrder>('Adapter', orderObject, reflect<IOrder>())
-		// Поэтому пришлось тут адаптер написать вручную.
-
-		const order = new OrderAdapter(orderObject)
-		if (!order.type) throw new Error('Не определен тип приказа')
-
-		const orderCommand = resolve<ICommand>(order.type, orderObject)
-		orderCommand.commandQueue = this.commandQueue
-
-		return orderCommand
-	}
+function convertToCommand(orderObject: IUniversalObject): ICommand {
+	const order = new OrderAdapter(orderObject)
+	if (!order.type) throw new Error('Не определен тип приказа')
+	return resolve<ICommand>(order.type, orderObject)
 }
