@@ -17,20 +17,15 @@ export default class MoveCommand implements ICommand {
 	) {}
 
 	public execute(): void {
+		const currentTime = Date.now()
+		const prevTime = this.movable.time || currentTime
+		this.movable.time = currentTime
+		// Промежуток времени в миллисекундах.
+		const timeInterval = currentTime - prevTime
+
 		const {mass, position, linearAcceleration, linearVelocity, appliedForce} = this.movable
 		this.movable.linearAcceleration = appliedForce.scale(1 / mass)
-		this.movable.linearVelocity = linearVelocity.translate(linearAcceleration.scale(this.timeInterval / 1000))
+		this.movable.linearVelocity = linearVelocity.translate(linearAcceleration.scale(timeInterval / 1000))
 		this.movable.position = position.translate(linearVelocity)
-	}
-
-	/**
-	 * Промежуток времени в миллисекундах.
-	 * @private
-	 */
-	private get timeInterval(): number {
-		const prevTime = this.movable.time
-		const currentTime = Date.now()
-		this.movable.time = currentTime
-		return currentTime - prevTime
 	}
 }
