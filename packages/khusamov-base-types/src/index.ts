@@ -1,4 +1,5 @@
 export {default as toOneLine} from './functions/toOneLine'
+export {default as isBrowser} from './functions/isBrowser'
 
 export {default as IPoint} from './types/IPoint'
 export {default as ISize} from './types/ISize'
