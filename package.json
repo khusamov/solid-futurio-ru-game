@@ -14,10 +14,10 @@
 		"base-types:build:watch": "yarn workspaces foreach --include 'khusamov-base-types' run build:watch",
 		"universal-object:build": "yarn workspaces foreach --include 'khusamov-universal-object' run build",
 		"universal-object:build:watch": "yarn workspaces foreach --include 'khusamov-universal-object' run build:watch",
+		"adapter-generator-runtime:build": "yarn workspaces foreach --include 'khusamov-adapter-generator-runtime' run build",
+		"adapter-generator-runtime:build:watch": "yarn workspaces foreach --include 'khusamov-adapter-generator-runtime' run build:watch",
 		"adapter-generator:build": "yarn workspaces foreach --include 'khusamov-adapter-generator' run build",
 		"adapter-generator:build:watch": "yarn workspaces foreach --include 'khusamov-adapter-generator' run build:watch",
-		"format-code:build": "yarn workspaces foreach --include 'khusamov-format-code' run build",
-		"format-code:build:watch": "yarn workspaces foreach --include 'khusamov-format-code' run build:watch",
 		"command-system:build": "yarn workspaces foreach --include 'khusamov-command-system' run build",
 		"command-system:build:watch": "yarn workspaces foreach --include 'khusamov-command-system' run build:watch",
 		"game-command-system:build": "yarn workspaces foreach --include 'khusamov-game-command-system' run build",
@@ -26,6 +26,8 @@
 		"inversion-of-control:build:watch": "yarn workspaces foreach --include 'khusamov-inversion-of-control' run build:watch",
 		"inversion-of-control-sample:build": "yarn workspaces foreach --include 'khusamov-inversion-of-control-sample' run build",
 		"inversion-of-control-sample:build:watch": "yarn workspaces foreach --include 'khusamov-inversion-of-control-sample' run build:watch",
+		"format-code:build": "yarn workspaces foreach --include 'khusamov-format-code' run build",
+		"format-code:build:watch": "yarn workspaces foreach --include 'khusamov-format-code' run build:watch",
 		"rollup-config:build": "yarn workspaces foreach --include 'khusamov-rollup-config' run build",
 		"rollup-config:build:watch": "yarn workspaces foreach --include 'khusamov-rollup-config' run build:watch"
 	}
