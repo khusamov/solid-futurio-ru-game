@@ -12,26 +12,31 @@ export default interface IMovable {
 
 	/**
 	 * Масса движущегося объекта.
+	 * Килограммы.
 	 */
 	mass: number
 
 	/**
 	 * Координаты движущегося объекта.
+	 * Метры.
 	 */
 	position: Vector
 
 	/**
 	 * Приложенная сила.
+	 * Ньютоны.
 	 */
 	appliedForce: Vector
 
 	/**
 	 * Линейное ускорение.
+	 * Метры в секунду в квадрате.
 	 */
 	linearAcceleration: Vector
 
 	/**
 	 * Линейная скорость.
+	 * Метры в секунду.
 	 */
 	linearVelocity: Vector
 }
