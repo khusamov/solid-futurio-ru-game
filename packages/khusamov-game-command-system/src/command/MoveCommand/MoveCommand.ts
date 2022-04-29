@@ -19,14 +19,18 @@ export default class MoveCommand implements ICommand {
 	public execute(): void {
 		const {mass, position, linearAcceleration, linearVelocity, appliedForce} = this.movable
 		this.movable.linearAcceleration = appliedForce.scale(1 / mass)
-		this.movable.linearVelocity = linearVelocity.translate(linearAcceleration.scale(this.timeInterval))
+		this.movable.linearVelocity = linearVelocity.translate(linearAcceleration.scale(this.timeInterval / 1000))
 		this.movable.position = position.translate(linearVelocity)
 	}
 
+	/**
+	 * Промежуток времени в миллисекундах.
+	 * @private
+	 */
 	private get timeInterval(): number {
-		const currentTime = new Date().getTime()
-		const timeInterval = (currentTime - this.movable.time) / 1000
+		const prevTime = this.movable.time
+		const currentTime = Date.now()
 		this.movable.time = currentTime
-		return timeInterval
+		return currentTime - prevTime
 	}
 }
