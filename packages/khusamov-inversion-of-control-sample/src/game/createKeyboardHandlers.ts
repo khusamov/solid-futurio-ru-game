@@ -5,7 +5,7 @@ import createTransformForceStopMessage from './createTransformForceStopMessage';
 
 const nullVector = new Vector
 const rotateIncrement = Angle.toRadian(1)
-const lengthIncrement = 10
+const lengthIncrement = 200
 
 export default function createKeyboardHandlers(keyUpDownProcessor: KeyUpDownProcessor, orderQueue: IQueue<IUniversalObject>) {
 	document.onkeydown = event => {
