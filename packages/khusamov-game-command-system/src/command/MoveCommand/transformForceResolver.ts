@@ -7,6 +7,8 @@ import {RepeatableCommand, StartCommand} from 'khusamov-command-system';
 import TransformForceCommand from './TransformForceCommand';
 import ITransformForceOrder from './ITransformForceOrder';
 
+// TODO Удалить! Вместо него использовать MoveTransformCommand
+
 export default function transformForceResolver(orderObject: IUniversalObject): ICommand {
 	const transformForceOrder = resolve<ITransformForceOrder>('Adapter', orderObject, reflect<ITransformForceOrder>())
 	const {targetObjectSearchData, translate, rotate, scale, length, commandName} = transformForceOrder

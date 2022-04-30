@@ -1,6 +1,8 @@
 import {ICommand} from 'khusamov-base-types';
 import IMovable from './IMovable';
 
+// TODO Удалить! Вместо него использовать MoveTransformCommand
+
 export type TCorrectMovableAction = (movable: IMovable) => void
 
 /**

@@ -1,6 +1,8 @@
 import {ICommand, Vector} from 'khusamov-base-types';
 import IMovable from './IMovable';
 
+// TODO Удалить! Вместо него использовать MoveTransformCommand
+
 export default class TransformForceCommand implements ICommand {
 	public readonly name = 'TransformForceCommand'
 
@@ -11,8 +13,6 @@ export default class TransformForceCommand implements ICommand {
 		private scale: number,
 		private length: number
 	) {}
-
-	// TODO Сделать изменение не на основе параметров, а при помощи скрипта.
 
 	execute(): void {
 		this.movable.appliedForce = this.movable.appliedForce.translate(this.translate).rotate(this.rotate).scale(this.scale)
