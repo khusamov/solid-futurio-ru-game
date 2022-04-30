@@ -26,6 +26,6 @@ export default class MoveCommand implements ICommand {
 		const {mass, position, linearAcceleration, linearVelocity, appliedForce} = this.movable
 		this.movable.linearAcceleration = appliedForce.scale(1 / mass)
 		this.movable.linearVelocity = linearVelocity.translate(linearAcceleration.scale(timeInterval / 1000))
-		this.movable.position = position.translate(linearVelocity)
+		this.movable.position = position.translate(linearVelocity.scale(timeInterval / 1000))
 	}
 }
