@@ -18,10 +18,10 @@ export default function createKeyboardHandlers(keyUpDownProcessor: KeyUpDownProc
 					orderQueue.enqueue(createTransformForceStartOrder('DecreaseForce', nullVector, 0, 1, -lengthIncrement))
 					break
 				case 'KeyA':
-					orderQueue.enqueue(createTransformForceStartOrder('СlockwiseRotateForce', new Vector(0, 0), rotateIncrement))
+					orderQueue.enqueue(createTransformForceStartOrder('СlockwiseRotateForce', new Vector(0, 0), -rotateIncrement))
 					break
 				case 'KeyD':
-					orderQueue.enqueue(createTransformForceStartOrder('СounterclockwiseRotateForce', new Vector(0, 0), -rotateIncrement))
+					orderQueue.enqueue(createTransformForceStartOrder('СounterclockwiseRotateForce', new Vector(0, 0), rotateIncrement))
 					break
 			}
 		})
