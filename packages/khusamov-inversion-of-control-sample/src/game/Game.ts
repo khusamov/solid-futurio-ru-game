@@ -1,12 +1,11 @@
 import {ICommand, IQueue, ISize, KeyUpDownProcessor, Timer, Vector} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
-import {resolve} from 'khusamov-inversion-of-control';
-import {InterpretOrderCommand, RepeatableCommand, StartCommand} from 'khusamov-command-system';
-import {IMovable, IMovableReflectedTypeRef, MoveCommand, MoveCorrectionCommand} from 'khusamov-game-command-system';
+import {InterpretOrderCommand, RepeatableCommand} from 'khusamov-command-system';
 import IGameOptions from './IGameOptions';
 import createSpaceshipObject from './createSpaceshipObject';
 import createKeyboardHandlers from './createKeyboardHandlers';
-import positionCorrectionForToroid from './positionCorrectionForToroid';
+import createSpaceshipStartMoveCommand from './createSpaceshipStartMoveCommand';
+import createSpaceshipStartMoveCorrectionCommand from './createSpaceshipStartMoveCorrectionCommand';
 import init from './init';
 
 export default class Game {
@@ -45,41 +44,4 @@ export default class Game {
 	public stop() {
 		this.gameTimer.stop()
 	}
-}
-
-
-/**
- * Создаем команду Поступательное движение космолета.
- * TODO Может это упростить? Создание абстрактной команды StartCommand.
- */
-function createSpaceshipStartMoveCommand(theSpaceship: IUniversalObject) {
-	return (
-		new StartCommand(
-			'MoveSpaceshipCommand',
-			theSpaceship,
-			new RepeatableCommand(new MoveCommand(resolve<IMovable>('Adapter', theSpaceship, IMovableReflectedTypeRef)))
-		)
-	)
-}
-
-/**
- * TODO Возможно стоит сделать команду MoveToroidCorrectionCommand и включить ее в khusamov-game-command-system
- * @param theSpaceship
- * @param getSize
- */
-function createSpaceshipStartMoveCorrectionCommand(theSpaceship: IUniversalObject, getSize: () => ISize) {
-	return (
-		new StartCommand(
-			'MoveCorrectionSpaceshipCommand',
-			theSpaceship,
-			new RepeatableCommand(
-				new MoveCorrectionCommand(
-					resolve<IMovable>('Adapter', theSpaceship, IMovableReflectedTypeRef),
-					movable => {
-						movable.position = positionCorrectionForToroid(movable.position, getSize)
-					}
-				)
-			)
-		)
-	)
 }
