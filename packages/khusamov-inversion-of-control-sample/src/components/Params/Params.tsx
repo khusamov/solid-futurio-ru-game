@@ -7,6 +7,7 @@ interface IParam {
 	title: string
 	value: string
 	unit: string
+	color?: string
 }
 
 interface IParamsProps {
@@ -26,7 +27,8 @@ export default function Params({game, theSpaceship}: IParamsProps) {
 	}, {
 		title: 'Скорость',
 		value: theSpaceship.linearVelocity.toString(),
-		unit: 'Метры в секунду'
+		unit: 'Метры в секунду',
+		color: 'blue'
 	}, {
 		title: 'Ускорение',
 		value: theSpaceship.linearAcceleration.toString(),
@@ -34,13 +36,14 @@ export default function Params({game, theSpaceship}: IParamsProps) {
 	}, {
 		title: 'Сила',
 		value: `${theSpaceship.appliedForce.length.toFixed(2)}, ${Angle.toDegree(theSpaceship.appliedForce.angle).toFixed(2)}`,
-		unit: 'Ньютон, градус'
+		unit: 'Ньютон, градус',
+		color: 'red'
 	}]
 
 	return (
 		<table className={styles.Params}>
 			{params.map(param => (
-				<tr>
+				<tr style={{color: param.color}}>
 					<td>{param.title}:</td>
 					<td>{param.value}</td>
 					<td>{param.unit}</td>

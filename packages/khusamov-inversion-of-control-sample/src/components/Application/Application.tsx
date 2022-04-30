@@ -5,8 +5,8 @@ import {findGameObjectByName} from '../../game/findGameObject';
 import useGame from '../../game/useGame';
 import Game from '../../game/Game';
 import Canvas from '../Canvas';
-import styles from './Application.module.scss'
 import Params from '../Params';
+import styles from './Application.module.scss'
 
 const game = new Game({timeout: 1})
 const theSpaceshipObject = findGameObjectByName(game.gameObjectList, 'theSpaceship')
