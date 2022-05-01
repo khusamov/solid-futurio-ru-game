@@ -11,9 +11,9 @@ export default class KeyUpDownProcessor {
 	 * @private
 	 * @link https://learn.javascript.ru/keyboard-events
 	 */
-	#theKeyWasDown: Map<string, boolean> = new Map
+	static #theKeyWasDown: Map<string, boolean> = new Map
 
-	public onKeyDown(event: KeyboardEvent, action: TAction) {
+	public static onKeyDown(event: KeyboardEvent, action: TAction) {
 		// Из события извлекаем номер нажатой клавиши.
 		const keyCode = event.code
 
@@ -32,12 +32,28 @@ export default class KeyUpDownProcessor {
 		}
 	}
 
-	public onKeyUp(event: KeyboardEvent, action: TAction) {
+	public static onKeyUp(event: KeyboardEvent, action: TAction) {
 		// Из события извлекаем номер нажатой клавиши.
 		const keyCode = event.code
 		// Помечаем что она уже не нажата.
 		this.#theKeyWasDown.set(keyCode, false)
 		// Выполняем действие при отжатии клавиши.
 		action()
+	}
+}
+
+export function onKeyDown(listener: (event: KeyboardEvent) => void) {
+	return (event: KeyboardEvent) => {
+		KeyUpDownProcessor.onKeyDown(event, () => {
+			listener(event)
+		})
+	}
+}
+
+export function onKeyUp(listener: (event: KeyboardEvent) => void) {
+	return (event: KeyboardEvent) => {
+		KeyUpDownProcessor.onKeyUp(event, () => {
+			listener(event)
+		})
 	}
 }
