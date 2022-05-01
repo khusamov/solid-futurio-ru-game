@@ -9,23 +9,34 @@ import IStartable from './IStartable';
  */
 export default class GameLoop implements IStartable, IStoppable {
 	private readonly eventEmitter = new EventEmitter
-	private timeInterval: number = 0
+
 	private time: number = 0
+	private timeInterval: number = 0
+
+	private renderTime: number = 0
+	private renderTimeInterval: number = 0
+
+	/**
+	 * Текущий FPS отрисовки игровой сцены.
+	 */
+	public get renderFramePerSecond(): number {
+		return 1 / (this.renderTimeInterval / 1000)
+	}
 
 	/**
 	 * Временной шаг, с которым вызывается функция update для вычисления игровой логики.
 	 * Измеряется в миллисекундах.
 	 */
 	public get step(): number {
-		return 1 / this.framePerSecond / 1000
+		return (1 / this.framePerSecond) / 1000
 	}
 
 	public constructor(
 		/**
-		 * Планируемое число кадров в секунду.
+		 * Частота обновления игровой логики (генерации события update).
 		 * @private
 		 */
-		private readonly framePerSecond = 60
+		private readonly framePerSecond = 60 // TODO Переименовать в updatePerSecond?
 	) {}
 
 	on(eventName: 'update', update: (step: number) => void): this
@@ -50,19 +61,30 @@ export default class GameLoop implements IStartable, IStoppable {
 	}
 
 	private frame() {
-		const currentTime = performance.now()
+		// Обработка логики игры.
+		{
+			const currentTime = performance.now()
 
-		// Исправление проблемы неактивных вкладок.
-		// Разрешить максимальную задержку между вызовами не более, чем 1 секунда.
-		this.timeInterval = this.timeInterval + Math.min(1000, currentTime - this.time)
+			// Исправление проблемы неактивных вкладок.
+			// Разрешить максимальную задержку между вызовами не более, чем 1 секунда.
+			this.timeInterval = this.timeInterval + Math.min(1000, currentTime - this.time)
 
-		while(this.timeInterval > this.step) {
-			this.timeInterval = this.timeInterval - this.step
-			this.eventEmitter.emit('update', this.step)
+			while (this.timeInterval > this.step) {
+				this.timeInterval = this.timeInterval - this.step
+				this.eventEmitter.emit('update', this.step)
+			}
+
+			this.time = currentTime
 		}
 
-		this.time = currentTime
-		this.eventEmitter.emit('render', this.timeInterval)
+		// Обработка отрисовки сцены игры.
+		{
+			const renderCurrentTime = performance.now()
+			this.renderTimeInterval = renderCurrentTime - this.renderTime
+			this.renderTime = renderCurrentTime
+			this.eventEmitter.emit('render', this.timeInterval)
+		}
+
 		requestAnimationFrame(this.frame.bind(this))
 	}
 }
