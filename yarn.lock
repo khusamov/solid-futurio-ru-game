@@ -4257,6 +4257,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"khusamov-game@workspace:packages/khusamov-game":
+  version: 0.0.0-use.local
+  resolution: "khusamov-game@workspace:packages/khusamov-game"
+  dependencies:
+    "@types/prettier": ^2.4.4
+    "@types/react": ^18.0.3
+    "@types/react-dom": ^18.0.0
+    khusamov-base-types: "workspace:*"
+    khusamov-command-system: "workspace:*"
+    khusamov-inversion-of-control: "workspace:*"
+    khusamov-mechanical-motion: "workspace:*"
+    node-sass: ^7.0.1
+    react: ^18.0.0
+    react-dom: ^18.0.0
+    rollup: ^2.70.1
+    typescript-rtti: ^0.6.0
+    use-resize-observer: ^8.0.0
+  languageName: unknown
+  linkType: soft
+
 "khusamov-inversion-of-control-sample@workspace:packages/khusamov-inversion-of-control-sample":
   version: 0.0.0-use.local
   resolution: "khusamov-inversion-of-control-sample@workspace:packages/khusamov-inversion-of-control-sample"
@@ -4283,6 +4303,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-inversion-of-control@workspace:packages/khusamov-inversion-of-control"
   dependencies:
+    reflect-metadata: ^0.1.13
+    rollup: ^2.70.1
+    ttypescript: ^1.5.13
+    typescript: ^4.6.3
+    typescript-rtti: ^0.6.0
+  languageName: unknown
+  linkType: soft
+
+"khusamov-mechanical-motion@workspace:*, khusamov-mechanical-motion@workspace:packages/khusamov-mechanical-motion":
+  version: 0.0.0-use.local
+  resolution: "khusamov-mechanical-motion@workspace:packages/khusamov-mechanical-motion"
+  dependencies:
+    khusamov-base-types: "workspaces:*"
+    khusamov-command-system: "workspaces:*"
+    khusamov-inversion-of-control: "workspace:*"
+    khusamov-universal-object: "workspace:*"
     reflect-metadata: ^0.1.13
     rollup: ^2.70.1
     ttypescript: ^1.5.13
