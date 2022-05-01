@@ -25,13 +25,17 @@ export default class MoveCommand implements ICommand {
 
 	public execute(): void {
 		const currentTime = Date.now()
-		const {time = currentTime, mass, position, linearAcceleration, linearVelocity, appliedForce} = this.movable
+		const {time = currentTime} = this.movable
+		const timeInterval = currentTime - time
 
-		const timeInterval = this.fixedTimeInterval ? this.fixedTimeInterval : currentTime - time
+		// Если фиксированный интервал задан, то выполняем вычисления не чаще этого значения.
+		if (this.fixedTimeInterval && timeInterval < this.fixedTimeInterval) return
 
-		this.movable.time = currentTime
+		const {mass, position, linearAcceleration, linearVelocity, appliedForce} = this.movable
 		this.movable.linearAcceleration = appliedForce.scale(1 / mass)
 		this.movable.linearVelocity = linearVelocity.translate(linearAcceleration.scale(Convert.toSecond(timeInterval)))
 		this.movable.position = position.translate(linearVelocity.scale(Convert.toSecond(timeInterval)))
+
+		this.movable.time = currentTime
 	}
 }
