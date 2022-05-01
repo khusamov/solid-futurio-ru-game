@@ -3,15 +3,6 @@ import IMovable from './IMovable';
 
 export type TTransformAction = (movable: IMovable) => void
 
-
-
-// TODO khusamov-game-command-system заменить на khusamov-mechanical-movement
-// TODO khusamov-inversion-of-control-sample заменить на khusamov-game
-// TODO khusamov-game-command-system перенести в deprecated
-// TODO khusamov-inversion-of-control-sample перенести в deprecated
-
-
-
 /**
  * Команда изменения параметров поступательного движения.
  *
