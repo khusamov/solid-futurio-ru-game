@@ -1,6 +1,13 @@
 TODO
 ====
 
+khusamov-game-command-system заменить на khusamov-mechanical-movement  
+
+khusamov-inversion-of-control-sample заменить на khusamov-game  
+
+khusamov-game-command-system перенести в deprecated  
+khusamov-inversion-of-control-sample перенести в deprecated  
+
 А нужен ли класс UniversalObject?
 ---------------------------------
 

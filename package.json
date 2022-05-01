@@ -9,7 +9,7 @@
 		"lerna": "^4.0.0"
 	},
 	"scripts": {
-		"start": "yarn inversion-of-control-sample:build:watch",
+		"start": "yarn game:build:watch",
 		"generate-adapters": "generate",
 		"base-types:build": "yarn workspaces foreach --include 'khusamov-base-types' run build",
 		"base-types:build:watch": "yarn workspaces foreach --include 'khusamov-base-types' run build:watch",
@@ -21,6 +21,10 @@
 		"adapter-generator:build:watch": "yarn workspaces foreach --include 'khusamov-adapter-generator' run build:watch",
 		"command-system:build": "yarn workspaces foreach --include 'khusamov-command-system' run build",
 		"command-system:build:watch": "yarn workspaces foreach --include 'khusamov-command-system' run build:watch",
+		"mechanical-motion:build": "yarn workspaces foreach --include 'khusamov-mechanical-motion' run build",
+		"mechanical-motion:build:watch": "yarn workspaces foreach --include 'khusamov-mechanical-motion' run build:watch",
+		"game:build": "yarn workspaces foreach --include 'khusamov-game' run build",
+		"game:build:watch": "yarn workspaces foreach --include 'khusamov-game' run build:watch",
 		"game-command-system:build": "yarn workspaces foreach --include 'khusamov-game-command-system' run build",
 		"game-command-system:build:watch": "yarn workspaces foreach --include 'khusamov-game-command-system' run build:watch",
 		"inversion-of-control:build": "yarn workspaces foreach --include 'khusamov-inversion-of-control' run build",
