@@ -1,11 +1,12 @@
-import {useEffect} from 'react';
-import {GameLoop} from 'khusamov-base-types';
-
-const gameLoop = new GameLoop
+import {useEffect, useRef} from 'react';
 
 export default function useGame() {
+	const frame = useRef(0)
+	const render = (time: DOMHighResTimeStamp) => {
+		frame.current = requestAnimationFrame(render)
+	}
 	useEffect(() => {
-		gameLoop.on('update', step => {})
-		gameLoop.on('render', timeInterval => {})
+		frame.current = requestAnimationFrame(render)
+		return () => cancelAnimationFrame(frame.current)
 	}, [])
 }
