@@ -6,6 +6,6 @@ import fillUniversalObject from './fillUniversalObject';
  * Создать IUniversalObject на основе plane-объекта.
  * @param object
  */
-export default function createUniversalObject<T extends object>(object: T): UniversalObject {
+export default function createUniversalObject<T extends object>(object: Partial<T>): UniversalObject {
 	return fillUniversalObject(new UniversalObject, object)
 }
