@@ -30,6 +30,23 @@ interface IShip {
 const ship = createUniversalObject<IShip>({name: 'Аврора'})
 ```
 
+```typescript
+import {Vector} from 'khusamov-base-types'
+import {UniversalObject, createUniversalObject} from 'khusamov-universal-object'
+
+interface IGameObject {
+	name: string
+    kind: string[]
+}
+
+interface IMovable {
+	mass: number
+    velocity: Vector
+}
+
+const spaceship = createUniversalObject<IGameObject & IMovable>({name: 'Deadstar', mass: 1000})
+```
+
 Поиск объектов по совпадению одного из признаков
 ------------------------------------------------
 
