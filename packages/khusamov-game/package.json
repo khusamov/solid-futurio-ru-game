@@ -14,6 +14,8 @@
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
+    "@types/lodash": "^4",
+    "@types/lodash.mergewith": "^4",
     "@types/prettier": "^2.4.4",
     "@types/react": "^18.0.3",
     "@types/react-dom": "^18.0.0",
@@ -21,6 +23,7 @@
     "khusamov-command-system": "workspace:*",
     "khusamov-inversion-of-control": "workspace:*",
     "khusamov-mechanical-motion": "workspace:*",
+    "lodash": "^4.17.21",
     "node-sass": "^7.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
