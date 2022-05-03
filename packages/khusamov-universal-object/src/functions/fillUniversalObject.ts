@@ -2,6 +2,7 @@ import IUniversalObject from '../types/IUniversalObject';
 
 /**
  * Заполнить универсальный объект значениями свойств plane-объекта.
+ * Внимание, объект universalObject будет изменен.
  * @param universalObject
  * @param object
  */
