@@ -1,58 +1,83 @@
-import {IQueue, onKeyUp, onKeyDown} from 'khusamov-base-types';
+import {IQueue, onKeyUp, onKeyDown, IDisposable, Angle} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
-import IMoveTransformOrder from '../order/IMoveTransformOrder';
+import IMoveTransformOrder, {TTransformActionParams} from '../order/IMoveTransformOrder';
 import IStopOrder from '../order/IStopOrder';
 
 type TUniversalObject = Record<string, any>
 type TOrderQueue = IQueue<TUniversalObject>
 
-const keyboardShortcutMoveTransformMap: Record<string, string> = {
-	w: 'MoveTransform:IncreaseForce',
-	s: 'MoveTransform:DecreaseForce',
-	a: 'MoveTransform:ClockwiseRotateForce',
-	d: 'MoveTransform:CounterclockwiseRotateForce'
+const keyboardShortcutMoveTransformMap: Record<string, TTransformActionParams> = {
+	w: ['IncreaseForce', 200],
+	s: ['DecreaseForce', 200],
+	a: ['ClockwiseRotateForce', Angle.toRadian(1)],
+	d: ['CounterclockwiseRotateForce', Angle.toRadian(1)]
 }
 
 /**
  * Создает обработчики нажатия клавишь управления кораблем.
  * Обработчики создают приказы и отправляют их в очередь приказов OrderQueue.
  */
-export default function createTheSpaceshipKeyboardHandlers() {
+export default function createTheSpaceshipKeyboardHandlers(): IDisposable {
+	const disposerList: IDisposable[] = []
 	const orderQueue = resolve<TOrderQueue>('OrderQueue')
 	for (const key in keyboardShortcutMoveTransformMap) {
 		if (!keyboardShortcutMoveTransformMap.hasOwnProperty(key)) continue
 		const moveTransformOrder: IMoveTransformOrder = {
 			type: 'StartMoveTransform',
-			transform: keyboardShortcutMoveTransformMap[key],
-			target: {
+			transformAction: keyboardShortcutMoveTransformMap[key],
+			targetObject: {
 				type: 'GameObject',
 				name: 'theSpaceship'
 			}
 		}
 		const stopOrder: IStopOrder = {
 			type: 'Stop',
-			command: keyboardShortcutMoveTransformMap[key],
-			target: {
+			command: 'MoveTransformAction.' + keyboardShortcutMoveTransformMap[key][0],
+			targetObject: {
 				type: 'GameObject',
 				name: 'theSpaceship'
 			}
 		}
-		createKeyboardShortcut(key, {
-			start: () => orderQueue.enqueue(moveTransformOrder),
-			stop: () => orderQueue.enqueue(stopOrder)
-		})
+		disposerList.push(
+			createKeyboardShortcut(key, {
+				start: () => orderQueue.enqueue(moveTransformOrder),
+				stop: () => orderQueue.enqueue(stopOrder)
+			})
+		)
+	}
+	return {
+		dispose() {
+			for (const disposer of disposerList) {
+				disposer.dispose()
+			}
+		}
 	}
 }
 
-function createKeyboardShortcut(key: string, actions: {start: Function, stop: Function}) {
-	document.addEventListener('keydown', onKeyDown(event => {
+/**
+ * Создает два обработчика на keydown и keyup для document.
+ * Причем повторная генерация событий keydown блокируется.
+ * Возвращает объект с методом dispose() для отмены клавиатурных сочетаний.
+ * @param key Название кнопки по ее букве.
+ * @param actions Обработчики.
+ */
+function createKeyboardShortcut(key: string, actions: {start: Function, stop: Function}): IDisposable {
+	const keyDownHandler = onKeyDown(event => {
 		if (event.code === 'Key' + key.toUpperCase()) {
 			actions.start()
 		}
-	}))
-	document.addEventListener('keyup', onKeyUp(event => {
+	})
+	const keyUpHandler = onKeyUp(event => {
 		if (event.code === 'Key' + key.toUpperCase()) {
 			actions.stop()
 		}
-	}))
+	})
+	document.addEventListener('keydown', keyDownHandler)
+	document.addEventListener('keyup', keyUpHandler)
+	return {
+		dispose() {
+			document.removeEventListener('keydown', keyDownHandler)
+			document.removeEventListener('keyup', keyUpHandler)
+		}
+	}
 }
