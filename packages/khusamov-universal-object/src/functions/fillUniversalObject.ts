@@ -5,7 +5,7 @@ import IUniversalObject from '../types/IUniversalObject';
  * @param universalObject
  * @param object
  */
-export default function fillUniversalObject<T extends object, U extends IUniversalObject>(universalObject: U, object: T): U {
+export default function fillUniversalObject<T extends object, U extends IUniversalObject = IUniversalObject>(universalObject: U, object: T): U {
 	const result = universalObject
 	for (const key in object) {
 		if (object.hasOwnProperty(key)) {
