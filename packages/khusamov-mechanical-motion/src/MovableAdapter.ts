@@ -2,56 +2,54 @@ import {Vector} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import IMovable from './IMovable';
 
-type Adapter<T> = Partial<T>
+export default class MovableAdapter implements IMovable {
+	public constructor(private universalObject: IUniversalObject) {}
 
-export default class MovableAdapter implements Adapter<IMovable> {
-	constructor(private universalObject: IUniversalObject) {}
-
-	public get time(): number | undefined {
-		return this.universalObject.getValue('time')
+	public get time(): number {
+		return this.universalObject.getValue('time', 0)
 	}
 
-	public set time(value: number | undefined) {
+	public set time(value: number) {
 		this.universalObject.setValue('time', value)
 	}
 
-	public get mass(): number | undefined {
-		return this.universalObject.getValue('mass')
+	public get mass(): number {
+		return this.universalObject.getValue('mass', 1)
 	}
 
-	public set mass(value: number | undefined) {
+	public set mass(value: number) {
 		this.universalObject.setValue('mass', value)
 	}
 
-	public get position(): Vector | undefined {
-		return this.universalObject.getValue('position')
+	public get position(): Vector {
+		return this.universalObject.getValue('position', new Vector)
 	}
 
-	public set position(value: Vector | undefined) {
+	public set position(value: Vector) {
 		this.universalObject.setValue('position', value)
 	}
 
-	public get appliedForce(): Vector | undefined {
-		return this.universalObject.getValue('appliedForce')
+	public get appliedForce(): Vector {
+		return this.universalObject.getValue('appliedForce', new Vector)
 	}
 
-	public set appliedForce(value: Vector | undefined) {
+	public set appliedForce(value: Vector) {
 		this.universalObject.setValue('appliedForce', value)
 	}
 
-	public get linearAcceleration(): Vector | undefined {
-		return this.universalObject.getValue('linearAcceleration')
+	public get linearAcceleration(): Vector {
+		return this.universalObject.getValue('linearAcceleration', new Vector)
 	}
 
-	public set linearAcceleration(value: Vector | undefined) {
+	public set linearAcceleration(value: Vector) {
 		this.universalObject.setValue('linearAcceleration', value)
 	}
 
-	public get linearVelocity(): Vector | undefined {
-		return this.universalObject.getValue('linearVelocity')
+	public get linearVelocity(): Vector {
+		return this.universalObject.getValue('linearVelocity', new Vector)
 	}
 
-	public set linearVelocity(value: Vector | undefined) {
+	public set linearVelocity(value: Vector) {
 		this.universalObject.setValue('linearVelocity', value)
 	}
 }
