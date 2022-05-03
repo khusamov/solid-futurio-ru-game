@@ -1,34 +1,36 @@
-import {register} from 'khusamov-inversion-of-control';
-import {startMoveTransformCommandResolver} from './order/IMoveTransformOrder';
-import {stopCommandResolver} from './order/IStopOrder';
-import {MoveTransformCollection} from 'khusamov-mechanical-motion';
-import {IQueue, Queue} from 'khusamov-base-types';
+import {Queue} from 'khusamov-base-types';
+import {createUniversalObject, findUniversalObject, IUniversalObject, withoutType} from 'khusamov-universal-object';
+import {register, resolve} from 'khusamov-inversion-of-control';
 import {createCommandQueue} from 'khusamov-command-system';
-
-type TGameObject = Record<string, any>
-type TOrder = Record<string, any>
-
-// Глобальные объекты.
+import {IMovable} from 'khusamov-mechanical-motion';
+import IGameObject from './gameObject/IGameObject';
+import IToroidalSurface from './gameObject/IToroidalSurface';
+import {TTargetObjectSearchParams} from './order/IMoveTransformOrder';
+import {TGameObjectList, TOrderQueue} from './types';
 
 const commandQueue = createCommandQueue() // Очередь команд создается по особому!
-const orderQueue: IQueue<TOrder> = new Queue
-const gameObjectList: TGameObject[] = []
-const moveTransformCollection = new MoveTransformCollection
+const orderQueue: TOrderQueue = new Queue
+const gameObjectList: TGameObjectList = []
 
-// Регистрации.
-
-register('Stop', stopCommandResolver)
-register('StartMoveTransform', startMoveTransformCommandResolver)
 register('GameObjectList', () => gameObjectList)
 register('OrderQueue', () => orderQueue)
 register('CommandQueue', () => commandQueue)
 
-register('GameObject', () => {
-	// TODO Дописать register GameObject
-	throw new Error('Зависимость GameObject не определена')
+register('GameObject', (params: TTargetObjectSearchParams): IUniversalObject | undefined => {
+	const gameObjectList = resolve<TGameObjectList>('GameObjectList')
+	return findUniversalObject(gameObjectList, withoutType(params))
 })
 
-for (const transform of moveTransformCollection.transforms) {
-	// register MoveTransform:<Имя трансформации>
-	register(transform.name, transform.action)
-}
+gameObjectList.push(
+	createUniversalObject<IGameObject & IToroidalSurface>({
+		name: 'theGameWorld',
+		size: {width: 0, height: 0}
+	})
+)
+
+gameObjectList.push(
+	createUniversalObject<IGameObject & IMovable>({
+		name: 'theSpaceship',
+		mass: 1000
+	})
+)
