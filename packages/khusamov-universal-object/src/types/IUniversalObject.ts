@@ -14,6 +14,13 @@ export default interface IUniversalObject {
 	getValue<V>(name: TUniversalValueName): V | undefined
 
 	/**
+	 * Получить значение элемента.
+	 * @param name
+	 * @param defaultValue
+	 */
+	getValue<V>(name: TUniversalValueName, defaultValue: V): V
+
+	/**
 	 * Установить значение элемента.
 	 * @param name
 	 * @param value

@@ -10,8 +10,9 @@ export default class UniversalObjectAdapter implements IUniversalObject {
 		private plainObject: object
 	) {}
 
-	public getValue<V>(name: TUniversalValueName): V | undefined {
-		return Reflect.get(this.plainObject, name)
+	public getValue<V>(name: TUniversalValueName, defaultValue?: V): V {
+		const value = Reflect.get(this.plainObject, name)
+		return value === undefined ? defaultValue : value
 	}
 
 	public setValue<V>(name: TUniversalValueName, value: V): void {

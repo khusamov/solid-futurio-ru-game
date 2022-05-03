@@ -14,8 +14,17 @@ export default class UniversalObject implements IUniversalObject {
 	 * Получить значение элемента.
 	 * @param name
 	 */
-	public getValue<V>(name: TValueName): V | undefined {
-		return this.map.get(name)
+	getValue<V>(name: TUniversalValueName): V | undefined
+
+	/**
+	 * Получить значение элемента.
+	 * @param name
+	 * @param defaultValue
+	 */
+	getValue<V>(name: TUniversalValueName, defaultValue: V): V
+	getValue<V>(name: TUniversalValueName, defaultValue?: V): V {
+		const value = this.map.get(name)
+		return value === undefined ? defaultValue : value
 	}
 
 	/**
@@ -32,6 +41,6 @@ export default class UniversalObject implements IUniversalObject {
 	 * где каждый элемент представлен двумя ключами: key и value.
 	 */
 	public get items() {
-		return Convert.toArray<TValueName, any | undefined>(this.map)
+		return Convert.toArray<TValueName, any>(this.map)
 	}
 }
