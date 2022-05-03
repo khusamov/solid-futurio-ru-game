@@ -1,32 +1,58 @@
 import {ICommand} from 'khusamov-base-types';
+import {UniversalObjectAdapter} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {IOrder, RepeatableCommand, StartCommand} from 'khusamov-command-system';
-import {IMovable, MoveTransformCommand, TMoveTransformAction} from 'khusamov-mechanical-motion';
-import {UniversalObjectAdapter} from 'khusamov-universal-object';
+import {
+	clockwiseRotateForceActionResolver,
+	counterclockwiseRotateForceActionResolver,
+	decreaseForceActionResolver,
+	IMovable,
+	increaseForceActionResolver,
+	MoveTransformCommand,
+	TMoveTransformAction,
+	toroidalTransformActionResolver
+} from 'khusamov-mechanical-motion';
+
+export type TTransformActionParams = (
+	['IncreaseForce', ...Parameters<typeof increaseForceActionResolver>] |
+	['DecreaseForce', ...Parameters<typeof decreaseForceActionResolver>] |
+	['ClockwiseRotateForce', ...Parameters<typeof clockwiseRotateForceActionResolver>] |
+	['CounterclockwiseRotateForce', ...Parameters<typeof counterclockwiseRotateForceActionResolver>] |
+	['ToroidalPositionTransformation', ...Parameters<typeof toroidalTransformActionResolver>]
+)
+
+export type TTargetObjectSearchParams = {
+	type: string
+	name: string
+}
 
 export default interface IMoveTransformOrder extends IOrder {
 	type: 'StartMoveTransform'
-	transform: string
-	target: {
-		type: string
-		name: string
-	}
+	transformAction: TTransformActionParams
+	targetObject: TTargetObjectSearchParams
 }
 
 export function startMoveTransformCommandResolver(order: IMoveTransformOrder): ICommand {
-	const target = resolve<IMovable | undefined>(order.target.type, order.target)
-	if (!target) {
-		throw new Error(`Целевой объект не найден '${JSON.stringify(order.target)}'`)
+	const targetObject = resolve<IMovable | undefined>(order.targetObject.type, order.targetObject)
+	if (!targetObject) {
+		throw new Error(`Целевой объект не найден '${JSON.stringify(order.targetObject)}'`)
 	}
+
+	const [transformName, ...transformParams] = order.transformAction
+	const transformNamePrefix = 'MoveTransformAction.'
+
 	return (
 		new StartCommand(
-			order.transform,
+			transformNamePrefix + transformName,
 			// TODO Избавиться от использования класса UniversalObjectAdapter
-			new UniversalObjectAdapter(target),
+			new UniversalObjectAdapter(targetObject),
 			new RepeatableCommand(
 				new MoveTransformCommand(
-					target,
-					resolve<TMoveTransformAction>(order.transform)
+					targetObject,
+					resolve<TMoveTransformAction>(
+						transformNamePrefix + transformName,
+						...transformParams
+					)
 				)
 			)
 		)
