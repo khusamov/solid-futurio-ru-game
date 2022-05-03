@@ -3,20 +3,18 @@ import {ICommand} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import {IMovable} from 'khusamov-mechanical-motion';
 import {UniversalObjectAdapter} from 'khusamov-universal-object';
+import {TTargetObjectSearchParams} from './IMoveTransformOrder';
 
 export default interface IStopOrder extends IOrder {
 	type: 'Stop'
 	command: string
-	target: {
-		type: string
-		name: string
-	}
+	targetObject: TTargetObjectSearchParams
 }
 
 export function stopCommandResolver(order: IStopOrder): ICommand {
-	const target = resolve<IMovable | undefined>(order.target.type, order.target)
+	const target = resolve<IMovable | undefined>(order.targetObject.type, order.targetObject)
 	if (!target) {
-		throw new Error(`Целевой объект не найден '${JSON.stringify(order.target)}'`)
+		throw new Error(`Целевой объект не найден '${JSON.stringify(order.targetObject)}'`)
 	}
 	return new StopCommand(
 		order.command,
