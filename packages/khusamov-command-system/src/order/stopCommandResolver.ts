@@ -5,6 +5,8 @@ import {resolve} from 'khusamov-inversion-of-control';
 import StopCommand from '../command/StopCommand';
 import IStopOrder from './IStopOrder';
 
+// TODO Удалить!
+
 /**
  * Функция для создания команды StopCommand на основе приказа.
  *
