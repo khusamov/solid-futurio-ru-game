@@ -14,3 +14,6 @@ export {default as IStartOrder} from './order/IStartOrder'
 export {default as stopCommandResolver} from './order/stopCommandResolver'
 
 export {default as createCommandQueue, TCommandQueue} from './functions/createCommandQueue'
+
+export {default as WithStoppableAdapter} from './adapter/WithStoppableAdapter'
+export {default as OrderAdapter} from './adapter/OrderAdapter'
