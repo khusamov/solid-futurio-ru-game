@@ -1,4 +1,4 @@
-import {Queue} from 'khusamov-base-types';
+import {Queue, Vector} from 'khusamov-base-types';
 import {createUniversalObject, findUniversalObject, IUniversalObject, withoutType} from 'khusamov-universal-object';
 import {register, resolve} from 'khusamov-inversion-of-control';
 import {createCommandQueue} from 'khusamov-command-system';
@@ -24,6 +24,7 @@ register('GameObject', (params: TTargetObjectSearchParams): IUniversalObject | u
 gameObjectList.push(
 	createUniversalObject<IGameObject & IToroidalSurface>({
 		name: 'theGameWorld',
+		kind: ['IGameObject', 'IToroidalSurface'],
 		size: {width: 0, height: 0}
 	})
 )
@@ -31,6 +32,8 @@ gameObjectList.push(
 gameObjectList.push(
 	createUniversalObject<IGameObject & IMovable>({
 		name: 'theSpaceship',
-		mass: 1000
+		kind: ['IGameObject', 'IMovable'],
+		mass: 1000,
+		position: new Vector(100, 100)
 	})
 )
