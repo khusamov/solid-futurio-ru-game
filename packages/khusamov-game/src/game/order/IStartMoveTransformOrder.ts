@@ -70,18 +70,16 @@ export function startMoveTransformCommandResolver(startMoveTransformOrderObject:
 	}
 
 	const [transformName, ...transformParams] = startMoveTransformOrder.transformAction
-	const transformNamePrefix = 'MoveTransformAction.'
 
 	return (
 		new StartCommand(
-			transformNamePrefix + transformName,
-			// TODO Избавиться от использования класса UniversalObjectAdapter
+			'MoveTransform.' + transformName,
 			targetObject,
 			new RepeatableCommand(
 				new MoveTransformCommand(
 					new MovableAdapter(targetObject),
 					resolve<TMoveTransformAction>(
-						transformNamePrefix + transformName,
+						'MoveTransformAction.' + transformName,
 						...transformParams
 					)
 				)

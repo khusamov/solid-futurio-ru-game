@@ -32,7 +32,7 @@ export default function createTheSpaceshipKeyboardHandlers(): IDisposable {
 		}
 		const stopOrder: IStopOrder = {
 			type: 'Stop',
-			command: 'MoveTransformAction.' + keyboardShortcutMoveTransformMap[key][0],
+			command: 'MoveTransform.' + keyboardShortcutMoveTransformMap[key][0],
 			targetObject: {
 				type: 'GameObject',
 				name: 'theSpaceship'
