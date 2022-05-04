@@ -10,6 +10,7 @@ import smartAsset from 'rollup-plugin-smart-asset';
 import postcss from 'rollup-plugin-postcss';
 import deleteDist from 'rollup-plugin-delete';
 import {terser} from 'rollup-plugin-terser';
+import svgr from '@svgr/rollup'; // https://react-svgr.com/docs/rollup/
 
 import ttypescript from 'ttypescript';
 import {cyan} from 'chalk';
@@ -67,6 +68,7 @@ export default class RollupConfigGenerator {
 			plugins: [
 				json(),
 				commonjs(),
+				svgr(),
 
 				resolve({
 					// Используется events из https://www.npmjs.com/package/events
@@ -101,7 +103,9 @@ export default class RollupConfigGenerator {
 				// https://github.com/rollup/rollup-plugin-url/issues/18
 				smartAsset({
 					url: 'copy',
-					keepImport: true
+					keepImport: true,
+					// Формат SVG убран, так как этот плагин не совместим с https://react-svgr.com/docs/rollup/
+					extensions: ['.gif', '.png', '.jpg']
 				})
 			],
 			external: (
