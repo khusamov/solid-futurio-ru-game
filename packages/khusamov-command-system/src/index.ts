@@ -7,7 +7,7 @@ export {default as RepeatableCommand} from './command/RepeatableCommand'
 export {default as StartCommand} from './command/StartCommand'
 export {default as StopCommand} from './command/StopCommand'
 
-export {default as InterpretOrderCommand, IOrder} from './command/InterpretOrderCommand'
+export {default as InterpretOrderCommand, IOrder, TOrderQueue} from './command/InterpretOrderCommand'
 
 export {default as IStopOrder} from './order/IStopOrder'
 export {default as IStartOrder} from './order/IStartOrder'
