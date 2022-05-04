@@ -1,17 +1,17 @@
-import {FunctionComponent, useState} from 'react';
+import {FunctionComponent} from 'react';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
+import {MovableAdapter} from 'khusamov-mechanical-motion';
 import useRequestAnimationFrame from '../../game/useRequestAnimationFrame';
 import GameObjectAdapter from '../../game/gameObject/GameObjectAdapter';
 import RenderableAdapter from '../../game/gameObject/RenderableAdapter';
 import {TGameObjectList} from '../../game/types';
+import ToroidalRender from '../ToroidalRender/ToroidalRender';
+import {CanvasSizeContext} from '../Canvas';
 import Spaceship from '../Spaceship';
 import Canvas, {TOnResizeHandler} from '../Canvas';
 import styles from './Application.module.scss'
 import reziseGameWorld from './reziseGameWorld';
-import ToroidalRender from '../ToroidalRender/ToroidalRender';
-import {MovableAdapter} from 'khusamov-mechanical-motion';
-import {ISize} from 'khusamov-base-types';
 
 type TUniversalRenderComponent = FunctionComponent<{object: IUniversalObject}>
 const renderableMap: Record<string, TUniversalRenderComponent> = {
@@ -19,12 +19,10 @@ const renderableMap: Record<string, TUniversalRenderComponent> = {
 }
 
 export default function Application() {
-	const [gameWorldSize, setGameWorldSize] = useState<ISize>({width: 0, height: 0})
 	useRequestAnimationFrame()
 	const gameObjectList = resolve<TGameObjectList>('GameObjectList')
 	const onResize: TOnResizeHandler = size => {
 		reziseGameWorld(size)
-		setGameWorldSize(size)
 	}
 	return (
 		<div className={styles.Application}>
@@ -36,9 +34,13 @@ export default function Application() {
 						const movable = new MovableAdapter(object)
 						const RenderComponent = renderableMap[renderable.renderComponent]
 						return (
-							<ToroidalRender position={movable.position} toroidalSurfaceSize={gameWorldSize}>
-								<RenderComponent object={object}/>
-							</ToroidalRender>
+							<CanvasSizeContext.Consumer>
+								{canvasSize => (
+									<ToroidalRender position={movable.position} toroidalSurfaceSize={canvasSize}>
+										<RenderComponent object={object}/>
+									</ToroidalRender>
+								)}
+							</CanvasSizeContext.Consumer>
 						)
 					}
 					return null

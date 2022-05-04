@@ -1,1 +1,1 @@
-export {default, TOnResizeHandler} from './Canvas'
+export {default, TOnResizeHandler, CanvasSizeContext} from './Canvas'
