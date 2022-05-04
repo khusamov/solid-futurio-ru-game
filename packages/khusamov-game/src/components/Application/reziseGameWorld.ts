@@ -5,12 +5,11 @@ import {IUniversalObject} from 'khusamov-universal-object';
 import {TTargetObjectSearchParams} from '../../game/order/IStartMoveTransformOrder';
 
 /**
- * Обработчик события 'Изменились размеры холста'.
  * При изменении размеров холста игры (игрового поля) необходимо поменять размеры игрового мира.
  * Используется для реализации пространства типа бублик.
  * @param size
  */
-export default function onCanvasResize(size: ISize) {
+export default function reziseGameWorld(size: ISize) {
 	const theGameWorld = (
 		new ToroidalSurfaceAdapter(
 			resolve<IUniversalObject, [TTargetObjectSearchParams]>(
