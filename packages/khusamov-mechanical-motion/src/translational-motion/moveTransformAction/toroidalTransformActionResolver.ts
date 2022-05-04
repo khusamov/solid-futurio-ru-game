@@ -8,7 +8,7 @@ export type TGetSize = () => ISize
 export default function toroidalTransformActionResolver(getToroidalSurfaceSize: TGetSize): TMoveTransformAction {
 	return (
 		(movable: IMovable) =>
-			movable.position.identity.multiply(
+			movable.position = (
 				transformPositionForToroid(
 					movable.position,
 					getToroidalSurfaceSize()
