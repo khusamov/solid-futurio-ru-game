@@ -6,6 +6,8 @@ export interface ICommandQueueProps {
 	plugins?: ICommandQueuePlugin[]
 }
 
+// TODO В классе PluginableQueue избавиться от ICommand
+
 export default class PluginableQueue extends Queue<ICommand> {
 	private plugins: ICommandQueuePlugin[] = []
 
