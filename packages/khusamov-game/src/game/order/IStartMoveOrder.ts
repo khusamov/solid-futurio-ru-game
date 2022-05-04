@@ -10,10 +10,32 @@ export default interface IStartMoveOrder extends IOrder {
 	targetObject: TTargetObjectSearchParams
 }
 
-export function startMoveCommandResolver(order: IStartMoveOrder): ICommand {
-	const targetObject = resolve<IUniversalObject | undefined>(order.targetObject.type, order.targetObject)
+export class StartMoveOrderAdapter implements IStartMoveOrder {
+	public readonly type = 'StartMove'
+	public constructor(private universalObject: IUniversalObject) {}
+
+	public get targetObject(): TTargetObjectSearchParams {
+		return this.universalObject.getValue('targetObject', {
+			type: '',
+			name: ''
+		})
+	}
+
+	public set targetObject(value: TTargetObjectSearchParams) {
+		this.universalObject.setValue('targetObject', value)
+	}
+}
+
+export function startMoveCommandResolver(startMoveOrderObject: IUniversalObject): ICommand {
+	const startMoveOrder = new StartMoveOrderAdapter(startMoveOrderObject)
+	const targetObject = (
+		resolve<IUniversalObject | undefined>(
+			startMoveOrder.targetObject.type,
+			startMoveOrder.targetObject
+		)
+	)
 	if (!targetObject) {
-		throw new Error(`Целевой объект не найден '${JSON.stringify(order.targetObject)}'`)
+		throw new Error(`Целевой объект не найден '${JSON.stringify(startMoveOrder.targetObject)}'`)
 	}
 
 	return (
