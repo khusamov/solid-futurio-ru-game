@@ -6,8 +6,13 @@ import {TTargetObjectSearchParams} from './IStartMoveTransformOrder';
 
 export default interface IStopOrder extends IOrder {
 	type: 'Stop'
-	command: string
 	targetObject: TTargetObjectSearchParams
+
+	/**
+	 * Идентификатор останавливаемой команды.
+	 * Если команда не указана, то будут остановлены все команды для целевого объекта.
+	 */
+	command?: string
 }
 
 export function stopCommandResolver(order: IStopOrder): ICommand {
@@ -16,5 +21,9 @@ export function stopCommandResolver(order: IStopOrder): ICommand {
 		throw new Error(`Целевой объект не найден '${JSON.stringify(order.targetObject)}'`)
 	}
 
-	return new StopCommand(order.command, target)
+	return (
+		order.command
+			? new StopCommand(order.command, target)
+			: new StopCommand(target)
+	)
 }
