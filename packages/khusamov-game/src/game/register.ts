@@ -19,13 +19,14 @@ import {
 import IStartMoveTransformOrder, {startMoveTransformCommandResolver, TTargetObjectSearchParams} from './order/IStartMoveTransformOrder';
 import IStartMoveOrder, {startMoveCommandResolver} from './order/IStartMoveOrder';
 import ToroidalSurfaceAdapter from './gameObject/ToroidalSurfaceAdapter';
+import IDestroyOrder, {destroyCommandResolver} from './order/IDestroyOrder';
 import IGameObject from './gameObject/IGameObject';
 import IToroidalSurface from './gameObject/IToroidalSurface';
 import {TGameObjectList} from './types';
-import IStopOrder from './order/IStopOrder';
 
 const DEBUG = false
 
+register('Destroy', destroyCommandResolver)
 register('StartMove', startMoveCommandResolver)
 register('StartMoveTransform', startMoveTransformCommandResolver)
 register('MoveTransformAction.ToroidalPositionTransformation', toroidalTransformActionResolver)
@@ -42,6 +43,7 @@ const gameObjectList: TGameObjectList = []
 register('GameObjectList', () => gameObjectList)
 register('OrderQueue', () => orderQueue)
 register('CommandQueue', () => commandQueue)
+register('CommandQueue.EventEmitter', () => commandQueueEventEmitter)
 
 function gameObjectResolver(params: TTargetObjectSearchParams): IUniversalObject | undefined {
 	return findUniversalObject(
@@ -138,58 +140,18 @@ orderQueue.enqueue(
 
 
 
-
+// Демонстрация возможности уничтожения объектов.
 document.addEventListener('keydown', event => {
 	if (event.code === 'KeyQ') {
-		const theSpaceshipWithStoppable = (
-			new WithStoppableAdapter(
-				resolve<IUniversalObject, [TTargetObjectSearchParams]>(
-					'GameObject',
-					{
-						type: 'GameObject',
-						name: 'theSpaceship'
-					}
-				)
-			)
-		)
-		console.log('theSpaceshipWithStoppable.stoppableMap', theSpaceshipWithStoppable.stoppableMap)
-
-
-		// При помощи приказов не сделать удаление объекта.
-		// Разве что создать специальный приказ для этого?
-		//
-		// orderQueue.enqueue(
-		// 	createUniversalObject<IStopOrder>({
-		// 		type: 'Stop',
-		// 		command: '',
-		// 		targetObject: {
-		// 			type: 'GameObject',
-		// 			name: 'theSpaceship'
-		// 		}
-		// 	})
-		// )
-
-		const theSpaceshipStopCommand = new StopCommand(
-			resolve<IUniversalObject, [TTargetObjectSearchParams]>(
-				'GameObject',
-				{
+		orderQueue.enqueue(
+			createUniversalObject<IDestroyOrder>({
+				type: 'Destroy',
+				targetObject: {
 					type: 'GameObject',
 					name: 'theSpaceship'
 				}
-			)
+			})
 		)
-
-		commandQueue.enqueue(theSpaceshipStopCommand)
-
-		const onExecute = (command: ICommand) => {
-			if (command === theSpaceshipStopCommand) {
-				console.log('Все команды theSpaceship остановлены')
-				// Тут можно удалить объект theSpaceship.
-				commandQueueEventEmitter.removeListener('execute', onExecute)
-			}
-		}
-
-		commandQueueEventEmitter.on('execute', onExecute)
 	}
 })
 
