@@ -1314,6 +1314,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/events@npm:^3":
+  version: 3.0.0
+  resolution: "@types/events@npm:3.0.0"
+  checksum: 9a424c2da210957d5636e0763e8c9fc3aaeee35bf411284ddec62a56a6abe31de9c7c2e713dabdd8a76ff98b47db2bd52f61310be6609641d6234cc842ecbbe3
+  languageName: node
+  linkType: hard
+
 "@types/glob@npm:^7.1.1":
   version: 7.2.0
   resolution: "@types/glob@npm:7.2.0"
@@ -4277,11 +4284,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-game@workspace:packages/khusamov-game"
   dependencies:
+    "@types/events": ^3
     "@types/lodash": ^4
     "@types/lodash.mergewith": ^4
     "@types/prettier": ^2.4.4
     "@types/react": ^18.0.3
     "@types/react-dom": ^18.0.0
+    events: ^3.3.0
     khusamov-base-types: "workspace:*"
     khusamov-command-system: "workspace:*"
     khusamov-inversion-of-control: "workspace:*"

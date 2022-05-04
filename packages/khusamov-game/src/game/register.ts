@@ -1,7 +1,15 @@
-import {ISize, Queue, Timer, Vector} from 'khusamov-base-types';
+import {EventEmitter} from 'events';
+import {ICommand, ISize, Queue, Timer, Vector} from 'khusamov-base-types';
 import {register, resolve} from 'khusamov-inversion-of-control';
 import {createUniversalObject, findUniversalObject, IUniversalObject, withoutType} from 'khusamov-universal-object';
-import {createCommandQueue, InterpretOrderCommand, RepeatableCommand, TCommandQueue, TOrderQueue} from 'khusamov-command-system';
+import {
+	createCommandQueue,
+	InterpretOrderCommand,
+	RepeatableCommand, StopCommand,
+	TCommandQueue,
+	TOrderQueue,
+	WithStoppableAdapter
+} from 'khusamov-command-system';
 import {
 	clockwiseRotateForceActionResolver,
 	counterclockwiseRotateForceActionResolver, decreaseForceActionResolver,
@@ -15,7 +23,6 @@ import IGameObject from './gameObject/IGameObject';
 import IToroidalSurface from './gameObject/IToroidalSurface';
 import {TGameObjectList} from './types';
 import IStopOrder from './order/IStopOrder';
-import WithStoppableAdapter from 'khusamov-command-system/dist/adapter/WithStoppableAdapter';
 
 const DEBUG = false
 
@@ -28,6 +35,7 @@ register('MoveTransformAction.DecreaseForce', decreaseForceActionResolver)
 register('MoveTransformAction.IncreaseForce', increaseForceActionResolver)
 
 const commandQueue: TCommandQueue = createCommandQueue() // Очередь команд создается по особому!
+const commandQueueEventEmitter = new EventEmitter()
 const orderQueue: TOrderQueue = new Queue
 const gameObjectList: TGameObjectList = []
 
@@ -72,6 +80,7 @@ if (DEBUG) {
 			if (command) {
 				console.log(command.name)
 				command.execute()
+				commandQueueEventEmitter.emit('execute', command)
 			}
 		})
 	))
@@ -79,7 +88,11 @@ if (DEBUG) {
 	register('GameTimer', (): Timer => (
 		new Timer(0, () => {
 			const commandQueue = resolve<TCommandQueue>('CommandQueue')
-			commandQueue.dequeue()?.execute()
+			const command = commandQueue.dequeue()
+			if (command) {
+				command.execute()
+				commandQueueEventEmitter.emit('execute', command)
+			}
 		})
 	))
 }
@@ -140,6 +153,11 @@ document.addEventListener('keydown', event => {
 			)
 		)
 		console.log('theSpaceshipWithStoppable.stoppableMap', theSpaceshipWithStoppable.stoppableMap)
+
+
+		// При помощи приказов не сделать удаление объекта.
+		// Разве что создать специальный приказ для этого?
+		//
 		// orderQueue.enqueue(
 		// 	createUniversalObject<IStopOrder>({
 		// 		type: 'Stop',
@@ -150,6 +168,28 @@ document.addEventListener('keydown', event => {
 		// 		}
 		// 	})
 		// )
+
+		const theSpaceshipStopCommand = new StopCommand(
+			resolve<IUniversalObject, [TTargetObjectSearchParams]>(
+				'GameObject',
+				{
+					type: 'GameObject',
+					name: 'theSpaceship'
+				}
+			)
+		)
+
+		commandQueue.enqueue(theSpaceshipStopCommand)
+
+		const onExecute = (command: ICommand) => {
+			if (command === theSpaceshipStopCommand) {
+				console.log('Все команды theSpaceship остановлены')
+				// Тут можно удалить объект theSpaceship.
+				commandQueueEventEmitter.removeListener('execute', onExecute)
+			}
+		}
+
+		commandQueueEventEmitter.on('execute', onExecute)
 	}
 })
 

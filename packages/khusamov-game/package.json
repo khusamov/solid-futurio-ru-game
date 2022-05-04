@@ -14,11 +14,13 @@
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
+    "@types/events": "^3",
     "@types/lodash": "^4",
     "@types/lodash.mergewith": "^4",
     "@types/prettier": "^2.4.4",
     "@types/react": "^18.0.3",
     "@types/react-dom": "^18.0.0",
+    "events": "^3.3.0",
     "khusamov-base-types": "workspace:*",
     "khusamov-command-system": "workspace:*",
     "khusamov-inversion-of-control": "workspace:*",
