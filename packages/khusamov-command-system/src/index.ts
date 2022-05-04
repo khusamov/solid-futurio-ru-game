@@ -13,4 +13,4 @@ export {default as IStopOrder} from './order/IStopOrder'
 export {default as IStartOrder} from './order/IStartOrder'
 export {default as stopCommandResolver} from './order/stopCommandResolver'
 
-export {default as createCommandQueue} from './functions/createCommandQueue'
+export {default as createCommandQueue, TCommandQueue} from './functions/createCommandQueue'

@@ -1,6 +1,6 @@
 import {ICommand, IQueue, Queue} from 'khusamov-base-types';
 
-type TCommandQueue = IQueue<ICommand>
+export type TCommandQueue = IQueue<ICommand>
 
 /**
  * Создать очередь команд.
