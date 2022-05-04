@@ -13,7 +13,7 @@ import IQueue from './IQueue';
 export default class Queue<T> implements IQueue<T> {
 	private storage: Array<T> = []
 
-	public enqueue(...items: T[]): void {
+	public enqueue<I extends T = T>(...items: I[]): void {
 		this.storage.push(...items);
 	}
 

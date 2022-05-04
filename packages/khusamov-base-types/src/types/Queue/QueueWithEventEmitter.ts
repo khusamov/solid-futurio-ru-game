@@ -5,7 +5,7 @@ import EventEmitter from 'events';
 export default class QueueWithEventEmitter<T> extends Queue<T> implements IEventEmitter {
 	private eventEmitter = new EventEmitter
 
-	public enqueue(...items: T[]): void {
+	public enqueue<I extends T = T>(...items: I[]): void {
 		this.eventEmitter.emit('before-enqueue', this, ...items)
 		super.enqueue(...items);
 		this.eventEmitter.emit('enqueue', this, ...items)
