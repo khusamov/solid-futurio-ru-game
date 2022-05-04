@@ -3,6 +3,17 @@ import {IKeyValueObject} from 'khusamov-base-types';
 export type TUniversalValueName = string
 export type TUniversalItems = IKeyValueObject<TUniversalValueName, any | undefined>
 
+export function isUniversalObject(object: any): object is IUniversalObject {
+	return (
+		'getValue' in object &&
+		'setValue' in object &&
+		'items' in object &&
+		typeof object.getValue === 'function' &&
+		typeof object.setValue === 'function' &&
+		Array.isArray(object.items)
+	)
+}
+
 /**
  * Объект, который хранит в себе набор разнотипных свойств.
  */
