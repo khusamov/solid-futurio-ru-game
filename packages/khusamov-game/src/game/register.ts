@@ -5,7 +5,7 @@ import {createCommandQueue} from 'khusamov-command-system';
 import {IMovable} from 'khusamov-mechanical-motion';
 import IGameObject from './gameObject/IGameObject';
 import IToroidalSurface from './gameObject/IToroidalSurface';
-import {TTargetObjectSearchParams} from './order/IMoveTransformOrder';
+import {TTargetObjectSearchParams} from './order/IStartMoveTransformOrder';
 import {TGameObjectList, TOrderQueue} from './types';
 
 const commandQueue = createCommandQueue() // Очередь команд создается по особому!

@@ -26,7 +26,7 @@ export type TTargetObjectSearchParams = {
 	name: string
 }
 
-export default interface IMoveTransformOrder extends IOrder {
+export default interface IStartMoveTransformOrder extends IOrder {
 	type: 'StartMoveTransform'
 	transformAction: TTransformActionParams
 	targetObject: TTargetObjectSearchParams

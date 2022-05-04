@@ -1,6 +1,6 @@
 import {IQueue, onKeyUp, onKeyDown, IDisposable, Angle} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
-import IMoveTransformOrder, {TTransformActionParams} from '../order/IMoveTransformOrder';
+import IStartMoveTransformOrder, {TTransformActionParams} from '../order/IStartMoveTransformOrder';
 import IStopOrder from '../order/IStopOrder';
 
 type TUniversalObject = Record<string, any>
@@ -22,7 +22,7 @@ export default function createTheSpaceshipKeyboardHandlers(): IDisposable {
 	const orderQueue = resolve<TOrderQueue>('OrderQueue')
 	for (const key in keyboardShortcutMoveTransformMap) {
 		if (!keyboardShortcutMoveTransformMap.hasOwnProperty(key)) continue
-		const moveTransformOrder: IMoveTransformOrder = {
+		const moveTransformOrder: IStartMoveTransformOrder = {
 			type: 'StartMoveTransform',
 			transformAction: keyboardShortcutMoveTransformMap[key],
 			targetObject: {

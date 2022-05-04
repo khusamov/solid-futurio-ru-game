@@ -3,7 +3,7 @@ import {ICommand} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import {IMovable} from 'khusamov-mechanical-motion';
 import {UniversalObjectAdapter} from 'khusamov-universal-object';
-import {TTargetObjectSearchParams} from './IMoveTransformOrder';
+import {TTargetObjectSearchParams} from './IStartMoveTransformOrder';
 
 export default interface IStopOrder extends IOrder {
 	type: 'Stop'
