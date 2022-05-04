@@ -23,6 +23,7 @@ import IDestroyOrder, {destroyCommandResolver} from './order/IDestroyOrder';
 import IGameObject from './gameObject/IGameObject';
 import IToroidalSurface from './gameObject/IToroidalSurface';
 import {TGameObjectList} from './types';
+import IRenderable from './gameObject/IRenderable';
 
 const DEBUG = false
 
@@ -63,9 +64,10 @@ gameObjectList.push(
 )
 
 gameObjectList.push(
-	createUniversalObject<IGameObject & IMovable>({
+	createUniversalObject<IGameObject & IMovable & IRenderable>({
 		name: 'theSpaceship',
-		kind: ['IGameObject', 'IMovable'],
+		kind: ['IGameObject', 'IMovable', 'IRenderable'],
+		renderComponent: 'Spaceship',
 		mass: 1000,
 		position: new Vector(100, 100),
 		appliedForce: new Vector(1000, 1000)
