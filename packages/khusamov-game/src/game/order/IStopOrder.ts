@@ -15,15 +15,46 @@ export default interface IStopOrder extends IOrder {
 	command?: string
 }
 
-export function stopCommandResolver(order: IStopOrder): ICommand {
-	const target = resolve<IUniversalObject | undefined>(order.targetObject.type, order.targetObject)
-	if (!target) {
-		throw new Error(`Целевой объект не найден '${JSON.stringify(order.targetObject)}'`)
+export class StopOrderAdapter implements IStopOrder {
+	public readonly type = 'Stop'
+	public constructor(private universalObject: IUniversalObject) {}
+
+	public get targetObject(): TTargetObjectSearchParams {
+		return this.universalObject.getValue('targetObject', {
+			type: '',
+			name: ''
+		})
+	}
+
+	public set targetObject(value: TTargetObjectSearchParams) {
+		this.universalObject.setValue('targetObject', value)
+	}
+
+	public get command(): string | undefined {
+		return this.universalObject.getValue('command')
+	}
+
+	public set command(value: string | undefined) {
+		this.universalObject.setValue('command', value)
+	}
+}
+
+export function stopCommandResolver(stopOrderObject: IUniversalObject): ICommand {
+	const stopOrder = new StopOrderAdapter(stopOrderObject)
+
+	const targetObject = (
+		resolve<IUniversalObject | undefined>(
+			stopOrder.targetObject.type,
+			stopOrder.targetObject
+		)
+	)
+	if (!targetObject) {
+		throw new Error(`Целевой объект не найден '${JSON.stringify(stopOrder.targetObject)}'`)
 	}
 
 	return (
-		order.command
-			? new StopCommand(order.command, target)
-			: new StopCommand(target)
+		stopOrder.command
+			? new StopCommand(stopOrder.command, targetObject)
+			: new StopCommand(targetObject)
 	)
 }
