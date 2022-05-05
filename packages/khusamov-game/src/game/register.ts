@@ -27,6 +27,7 @@ import IRenderable from './gameObject/IRenderable';
 
 const DEBUG = false
 
+register('Stop', stopCommandResolver)
 register('Destroy', destroyCommandResolver)
 register('StartMove', startMoveCommandResolver)
 register('StartMoveTransform', startMoveTransformCommandResolver)
