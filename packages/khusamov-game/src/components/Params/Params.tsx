@@ -21,6 +21,7 @@ export default function Params({object}: IParamsProps) {
 						<tr style={{color: param.color}}>
 							<td>{param.title}:</td>
 							<td>{param.value}</td>
+							<td>{param.valueAlt}</td>
 							<td>{param.unit}</td>
 						</tr>
 					))}
@@ -37,6 +38,7 @@ interface IParam {
 	value: string
 	unit: string
 	color?: string
+	valueAlt?: string
 }
 
 function getMovableParams(movable: IMovable): IParam[] {
@@ -47,16 +49,18 @@ function getMovableParams(movable: IMovable): IParam[] {
 	}, {
 		title: 'Скорость',
 		value: movable.linearVelocity.toString(),
+		valueAlt: movable.linearVelocity.length.toFixed(2),
 		unit: 'Метры в секунду',
 		color: 'blue'
 	}, {
 		title: 'Ускорение',
 		value: movable.linearAcceleration.toString(),
+		valueAlt: movable.linearAcceleration.length.toFixed(2),
 		unit: 'Метры в секунду в квадрате'
 	}, {
 		title: 'Сила',
-		value: `${movable.appliedForce.length.toFixed(2)}, ${Angle.toDegree(movable.appliedForce.angle).toFixed(2)}`,
-		unit: 'Ньютон, градус',
+		value: `${movable.appliedForce.length.toFixed(2)} / ${Angle.toDegree(movable.appliedForce.angle).toFixed(2)}`,
+		unit: 'Ньютон / Градус',
 		color: 'red'
 	}]
 }
