@@ -41,10 +41,6 @@ interface IParam {
 
 function getMovableParams(movable: IMovable): IParam[] {
 	return [{
-		title: 'Время',
-		value: new Date(movable.time).getMinutes() + ':' + new Date(movable.time).getSeconds(),
-		unit: ''
-	}, {
 		title: 'Координаты',
 		value: movable.position.toString(),
 		unit: 'Метры'
