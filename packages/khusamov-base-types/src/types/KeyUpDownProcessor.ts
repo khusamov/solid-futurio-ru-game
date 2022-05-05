@@ -1,6 +1,8 @@
 export type TAction = () => void
 
 /**
+ * Вместо KeyUpDownProcessor используйте Shortcut.
+ * @deprecated
  * @link http://khusamov.github.io/tutorial/csharp/key-down-up-process
  */
 export default class KeyUpDownProcessor {
@@ -17,8 +19,8 @@ export default class KeyUpDownProcessor {
 		// Из события извлекаем номер нажатой клавиши.
 		const keyCode = event.code
 
+		// Если такой клавиши нет в словаре,
 		if (!this.#theKeyWasDown.has(keyCode)) {
-			// Если такой клавиши нет в словаре,
 			// то добавляем ее с информацией, что ранее она еще не была нажата.
 			this.#theKeyWasDown.set(keyCode, false)
 		}
@@ -42,6 +44,10 @@ export default class KeyUpDownProcessor {
 	}
 }
 
+/**
+ * @deprecated
+ * @param listener
+ */
 export function onKeyDown(listener: (event: KeyboardEvent) => void) {
 	return (event: KeyboardEvent) => {
 		KeyUpDownProcessor.onKeyDown(event, () => {
@@ -50,6 +56,10 @@ export function onKeyDown(listener: (event: KeyboardEvent) => void) {
 	}
 }
 
+/**
+ * @deprecated
+ * @param listener
+ */
 export function onKeyUp(listener: (event: KeyboardEvent) => void) {
 	return (event: KeyboardEvent) => {
 		KeyUpDownProcessor.onKeyUp(event, () => {
