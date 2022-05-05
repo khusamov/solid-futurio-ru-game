@@ -67,7 +67,12 @@ export default class StopCommand implements ICommand {
 		if (stoppableCommandName) {
 			// Останавливается одна определенная команда.
 			if (!stoppableMap.has(stoppableCommandName) || !stoppableCommand) {
-				throw new Error(`Не найдена команда '${stoppableCommandName}'`)
+				console.group(`StopCommand: Не найдена команда для остановки '${stoppableCommandName}'`)
+				console.log('Целевая команда:', this.stoppableCommandName)
+				console.log('Полное имя команды:', this.stoppableCommandFullName)
+				console.log('Целевой объект:', this.targetObject)
+				console.groupEnd()
+				throw new Error(`StopCommand: Не найдена команда для остановки '${stoppableCommandName}'`)
 			}
 
 			stoppableCommand.stop()
