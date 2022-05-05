@@ -12,6 +12,7 @@ import Spaceship from '../Spaceship';
 import Canvas, {TOnResizeHandler} from '../Canvas';
 import styles from './Application.module.scss'
 import reziseGameWorld from './reziseGameWorld';
+import Params from '../Params';
 
 type TUniversalRenderComponent = FunctionComponent<{object: IUniversalObject}>
 const renderableMap: Record<string, TUniversalRenderComponent> = {
@@ -24,8 +25,10 @@ export default function Application() {
 	const onResize: TOnResizeHandler = size => {
 		reziseGameWorld(size)
 	}
+	const selectedGameObject = resolve<IUniversalObject>('SelectedGameObject')
 	return (
 		<div className={styles.Application}>
+			<Params object={selectedGameObject}/>
 			<Canvas onResize={onResize}>
 				{gameObjectList.map(object => {
 					const gameObject = new GameObjectAdapter(object)

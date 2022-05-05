@@ -1,0 +1,23 @@
+@mixin absolute-center {
+	// Выравнивание по центру.
+	// https://habr.com/ru/post/189696/
+	position: absolute;
+	margin: auto;
+	left: 0;
+	bottom: 20px;
+	right: 0;
+	width: fit-content;
+}
+
+.Params {
+	@include absolute-center;
+	padding: 10px;
+	box-shadow: 4px 4px 29px -2px #e3e3e3;
+	border-radius: 5px;
+	table {
+		td {
+			white-space: nowrap;
+			padding: 5px;
+		}
+	}
+}

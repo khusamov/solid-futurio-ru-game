@@ -140,6 +140,15 @@ orderQueue.enqueue(
 	})
 )
 
+register('SelectedGameObject', () => (
+	resolve<IUniversalObject, [TTargetObjectSearchParams]>(
+		'GameObject',
+		{
+			type: 'GameObject',
+			name: 'theSpaceship'
+		}
+	)
+))
 
 
 // Демонстрация возможности уничтожения объектов.
