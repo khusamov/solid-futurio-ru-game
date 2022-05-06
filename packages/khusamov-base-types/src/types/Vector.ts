@@ -1,6 +1,14 @@
 import IPoint from './IPoint';
 
+/*
+ * Увеличить длину вектора можно так:
+ * Vector.translate(Vector.identity.scale(length))
+ *
+ */
+
 /**
+ * Вектор.
+ * @unmutable
  * @link https://github.com/khusamov/extjs-cad-2d/blob/master/packages/local/khusamov-svg/src/geometry/vector/Vector.js
  * @link https://github.com/khusamov/extjs-cad-2d/blob/master/packages/local/khusamov-svg/src/geometry/Point.js
  */
@@ -23,9 +31,35 @@ export default class Vector implements IPoint {
 		)
 	}
 
+	/**
+	 * Угол между вектором и положительной осью.
+	 */
+	public get angle(): number {
+		return Math.atan2(this.y, this.x)
+	}
+
+	/**
+	 * Модуль (длина) вектора.
+	 */
+	public get length(): number {
+		return Vector.distance(this)
+	}
+
+	/**
+	 * Возвращает true, если вектор является нулевым.
+	 */
+	public get isNull(): boolean {
+		return this.x === 0 && this.y === 0
+	}
+
+	/**
+	 * Конструктор вектора.
+	 * @param x
+	 * @param y
+	 */
 	public constructor(
-		public x: number = 0,
-		public y: number = 0
+		public readonly x: number = 0,
+		public readonly y: number = 0
 	) {}
 
 	/**
@@ -34,9 +68,12 @@ export default class Vector implements IPoint {
 	 * Создается новый вектор, а исходный вектор не меняется.
 	 */
 	public get identity(): Vector {
-		const clone = this.clone()
-		clone.length = 1
-		return clone
+		return (
+			new Vector(
+				Math.cos(this.angle),
+				Math.sin(this.angle)
+			)
+		)
 	}
 
 	/**
@@ -89,14 +126,6 @@ export default class Vector implements IPoint {
 	}
 
 	/**
-	 * Увеличить длину вектора.
-	 * @param length
-	 */
-	public increase(length: number): Vector {
-		return this.identity.scale(this.length).translate(this)
-	}
-
-	/**
 	 * Скалярное произведение векторов.
 	 * @param vector
 	 */
@@ -116,32 +145,6 @@ export default class Vector implements IPoint {
 			this.x % vector.x,
 			this.y % vector.y
 		)
-	}
-
-	/**
-	 * Угол между вектором и положительной осью.
-	 */
-	public get angle(): number {
-		return Math.atan2(this.y, this.x)
-	}
-
-	public set angle(angle: number) {
-		const length = this.length
-		this.x = length * Math.cos(angle)
-		this.y = length * Math.sin(angle)
-	}
-
-	/**
-	 * Модуль (длина) вектора.
-	 */
-	public get length(): number {
-		return Vector.distance(this)
-	}
-
-	public set length(length: number) {
-		const angle = this.angle
-		this.x = length * Math.cos(angle)
-		this.y = length * Math.sin(angle)
 	}
 
 	public clone() {
