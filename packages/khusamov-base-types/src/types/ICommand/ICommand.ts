@@ -25,4 +25,5 @@ export default interface ICommand {
 	readonly name: string
 
 	// TODO Может стоить добавить description? Чтобы name содержало идентификатор, а все пояснения были в description.
+	// TODO Похоже надо удалить name. Всю инфу можно получить при помощи console.log(command).
 }
