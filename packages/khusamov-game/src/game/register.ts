@@ -1,31 +1,35 @@
 import {EventEmitter} from 'events';
-import {ICommand, ISize, Queue, Timer, Vector} from 'khusamov-base-types';
+import {ISize, Queue, QueueLog, Timer, Vector} from 'khusamov-base-types';
 import {register, resolve} from 'khusamov-inversion-of-control';
 import {createUniversalObject, findUniversalObject, IUniversalObject, withoutType} from 'khusamov-universal-object';
 import {
 	createCommandQueue,
 	InterpretOrderCommand,
-	RepeatableCommand, StopCommand,
+	RepeatableCommand,
 	TCommandQueue,
-	TOrderQueue,
-	WithStoppableAdapter
+	TOrderQueue
 } from 'khusamov-command-system';
 import {
+	IMovable,
 	clockwiseRotateForceActionResolver,
-	counterclockwiseRotateForceActionResolver, decreaseForceActionResolver,
-	IMovable, increaseForceActionResolver,
+	counterclockwiseRotateForceActionResolver,
+	decreaseForceActionResolver,
+	increaseForceActionResolver,
 	toroidalTransformActionResolver
 } from 'khusamov-mechanical-motion';
 import IStartMoveTransformOrder, {startMoveTransformCommandResolver, TTargetObjectSearchParams} from './order/IStartMoveTransformOrder';
 import IStartMoveOrder, {startMoveCommandResolver} from './order/IStartMoveOrder';
 import ToroidalSurfaceAdapter from './gameObject/ToroidalSurfaceAdapter';
-import IDestroyOrder, {destroyCommandResolver} from './order/IDestroyOrder';
+import {destroyCommandResolver} from './order/IDestroyOrder';
 import IGameObject from './gameObject/IGameObject';
 import IToroidalSurface from './gameObject/IToroidalSurface';
 import {TGameObjectList} from './types';
 import IRenderable from './gameObject/IRenderable';
+import createObjectKeyboardControl from './keyboardShortcut/createObjectKeyboardControl';
+import {stopCommandResolver} from './order/IStopOrder';
 
 const DEBUG = false
+const LOG = false
 
 register('Stop', stopCommandResolver)
 register('Destroy', destroyCommandResolver)
@@ -39,8 +43,18 @@ register('MoveTransformAction.IncreaseForce', increaseForceActionResolver)
 
 const commandQueue: TCommandQueue = createCommandQueue() // Очередь команд создается по особому!
 const commandQueueEventEmitter = new EventEmitter()
-const orderQueue: TOrderQueue = new Queue
 const gameObjectList: TGameObjectList = []
+
+function createOrderQueue(): TOrderQueue {
+	if (LOG) {
+		const [orderQueue, orderQueueLog] = QueueLog.create<IUniversalObject>(new Queue)
+		Object.defineProperty(window, 'orderQueueLog', {value: orderQueueLog})
+		return orderQueue
+	} else {
+		return new Queue
+	}
+}
+const orderQueue: TOrderQueue = createOrderQueue()
 
 register('GameObjectList', () => gameObjectList)
 register('OrderQueue', () => orderQueue)
@@ -90,7 +104,7 @@ if (DEBUG) {
 	))
 } else {
 	register('GameTimer', (): Timer => (
-		new Timer(0, () => {
+		new Timer(1, () => {
 			const commandQueue = resolve<TCommandQueue>('CommandQueue')
 			const command = commandQueue.dequeue()
 			if (command) {
@@ -154,21 +168,19 @@ createObjectKeyboardControl()
 
 
 // Демонстрация возможности уничтожения объектов.
-document.addEventListener('keydown', event => {
-	if (event.code === 'KeyQ') {
-		orderQueue.enqueue(
-			createUniversalObject<IDestroyOrder>({
-				type: 'Destroy',
-				targetObject: {
-					type: 'GameObject',
-					name: 'theSpaceship'
-				}
-			})
-		)
-	}
-})
-
-
+// document.addEventListener('keydown', event => {
+// 	if (event.code === 'KeyQ') {
+// 		orderQueue.enqueue(
+// 			createUniversalObject<IDestroyOrder>({
+// 				type: 'Destroy',
+// 				targetObject: {
+// 					type: 'GameObject',
+// 					name: 'theSpaceship'
+// 				}
+// 			})
+// 		)
+// 	}
+// })
 
 
 

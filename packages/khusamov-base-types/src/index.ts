@@ -21,11 +21,13 @@ export {default as Lazy} from './types/Lazy'
 export {default as Vector} from './types/Vector'
 export {default as Angle} from './types/Angle'
 export {default as Convert} from './types/Convert'
+export {default as GameLoop} from './types/GameLoop'
 export {default as KeyUpDownProcessor, onKeyDown, onKeyUp} from './types/KeyUpDownProcessor'
 export {default as Shortcut, ShortcutDispatcher, TKeyboardListener, IKeyboardListeners} from './types/Shortcut'
 
 export {
 	default as Queue,
+	QueueLog,
 	IQueue,
 	QueueWithEventEmitter
 } from './types/Queue'
