@@ -3,6 +3,9 @@ import IMovable from '../IMovable';
 
 export type TMoveTransformAction = (movable: IMovable) => void
 
+// TODO Эту команду надо удалить и вместо нее использовать RelayCommand
+//  Перед этим в README.md надо прописать пример использования RelayCommand для изменения движения объекта.
+
 /**
  * Команда изменения параметров поступательного движения.
  *
