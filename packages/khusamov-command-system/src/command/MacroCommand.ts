@@ -6,18 +6,7 @@ import {ICommand, IQueue} from 'khusamov-base-types';
  * Используется для создания повторяющихся команд.
  */
 export default class MacroCommand implements ICommand {
-	#commandQueue?: IQueue<ICommand>
-
-	public get commandQueue() {
-		return this.#commandQueue
-	}
-
-	public set commandQueue(commandQueue) {
-		this.#commandQueue = commandQueue
-		for (const command of this.commands) {
-			command.commandQueue = this.commandQueue
-		}
-	}
+	public commandQueue?: IQueue<ICommand>
 
 	public get name(): string {
 		return 'MacroCommand: ' + (this.commands.map(command => command.name).join(', ') || '<empty>')
@@ -29,6 +18,9 @@ export default class MacroCommand implements ICommand {
 
 	public execute(): void {
 		for (const command of this.commands) {
+			if (this.commandQueue) {
+				command.commandQueue = this.commandQueue
+			}
 			command.execute()
 		}
 	}

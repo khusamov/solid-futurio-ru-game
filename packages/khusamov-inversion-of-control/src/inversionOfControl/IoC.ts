@@ -1,5 +1,4 @@
 import {Lazy} from 'khusamov-base-types';
-import InversionOfControlError from './InversionOfControlError';
 import createRegistratorResolver from './registrator/createRegistratorResolver';
 import IResolverContext from './IResolverContext';
 import {TDependencyMap} from './types';

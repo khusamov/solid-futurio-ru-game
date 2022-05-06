@@ -11,7 +11,7 @@ import RepeatCommand from './RepeatCommand';
  * Можно остановить вызвав метод stop().
  */
 export default class RepeatableCommand extends BridgeCommand implements IStoppable {
-	public get name(): string {
+	public override get name(): string {
 		return 'RepeatableCommand: ' + this.targetCommand.name
 	}
 

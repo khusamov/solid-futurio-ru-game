@@ -33,7 +33,7 @@ export default function ToroidalRender({position, toroidalSurfaceSize, children}
 	return (
 		<g>
 			{children}
-			{offsets.map(([x, y]) => (
+			{offsets && offsets.map(([x, y]) => (
 				<g transform={`translate(${x}, ${y})`}>
 					{children}
 				</g>

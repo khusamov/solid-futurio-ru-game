@@ -1,6 +1,4 @@
-import {reflect} from 'typescript-rtti';
-import {ICommand, IQueue, IStoppable, IWithStoppable} from 'khusamov-base-types';
-import {resolve} from 'khusamov-inversion-of-control';
+import {ICommand, IQueue, IStoppable} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import commandFullName from '../functions/commandFullName';
 import WithStoppableAdapter from '../adapter/WithStoppableAdapter';

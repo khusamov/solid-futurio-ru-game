@@ -7,17 +7,8 @@ import NotOperationCommand from './NotOperationCommand';
  * Предназначена для создания повторяющихся команд.
  */
 export default class BridgeCommand implements IInjectableCommand {
-	#commandQueue?: IQueue<ICommand>
+	public commandQueue?: IQueue<ICommand>
 	private internalCommand: ICommand = new NotOperationCommand
-
-	public get commandQueue() {
-		return this.#commandQueue
-	}
-
-	public set commandQueue(commandQueue) {
-		this.#commandQueue = commandQueue
-		this.internalCommand.commandQueue = this.commandQueue
-	}
 
 	public get name(): string {
 		return 'BridgeCommand: ' + this.internalCommand.name
@@ -35,10 +26,12 @@ export default class BridgeCommand implements IInjectableCommand {
 	 */
 	public inject(internalCommand: ICommand) {
 		this.internalCommand = internalCommand
-		this.internalCommand.commandQueue = this.commandQueue
 	}
 
 	public execute() {
+		if (this.commandQueue) {
+			this.internalCommand.commandQueue = this.commandQueue
+		}
 		this.internalCommand.execute()
 	}
 }
