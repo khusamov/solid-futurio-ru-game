@@ -70,8 +70,7 @@ gameObjectList.push(
 		kind: ['IGameObject', 'IMovable', 'IRenderable'],
 		renderComponent: 'Spaceship',
 		mass: 1000,
-		position: new Vector(100, 100),
-		appliedForce: new Vector(1000, 1000)
+		position: new Vector(100, 100)
 	})
 )
 
