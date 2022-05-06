@@ -25,7 +25,7 @@ export default function Spaceship({object}: ISpaceshipProps) {
 			.translate(new Vector(spaceshipImageSize.width, spaceshipImageSize.height).scale(-1/2))
 	)
 	return (
-		<g transform={`translate(${x}, ${y})`}>
+		<g className={styles.Spaceship} transform={`translate(${x}, ${y})`}>
 			<g transform={transform.toString()}>
 				<SpaceshipImage/>
 			</g>
