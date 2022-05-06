@@ -1,5 +1,5 @@
 import IMovable from '../../IMovable';
 
-export default function clockwiseRotateForceActionResolver(decrement: number) {
-	return (movable: IMovable) => movable.appliedForce.rotate(-decrement)
+export default function clockwiseRotateForceActionResolver(increment: number) {
+	return (movable: IMovable) => movable.appliedForce = movable.appliedForce.rotate(-increment)
 }
