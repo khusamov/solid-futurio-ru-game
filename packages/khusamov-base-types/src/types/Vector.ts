@@ -33,6 +33,7 @@ export default class Vector implements IPoint {
 
 	/**
 	 * Угол между вектором и положительной осью.
+	 * Принимает значение от -Math.PI до Math.PI радиан.
 	 */
 	public get angle(): number {
 		return Math.atan2(this.y, this.x)
