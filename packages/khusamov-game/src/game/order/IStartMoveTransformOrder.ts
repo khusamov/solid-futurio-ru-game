@@ -1,7 +1,7 @@
 import {ICommand} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
-import {IOrder, RepeatableCommand, StartCommand} from 'khusamov-command-system';
+import {IOrder, RelayCommand, RepeatableCommand, StartCommand} from 'khusamov-command-system';
 import {
 	clockwiseRotateForceActionResolver,
 	counterclockwiseRotateForceActionResolver,
@@ -9,7 +9,6 @@ import {
 	increaseForceActionResolver,
 	toroidalTransformActionResolver,
 	MovableAdapter,
-	MoveTransformCommand,
 	TMoveTransformAction
 } from 'khusamov-mechanical-motion';
 
@@ -76,12 +75,17 @@ export function startMoveTransformCommandResolver(startMoveTransformOrderObject:
 			'MoveTransform.' + transformName,
 			targetObject,
 			new RepeatableCommand(
-				new MoveTransformCommand(
-					new MovableAdapter(targetObject),
-					resolve<TMoveTransformAction>(
-						'MoveTransformAction.' + transformName,
-						...transformParams
-					)
+				new RelayCommand(
+					'MoveTransformAction.' + transformName,
+					() => {
+						const transform = (
+							resolve<TMoveTransformAction>(
+								'MoveTransformAction.' + transformName,
+								...transformParams
+							)
+						)
+						transform(new MovableAdapter(targetObject))
+					}
 				)
 			)
 		)
