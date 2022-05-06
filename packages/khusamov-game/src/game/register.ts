@@ -150,6 +150,8 @@ register('SelectedGameObject', () => (
 	)
 ))
 
+createObjectKeyboardControl()
+
 
 // Демонстрация возможности уничтожения объектов.
 document.addEventListener('keydown', event => {
