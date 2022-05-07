@@ -5,5 +5,9 @@ div.Wrap {
 		display: block; // SVG по умолчанию не является блоком и потому рядом с ним невидимая строка есть.
 		width: 100%;
 		height: 100%;
+		* {
+			// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect
+			vector-effect: non-scaling-stroke;
+		}
 	}
 }
