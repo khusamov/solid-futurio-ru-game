@@ -1,5 +1,5 @@
 import {SVGProps, PropsWithChildren, createContext} from 'react';
-import {ISize} from 'khusamov-base-types';
+import {ISize, Transform, Vector} from 'khusamov-base-types';
 import useResizeCanvas from './useResizeCanvas';
 import styles from './Canvas.module.scss'
 
@@ -25,11 +25,17 @@ export interface ICanvasProps {
  */
 export default function Canvas({children, onResize}: PropsWithChildren<ICanvasProps>) {
 	const [ref, size] = useResizeCanvas(onResize)
+
+	// Координаты камеры всегда отсчитываются от ее центра, поэтому сдвигаем все объекты на середину холста.
+	const transform = new Transform().translate(new Vector(size.width / 2, size.height / 2))
+
 	return (
 		<div ref={ref} className={styles.Wrap}>
 			<CanvasSizeContext.Provider value={size}>
 				<svg {...svgProps}>
-					{children}
+					<g transform={transform.toString()}>
+						{children}
+					</g>
 				</svg>
 			</CanvasSizeContext.Provider>
 		</div>
