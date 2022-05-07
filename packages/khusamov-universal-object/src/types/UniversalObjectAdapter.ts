@@ -1,5 +1,10 @@
 import IUniversalObject, {TUniversalItems, TUniversalValueName} from './IUniversalObject';
 
+// TODO Удалить UniversalObjectAdapter
+
+/**
+ * @deprecated
+ */
 export default class UniversalObjectAdapter implements IUniversalObject {
 	public get items(): TUniversalItems[] {
 		// TODO Реализовать свойство items.
