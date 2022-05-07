@@ -16,6 +16,7 @@ export {default as IWithStoppable, TStoppableKey} from './types/IWithStoppable'
 
 export {default as ICommand, IInjectableCommand} from './types/ICommand'
 
+export {default as Transform} from './types/Transform'
 export {default as Timer} from './types/Timer'
 export {default as Lazy} from './types/Lazy'
 export {default as Vector} from './types/Vector'
