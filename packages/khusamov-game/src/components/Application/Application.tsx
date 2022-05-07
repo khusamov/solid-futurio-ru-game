@@ -23,9 +23,6 @@ const renderableMap: Record<string, TUniversalRenderComponent> = {
 export default function Application() {
 	useRequestAnimationFrame()
 	const gameObjectList = resolve<TGameObjectList>('GameObjectList')
-	const onResize: TOnResizeHandler = size => {
-		reziseGameWorld(size)
-	}
 	const selectedGameObject = resolve<IUniversalObject>('SelectedGameObject')
 	return (
 		<div className={styles.Application}>
