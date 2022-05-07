@@ -15,4 +15,9 @@ export default interface ITransformable {
 	 * Угол вращения объекта.
 	 */
 	rotation: Vector
+
+	/**
+	 * Масштабирование объекта.
+	 */
+	scale: Vector
 }
