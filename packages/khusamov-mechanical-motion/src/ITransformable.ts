@@ -1,0 +1,18 @@
+import {Vector} from 'khusamov-base-types';
+
+/**
+ * Интерфейс объекта, для которого вычисляется координаты и вращение.
+ * @adaptable
+ */
+export default interface ITransformable {
+	/**
+	 * Координаты объекта.
+	 * Метры.
+	 */
+	position: Vector
+
+	/**
+	 * Угол вращения объекта.
+	 */
+	rotation: Vector
+}
