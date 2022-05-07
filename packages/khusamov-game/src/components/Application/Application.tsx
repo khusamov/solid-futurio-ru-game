@@ -16,7 +16,8 @@ import Params from '../Params';
 
 type TUniversalRenderComponent = FunctionComponent<{object: IUniversalObject}>
 const renderableMap: Record<string, TUniversalRenderComponent> = {
-	Spaceship
+	Spaceship,
+	Star
 }
 
 export default function Application() {

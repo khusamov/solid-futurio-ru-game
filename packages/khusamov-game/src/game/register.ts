@@ -90,6 +90,41 @@ gameObjectList.push(
 
 commandQueue.enqueue(new RepeatableCommand(new InterpretOrderCommand))
 
+/**
+ * Генерация статических звезд.
+ */
+{
+	function getRandomInt(min: number, max: number) {
+		min = Math.ceil(min)
+		max = Math.floor(max)
+		return Math.floor(Math.random() * (max - min) + min) //The maximum is exclusive and the minimum is inclusive
+	}
+
+	Array(10)
+		.fill(1)
+		.map(() => {
+			const scale = getRandomInt(3, 10)
+			return {
+				position: new Vector(
+					getRandomInt(50, 800),
+					getRandomInt(50, 800)
+				),
+				scale: new Vector(scale, scale)
+			}
+		})
+		.forEach(({scale, position}, index) => {
+			gameObjectList.push(
+				createUniversalObject<IGameObject & ITransformable & IRenderable>({
+					name: 'theStar' + index,
+					kind: ['IGameObject', 'ITransformable', 'IRenderable'],
+					renderComponent: 'Star',
+					position,
+					scale
+				})
+			)
+		})
+}
+
 if (DEBUG) {
 	register('GameTimer', (): Timer => (
 		new Timer(1000, () => {
