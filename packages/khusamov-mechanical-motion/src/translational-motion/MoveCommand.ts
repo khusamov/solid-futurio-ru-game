@@ -19,7 +19,7 @@ export default class MoveCommand implements ICommand {
 	 * Используется для варианта игрового цикла с фиксированным шагом.
 	 */
 	public constructor(
-		private movable: IMovable,
+		private movable: IMovable, // TODO Добавить ITransformable
 		private fixedTimeInterval?: number
 	) {}
 
