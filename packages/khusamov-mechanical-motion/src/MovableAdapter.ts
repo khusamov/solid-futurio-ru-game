@@ -1,10 +1,8 @@
 import {Vector} from 'khusamov-base-types';
-import {IUniversalObject} from 'khusamov-universal-object';
+import {Adapter} from 'khusamov-universal-object';
 import IMovable from './IMovable';
 
-export default class MovableAdapter implements IMovable {
-	public constructor(private universalObject: IUniversalObject) {}
-
+export default class MovableAdapter extends Adapter implements IMovable {
 	public get time(): number {
 		return this.universalObject.getValue('time', 0)
 	}
