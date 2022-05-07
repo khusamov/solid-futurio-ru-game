@@ -1,7 +1,7 @@
 import {MovableAdapter} from 'khusamov-mechanical-motion';
 import {IUniversalObject} from 'khusamov-universal-object';
 import SpaceshipImage from './SpaceshipImage.svg'
-import {Angle, ISize, Vector} from 'khusamov-base-types';
+import {Angle, ISize, Transform, Vector} from 'khusamov-base-types';
 import styles from './Spaceship.module.scss'
 
 const spaceshipImageSize: ISize = {
@@ -39,21 +39,3 @@ export default function Spaceship({object}: ISpaceshipProps) {
 	)
 }
 
-class Transform {
-	private transforms: string[] = []
-	public scale(value: number): this {
-		this.transforms.push(`scale(${value})`)
-		return this
-	}
-	public rotate(angle: number): this {
-		this.transforms.push(`rotate(${Angle.toDegree(angle)})`)
-		return this
-	}
-	public translate({x, y}: Vector): this {
-		this.transforms.push(`translate(${x}, ${y})`)
-		return this
-	}
-	public toString(): string {
-		return this.transforms.join(', ')
-	}
-}
