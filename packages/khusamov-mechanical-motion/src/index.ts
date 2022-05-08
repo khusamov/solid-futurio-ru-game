@@ -11,7 +11,8 @@ export {default as transformPositionForToroid} from './functions/transformPositi
 export {
 	increaseForceActionResolver,
 	decreaseForceActionResolver,
+	toroidalTransformActionResolver,
+	rotateForceActionResolver,
 	clockwiseRotateForceActionResolver,
-	counterclockwiseRotateForceActionResolver,
-	toroidalTransformActionResolver
+	counterclockwiseRotateForceActionResolver
 } from './translational-motion/moveTransformAction'
