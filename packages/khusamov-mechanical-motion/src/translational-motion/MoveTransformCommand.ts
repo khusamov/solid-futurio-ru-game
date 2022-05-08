@@ -1,6 +1,7 @@
 import {ICommand} from 'khusamov-base-types';
 import IMovable from '../IMovable';
 
+// TODO TMoveTransformAction похоже надо переместить в index.ts
 export type TMoveTransformAction = (movable: IMovable) => void
 
 // TODO Эту команду надо удалить и вместо нее использовать RelayCommand
