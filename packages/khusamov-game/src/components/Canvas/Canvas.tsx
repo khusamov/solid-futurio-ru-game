@@ -18,16 +18,25 @@ export type TOnResizeHandler = (size: ISize) => void
 
 export interface ICanvasProps {
 	onResize?: TOnResizeHandler
+	offset?: Vector
+	scale?: Vector
 }
 
 /**
  * Пока просто выводим кружочек, обозначающий местоположение корабля.
  */
-export default function Canvas({children, onResize}: PropsWithChildren<ICanvasProps>) {
+export default function Canvas({children, onResize, offset = new Vector, scale = new Vector(1, 1)}: PropsWithChildren<ICanvasProps>) {
 	const [ref, size] = useResizeCanvas(onResize)
 
-	// Координаты камеры всегда отсчитываются от ее центра, поэтому сдвигаем все объекты на середину холста.
-	const transform = new Transform().translate(new Vector(size.width / 2, size.height / 2))
+	const transform = (
+		new Transform()
+			// Координаты камеры всегда отсчитываются от ее центра, поэтому сдвигаем все объекты на середину холста.
+			.translate(new Vector(size.width / 2, size.height / 2))
+			// Масштабирование камеры.
+			.scale(scale)
+			// Смещение камеры.
+			.translate(offset)
+	)
 
 	return (
 		<div ref={ref} className={styles.Wrap}>
