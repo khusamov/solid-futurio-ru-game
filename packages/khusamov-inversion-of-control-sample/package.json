@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@types/prettier": "^2.4.4",
-    "@types/react": "^18.0.3",
+    "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.0",
     "khusamov-adapter-generator-runtime": "workspace:*",
     "khusamov-base-types": "workspace:*",
@@ -24,7 +24,7 @@
     "khusamov-inversion-of-control": "workspace:*",
     "khusamov-universal-object": "workspace:*",
     "node-sass": "^7.0.1",
-    "react": "^18.0.0",
+    "react": "^18.1.0",
     "react-dom": "^18.0.0",
     "rollup": "^2.70.1",
     "typescript-rtti": "^0.6.0",
