@@ -8,9 +8,11 @@ export type TMoveTransformAction = (movable: IMovable) => void
 
 /**
  * Команда изменения параметров поступательного движения.
+ * Используйте RelayCommand.
  *
  * Например, если пространство является тором, то можно исправлять координаты.
  * Или команда увеличения приложенной к объекту силы.
+ * @deprecated
  */
 export default class MoveTransformCommand implements ICommand {
 	public readonly name = 'MoveTransformCommand'
