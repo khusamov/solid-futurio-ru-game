@@ -17,10 +17,12 @@
 	},
 	"dependencies": {
 		"events": "^3.3.0",
+		"react": "^18.1.0",
 		"reflect-metadata": "^0.1.13",
 		"typescript-rtti": "^0.6.0"
 	},
 	"devDependencies": {
+		"@types/react": "^18.0.9",
 		"rollup": "^2.70.1",
 		"ttypescript": "^1.5.13",
 		"typescript": "^4.6.3"
