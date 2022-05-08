@@ -25,7 +25,11 @@ export default class Timer implements IStartable, IStoppable {
 	 * Общее время остановки таймера. В миллисекундах.
 	 * @private
 	 */
-	private pauseInterval: number = 0
+	private _pauseInterval: number = 0
+
+	public get pauseInterval(): number {
+		return this._pauseInterval
+	}
 
 	/**
 	 * Текущее состояние таймера
@@ -51,7 +55,7 @@ export default class Timer implements IStartable, IStoppable {
 		handleByState(this.state, {
 			paused: () => {
 				this.state = ETimerState.Started
-				this.pauseInterval += Date.now() - this.pauseTime
+				this._pauseInterval += Date.now() - this.pauseTime
 			},
 			stopped: () => {
 				this.state = ETimerState.Started

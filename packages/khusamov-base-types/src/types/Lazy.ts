@@ -9,7 +9,7 @@ export default class Lazy<T> {
 	#value: T | undefined
 	#creator: ICreator<T>
 
-	constructor(private createFn: () => T) {
+	constructor(createFn: () => T) {
 		this.#creator = {
 			create(): T {
 				return createFn()
