@@ -3,19 +3,17 @@ import {useRequestAnimationFrame, Vector} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {MovableAdapter} from 'khusamov-mechanical-motion';
-import useRequestAnimationFrame from '../../game/useRequestAnimationFrame';
 import GameObjectAdapter from '../../game/gameObject/GameObjectAdapter';
 import RenderableAdapter from '../../game/gameObject/RenderableAdapter';
+import ToroidalSurfaceAdapter from '../../game/gameObject/ToroidalSurfaceAdapter';
+import {TTargetObjectSearchParams} from '../../game/order/IStartMoveTransformOrder';
 import {TGameObjectList} from '../../game/types';
 import ToroidalRender from '../ToroidalRender';
 import Spaceship from '../Spaceship';
 import Canvas from '../Canvas';
-import styles from './Application.module.scss'
 import Params from '../Params';
 import Star from '../Star';
-import {Vector} from 'khusamov-base-types';
-import ToroidalSurfaceAdapter from '../../game/gameObject/ToroidalSurfaceAdapter';
-import {TTargetObjectSearchParams} from '../../game/order/IStartMoveTransformOrder';
+import styles from './Application.module.scss'
 
 type TUniversalRenderComponent = FunctionComponent<{object: IUniversalObject}>
 const renderableMap: Record<string, TUniversalRenderComponent> = {
@@ -24,7 +22,7 @@ const renderableMap: Record<string, TUniversalRenderComponent> = {
 }
 
 export default function Application() {
-	useRequestAnimationFrame()
+	const [fps] = useRequestAnimationFrame()
 	const gameObjectList = resolve<TGameObjectList>('GameObjectList')
 	const selectedGameObject = resolve<IUniversalObject>('SelectedGameObject')
 	const selectedGameObjectMovable = new MovableAdapter(selectedGameObject)
@@ -41,11 +39,17 @@ export default function Application() {
 		)
 	)
 
+	const additionalParameters = [{
+		title: 'FPS',
+		unit: 'Кадры в секунды',
+		value: fps.toFixed(0)
+	}]
+
 	const offset = selectedGameObjectMovable.position.inverse // Камера движется за кораблем.
 
 	return (
 		<div className={styles.Application}>
-			<Params object={selectedGameObject}/>
+			<Params object={selectedGameObject} additionalParameters={additionalParameters}/>
 			<Canvas
 				offset={offset}
 				scale={new Vector(2, 2)} // Уменьшаем обзор камеры.
