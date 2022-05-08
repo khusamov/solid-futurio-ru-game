@@ -14,9 +14,9 @@ export default function useResizeCanvas<T extends HTMLDivElement>(onResize?: TOn
 	// https://github.com/ZeeCoder/use-resize-observer/issues/91
 	const {ref} = useResizeObserver<T>({
 		onResize({width = 0, height = 0}) {
+			setSize({width, height})
 			if (onResize) {
 				onResize({width, height})
-				setSize({width, height})
 			}
 		}
 	})
