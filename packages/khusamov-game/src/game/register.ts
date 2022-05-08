@@ -90,7 +90,7 @@ register('GameObject', gameObjectResolver)
 		createUniversalObject<IGameObject & IToroidalSurface>({
 			name: 'theGameWorld',
 			kind: ['IGameObject', 'IToroidalSurface'],
-			size: {width: 0, height: 0}
+			size: {width: 3000, height: 3000}
 		})
 	)
 
@@ -116,17 +116,26 @@ commandQueue.enqueue(new RepeatableCommand(new InterpretOrderCommand))
 		return Math.floor(Math.random() * (max - min) + min) //The maximum is exclusive and the minimum is inclusive
 	}
 
+	const theGameWorld = (
+		new ToroidalSurfaceAdapter(
+			resolve<IUniversalObject, [TTargetObjectSearchParams]>(
+				'GameObject',
+				{
+					type: 'GameObject',
+					name: 'theGameWorld'
+				}
+			)
+		)
+	)
+
 	Array(100)
 		.fill(1)
 		.map(() => {
 			const scale = getRandomInt(1, 10)
 			return {
 				position: new Vector(
-					// Не понятно как сюда должны попасть размеры мира. Может все-таки
-					// сделать размеры мира фиксированными (не зависимые от размера браузера)?
-					// В этом случае должно быть масштабирование мира под размер браузера.
-					getRandomInt(50, 2500),
-					getRandomInt(50, 800)
+					getRandomInt(0, theGameWorld.size.width),
+					getRandomInt(0, theGameWorld.size.height)
 				),
 				scale: new Vector(scale, scale)
 			}
