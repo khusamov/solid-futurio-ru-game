@@ -4,16 +4,25 @@ import GameObjectAdapter from '../../game/gameObject/GameObjectAdapter';
 import {IMovable, MovableAdapter} from 'khusamov-mechanical-motion';
 import {Angle} from 'khusamov-base-types';
 
-interface IParamsProps {
-	object: IUniversalObject
+interface IParam {
+	title: string
+	value: string
+	unit: string
+	color?: string
+	valueAlt?: string
 }
 
-export default function Params({object}: IParamsProps) {
+interface IParamsProps {
+	object: IUniversalObject
+	additionalParameters?: IParam[]
+}
+
+export default function Params({object, additionalParameters = []}: IParamsProps) {
 	const gameObject = new GameObjectAdapter(object)
 
 	if (gameObject.kind.includes('IMovable')) {
 		const movable = new MovableAdapter(object)
-		const params = getMovableParams(movable)
+		const params = [...getMovableParams(movable), ...additionalParameters]
 		return (
 			<div className={styles.Params}>
 				<table>
@@ -31,14 +40,6 @@ export default function Params({object}: IParamsProps) {
 	}
 
 	return null
-}
-
-interface IParam {
-	title: string
-	value: string
-	unit: string
-	color?: string
-	valueAlt?: string
 }
 
 function getMovableParams(movable: IMovable): IParam[] {
