@@ -1,7 +1,12 @@
 import {EventEmitter} from 'events';
 import {ISize, Queue, QueueLog, Timer, Vector} from 'khusamov-base-types';
 import {register, resolve} from 'khusamov-inversion-of-control';
-import {createUniversalObject, findUniversalObject, IUniversalObject, withoutType} from 'khusamov-universal-object';
+import {
+	createUniversalObject,
+	findUniversalObject,
+	IUniversalObject,
+	withoutType
+} from 'khusamov-universal-object';
 import {
 	createCommandQueue,
 	InterpretOrderCommand,
@@ -15,7 +20,7 @@ import {
 	counterclockwiseRotateForceActionResolver,
 	decreaseForceActionResolver,
 	increaseForceActionResolver,
-	toroidalTransformActionResolver
+	toroidalTransformActionResolver, ITransformable
 } from 'khusamov-mechanical-motion';
 import IStartMoveTransformOrder, {startMoveTransformCommandResolver, TTargetObjectSearchParams} from './order/IStartMoveTransformOrder';
 import IStartMoveOrder, {startMoveCommandResolver} from './order/IStartMoveOrder';
@@ -70,23 +75,34 @@ function gameObjectResolver(params: TTargetObjectSearchParams): IUniversalObject
 
 register('GameObject', gameObjectResolver)
 
-gameObjectList.push(
-	createUniversalObject<IGameObject & IToroidalSurface>({
-		name: 'theGameWorld',
-		kind: ['IGameObject', 'IToroidalSurface'],
-		size: {width: 0, height: 0}
-	})
-)
+/**
+ * Генерация основных игровых объектов.
+ */
+{
+	gameObjectList.push(
+		createUniversalObject<IGameObject & ITransformable>({
+			name: 'theCamera',
+			kind: ['IGameObject', 'ITransformable']
+		})
+	)
 
-gameObjectList.push(
-	createUniversalObject<IGameObject & IMovable & IRenderable>({
-		name: 'theSpaceship',
-		kind: ['IGameObject', 'IMovable', 'IRenderable'],
-		renderComponent: 'Spaceship',
-		mass: 1000,
-		position: new Vector(100, 100)
-	})
-)
+	gameObjectList.push(
+		createUniversalObject<IGameObject & IToroidalSurface>({
+			name: 'theGameWorld',
+			kind: ['IGameObject', 'IToroidalSurface'],
+			size: {width: 0, height: 0}
+		})
+	)
+
+	gameObjectList.push(
+		createUniversalObject<IGameObject & ITransformable & IMovable & IRenderable>({
+			name: 'theSpaceship',
+			kind: ['IGameObject', 'ITransformable', 'IMovable', 'IRenderable'],
+			renderComponent: 'Spaceship',
+			mass: 1000
+		})
+	)
+}
 
 commandQueue.enqueue(new RepeatableCommand(new InterpretOrderCommand))
 
@@ -100,13 +116,16 @@ commandQueue.enqueue(new RepeatableCommand(new InterpretOrderCommand))
 		return Math.floor(Math.random() * (max - min) + min) //The maximum is exclusive and the minimum is inclusive
 	}
 
-	Array(10)
+	Array(100)
 		.fill(1)
 		.map(() => {
-			const scale = getRandomInt(3, 10)
+			const scale = getRandomInt(1, 10)
 			return {
 				position: new Vector(
-					getRandomInt(50, 800),
+					// Не понятно как сюда должны попасть размеры мира. Может все-таки
+					// сделать размеры мира фиксированными (не зависимые от размера браузера)?
+					// В этом случае должно быть масштабирование мира под размер браузера.
+					getRandomInt(50, 2500),
 					getRandomInt(50, 800)
 				),
 				scale: new Vector(scale, scale)
