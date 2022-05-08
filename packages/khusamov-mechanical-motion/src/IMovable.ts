@@ -19,7 +19,9 @@ export default interface IMovable {
 
 	/**
 	 * Координаты движущегося объекта.
+	 * Это свойство будет перемещено в ITransformable.
 	 * Метры.
+	 * @deprecated
 	 */
 	position: Vector
 
