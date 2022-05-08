@@ -122,8 +122,23 @@ export default class Vector implements IPoint {
 	/**
 	 * Умножение вектора на число.
 	 */
-	public scale(scale: number) {
-		return new Vector(this.x * scale, this.y * scale);
+	public scale(scale: number): Vector
+
+	/**
+	 * Масштабирование вектора с разными коэффициентами.
+	 */
+	public scale(scale: Vector): Vector
+
+	/**
+	 * Умножение на число или масштабирование вектором.
+	 * @param scale
+	 */
+	public scale(scale: number | Vector): Vector {
+		return (
+			scale instanceof Vector
+				? new Vector(this.x * scale.x, this.y * scale.y)
+				: new Vector(this.x * scale, this.y * scale)
+		)
 	}
 
 	/**
