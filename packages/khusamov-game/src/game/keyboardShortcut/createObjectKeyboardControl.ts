@@ -50,14 +50,21 @@ function createStopOrder(transformActionName: string, targetObjectName: string) 
  */
 export default function createObjectKeyboardControl(): IDisposable {
 	const disposerList: IDisposable[] = []
+
 	for (const key in keyboardShortcutMoveTransformMap) {
 		if (!keyboardShortcutMoveTransformMap.hasOwnProperty(key)) continue
+
+		const transformActionParams = keyboardShortcutMoveTransformMap[key]
+		if (!transformActionParams) {
+			throw new Error('Не найдены параметры действия')
+		}
+
 		disposerList.push(
 			Shortcut.register(key, {
 				down() {
 					resolve<TOrderQueue>('OrderQueue').enqueue(
 						createMoveTransformOrder(
-							keyboardShortcutMoveTransformMap[key],
+							transformActionParams,
 							getSelectedGameObjectName()
 						)
 					)
@@ -65,7 +72,7 @@ export default function createObjectKeyboardControl(): IDisposable {
 				up() {
 					resolve<TOrderQueue>('OrderQueue').enqueue(
 						createStopOrder(
-							keyboardShortcutMoveTransformMap[key][0],
+							transformActionParams[0],
 							getSelectedGameObjectName()
 						)
 					)
@@ -73,6 +80,7 @@ export default function createObjectKeyboardControl(): IDisposable {
 			})
 		)
 	}
+
 	return {
 		dispose() {
 			for (const disposer of disposerList) {
