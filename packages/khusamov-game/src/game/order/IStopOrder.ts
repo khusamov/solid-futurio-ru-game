@@ -12,7 +12,7 @@ export default interface IStopOrder extends IOrder {
 	 * Идентификатор останавливаемой команды.
 	 * Если команда не указана, то будут остановлены все команды для целевого объекта.
 	 */
-	command?: string
+	command?: string | undefined
 }
 
 export class StopOrderAdapter implements IStopOrder {
