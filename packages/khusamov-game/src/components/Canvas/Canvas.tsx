@@ -30,7 +30,7 @@ export default function Canvas({children, onResize, offset = new Vector, scale =
 
 	const transform = (
 		new Transform()
-			// Координаты камеры всегда отсчитываются от ее центра, поэтому сдвигаем все объекты на середину холста.
+			// Начало координат ставим в центр экрана.
 			.translate(new Vector(size.width / 2, size.height / 2))
 			// Масштабирование камеры.
 			.scale(scale)
