@@ -1,7 +1,7 @@
 import {Lazy} from 'khusamov-base-types';
 import createRegistratorResolver from './registrator/createRegistratorResolver';
 import IResolverContext from './IResolverContext';
-import {TDependencyMap} from './types';
+import {TDependencyMap, TResolverFunction} from './types';
 
 /**
  * Контейнер инверсии управления (Inversion оf Control Container).
@@ -19,7 +19,7 @@ export default class IoC {
 	/**
 	 * Статическая функция разрешения зависимости.
 	 */
-	public static resolve<T, P extends any[] = any[]>(dependencyName: string, ...params: P): T {
+	public static resolve<T, P extends TResolverFunction = TResolverFunction>(dependencyName: string, ...params: Parameters<P>): T {
 		return this.instance.resolve<T, P>(dependencyName, ...params)
 	}
 
@@ -47,7 +47,7 @@ export default class IoC {
 	 * TODO Сделать проверку соответствия типов аргументов args из resolve() и resolver(),
 	 * TODO Сделать проверку соответствия выходного типа resolver() и запрашиваемого типа resolve<T>.
 	 */
-	public resolve<T, P extends any[] = any[]>(dependencyName: string, ...params: P): T {
+	public resolve<T, P extends TResolverFunction = TResolverFunction>(dependencyName: string, ...params: Parameters<P>): T {
 		const resolver = this.dependencyMap.get(dependencyName)
 		if (!resolver) {
 			throw new Error(`Не найдена зависимость '${dependencyName}'`)
