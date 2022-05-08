@@ -1,12 +1,20 @@
 import {useEffect, useRef, useState} from 'react';
 
-export default function useRequestAnimationFrame() {
-	const [time, setTime] = useState(0)
-
+/**
+ * Бесконечный запрос кадров анимации для текущего компонента.
+ * Если компонент уничтожается, то запрос автоматически отменяется.
+ * Возвращает мгновенный FPS и время с начала анимации в миллисекундах.
+ */
+export default function useRequestAnimationFrame(): [number, number] {
 	const frame = useRef(0)
+	const previousTime = useRef(0)
+	const [time, setTime] = useState(0)
+	const [framesPerSecond, setFramesPerSecond] = useState(0)
 
 	const render = (time: DOMHighResTimeStamp) => {
+		setFramesPerSecond(1000 / time - previousTime.current)
 		setTime(time)
+		previousTime.current = time
 		frame.current = requestAnimationFrame(render)
 	}
 
@@ -15,5 +23,5 @@ export default function useRequestAnimationFrame() {
 		return () => cancelAnimationFrame(frame.current)
 	}, [])
 
-	return [time]
+	return [framesPerSecond, time]
 }
