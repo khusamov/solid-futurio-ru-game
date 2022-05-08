@@ -12,7 +12,7 @@ export default function useRequestAnimationFrame(): [number, number] {
 	const [framesPerSecond, setFramesPerSecond] = useState(0)
 
 	const render = (time: DOMHighResTimeStamp) => {
-		setFramesPerSecond(1000 / time - previousTime.current)
+		setFramesPerSecond(1000 / (time - previousTime.current))
 		setTime(time)
 		previousTime.current = time
 		frame.current = requestAnimationFrame(render)
