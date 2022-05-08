@@ -2,6 +2,7 @@ export {default as execFunctionScript} from './functions/exec/execFunctionScript
 export {default as execActionScript} from './functions/exec/execActionScript'
 export {default as toOneLine} from './functions/toOneLine'
 export {default as isBrowser} from './functions/isBrowser'
+export {default as useRequestAnimationFrame} from './functions/useRequestAnimationFrame'
 
 export {default as IPoint} from './types/IPoint'
 export {default as ISize} from './types/ISize'

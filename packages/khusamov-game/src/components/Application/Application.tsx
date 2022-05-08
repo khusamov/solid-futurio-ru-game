@@ -1,4 +1,5 @@
 import {FunctionComponent} from 'react';
+import {useRequestAnimationFrame, Vector} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {MovableAdapter} from 'khusamov-mechanical-motion';
