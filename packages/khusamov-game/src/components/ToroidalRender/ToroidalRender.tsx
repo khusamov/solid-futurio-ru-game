@@ -12,24 +12,48 @@ export interface IToroidalRenderProps {
  * @param toroidalSurfaceSize Размеры игрового пространства.
  * @param children Отрисовка игрового объекта в своих координатах.
  */
-export default function ToroidalRender({position, toroidalSurfaceSize, children}: PropsWithChildren<IToroidalRenderProps>) {
+export default function ToroidalRender({toroidalSurfaceSize, children}: PropsWithChildren<IToroidalRenderProps>) {
 	const {width, height} = toroidalSurfaceSize
-	const {x, y} = position
-	const offsets = (
-		[
-			[[+width, 0], [+width, +height], [0, +height]], // left-bottom
-			[[-width, 0], [-width, +height], [0, +height]], // right-bottom
-			[[+width, 0], [+width, -height], [0, -height]], // left-top
-			[[-width, 0], [-width, -height], [0, -height]], // right-top
-		][
-			[
-				x < width / 2 && y < height / 2, // left-bottom
-				x > width / 2 && y < height / 2, // right-bottom
-				x < width / 2 && y > height / 2, // left-top
-				x > width / 2 && y > height / 2, // right-top
-			].findIndex(item => item === true)
-		]
-	)
+
+	const offsets = [
+		[+width, +height],
+		[-width, +height],
+		[+width, -height],
+		[-width, -height],
+		[0, +height],
+		[0, -height],
+		[+width, 0],
+		[-width, 0]
+	]
+
+	// Для смещенной камеры сложно подсчитать клоны и пока просто тупо выводятся все 8 клонов.
+	// Эти рассчеты оставлены, так как при столкновениях все равно будут считаться только три клона, а не все 8.
+	//
+	// const {x, y} = position
+	//
+	// const middleX = width / 2 + toroidalSurfaceOffset.x
+	// const middleY = height / 2 + toroidalSurfaceOffset.y
+	//
+	// const offsets = (
+	// 	[
+	// 		[[+width, 0], [+width, +height], [0, +height]], // left-bottom
+	// 		[[-width, 0], [-width, +height], [0, +height]], // right-bottom
+	// 		[[+width, 0], [+width, -height], [0, -height]], // left-top
+	// 		[[-width, 0], [-width, -height], [0, -height]], // right-top
+	// 		// [[+150, 0], [+150, +150], [0, +150]], // left-bottom
+	// 		// [[-150, 0], [-150, +150], [0, +150]], // right-bottom
+	// 		// [[+150, 0], [+150, -150], [0, -150]], // left-top
+	// 		// [[-150, 0], [-150, -150], [0, -150]], // right-top
+	// 	][
+	// 		[
+	// 			x < middleX && y < middleY, // left-bottom
+	// 			x > middleX && y < middleY, // right-bottom
+	// 			x < middleX && y > middleY, // left-top
+	// 			x > middleX && y > middleY, // right-top
+	// 		].findIndex(item => item === true)
+	// 	]
+	// )
+
 	return (
 		<g>
 			{children}
