@@ -4,18 +4,20 @@ import {ISize, Vector} from 'khusamov-base-types';
 export interface IToroidalRenderProps {
 	position: Vector
 	toroidalSurfaceSize: ISize
+	isVisible?: (position: Vector) => boolean
 }
 
 /**
  * Отрисовывает копии игрового объекта для непрерывного пересечения замкнутого пространства типа бублик.
  * @param position Координаты игрового объекта.
  * @param toroidalSurfaceSize Размеры игрового пространства.
+ * @param isVisible Функция для оптимизации вывода (возвращает флаг - показывать или нет тот или иной объект).
  * @param children Отрисовка игрового объекта в своих координатах.
  */
-export default function ToroidalRender({toroidalSurfaceSize, children}: PropsWithChildren<IToroidalRenderProps>) {
+export default function ToroidalRender({toroidalSurfaceSize, children, isVisible = () => true, position}: PropsWithChildren<IToroidalRenderProps>) {
 	const {width, height} = toroidalSurfaceSize
 
-	const offsets = [
+	let offsets = [
 		[+width, +height],
 		[-width, +height],
 		[+width, -height],
@@ -23,7 +25,8 @@ export default function ToroidalRender({toroidalSurfaceSize, children}: PropsWit
 		[0, +height],
 		[0, -height],
 		[+width, 0],
-		[-width, 0]
+		[-width, 0],
+		[0, 0]
 	]
 
 	// Для смещенной камеры сложно подсчитать клоны и пока просто тупо выводятся все 8 клонов.
@@ -54,10 +57,15 @@ export default function ToroidalRender({toroidalSurfaceSize, children}: PropsWit
 	// 	]
 	// )
 
+
+
+	offsets = offsets.filter(([x, y]) => isVisible(position.translate(new Vector(x, y))))
+
+	if (offsets.length <= 0) return null
+
 	return (
 		<g>
-			{children}
-			{offsets && offsets.map(([x, y]) => (
+			{offsets.map(([x, y]) => (
 				<g transform={`translate(${x}, ${y})`}>
 					{children}
 				</g>
