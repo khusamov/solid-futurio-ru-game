@@ -1,7 +1,7 @@
 import {IUniversalObject} from 'khusamov-universal-object';
-import IOrder from './IOrder';
+import ICommandOrder from './ICommandOrder';
 
-export default class OrderAdapter implements IOrder {
+export default class CommandOrderAdapter implements ICommandOrder {
 	constructor(private universalObject: IUniversalObject) {}
 
 	public get type(): string {

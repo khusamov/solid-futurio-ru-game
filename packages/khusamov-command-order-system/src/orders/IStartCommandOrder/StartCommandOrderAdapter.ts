@@ -1,10 +1,9 @@
-
 import {Adapter} from 'khusamov-universal-object';
-import IStartCommandOrder from './IStartCommandOrder';
 import {TResolveParameters, TResolverFunction} from 'khusamov-inversion-of-control';
-import IOrder from '../IOrder';
+import ICommandOrder from '../ICommandOrder';
+import IStartCommandOrder from './IStartCommandOrder';
 
-export default class StartCommandOrderAdapter<R extends TResolverFunction, O extends IOrder> extends Adapter implements IStartCommandOrder<R, O> {
+export default class StartCommandOrderAdapter<R extends TResolverFunction, O extends ICommandOrder> extends Adapter implements IStartCommandOrder<R, O> {
 	public readonly type = 'StartCommand'
 
 	public get targetObject(): TResolveParameters<R> {
@@ -16,6 +15,6 @@ export default class StartCommandOrderAdapter<R extends TResolverFunction, O ext
 	}
 
 	public get command(): O {
-		return this.universalObject.getValue<IOrder>('command', {type: ''}) as O
+		return this.universalObject.getValue<ICommandOrder>('command', {type: ''}) as O
 	}
 }

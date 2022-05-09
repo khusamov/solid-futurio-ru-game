@@ -2,8 +2,7 @@ import {assert} from 'chai';
 import {ICommand, IStoppable} from 'khusamov-base-types';
 import {register, resolve} from 'khusamov-inversion-of-control';
 import {createUniversalObject, IUniversalObject, UniversalObject} from 'khusamov-universal-object';
-import {IStopCommandOrder, OrderAdapter, stopCommandResolver} from '../src';
-
+import {IStopCommandOrder, stopCommandResolver, CommandOrderAdapter} from '../src';
 
 describe('IStopCommandOrder', () => {
 	it('Sample', () => {
@@ -39,7 +38,7 @@ describe('IStopCommandOrder', () => {
 			})
 		)
 
-		const stopCommand = resolve<ICommand>(new OrderAdapter(stopCommandOrderObject).type, stopCommandOrderObject)
+		const stopCommand = resolve<ICommand>(new CommandOrderAdapter(stopCommandOrderObject).type, stopCommandOrderObject)
 		stopCommand.execute()
 
 		assert.equal(testObject.isStopped, true)

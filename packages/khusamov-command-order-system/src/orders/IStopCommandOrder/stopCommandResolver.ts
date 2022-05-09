@@ -2,7 +2,7 @@ import {ICommand} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import {IUniversalObject} from 'khusamov-universal-object';
 import StopCommandOrderAdapter from './StopCommandOrderAdapter';
-import NotFoundTargetObjectError from '../NotFoundTargetObjectError';
+import NotFoundTargetObjectError from '../../errors/NotFoundTargetObjectError';
 import {StopCommand} from 'khusamov-command-system';
 
 export default function stopCommandResolver(stopCommandOrderObject: IUniversalObject): ICommand {

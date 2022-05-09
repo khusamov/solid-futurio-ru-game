@@ -1,8 +1,8 @@
 import {Adapter} from 'khusamov-universal-object';
 import IMacroCommandOrder from './IMacroCommandOrder';
-import IOrder from '../IOrder';
+import ICommandOrder from '../ICommandOrder';
 
-export default class MacroCommandOrderAdapter<O extends IOrder> extends Adapter implements IMacroCommandOrder<O> {
+export default class MacroCommandOrderAdapter<O extends ICommandOrder> extends Adapter implements IMacroCommandOrder<O> {
 	readonly type = 'MacroCommand'
 
 	public get commands(): O[] {

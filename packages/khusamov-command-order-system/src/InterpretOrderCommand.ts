@@ -1,7 +1,7 @@
 import {ICommand, IQueue} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import {IUniversalObject} from 'khusamov-universal-object';
-import OrderAdapter from './OrderAdapter';
+import {CommandOrderAdapter} from './orders/ICommandOrder';
 
 export type TOrderQueue = IQueue<IUniversalObject>
 
@@ -19,14 +19,9 @@ export default class InterpretOrderCommand implements ICommand {
 	public execute(): void {
 		const orderObject = resolve<TOrderQueue>('OrderQueue').dequeue()
 		if (orderObject) {
-			const orderCommand = convertToCommand(orderObject)
+			const order = new CommandOrderAdapter(orderObject)
+			const orderCommand = resolve<ICommand>(order.type, orderObject)
 			this.commandQueue?.enqueue(orderCommand)
 		}
 	}
-}
-
-function convertToCommand(orderObject: IUniversalObject): ICommand {
-	const order = new OrderAdapter(orderObject)
-	if (!order.type) throw new Error('Не определен тип приказа')
-	return resolve<ICommand>(order.type, orderObject)
 }

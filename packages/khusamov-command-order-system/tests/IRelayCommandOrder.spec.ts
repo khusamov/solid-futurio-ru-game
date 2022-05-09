@@ -2,7 +2,7 @@ import {assert} from 'chai';
 import {ICommand} from 'khusamov-base-types';
 import {register, resolve} from 'khusamov-inversion-of-control';
 import {createUniversalObject} from 'khusamov-universal-object';
-import {IRelayCommandOrder, OrderAdapter, relayCommandResolver, RelayCommandOrderAdapter} from '../src';
+import {IRelayCommandOrder, CommandOrderAdapter, relayCommandResolver, RelayCommandOrderAdapter} from '../src';
 
 describe('IRelayCommandOrder', () => {
 	it('Sample', () => {
@@ -32,7 +32,7 @@ describe('IRelayCommandOrder', () => {
 		)
 
 		// Выполняем приказ.
-		const myCommand = resolve<ICommand>(new OrderAdapter(relayCommandOrderObject).type, relayCommandOrderObject)
+		const myCommand = resolve<ICommand>(new CommandOrderAdapter(relayCommandOrderObject).type, relayCommandOrderObject)
 		myCommand.execute()
 
 		assert.equal(spaceship.linearVelocity, 200)

@@ -1,7 +1,7 @@
 import {TResolveParameters, TResolverFunction} from 'khusamov-inversion-of-control';
-import IOrder from '../IOrder';
+import ICommandOrder from '../ICommandOrder';
 
-export default interface IRelayCommandOrder<R extends TResolverFunction> extends IOrder {
+export default interface IRelayCommandOrder<R extends TResolverFunction> extends ICommandOrder {
 	readonly type: 'RelayCommand'
 
 	/**

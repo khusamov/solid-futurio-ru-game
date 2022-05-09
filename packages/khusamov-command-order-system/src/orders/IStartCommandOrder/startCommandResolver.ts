@@ -2,8 +2,8 @@ import {ICommand} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {RepeatableCommand, StartCommand} from 'khusamov-command-system';
+import NotFoundTargetObjectError from '../../errors/NotFoundTargetObjectError';
 import StartCommandOrderAdapter from './StartCommandOrderAdapter';
-import NotFoundTargetObjectError from '../NotFoundTargetObjectError';
 
 export default function startCommandResolver(startCommandOrderObject: IUniversalObject): ICommand {
 	const startCommandOrder = new StartCommandOrderAdapter(startCommandOrderObject)
