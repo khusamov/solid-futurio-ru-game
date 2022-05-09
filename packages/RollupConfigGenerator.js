@@ -36,7 +36,7 @@ export default class RollupConfigGenerator {
 		// Находится ли сборщик Rollup в режиме отслеживания файлов или нет.
 		this.isRollupWatch = process.env.ROLLUP_WATCH === 'true';
 
-		this.terserPluginEnabled = false
+		this.terserPluginEnabled = true
 		this.outDir = 'dist'
 		const {description, name, dependencies} = this.npmPackageJsonFile;
 
