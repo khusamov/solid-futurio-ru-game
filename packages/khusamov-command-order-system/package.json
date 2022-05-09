@@ -1,0 +1,38 @@
+{
+	"name": "khusamov-command-order-system",
+	"version": "0.0.0",
+	"packageManager": "yarn@3.1.1",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"module": "dist/index.es.js",
+	"jsnext:main": "dist/index.es.js",
+	"typings": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "rollup --config",
+		"build:watch": "rollup --config --watch",
+		"prepublishOnly": "yarn build",
+		"test": "mocha"
+	},
+	"dependencies": {
+		"khusamov-base-types": "workspace:*",
+		"khusamov-command-system": "workspace:*",
+		"khusamov-inversion-of-control": "workspace:*",
+		"khusamov-universal-object": "workspace:*",
+		"reflect-metadata": "^0.1.13",
+		"typescript-rtti": "^0.6.0"
+	},
+	"devDependencies": {
+		"@types/chai": "^4",
+		"@types/mocha": "^9.1.1",
+		"chai": "^4.3.6",
+		"mocha": "^10.0.0",
+		"mocha-typescript": "^1.1.17",
+		"rollup": "^2.70.1",
+		"ts-node": "^9.1.1",
+		"ttypescript": "^1.5.13",
+		"typescript": "^4.6.3"
+	}
+}

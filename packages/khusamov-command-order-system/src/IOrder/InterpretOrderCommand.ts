@@ -1,7 +1,7 @@
 import {ICommand, IQueue} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import {IUniversalObject} from 'khusamov-universal-object';
-import OrderAdapter from '../../adapter/OrderAdapter';
+import OrderAdapter from './OrderAdapter';
 
 export type TOrderQueue = IQueue<IUniversalObject>
 
