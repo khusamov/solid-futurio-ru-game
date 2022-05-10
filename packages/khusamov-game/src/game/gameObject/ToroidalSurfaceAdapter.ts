@@ -1,5 +1,5 @@
 import {ISize} from 'khusamov-base-types';
-import {IUniversalObject} from 'khusamov-universal-object';
+import {Adapter} from 'khusamov-universal-object';
 import IToroidalSurface from './IToroidalSurface';
 
 const NULL_SIZE: ISize = {
@@ -7,9 +7,7 @@ const NULL_SIZE: ISize = {
 	height: 0
 }
 
-export default class ToroidalSurfaceAdapter implements IToroidalSurface {
-	public constructor(private universalObject: IUniversalObject) {}
-
+export default class ToroidalSurfaceAdapter extends Adapter implements IToroidalSurface {
 	public get size(): ISize {
 		return this.universalObject.getValue('size', NULL_SIZE)
 	}

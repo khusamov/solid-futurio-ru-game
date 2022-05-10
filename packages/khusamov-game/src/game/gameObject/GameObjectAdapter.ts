@@ -1,9 +1,7 @@
 import IGameObject from './IGameObject';
-import {IUniversalObject} from 'khusamov-universal-object';
+import {Adapter} from 'khusamov-universal-object';
 
-export default class GameObjectAdapter implements IGameObject {
-	public constructor(private universalObject: IUniversalObject) {}
-
+export default class GameObjectAdapter extends Adapter implements IGameObject {
 	public get kind(): string[] {
 		return this.universalObject.getValue('kind', ['IGameObject'])
 	}
