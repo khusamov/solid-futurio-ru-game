@@ -23,6 +23,7 @@
     "@types/react-dom": "^18.0.0",
     "events": "^3.3.0",
     "khusamov-base-types": "workspace:*",
+    "khusamov-command-order-system": "workspace:*",
     "khusamov-command-system": "workspace:*",
     "khusamov-inversion-of-control": "workspace:*",
     "khusamov-mechanical-motion": "workspace:*",
