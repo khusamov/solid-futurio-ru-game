@@ -6185,7 +6185,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"khusamov-command-order-system@workspace:packages/khusamov-command-order-system":
+"khusamov-command-order-system@workspace:*, khusamov-command-order-system@workspace:packages/khusamov-command-order-system":
   version: 0.0.0-use.local
   resolution: "khusamov-command-order-system@workspace:packages/khusamov-command-order-system"
   dependencies:
@@ -6261,6 +6261,7 @@ __metadata:
     "@types/react-dom": ^18.0.0
     events: ^3.3.0
     khusamov-base-types: "workspace:*"
+    khusamov-command-order-system: "workspace:*"
     khusamov-command-system: "workspace:*"
     khusamov-inversion-of-control: "workspace:*"
     khusamov-mechanical-motion: "workspace:*"
