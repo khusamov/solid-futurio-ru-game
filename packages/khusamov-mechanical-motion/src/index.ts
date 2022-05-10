@@ -13,6 +13,7 @@ export {
 	decreaseForceActionResolver,
 	toroidalTransformActionResolver,
 	rotateForceActionResolver,
+	RotateDirectionType,
 	clockwiseRotateForceActionResolver,
 	counterclockwiseRotateForceActionResolver
 } from './translational-motion/moveTransformAction'
