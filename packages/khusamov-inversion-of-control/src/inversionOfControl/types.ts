@@ -11,4 +11,4 @@ export type TDependencyMap = Map<string, TResolverFunction>
 /**
  * Параметры функции resolve().
  */
-export type TResolveParameters<R extends TResolverFunction> = [string, ...Parameters<R>]
+export type TResolveParameters<R extends TResolverFunction = TResolverFunction> = [string, ...Parameters<R>]
