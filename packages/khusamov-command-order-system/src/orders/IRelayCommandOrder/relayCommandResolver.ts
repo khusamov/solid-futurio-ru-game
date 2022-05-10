@@ -6,10 +6,11 @@ import RelayCommandOrderAdapter from './RelayCommandOrderAdapter';
 
 export default function relayCommandResolver(relayCommandOrderObject: IUniversalObject): ICommand {
 	const relayCommandOrder = new RelayCommandOrderAdapter(relayCommandOrderObject)
+	const name = relayCommandOrder.name
+	const action = resolve<TRelayCommandAction>(...relayCommandOrder.action)
 	return (
-		new RelayCommand(
-			relayCommandOrder.name,
-			resolve<TRelayCommandAction>(...relayCommandOrder.action)
-		)
+		name
+			? new RelayCommand(name, action)
+			: new RelayCommand(action)
 	)
 }

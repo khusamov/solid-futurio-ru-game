@@ -1,12 +1,16 @@
-import {Adapter} from 'khusamov-universal-object';
+import {Adapter, IUniversalObject} from 'khusamov-universal-object';
 import IRelayCommandOrder from './IRelayCommandOrder';
 import {TResolveParameters} from 'khusamov-inversion-of-control';
 
 export default class RelayCommandOrderAdapter<A extends TResolveParameters> extends Adapter implements IRelayCommandOrder<A> {
 	public readonly type = 'RelayCommand'
+	public readonly name?: string
 
-	public get name(): string {
-		return this.universalObject.getValue('name', 'Nameless')
+	// TODO Сделать в классе Adapter возможность определять не обязательные параметры типа name в автоматическом режиме.
+	public constructor(universalObject: IUniversalObject) {
+		super(universalObject)
+		const name = this.universalObject.getValue<string>('name')
+		if (name) this.name = name
 	}
 
 	public get action(): A {

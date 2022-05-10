@@ -12,7 +12,7 @@ export default interface IRelayCommandOrder<A extends TResolveParameters, T exte
 	/**
 	 * Имя действия для RelayCommand.
 	 */
-	readonly name: string
+	readonly name?: string
 
 	/**
 	 * Действие для RelayCommand.
