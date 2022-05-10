@@ -1,6 +1,12 @@
 Игра по мотивам занятий на Futurio.ru
 =====================================
 
+Демо игры:  
+https://khusamov.github.io/solid-futurio-ru-game/
+
+Презентация курса:  
+https://futurio.ru/architectures_and_design_patterns
+
 Исходный репозиторий:  
 https://github.com/khusamov/solid-futurio-ru-lessons
 
