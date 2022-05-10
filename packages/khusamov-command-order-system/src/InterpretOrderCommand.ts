@@ -3,6 +3,10 @@ import {resolve} from 'khusamov-inversion-of-control';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {CommandOrderAdapter} from './orders/ICommandOrder';
 
+/**
+ * Очередь приказов это простая очередь IQueue,
+ * где каждый элемент реализует интерфейс IUniversalObject.
+ */
 export type TOrderQueue = IQueue<IUniversalObject>
 
 /**

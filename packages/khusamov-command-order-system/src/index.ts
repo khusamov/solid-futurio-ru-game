@@ -1,4 +1,4 @@
-export {default as InterpretOrderCommand} from './InterpretOrderCommand'
+export {default as InterpretOrderCommand, TOrderQueue} from './InterpretOrderCommand'
 export {default as ICommandOrder, CommandOrderAdapter} from './orders/ICommandOrder'
 export {default as IRelayCommandOrder, RelayCommandOrderAdapter, relayCommandResolver} from './orders/IRelayCommandOrder'
 export {default as IMacroCommandOrder, MacroCommandOrderAdapter, macroCommandResolver} from './orders/IMacroCommandOrder'
