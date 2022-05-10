@@ -1,16 +1,16 @@
 import IMovable from '../../IMovable';
 import {TMoveTransformAction} from '../MoveTransformCommand';
 
-export enum ERotateDirection {
+export enum RotateDirectionType {
 	Clockwise = 'Clockwise',
 	Counterclockwise = 'Counterclockwise'
 }
 
-export default function rotateForceActionResolver(increment: number, direction: ERotateDirection): TMoveTransformAction {
+export default function rotateForceActionResolver(increment: number, directionType: RotateDirectionType): TMoveTransformAction {
 	const angle = {
-		[ERotateDirection.Clockwise]: -increment,
-		[ERotateDirection.Counterclockwise]: increment
-	}[direction]
+		[RotateDirectionType.Clockwise]: -increment,
+		[RotateDirectionType.Counterclockwise]: increment
+	}[directionType]
 
 	return (movable: IMovable) => movable.appliedForce = movable.appliedForce.rotate(angle)
 }
