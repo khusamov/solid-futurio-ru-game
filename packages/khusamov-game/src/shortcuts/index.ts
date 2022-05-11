@@ -1,55 +1,65 @@
-import IMoveTransformCommandOrder from '../orders/IMoveTransformCommandOrder';
-import IShortcutCommand, {registerShortcutCommand} from './IShortcutCommand';
+import IShortcutCommandOrder, {registerShortcutCommand} from './IShortcutCommandOrder';
 import {Angle, IDisposable} from 'khusamov-base-types';
-import {RotateDirectionType} from 'khusamov-mechanical-motion';
+import {IIncreaseForceCommandOrder, IRotateForceCommandOrder} from 'khusamov-mechanical-motion';
 
-const {Clockwise, Counterclockwise} = RotateDirectionType
+type TSpaceshipShortcutCommand = (
+	| IShortcutCommandOrder<IIncreaseForceCommandOrder>
+	| IShortcutCommandOrder<IRotateForceCommandOrder>
+)
 
-const increaseForceShortcut: IShortcutCommand<IMoveTransformCommandOrder> = {
+const increaseForceShortcut: TSpaceshipShortcutCommand = {
 	key: 'W',
 	command: {
-		name: 'IncreaseForce',
+		name: 'IncreaseForceCommand.IncreaseForce',
+		targetObject: ['SelectedGameObject'],
 		order: {
-			type: 'MoveTransformCommand',
-			action: ['MoveTransformAction.IncreaseForce', 200]
+			type: 'IncreaseForceCommand',
+			targetObject: ['SelectedGameObject'],
+			increment: 200
 		}
 	}
 }
 
-const decreaseForceShortcut: IShortcutCommand<IMoveTransformCommandOrder> = {
+const decreaseForceShortcut: TSpaceshipShortcutCommand = {
 	key: 'S',
 	command: {
-		name: 'IncreaseForce',
+		name: 'IncreaseForceCommand.DecreaseForce',
+		targetObject: ['SelectedGameObject'],
 		order: {
-			type: 'MoveTransformCommand',
-			action: ['MoveTransformAction.DecreaseForce', 200]
+			type: 'IncreaseForceCommand',
+			targetObject: ['SelectedGameObject'],
+			increment: -200
 		}
 	}
 }
 
-const cwRotateForceShortcut: IShortcutCommand<IMoveTransformCommandOrder> = {
+const cwRotateForceShortcut: TSpaceshipShortcutCommand = {
 	key: 'A',
 	command: {
-		name: 'RotateForce.Clockwise',
+		name: 'RotateForceCommand.Clockwise',
+		targetObject: ['SelectedGameObject'],
 		order: {
-			type: 'MoveTransformCommand',
-			action: ['MoveTransformAction.RotateForce', Angle.toRadian(1), Clockwise]
+			type: 'RotateForceCommand',
+			targetObject: ['SelectedGameObject'],
+			increment: -Angle.toRadian(1)
 		}
 	}
 }
 
-const ccwRotateForceShortcut: IShortcutCommand<IMoveTransformCommandOrder> = {
+const ccwRotateForceShortcut: TSpaceshipShortcutCommand = {
 	key: 'D',
 	command: {
-		name: 'RotateForce.Counterclockwise',
+		name: 'RotateForceCommand.Counterclockwise',
+		targetObject: ['SelectedGameObject'],
 		order: {
-			type: 'MoveTransformCommand',
-			action: ['MoveTransformAction.RotateForce', Angle.toRadian(1), Counterclockwise]
+			type: 'RotateForceCommand',
+			targetObject: ['SelectedGameObject'],
+			increment: Angle.toRadian(1)
 		}
 	}
 }
 
-const shortcutCommands: IShortcutCommand[] = [
+const shortcutCommandOrders: IShortcutCommandOrder[] = [
 	increaseForceShortcut,
 	decreaseForceShortcut,
 	cwRotateForceShortcut,
@@ -58,8 +68,8 @@ const shortcutCommands: IShortcutCommand[] = [
 
 export function registerShortcuts(): IDisposable[] {
 	const disposerList: IDisposable[] = []
-	for (const shortcutCommand of shortcutCommands) {
-		disposerList.push(registerShortcutCommand(shortcutCommand))
+	for (const shortcutCommandOrder of shortcutCommandOrders) {
+		disposerList.push(registerShortcutCommand(shortcutCommandOrder))
 	}
 	return disposerList
 }
