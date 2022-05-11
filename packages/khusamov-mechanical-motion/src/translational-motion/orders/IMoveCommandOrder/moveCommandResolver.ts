@@ -1,9 +1,10 @@
-import {IUniversalObject} from 'khusamov-universal-object';
 import {ICommand} from 'khusamov-base-types';
-import MoveCommandOrderAdapter from './MoveCommandOrderAdapter';
+import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
-import {MovableAdapter, MoveCommand} from 'khusamov-mechanical-motion';
 import {NotFoundTargetObjectError} from 'khusamov-command-order-system';
+import MovableAdapter from '../../../MovableAdapter';
+import MoveCommand from '../../MoveCommand';
+import MoveCommandOrderAdapter from './MoveCommandOrderAdapter';
 
 export default function moveCommandResolver(moveCommandOrderObject: IUniversalObject): ICommand {
 	const moveCommandOrder = new MoveCommandOrderAdapter(moveCommandOrderObject)
