@@ -1,6 +1,5 @@
 import {ICommandOrder} from 'khusamov-command-order-system';
 import {TResolveParameters, TResolverFunction} from 'khusamov-inversion-of-control';
-import {TGetSize} from '../../ToroidalTransformCommand';
 
 export default interface IToroidalTransformCommandOrder<R extends TResolverFunction = TResolverFunction> extends ICommandOrder {
 	readonly type: 'ToroidalTransformCommand'
@@ -12,7 +11,7 @@ export default interface IToroidalTransformCommandOrder<R extends TResolverFunct
 	readonly targetObject: TResolveParameters<R>
 
 	/**
-	 * Функция, возвращающая размер поверхности-развертки тора.
+	 * Зависимость, возвращающая размер поверхности-развертки тора.
 	 */
-	readonly getToroidalSurfaceSize: TGetSize
+	readonly toroidalSurfaceSize: TResolveParameters
 }

@@ -1,3 +1,4 @@
+import {ISize} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {NotFoundTargetObjectError} from 'khusamov-command-order-system';
@@ -17,7 +18,7 @@ export default function toroidalTransformCommandResolver(toroidalTransformComman
 	return (
 		new ToroidalTransformCommand(
 			new MovableAdapter(targetObject),
-			toroidalTransformCommandOrder.getToroidalSurfaceSize
+			() => resolve<ISize>(...toroidalTransformCommandOrder.toroidalSurfaceSize)
 		)
 	)
 }

@@ -17,6 +17,7 @@ import registerHeroSpaceship from './registerHeroSpaceship';
 import registerStaticStarCluster from './registerStaticStarCluster';
 import {registerShortcuts} from './registerShortcuts';
 import createGameTimer from '../createGameTimer';
+import gameWorldSizeResolver from '../gameWorldSizeResolver';
 
 const DEBUG = false
 const LOG = false
@@ -30,6 +31,7 @@ register('RotateForceCommand', rotateForceCommandResolver)
 register('ToroidalTransformCommand', toroidalTransformCommandResolver)
 
 register('GameObject', gameObjectResolver)
+register('GameWorldSize', gameWorldSizeResolver)
 register('SelectedGameObject', () => resolve<IUniversalObject>('GameObject', 'theSpaceship'))
 
 const orderQueue: TOrderQueue = createOrderQueue(LOG)

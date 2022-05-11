@@ -6,7 +6,6 @@ import {IMovable, IMoveCommandOrder, IToroidalTransformCommandOrder, ITransforma
 import IRenderable from '../gameObject/IRenderable';
 import {IStartCommandOrder, TOrderQueue} from 'khusamov-command-order-system';
 import {TGameObjectResolver} from '../gameObjectResolver';
-import getGameWorldSize from '../getGameWorldSize';
 
 /**
  * Генерация космического корабля главного героя.
@@ -46,8 +45,7 @@ export default function registerHeroSpaceship() {
 			command: {
 				type: 'ToroidalTransformCommand',
 				targetObject: ['GameObject', 'theSpaceship'],
-				// TODO Исправить приказ. В приказе не должно быть ссылок на объекты.
-				getToroidalSurfaceSize: getGameWorldSize
+				toroidalSurfaceSize: ['GameWorldSize']
 			}
 		})
 	)
