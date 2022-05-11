@@ -1,7 +1,7 @@
 import {ICommandOrder} from 'khusamov-command-order-system';
 import {TResolveParameters, TResolverFunction} from 'khusamov-inversion-of-control';
 
-export default interface IRotateForceCommandOrder<R extends TResolverFunction> extends ICommandOrder {
+export default interface IRotateForceCommandOrder<R extends TResolverFunction = TResolverFunction> extends ICommandOrder {
 	readonly type: 'RotateForceCommand'
 
 	/**

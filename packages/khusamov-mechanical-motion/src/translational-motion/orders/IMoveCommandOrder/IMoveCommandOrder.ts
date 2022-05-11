@@ -1,7 +1,7 @@
 import {TResolveParameters, TResolverFunction} from 'khusamov-inversion-of-control';
 import {ICommandOrder} from 'khusamov-command-order-system';
 
-export default interface IMoveCommandOrder<R extends TResolverFunction> extends ICommandOrder {
+export default interface IMoveCommandOrder<R extends TResolverFunction = TResolverFunction> extends ICommandOrder {
 	readonly type: 'MoveCommand',
 
 	/**
