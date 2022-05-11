@@ -8,7 +8,7 @@ import {
 	toroidalTransformActionResolver
 } from 'khusamov-mechanical-motion';
 
-export type TTransformActionParams = (
+export type TMoveTransformActionResolveParameters = (
 	| ['MoveTransformAction.UnknownTransformAction']
 	| ['MoveTransformAction.IncreaseForce', ...Parameters<typeof increaseForceActionResolver>]
 	| ['MoveTransformAction.DecreaseForce', ...Parameters<typeof decreaseForceActionResolver>]
@@ -24,4 +24,4 @@ export type TTransformActionParams = (
  * - register('MoveTransformCommand', relayCommandResolver)
  */
 export default interface IMoveTransformCommandOrder
-	extends IRelayCommandOrder<TTransformActionParams, 'MoveTransformCommand'> {}
+	extends IRelayCommandOrder<TMoveTransformActionResolveParameters, 'MoveTransformCommand'> {}
