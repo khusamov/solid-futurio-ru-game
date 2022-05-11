@@ -2,7 +2,7 @@ import {ICommand, Vector} from 'khusamov-base-types';
 import IMovable from '../IMovable';
 
 export default class IncreaseForceCommand implements ICommand {
-	public readonly name = 'RotateForceCommand'
+	public readonly name = 'IncreaseForceCommand'
 
 	public constructor(
 		private readonly movable: IMovable,
