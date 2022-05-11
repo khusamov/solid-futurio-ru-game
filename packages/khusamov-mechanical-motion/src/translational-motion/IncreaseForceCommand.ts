@@ -10,14 +10,15 @@ export default class IncreaseForceCommand implements ICommand {
 	) {}
 
 	public execute(): void {
+		if (this.movable.appliedForce.length + this.increment < 0) {
+			this.movable.appliedForce = new Vector(0, 0)
+			return
+		}
+
 		this.movable.appliedForce = (
 			this.movable.appliedForce.isNull
 				? this.movable.linearVelocity.identity.scale(this.increment)
 				: this.movable.appliedForce.translate(this.movable.appliedForce.identity.scale(this.increment))
 		)
-
-		if (this.movable.appliedForce.length < 0) {
-			this.movable.appliedForce = new Vector(0, 0)
-		}
 	}
 }
