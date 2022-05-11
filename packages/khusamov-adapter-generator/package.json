@@ -22,10 +22,10 @@
 	"dependencies": {
 		"commander": "^9.2.0",
 		"khusamov-format-code": "workspaces:*",
-		"typescript": "^4.6.3"
+		"typescript": "^4.6.4"
 	},
 	"devDependencies": {
-		"rollup": "^2.70.1",
+		"rollup": "^2.72.1",
 		"ts-node": "^10.7.0"
 	}
 }

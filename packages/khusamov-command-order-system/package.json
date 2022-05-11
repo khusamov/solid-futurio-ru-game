@@ -30,9 +30,9 @@
 		"chai": "^4.3.6",
 		"mocha": "^10.0.0",
 		"mocha-typescript": "^1.1.17",
-		"rollup": "^2.70.1",
+		"rollup": "^2.72.1",
 		"ts-node": "^9.1.1",
 		"ttypescript": "^1.5.13",
-		"typescript": "^4.6.3"
+		"typescript": "^4.6.4"
 	}
 }

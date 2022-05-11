@@ -15,12 +15,12 @@
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
-    "@types/events": "^3",
-    "@types/lodash": "^4",
-    "@types/lodash.mergewith": "^4",
+    "@types/events": "^3.0.0",
+    "@types/lodash": "^4.14.182",
+    "@types/lodash.mergewith": "^4.6.7",
     "@types/prettier": "^2.4.4",
     "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.0",
+    "@types/react-dom": "^18.0.3",
     "events": "^3.3.0",
     "khusamov-base-types": "workspace:*",
     "khusamov-command-order-system": "workspace:*",
@@ -30,8 +30,8 @@
     "lodash": "^4.17.21",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
-    "react-dom": "^18.0.0",
-    "rollup": "^2.70.1",
+    "react-dom": "^18.1.0",
+    "rollup": "^2.72.1",
     "typescript-rtti": "^0.6.0",
     "use-resize-observer": "^8.0.0"
   }

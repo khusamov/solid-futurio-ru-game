@@ -2507,9 +2507,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-commonjs@npm:^21.0.3":
-  version: 21.0.3
-  resolution: "@rollup/plugin-commonjs@npm:21.0.3"
+"@rollup/plugin-commonjs@npm:^22.0.0":
+  version: 22.0.0
+  resolution: "@rollup/plugin-commonjs@npm:22.0.0"
   dependencies:
     "@rollup/pluginutils": ^3.1.0
     commondir: ^1.0.1
@@ -2519,8 +2519,8 @@ __metadata:
     magic-string: ^0.25.7
     resolve: ^1.17.0
   peerDependencies:
-    rollup: ^2.38.3
-  checksum: 23307d3b7eb8d64dd966fbe380b85bf3b5f4908c7344427d45918d570cf6b48710ef6f155bea74545127c10de9d64f87dd2219078e83dbccf927505d38774de8
+    rollup: ^2.68.0
+  checksum: fdcce2bf58875fde0e06f001544c0d9a0509a12929393862f72dcef8fcbf4d5d0ba0d5db6cf10ba4351335caf67a3dbdb95000678c468585e3972994f92e2ce9
   languageName: node
   linkType: hard
 
@@ -2544,19 +2544,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-node-resolve@npm:^13.1.3":
-  version: 13.1.3
-  resolution: "@rollup/plugin-node-resolve@npm:13.1.3"
+"@rollup/plugin-node-resolve@npm:^13.3.0":
+  version: 13.3.0
+  resolution: "@rollup/plugin-node-resolve@npm:13.3.0"
   dependencies:
     "@rollup/pluginutils": ^3.1.0
     "@types/resolve": 1.17.1
-    builtin-modules: ^3.1.0
     deepmerge: ^4.2.2
+    is-builtin-module: ^3.1.0
     is-module: ^1.0.0
     resolve: ^1.19.0
   peerDependencies:
     rollup: ^2.42.0
-  checksum: c275843aef884ff15ed7edb8a3b8fd072a72d517632098f6e9c25ef2c00f7842559565cc77e16c59eb119b8c4e2d858a8b5a94701ca6f85ae6a4f60a6e31f0ab
+  checksum: ec5418e6b3c23a9e30683056b3010e9d325316dcfae93fbc673ae64dad8e56a2ce761c15c48f5e2dcfe0c822fdc4a4905ee6346e3dcf90603ba2260afef5a5e6
   languageName: node
   linkType: hard
 
@@ -2572,9 +2572,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-typescript@npm:^8.3.1":
-  version: 8.3.1
-  resolution: "@rollup/plugin-typescript@npm:8.3.1"
+"@rollup/plugin-typescript@npm:^8.3.2":
+  version: 8.3.2
+  resolution: "@rollup/plugin-typescript@npm:8.3.2"
   dependencies:
     "@rollup/pluginutils": ^3.1.0
     resolve: ^1.17.0
@@ -2582,7 +2582,7 @@ __metadata:
     rollup: ^2.14.0
     tslib: "*"
     typescript: ">=3.7.0"
-  checksum: d2672dfdab629c68d535d6e858cb972762238cdad01693854da3d125ca0cd03aa44f9cb8a5eff89e9785053aa29b58fb4026870005600f9188e9ad944a4a868e
+  checksum: bdbf3c11d26b04244228cbe2bd48dbac66044c16df4ee3658276480b1e050c33f9bc72ef7b6e05a88c4a48db3d5359ab6a3acf7ff288482af29863478d014881
   languageName: node
   linkType: hard
 
@@ -2831,7 +2831,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/events@npm:^3":
+"@types/events@npm:^3.0.0":
   version: 3.0.0
   resolution: "@types/events@npm:3.0.0"
   checksum: 9a424c2da210957d5636e0763e8c9fc3aaeee35bf411284ddec62a56a6abe31de9c7c2e713dabdd8a76ff98b47db2bd52f61310be6609641d6234cc842ecbbe3
@@ -2848,7 +2848,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash.mergewith@npm:^4":
+"@types/lodash.mergewith@npm:^4.6.7":
   version: 4.6.7
   resolution: "@types/lodash.mergewith@npm:4.6.7"
   dependencies:
@@ -2857,7 +2857,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:*, @types/lodash@npm:^4":
+"@types/lodash@npm:*, @types/lodash@npm:^4.14.182":
   version: 4.14.182
   resolution: "@types/lodash@npm:4.14.182"
   checksum: 7dd137aa9dbabd632408bd37009d984655164fa1ecc3f2b6eb94afe35bf0a5852cbab6183148d883e9c73a958b7fec9a9bcf7c8e45d41195add6a18c34958209
@@ -2927,12 +2927,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0":
-  version: 18.0.0
-  resolution: "@types/react-dom@npm:18.0.0"
+"@types/react-dom@npm:^18.0.3":
+  version: 18.0.3
+  resolution: "@types/react-dom@npm:18.0.3"
   dependencies:
     "@types/react": "*"
-  checksum: 0d8c9cb3e72aefe0dd2b58a49845a200369f01ae92f3f11f642e04efc95dfd1c9380b6592d4273dd6113fb8707947d15b66d56c75c41f39f28bd897f0c08dfa9
+  checksum: 5c87fb610e212f0942ebbf522dfca4c9dc2ac8afa4c601454415e7c42f993518868207faff7658d11974142937ba7af2f80e274c3a3f5e0e697bdd5547dbe1b0
   languageName: node
   linkType: hard
 
@@ -3468,7 +3468,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"builtin-modules@npm:^3.1.0":
+"builtin-modules@npm:^3.0.0":
   version: 3.2.0
   resolution: "builtin-modules@npm:3.2.0"
   checksum: 0265aa1ba78e1a16f4e18668d815cb43fb364e6a6b8aa9189c6f44c7b894a551a43b323c40206959d2d4b2568c1f2805607ad6c88adc306a776ce6904cca6715
@@ -5715,6 +5715,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-builtin-module@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "is-builtin-module@npm:3.1.0"
+  dependencies:
+    builtin-modules: ^3.0.0
+  checksum: f1e5dd2cd5f252d4d799b20a0c8c4f7e9c399c4d141749af76ca0121058d4062c3015d026f1b1409dd3d2a4ddfb9b15cf6eb9c370fed53fea8652ce35b5e95cb
+  languageName: node
+  linkType: hard
+
 "is-callable@npm:^1.1.4, is-callable@npm:^1.2.4":
   version: 1.2.4
   resolution: "is-callable@npm:1.2.4"
@@ -6149,9 +6158,9 @@ __metadata:
     khusamov-inversion-of-control: "workspace:*"
     khusamov-universal-object: "workspace:*"
     reflect-metadata: ^0.1.13
-    rollup: ^2.70.1
+    rollup: ^2.72.1
     ttypescript: ^1.5.13
-    typescript: ^4.6.3
+    typescript: ^4.6.4
     typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
@@ -6162,9 +6171,9 @@ __metadata:
   dependencies:
     commander: ^9.2.0
     khusamov-format-code: "workspaces:*"
-    rollup: ^2.70.1
+    rollup: ^2.72.1
     ts-node: ^10.7.0
-    typescript: ^4.6.3
+    typescript: ^4.6.4
   bin:
     generate: bin/generate.js
   languageName: unknown
@@ -6178,9 +6187,9 @@ __metadata:
     events: ^3.3.0
     react: ^18.1.0
     reflect-metadata: ^0.1.13
-    rollup: ^2.70.1
+    rollup: ^2.72.1
     ttypescript: ^1.5.13
-    typescript: ^4.6.3
+    typescript: ^4.6.4
     typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
@@ -6199,10 +6208,10 @@ __metadata:
     mocha: ^10.0.0
     mocha-typescript: ^1.1.17
     reflect-metadata: ^0.1.13
-    rollup: ^2.70.1
+    rollup: ^2.72.1
     ts-node: ^9.1.1
     ttypescript: ^1.5.13
-    typescript: ^4.6.3
+    typescript: ^4.6.4
     typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
@@ -6215,9 +6224,9 @@ __metadata:
     khusamov-inversion-of-control: "workspace:*"
     khusamov-universal-object: "workspace:*"
     reflect-metadata: ^0.1.13
-    rollup: ^2.70.1
+    rollup: ^2.72.1
     ttypescript: ^1.5.13
-    typescript: ^4.6.3
+    typescript: ^4.6.4
     typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
@@ -6228,23 +6237,23 @@ __metadata:
   dependencies:
     "@types/prettier": ^2.4.4
     prettier: ^2.6.2
-    rollup: ^2.70.1
-    typescript: ^4.6.3
+    rollup: ^2.72.1
+    typescript: ^4.6.4
   languageName: unknown
   linkType: soft
 
-"khusamov-game-command-system@workspace:*, khusamov-game-command-system@workspace:packages/khusamov-game-command-system":
+"khusamov-game-command-system@workspace:*, khusamov-game-command-system@workspace:deprecated/khusamov-game-command-system":
   version: 0.0.0-use.local
-  resolution: "khusamov-game-command-system@workspace:packages/khusamov-game-command-system"
+  resolution: "khusamov-game-command-system@workspace:deprecated/khusamov-game-command-system"
   dependencies:
     khusamov-base-types: "workspaces:*"
     khusamov-command-system: "workspaces:*"
     khusamov-inversion-of-control: "workspace:*"
     khusamov-universal-object: "workspace:*"
     reflect-metadata: ^0.1.13
-    rollup: ^2.70.1
+    rollup: ^2.72.1
     ttypescript: ^1.5.13
-    typescript: ^4.6.3
+    typescript: ^4.6.4
     typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
@@ -6253,12 +6262,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-game@workspace:packages/khusamov-game"
   dependencies:
-    "@types/events": ^3
-    "@types/lodash": ^4
-    "@types/lodash.mergewith": ^4
+    "@types/events": ^3.0.0
+    "@types/lodash": ^4.14.182
+    "@types/lodash.mergewith": ^4.6.7
     "@types/prettier": ^2.4.4
     "@types/react": ^18.0.9
-    "@types/react-dom": ^18.0.0
+    "@types/react-dom": ^18.0.3
     events: ^3.3.0
     khusamov-base-types: "workspace:*"
     khusamov-command-order-system: "workspace:*"
@@ -6268,20 +6277,20 @@ __metadata:
     lodash: ^4.17.21
     node-sass: ^7.0.1
     react: ^18.1.0
-    react-dom: ^18.0.0
-    rollup: ^2.70.1
+    react-dom: ^18.1.0
+    rollup: ^2.72.1
     typescript-rtti: ^0.6.0
     use-resize-observer: ^8.0.0
   languageName: unknown
   linkType: soft
 
-"khusamov-inversion-of-control-sample@workspace:packages/khusamov-inversion-of-control-sample":
+"khusamov-inversion-of-control-sample@workspace:deprecated/khusamov-inversion-of-control-sample":
   version: 0.0.0-use.local
-  resolution: "khusamov-inversion-of-control-sample@workspace:packages/khusamov-inversion-of-control-sample"
+  resolution: "khusamov-inversion-of-control-sample@workspace:deprecated/khusamov-inversion-of-control-sample"
   dependencies:
     "@types/prettier": ^2.4.4
     "@types/react": ^18.0.9
-    "@types/react-dom": ^18.0.0
+    "@types/react-dom": ^18.0.3
     khusamov-adapter-generator-runtime: "workspace:*"
     khusamov-base-types: "workspace:*"
     khusamov-command-system: "workspace:*"
@@ -6290,8 +6299,8 @@ __metadata:
     khusamov-universal-object: "workspace:*"
     node-sass: ^7.0.1
     react: ^18.1.0
-    react-dom: ^18.0.0
-    rollup: ^2.70.1
+    react-dom: ^18.1.0
+    rollup: ^2.72.1
     typescript-rtti: ^0.6.0
     use-resize-observer: ^8.0.0
   languageName: unknown
@@ -6302,9 +6311,9 @@ __metadata:
   resolution: "khusamov-inversion-of-control@workspace:packages/khusamov-inversion-of-control"
   dependencies:
     reflect-metadata: ^0.1.13
-    rollup: ^2.70.1
+    rollup: ^2.72.1
     ttypescript: ^1.5.13
-    typescript: ^4.6.3
+    typescript: ^4.6.4
     typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
@@ -6318,9 +6327,9 @@ __metadata:
     khusamov-inversion-of-control: "workspace:*"
     khusamov-universal-object: "workspace:*"
     reflect-metadata: ^0.1.13
-    rollup: ^2.70.1
+    rollup: ^2.72.1
     ttypescript: ^1.5.13
-    typescript: ^4.6.3
+    typescript: ^4.6.4
     typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
@@ -6330,19 +6339,19 @@ __metadata:
   resolution: "khusamov-rollup-config@workspace:packages/khusamov-rollup-config"
   dependencies:
     "@rollup/plugin-babel": ^5.3.1
-    "@rollup/plugin-commonjs": ^21.0.3
+    "@rollup/plugin-commonjs": ^22.0.0
     "@rollup/plugin-html": ^0.2.4
     "@rollup/plugin-json": ^4.1.0
-    "@rollup/plugin-node-resolve": ^13.1.3
+    "@rollup/plugin-node-resolve": ^13.3.0
     "@rollup/plugin-replace": ^4.0.0
-    "@rollup/plugin-typescript": ^8.3.1
+    "@rollup/plugin-typescript": ^8.3.2
     "@schemastore/package": ^0.0.6
     "@svgr/rollup": ^6.2.1
     "@types/rollup-plugin-postcss": ^3.1.4
     "@types/rollup-plugin-progress": ^1.1.1
     chalk: 4.0.0
     postcss: ^8.4.12
-    rollup: ^2.70.1
+    rollup: ^2.72.1
     rollup-plugin-delete: ^2.0.0
     rollup-plugin-livereload: ^2.0.5
     rollup-plugin-postcss: ^4.0.2
@@ -6352,7 +6361,7 @@ __metadata:
     rollup-plugin-terser: ^7.0.2
     tslib: ^2.3.1
     ttypescript: ^1.5.13
-    typescript: ^4.6.3
+    typescript: ^4.6.4
   peerDependencies:
     rollup: ^2.70.1
   languageName: unknown
@@ -6365,9 +6374,9 @@ __metadata:
     khusamov-base-types: "workspace:*"
     khusamov-inversion-of-control: "workspace:*"
     reflect-metadata: ^0.1.13
-    rollup: ^2.70.1
+    rollup: ^2.72.1
     ttypescript: ^1.5.13
-    typescript: ^4.6.3
+    typescript: ^4.6.4
     typescript-rtti: ^0.6.0
   languageName: unknown
   linkType: soft
@@ -8646,15 +8655,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.0.0":
-  version: 18.0.0
-  resolution: "react-dom@npm:18.0.0"
+"react-dom@npm:^18.1.0":
+  version: 18.1.0
+  resolution: "react-dom@npm:18.1.0"
   dependencies:
     loose-envify: ^1.1.0
-    scheduler: ^0.21.0
+    scheduler: ^0.22.0
   peerDependencies:
-    react: ^18.0.0
-  checksum: dd0ba9f2f31dd728076c892a95b2f5a8dfe79136431b0289afb46eec39d0ca6b6f0f40a60fd8aa6ef702c98ce7c26100d3d4dbc35c7c9e87429cd04f84cb58bd
+    react: ^18.1.0
+  checksum: bb0d48eeb0b297c79c2a03978baa29f5b3ff7ba3d070b21e34c9af1a6e7fdf0ca8b8d73e41f9214d91ad40eeb6d1f3559f884cbbc338713374a51320637c23df
   languageName: node
   linkType: hard
 
@@ -9159,9 +9168,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.70.1":
-  version: 2.70.1
-  resolution: "rollup@npm:2.70.1"
+"rollup@npm:^2.72.1":
+  version: 2.72.1
+  resolution: "rollup@npm:2.72.1"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -9169,7 +9178,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 06c62933e6e81a1c8c684d7d576e507081aabdb63cc0c91bca86b7348b66df03b77827068e4990b8b6c738bd3ef66dcc8c7ed7e0ea40b736068e7618f693133e
+  checksum: 3dca122129f560acc3c54dd5bd5f9470dd562d74f61c652c57b6a4355a963c0828640382ebff544f1b0e71387733a51fb963d6f761ae1f05a84f5923bbde883c
   languageName: node
   linkType: hard
 
@@ -9240,12 +9249,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.21.0":
-  version: 0.21.0
-  resolution: "scheduler@npm:0.21.0"
+"scheduler@npm:^0.22.0":
+  version: 0.22.0
+  resolution: "scheduler@npm:0.22.0"
   dependencies:
     loose-envify: ^1.1.0
-  checksum: 4f8285076041ed2c81acdd1faa987f1655fdbd30554bc667c1ea64743fc74fb3a04ca7d27454b3d678735df5a230137a3b84756061b43dc5796e80701b66d124
+  checksum: a8ef5cab769c020cd6382ad9ecc3f72dbde56a50a36639b3a42ad9c11f7724f03700bcad373044059b8067d4a6365154dc7c0ca8027ef20ff4900cf58a0fc2c5
   languageName: node
   linkType: hard
 
@@ -10183,23 +10192,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.3":
-  version: 4.6.3
-  resolution: "typescript@npm:4.6.3"
+"typescript@npm:^4.6.4":
+  version: 4.6.4
+  resolution: "typescript@npm:4.6.4"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 255bb26c8cb846ca689dd1c3a56587af4f69055907aa2c154796ea28ee0dea871535b1c78f85a6212c77f2657843a269c3a742d09d81495b97b914bf7920415b
+  checksum: e7bfcc39cd4571a63a54e5ea21f16b8445268b9900bf55aee0e02ad981be576acc140eba24f1af5e3c1457767c96cea6d12861768fb386cf3ffb34013718631a
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.6.3#~builtin<compat/typescript>":
-  version: 4.6.3
-  resolution: "typescript@patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"
+"typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
+  version: 4.6.4
+  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 6bf45caf847062420592e711bc9c28bf5f9a9a7fa8245343b81493e4ededae33f1774009d1234d911422d1646a2c839f44e1a23ecb111b40a60ac2ea4c1482a8
+  checksum: 1cb434fbc637d347be90e3a0c6cd05e33c38f941713c8786d3031faf1842c2c148ba91d2fac01e7276b0ae3249b8633f1660e32686cc7a8c6a8fd5361dc52c66
   languageName: node
   linkType: hard
 

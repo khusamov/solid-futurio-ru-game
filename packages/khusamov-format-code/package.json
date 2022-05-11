@@ -17,8 +17,8 @@
 	},
 	"devDependencies": {
 		"@types/prettier": "^2.4.4",
-		"rollup": "^2.70.1",
-		"typescript": "^4.6.3"
+		"rollup": "^2.72.1",
+		"typescript": "^4.6.4"
 	},
 	"dependencies": {
 		"prettier": "^2.6.2"
