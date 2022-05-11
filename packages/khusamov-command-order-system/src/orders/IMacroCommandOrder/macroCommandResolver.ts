@@ -1,6 +1,6 @@
 import {ICommand} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
-import {IUniversalObject} from 'khusamov-universal-object';
+import {createUniversalObject, IUniversalObject} from 'khusamov-universal-object';
 import {MacroCommand} from 'khusamov-command-system';
 import MacroCommandOrderAdapter from './MacroCommandOrderAdapter';
 
@@ -9,7 +9,7 @@ export default function macroCommandResolver(macroCommandOrderObject: IUniversal
 	return (
 		new MacroCommand(
 			macroCommandOrder.commands.map(
-				commandOrder => resolve<ICommand>(commandOrder.type, commandOrder)
+				commandOrder => resolve<ICommand>(commandOrder.type, createUniversalObject(commandOrder))
 			)
 		)
 	)
