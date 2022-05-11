@@ -6,7 +6,6 @@ import {MovableAdapter} from 'khusamov-mechanical-motion';
 import GameObjectAdapter from '../../game/gameObject/GameObjectAdapter';
 import RenderableAdapter from '../../game/gameObject/RenderableAdapter';
 import ToroidalSurfaceAdapter from '../../game/gameObject/ToroidalSurfaceAdapter';
-import {TTargetObjectSearchParams} from '../../game/order/IStartMoveTransformOrder';
 import {TGameObjectList} from '../../game/types';
 import ToroidalRender from '../ToroidalRender';
 import Spaceship from '../Spaceship';
@@ -27,17 +26,7 @@ export default function Application() {
 	const selectedGameObject = resolve<IUniversalObject>('SelectedGameObject')
 	const selectedGameObjectMovable = new MovableAdapter(selectedGameObject)
 
-	const theGameWorld = (
-		new ToroidalSurfaceAdapter(
-			resolve<IUniversalObject, [TTargetObjectSearchParams]>(
-				'GameObject',
-				{
-					type: 'GameObject',
-					name: 'theGameWorld'
-				}
-			)
-		)
-	)
+	const theGameWorld = new ToroidalSurfaceAdapter(resolve<IUniversalObject>('GameObject', 'theGameWorld'))
 
 	const additionalParameters = [{
 		title: 'FPS',
