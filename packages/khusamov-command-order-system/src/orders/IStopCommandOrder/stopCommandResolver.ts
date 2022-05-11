@@ -15,8 +15,8 @@ export default function stopCommandResolver(stopCommandOrderObject: IUniversalOb
 	}
 
 	return (
-		stopCommandOrder.command
-			? new StopCommand(stopCommandOrder.command, targetObject)
+		stopCommandOrder.commandName
+			? new StopCommand(stopCommandOrder.commandName, targetObject)
 			: new StopCommand(targetObject)
 	)
 }
