@@ -1,8 +1,5 @@
-export {default as ITransformable} from './ITransformable'
-export {default as TransformableAdapter} from './TransformableAdapter'
-
-export {default as IMovable} from './IMovable'
-export {default as MovableAdapter} from './MovableAdapter'
+export {default as ITransformable, TransformableAdapter} from './interfaces/ITransformable'
+export {default as IMovable, MovableAdapter} from './interfaces/IMovable'
 
 export {default as transformPositionForToroid} from './functions/transformPositionForToroid'
 

@@ -1,6 +1,6 @@
 import {ICommand, ISize} from 'khusamov-base-types';
 import transformPositionForToroid from '../functions/transformPositionForToroid';
-import IMovable from '../IMovable';
+import IMovable from '../interfaces/IMovable';
 
 export type TGetSize = () => ISize
 

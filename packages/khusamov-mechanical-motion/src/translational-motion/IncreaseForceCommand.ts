@@ -1,5 +1,5 @@
 import {ICommand, Vector} from 'khusamov-base-types';
-import IMovable from '../IMovable';
+import IMovable from '../interfaces/IMovable';
 
 export default class IncreaseForceCommand implements ICommand {
 	public readonly name = 'IncreaseForceCommand'

@@ -2,7 +2,7 @@ import {ICommand} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {NotFoundTargetObjectError} from 'khusamov-command-order-system';
-import MovableAdapter from '../../../MovableAdapter';
+import {MovableAdapter} from '../../../interfaces/IMovable';
 import MoveCommand from '../../MoveCommand';
 import MoveCommandOrderAdapter from './MoveCommandOrderAdapter';
 

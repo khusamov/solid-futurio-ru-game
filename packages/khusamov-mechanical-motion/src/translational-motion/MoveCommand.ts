@@ -1,5 +1,5 @@
 import {Convert, ICommand} from 'khusamov-base-types';
-import IMovable from '../IMovable';
+import IMovable from '../interfaces/IMovable';
 
 /**
  * Поступательное движение.

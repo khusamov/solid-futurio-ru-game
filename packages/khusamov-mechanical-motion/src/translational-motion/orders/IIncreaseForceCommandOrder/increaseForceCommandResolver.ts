@@ -3,7 +3,7 @@ import {resolve} from 'khusamov-inversion-of-control';
 import {NotFoundTargetObjectError} from 'khusamov-command-order-system';
 import IncreaseForceCommandOrderAdapter from './IncreaseForceCommandOrderAdapter';
 import IncreaseForceCommand from '../../IncreaseForceCommand';
-import MovableAdapter from '../../../MovableAdapter';
+import {MovableAdapter} from '../../../interfaces/IMovable';
 
 export default function increaseForceCommandResolver(increaseForceCommandOrderObject: IUniversalObject) {
 	const increaseForceCommandOrder = new IncreaseForceCommandOrderAdapter(increaseForceCommandOrderObject)
