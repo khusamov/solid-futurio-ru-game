@@ -5,7 +5,7 @@ import IMovable from '../IMovable';
 export type TGetSize = () => ISize
 
 export default class ToroidalTransformCommand implements ICommand {
-	public readonly name = 'RotateForceCommand'
+	public readonly name = 'ToroidalTransformCommand'
 
 	public constructor(
 		private readonly movable: IMovable,
