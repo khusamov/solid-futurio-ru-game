@@ -43,3 +43,24 @@ A = Mf
 Момент импульса используется для вычисления столкновений тел. Эти вычисления будут реализованы в другом пакете.
 
 L = Jw
+
+Создание команд трансформации движения
+--------------------------------------
+
+На основе RelayCommand можно создать любую команду изменения движения.
+
+```typescript
+import {RelayCommand} from 'khusamov-command-system';
+import {resolve} from 'khusamov-inversion-of-control';
+import {IUniversalObject} from 'khusamov-universal-object';
+import {MovableAdapter, IMovable} from 'khusamov-mechanical-motion';
+
+const transformSpaceshipMotionCommand = new RelayCommand(() => {
+	const transform = (movable: IMovable) => {
+		// Функция трасформации движения.
+    }
+	const theSpaceshipObject = resolve<IUniversalObject>('GameObject', 'theSpaceship')
+	transform(new MovableAdapter(theSpaceshipObject))
+})
+myMoveTransformCommand.execute()
+```
