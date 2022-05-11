@@ -96,6 +96,18 @@ export default class Timer implements IStartable, IStoppable {
 	}
 
 	/**
+	 * Изменить состояние таймера на обратное.
+	 * Запустить, если остановлен.
+	 * Или поставить на паузу, если запущен.
+	 */
+	public toggle() {
+		handleByState(this.state, {
+			started: this.pause.bind(this),
+			stopped: this.start.bind(this)
+		})
+	}
+
+	/**
 	 * Количество миллисекунд с начала старта таймера.
 	 * С учетом всех пауз.
 	 */
