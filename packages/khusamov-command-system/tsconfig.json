@@ -3,14 +3,8 @@
 	"exclude": ["dist", "node_modules"],
 	"include": ["src/**/*"],
 	"compilerOptions": {
-		"lib": ["DOM"],
 		"outDir": "dist",
 		"baseUrl": "src",
-		"declarationDir": ".",
-		"plugins": [
-			{
-				"transform": "typescript-rtti/dist/transformer"
-			}
-		]
+		"declarationDir": "."
 	}
 }

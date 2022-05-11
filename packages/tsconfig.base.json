@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"lib": ["ESNext"],
+		"lib": ["ESNext", "DOM"],
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleResolution": "node",
@@ -33,5 +33,10 @@
 		"noPropertyAccessFromIndexSignature": true,
 		"allowUnusedLabels": true,
 		"allowUnreachableCode": true,
+	},
+	"ts-node": {
+		"compilerOptions": {
+			"module": "CommonJS"
+		}
 	}
 }

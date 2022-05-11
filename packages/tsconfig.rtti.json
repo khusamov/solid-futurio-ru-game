@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+		"plugins": [
+			{
+				"transform": "typescript-rtti/dist/transformer"
+			}
+		]
+	}
+}
