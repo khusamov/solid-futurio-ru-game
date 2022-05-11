@@ -1,5 +1,5 @@
 import {ISize} from 'khusamov-base-types';
-import ToroidalSurfaceAdapter from './gameObject/ToroidalSurfaceAdapter';
+import ToroidalSurfaceAdapter from '../gameObject/ToroidalSurfaceAdapter';
 import {resolve} from 'khusamov-inversion-of-control';
 import {IUniversalObject} from 'khusamov-universal-object';
 

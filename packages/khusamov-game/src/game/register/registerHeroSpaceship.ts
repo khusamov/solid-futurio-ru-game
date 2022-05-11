@@ -5,7 +5,7 @@ import IGameObject from '../gameObject/IGameObject';
 import {IMovable, IMoveCommandOrder, IToroidalTransformCommandOrder, ITransformable} from 'khusamov-mechanical-motion';
 import IRenderable from '../gameObject/IRenderable';
 import {IStartCommandOrder, TOrderQueue} from 'khusamov-command-order-system';
-import {TGameObjectResolver} from '../gameObjectResolver';
+import {TGameObjectResolver} from '../resolvers/gameObjectResolver';
 
 /**
  * Генерация космического корабля главного героя.

@@ -6,7 +6,7 @@ import {
 	rotateForceCommandResolver,
 	toroidalTransformCommandResolver
 } from 'khusamov-mechanical-motion';
-import gameObjectResolver from '../gameObjectResolver';
+import gameObjectResolver from '../resolvers/gameObjectResolver';
 import {IUniversalObject} from 'khusamov-universal-object';
 import createOrderQueue from '../createOrderQueue';
 import {createCommandQueue, RepeatableCommand, TCommandQueue} from 'khusamov-command-system';
@@ -17,7 +17,7 @@ import registerHeroSpaceship from './registerHeroSpaceship';
 import registerStaticStarCluster from './registerStaticStarCluster';
 import {registerShortcuts} from './registerShortcuts';
 import createGameTimer from '../createGameTimer';
-import gameWorldSizeResolver from '../gameWorldSizeResolver';
+import gameWorldSizeResolver from '../resolvers/gameWorldSizeResolver';
 
 const DEBUG = false
 const LOG = false

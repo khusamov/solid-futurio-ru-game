@@ -1,6 +1,6 @@
 import {findUniversalObject, IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
-import {TGameObjectList} from './types';
+import {TGameObjectList} from '../types';
 
 export type TGameObjectResolver = typeof gameObjectResolver
 
