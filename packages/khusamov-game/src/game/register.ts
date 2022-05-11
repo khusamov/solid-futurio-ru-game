@@ -11,13 +11,12 @@ import {
 	TCommandQueue
 } from 'khusamov-command-system';
 import {
-	IMovable, ITransformable,
-	decreaseForceActionResolver,
-	increaseForceActionResolver,
-	toroidalTransformActionResolver,
-	rotateForceActionResolver,
-	clockwiseRotateForceActionResolver,
-	counterclockwiseRotateForceActionResolver
+	IMovable,
+	IMoveCommandOrder,
+	increaseForceCommandResolver, IToroidalTransformCommandOrder,
+	ITransformable,
+	moveCommandResolver,
+	rotateForceCommandResolver, toroidalTransformCommandResolver
 } from 'khusamov-mechanical-motion';
 import ToroidalSurfaceAdapter from './gameObject/ToroidalSurfaceAdapter';
 import IGameObject from './gameObject/IGameObject';
@@ -33,10 +32,9 @@ import {
 	stopCommandResolver,
 	TOrderQueue
 } from 'khusamov-command-order-system';
-import IMoveCommandOrder, {moveCommandResolver} from '../orders/IMoveCommandOrder';
 import getGameWorldSize from './getGameWorldSize';
-import IMoveTransformCommandOrder from '../orders/IMoveTransformCommandOrder';
 import createOrderQueue from './createOrderQueue';
+import {registerShortcuts} from '../shortcuts';
 
 const DEBUG = false
 const LOG = false
@@ -45,14 +43,10 @@ register('StartCommand', startCommandResolver)
 register('StopCommand', stopCommandResolver)
 register('RelayCommand', relayCommandResolver)
 register('MoveCommand', moveCommandResolver)
-register('MoveTransformAction.ToroidalPositionTransformation', toroidalTransformActionResolver)
-register('MoveTransformAction.ClockwiseRotateForce', clockwiseRotateForceActionResolver)
-register('MoveTransformAction.CounterclockwiseRotateForce', counterclockwiseRotateForceActionResolver)
-register('MoveTransformAction.RotateForce', rotateForceActionResolver)
-register('MoveTransformAction.DecreaseForce', decreaseForceActionResolver)
-register('MoveTransformAction.IncreaseForce', increaseForceActionResolver)
+register('IncreaseForceCommand', increaseForceCommandResolver)
+register('RotateForceCommand', rotateForceCommandResolver)
+register('ToroidalTransformCommand', toroidalTransformCommandResolver)
 
-register('MoveTransformCommand', relayCommandResolver)
 register('GameObject', gameObjectResolver)
 register('SelectedGameObject', () => resolve<IUniversalObject>('GameObject', 'theSpaceship'))
 
@@ -67,6 +61,8 @@ register('CommandQueue.EventEmitter', () => commandQueueEventEmitter)
 register('GameObjectList', () => gameObjectList)
 
 commandQueue.enqueue(new RepeatableCommand(new InterpretOrderCommand))
+
+registerShortcuts()
 
 /**
  * Генерация основных игровых объектов.
@@ -117,16 +113,16 @@ commandQueue.enqueue(new RepeatableCommand(new InterpretOrderCommand))
 		})
 	)
 
-	type TStartMoveTransformCommandOrder = IStartCommandOrder<TGameObjectResolver, IMoveTransformCommandOrder>
+	type TStartMoveTransformCommandOrder = IStartCommandOrder<TGameObjectResolver, IToroidalTransformCommandOrder<TGameObjectResolver>>
 	orderQueue.enqueue(
 		createUniversalObject<TStartMoveTransformCommandOrder>({
 			type: 'StartCommand',
 			targetObject: ['GameObject', 'theSpaceship'],
-			commandName: 'MoveTransformAction.ToroidalPositionTransformation',
+			commandName: 'MoveTransform.ToroidalPositionTransformation',
 			command: {
-				type: 'MoveTransformCommand',
-				name: 'MoveTransformAction.ToroidalPositionTransformation',
-				action: ['MoveTransformAction.ToroidalPositionTransformation', getGameWorldSize]
+				type: 'ToroidalTransformCommand',
+				targetObject: ['GameObject', 'theSpaceship'],
+				getToroidalSurfaceSize: getGameWorldSize
 			}
 		})
 	)
@@ -176,7 +172,7 @@ if (DEBUG) {
 			const commandQueue = resolve<TCommandQueue>('CommandQueue')
 			const command = commandQueue.dequeue()
 			if (command) {
-				console.log(command)
+				console.log(command.name)
 				command.execute()
 				commandQueueEventEmitter.emit('execute', command)
 			}
