@@ -3,7 +3,7 @@ import {ICommand, IQueue} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {StopCommand} from 'khusamov-command-system';
-import {TGameObjectList} from '../../game/types';
+import {TGameObjectList} from '../../../game/types';
 
 export default class DestroyCommand implements ICommand {
 	public readonly name: string = 'DestroyCommand'
