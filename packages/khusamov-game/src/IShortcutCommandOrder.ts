@@ -12,27 +12,27 @@ export default interface IShortcutCommandOrder<Order extends ICommandOrder = ICo
 	/**
 	 * Код клавиши.
 	 */
-	key: string
+	readonly key: string
 
 	/**
 	 * Данные для создания команды, которая закрепляется за клавишей.
 	 */
-	command: {
+	readonly command: {
 		/**
 		 * Имя команды для IStartCommandOrder и IStopCommandOrder.
 		 * Должно быть уникальным в пределах targetObject.
 		 */
-		name: string,
+		readonly name: string,
 
 		/**
 		 * Вычисление зависимости, возвращающее объект для IStartCommandOrder и IStopCommandOrder.
 		 */
-		targetObject: [string]
+		readonly targetObject: [string]
 
 		/**
 		 * Приказ команды, которая закрепляется за клавишей.
 		 */
-		order: Order
+		readonly order: Order
 	}
 }
 

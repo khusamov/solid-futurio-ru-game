@@ -1,11 +1,11 @@
-import IShortcutCommandOrder, {registerShortcutCommand} from './IShortcutCommandOrder';
 import {Angle, IDisposable} from 'khusamov-base-types';
 import {IIncreaseForceCommandOrder, IRotateForceCommandOrder} from 'khusamov-mechanical-motion';
+import IShortcutCommandOrder, {registerShortcutCommand} from '../../IShortcutCommandOrder';
 
 type TSpaceshipShortcutCommand = (
 	| IShortcutCommandOrder<IIncreaseForceCommandOrder>
 	| IShortcutCommandOrder<IRotateForceCommandOrder>
-)
+	)
 
 const increaseForceShortcut: TSpaceshipShortcutCommand = {
 	key: 'W',
@@ -73,6 +73,3 @@ export function registerShortcuts(): IDisposable[] {
 	}
 	return disposerList
 }
-
-
-
