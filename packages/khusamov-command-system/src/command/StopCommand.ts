@@ -1,7 +1,7 @@
-import {ICommand, IStoppable, IWithStoppable} from 'khusamov-base-types';
+import {ICommand, IStoppable} from 'khusamov-base-types';
 import {isUniversalObject, IUniversalObject} from 'khusamov-universal-object';
 import commandFullName from '../functions/commandFullName';
-import WithStoppableAdapter from '../adapter/WithStoppableAdapter';
+import IWithStoppable, {WithStoppableAdapter} from '../interfaces/IWithStoppable';
 
 /**
  * Остановка команды, которую можно остановить.
