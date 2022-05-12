@@ -1,8 +1,8 @@
 import {Adapter, IUniversalObject} from 'khusamov-universal-object';
-import {TResolveParameters, TResolverFunction} from 'khusamov-inversion-of-control';
+import {TResolveParameters, TResolver} from 'khusamov-inversion-of-control';
 import IStopCommandOrder from './IStopCommandOrder';
 
-export default class StopCommandOrderAdapter<R extends TResolverFunction> extends Adapter implements IStopCommandOrder<R> {
+export default class StopCommandOrderAdapter<R extends TResolver> extends Adapter implements IStopCommandOrder<R> {
 	public readonly type = 'StopCommand'
 	readonly commandName?: string | undefined
 

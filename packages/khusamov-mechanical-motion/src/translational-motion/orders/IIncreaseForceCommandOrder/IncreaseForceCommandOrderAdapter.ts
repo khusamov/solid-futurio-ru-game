@@ -1,8 +1,8 @@
 import {Adapter} from 'khusamov-universal-object';
 import IIncreaseForceCommandOrder from './IIncreaseForceCommandOrder';
-import {TResolveParameters, TResolverFunction} from 'khusamov-inversion-of-control';
+import {TResolveParameters, TResolver} from 'khusamov-inversion-of-control';
 
-export default class IncreaseForceCommandOrderAdapter<R extends TResolverFunction> extends Adapter implements IIncreaseForceCommandOrder<R> {
+export default class IncreaseForceCommandOrderAdapter<R extends TResolver> extends Adapter implements IIncreaseForceCommandOrder<R> {
 	public readonly type = 'IncreaseForceCommand'
 
 	public get targetObject(): TResolveParameters<R> {

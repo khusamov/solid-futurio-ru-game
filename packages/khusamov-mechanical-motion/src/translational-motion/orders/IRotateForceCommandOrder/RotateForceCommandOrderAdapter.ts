@@ -1,8 +1,8 @@
 import {Adapter} from 'khusamov-universal-object';
-import {TResolveParameters, TResolverFunction} from 'khusamov-inversion-of-control';
+import {TResolveParameters, TResolver} from 'khusamov-inversion-of-control';
 import IRotateForceCommandOrder from './IRotateForceCommandOrder';
 
-export default class RotateForceCommandOrderAdapter<R extends TResolverFunction> extends Adapter implements IRotateForceCommandOrder<R> {
+export default class RotateForceCommandOrderAdapter<R extends TResolver> extends Adapter implements IRotateForceCommandOrder<R> {
 	public readonly type = 'RotateForceCommand'
 
 	public get targetObject(): TResolveParameters<R> {

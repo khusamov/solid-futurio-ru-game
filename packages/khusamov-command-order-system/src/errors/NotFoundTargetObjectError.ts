@@ -1,7 +1,7 @@
 import {toOneLine} from 'khusamov-base-types';
-import {TResolveParameters, TResolverFunction} from 'khusamov-inversion-of-control';
+import {TResolveParameters, TResolver} from 'khusamov-inversion-of-control';
 
-export default class NotFoundTargetObjectError<R extends TResolverFunction> extends Error {
+export default class NotFoundTargetObjectError<R extends TResolver> extends Error {
 	public constructor(targetObjectResolveParameters: TResolveParameters<R>) {
 		super(
 			toOneLine(
