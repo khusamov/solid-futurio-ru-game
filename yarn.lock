@@ -6151,7 +6151,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"khusamov-adapter-generator-runtime@workspace:*, khusamov-adapter-generator-runtime@workspace:packages/khusamov-adapter-generator-runtime":
+"khusamov-adapter-generator-runtime@workspace:packages/khusamov-adapter-generator-runtime":
   version: 0.0.0-use.local
   resolution: "khusamov-adapter-generator-runtime@workspace:packages/khusamov-adapter-generator-runtime"
   dependencies:
@@ -6242,22 +6242,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"khusamov-game-command-system@workspace:*, khusamov-game-command-system@workspace:deprecated/khusamov-game-command-system":
-  version: 0.0.0-use.local
-  resolution: "khusamov-game-command-system@workspace:deprecated/khusamov-game-command-system"
-  dependencies:
-    khusamov-base-types: "workspaces:*"
-    khusamov-command-system: "workspaces:*"
-    khusamov-inversion-of-control: "workspace:*"
-    khusamov-universal-object: "workspace:*"
-    reflect-metadata: ^0.1.13
-    rollup: ^2.72.1
-    ttypescript: ^1.5.13
-    typescript: ^4.6.4
-    typescript-rtti: ^0.6.0
-  languageName: unknown
-  linkType: soft
-
 "khusamov-game@workspace:packages/khusamov-game":
   version: 0.0.0-use.local
   resolution: "khusamov-game@workspace:packages/khusamov-game"
@@ -6284,34 +6268,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"khusamov-inversion-of-control-sample@workspace:deprecated/khusamov-inversion-of-control-sample":
-  version: 0.0.0-use.local
-  resolution: "khusamov-inversion-of-control-sample@workspace:deprecated/khusamov-inversion-of-control-sample"
-  dependencies:
-    "@types/prettier": ^2.4.4
-    "@types/react": ^18.0.9
-    "@types/react-dom": ^18.0.3
-    khusamov-adapter-generator-runtime: "workspace:*"
-    khusamov-base-types: "workspace:*"
-    khusamov-command-system: "workspace:*"
-    khusamov-game-command-system: "workspace:*"
-    khusamov-inversion-of-control: "workspace:*"
-    khusamov-universal-object: "workspace:*"
-    node-sass: ^7.0.1
-    react: ^18.1.0
-    react-dom: ^18.1.0
-    rollup: ^2.72.1
-    typescript-rtti: ^0.6.0
-    use-resize-observer: ^8.0.0
-  languageName: unknown
-  linkType: soft
-
 "khusamov-inversion-of-control@workspace:*, khusamov-inversion-of-control@workspace:packages/khusamov-inversion-of-control":
   version: 0.0.0-use.local
   resolution: "khusamov-inversion-of-control@workspace:packages/khusamov-inversion-of-control"
   dependencies:
+    "@types/chai": ^4
+    "@types/mocha": ^9.1.1
+    chai: ^4.3.6
+    mocha: ^10.0.0
+    mocha-typescript: ^1.1.17
     reflect-metadata: ^0.1.13
     rollup: ^2.72.1
+    ts-node: ^9.1.1
     ttypescript: ^1.5.13
     typescript: ^4.6.4
     typescript-rtti: ^0.6.0
