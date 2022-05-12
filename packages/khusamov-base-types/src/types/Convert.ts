@@ -9,11 +9,21 @@ type TToArrayConvertResult<K, V> = IKeyValueObject<K, V>[]
  */
 export default class Convert {
 	/**
-	 * Конвертировать карту или plain-объект в массив key/value-объектов.
+	 * Конвертировать карту Map в массив key/value-объектов.
 	 * @param object
 	 */
 	public static toArray<K, V>(object: Map<K, V>): TMapConvertResult<K, V>
+
+	/**
+	 * Конвертировать plain-объект в массив key/value-объектов.
+	 * @param object
+	 */
 	public static toArray<K extends keyof any, V>(object: Record<K, V>): TPlainObjectConvertResult<K, V>
+
+	/**
+	 * Конвертировать карту или plain-объект в массив key/value-объектов.
+	 * @param object
+	 */
 	public static toArray<K extends keyof any, V>(object: Map<K, V> | Record<K, V>): TToArrayConvertResult<K, V> {
 		const result: TToArrayConvertResult<K, V> = []
 		if (object instanceof Map) {
