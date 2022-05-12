@@ -47,4 +47,20 @@ export default class Convert {
 	public static toSecond(millisecond: number) {
 		return millisecond / 1000
 	}
+
+	/**
+	 * Конвертация угла из радиан в градусы.
+	 * @param value
+	 */
+	public static toDegree(value: number) {
+		return value / Math.PI * 180
+	}
+
+	/**
+	 * Конвертация угла из градусов в радианы.
+	 * @param value
+	 */
+	public static toRadian(value: number) {
+		return value * Math.PI / 180
+	}
 }
