@@ -39,10 +39,6 @@ export default class StartCommand implements ICommand {
 	}
 
 	private get stoppableCommandMap() {
-
-		// https://github.com/typescript-rtti/typescript-rtti/issues/59
-		// Пока с адаптерами проблемы. Сложные адаптеры похоже не создать при помощи typescript-rtti.
-		// const withStoppable = resolve<IWithStoppable>('Adapter', this.targetObject, reflect<IWithStoppable>())
 		const withStoppable = new WithStoppableAdapter(this.targetObject)
 
 		if (!withStoppable.stoppableMap) {
