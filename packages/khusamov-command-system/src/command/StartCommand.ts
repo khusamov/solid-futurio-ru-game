@@ -22,7 +22,7 @@ export default class StartCommand implements ICommand {
 	public constructor(
 		private readonly stoppableCommandName: string,
 		private readonly targetObject: IUniversalObject,
-		private stoppableCommand: ICommand & IStoppable
+		private readonly stoppableCommand: ICommand & IStoppable
 	) {}
 
 	public execute(): void {
