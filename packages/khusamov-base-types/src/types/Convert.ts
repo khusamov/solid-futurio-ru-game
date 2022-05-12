@@ -32,8 +32,9 @@ export default class Convert {
 			}
 		} else {
 			for (const key in object) {
-				if (!object.hasOwnProperty(key)) continue
-				result.push({key, value: Reflect.get(object, key)})
+				if (object.hasOwnProperty(key)) {
+					result.push({key, value: Reflect.get(object, key)})
+				}
 			}
 		}
 		return result
