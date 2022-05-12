@@ -1,14 +1,32 @@
-Инверсия управления
-===================
+Контейнер инверсии управления
+=============================
+
+Простая реализация шаблона проектирования '[Контейнер инверсии управления][ioc]' (Inversion оf Control Container).
+
+[ioc]: https://bit.ly/35sJch2
+
+Пример использования:
+---------------------
 
 ```typescript
-type TResolverFunction = (...params: any[]) => any
+import {register, resolve} from 'khusamov-inversion-of-control';
 
-// Система IoC состоит из двух функций: resolve() и register(). Здесь представлены их болванки:
-function resolve<T, P extends TResolverFunction = TResolverFunction>(dependencyName: string, ...params: Parameters<P>): T {
-	return 0 as any
+function myDependencyResolver(): string[] {
+	return ['Apple', 'iPhone', 'iPad']
 }
-function register(dependencyName: string, resolver: TResolverFunction) {}
+
+// Регистрация зависимости.
+register('myDependency', myDependencyResolver)
+
+// Разрешение зависимости.
+const arr1 = resolve<string[]>('myDependency')
+```
+
+Строгий вариант вызова `resolve()`
+----------------------------------
+
+```typescript
+import {register, resolve, TResolverFunction} from 'khusamov-inversion-of-control';
 
 // Где-то есть класс Pirat, который был создан неизвестным разработчиком.
 class Pirat {
