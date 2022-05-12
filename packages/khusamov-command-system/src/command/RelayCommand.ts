@@ -22,9 +22,22 @@ export default class RelayCommand implements ICommand {
 	}
 
 	/**
+	 * Конструктор безымянной команды с пользовательской функцией.
+	 * @param action Пользовательская функция, которая реализует действие этой команды.
+	 */
+	public constructor(action: TAction)
+
+	/**
+	 * Конструктор команды с пользовательской функцией.
+	 * @param name Имя команды.
+	 * @param action Пользовательская функция, которая реализует действие этой команды.
+	 */
+	public constructor(name: string, action: TAction)
+
+	/**
 	 * Конструктор команды с пользовательской функцией.
 	 * @param nameOrAction Имя команды или пользовательская функция.
-	 * @param action Пользовательская функция.
+	 * @param action Пользовательская функция, которая реализует действие этой команды.
 	 */
 	public constructor(nameOrAction: string | TAction, action?: TAction) {
 		const [_name, _action] = parseConstructorArguments(nameOrAction, action)
