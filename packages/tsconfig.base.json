@@ -33,10 +33,5 @@
 		"noPropertyAccessFromIndexSignature": true,
 		"allowUnusedLabels": true,
 		"allowUnreachableCode": true,
-	},
-	"ts-node": {
-		"compilerOptions": {
-			"module": "CommonJS"
-		}
 	}
 }
