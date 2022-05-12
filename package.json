@@ -2,14 +2,14 @@
 	"name": "solid-futurio-ru-game",
 	"packageManager": "yarn@3.1.1",
 	"workspaces": [
-		"packages/*",
-		"deprecated/*"
+		"packages/*"
 	],
 	"devDependencies": {
 		"lerna": "^4.0.0"
 	},
 	"scripts": {
 		"start": "yarn game:build:watch",
+		"build": "yarn workspaces foreach --topological run build",
 		"generate-adapters": "generate",
 		"base-types:build": "yarn workspaces foreach --include 'khusamov-base-types' run build",
 		"base-types:build:watch": "yarn workspaces foreach --include 'khusamov-base-types' run build:watch",
