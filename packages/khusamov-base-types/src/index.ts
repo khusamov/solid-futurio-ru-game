@@ -13,7 +13,6 @@ export {default as IStartable} from './types/IStartable'
 export {default as IStoppable, isStoppable} from './types/IStoppable'
 export {default as IKeyValueObject} from './types/IKeyValueObject'
 export {default as ITyped} from './types/ITyped'
-export {default as IWithStoppable, TStoppableKey} from './types/IWithStoppable'
 
 export {default as ICommand, IInjectableCommand} from './types/ICommand'
 

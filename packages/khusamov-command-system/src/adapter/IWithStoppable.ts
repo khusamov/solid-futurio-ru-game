@@ -1,8 +1,8 @@
+import {IStoppable} from 'khusamov-base-types';
+
 /**
  * Ключ к останавливаемой команде. Уникальное имя команды.
  */
-import IStoppable from './IStoppable';
-
 export type TStoppableKey = string
 
 /**
