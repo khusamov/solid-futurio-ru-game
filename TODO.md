@@ -15,8 +15,6 @@ RollupConfigGenerator.js
 перенести в пакет:
 khusamov-rollup-config
 
-Удалить khusamov-format-code.
-
 Перейти на parcel.
 
 От rtti избавиться окончательно.
@@ -33,6 +31,8 @@ tsconfig.base.json
 Queue
 Shortcut
 Timer
+
+Пакет khusamov-format-code перенести на https://khusamov.github.io/ в виде статьи.
 
 А нужен ли класс UniversalObject?
 ---------------------------------
