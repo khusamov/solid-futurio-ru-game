@@ -24,22 +24,26 @@ export default class StopCommand implements ICommand {
 
 	private get withStoppable() {
 		return new WithStoppableAdapter(this.targetObject) as IWithStoppable<ICommand & IStoppable>
-		//return resolve<IWithStoppable>('Adapter', this.targetObject, reflect<IWithStoppable>()) as IWithStoppable<ICommand & IStoppable>
 	}
 
 	/**
 	 * Конструктор команды Стоп. Останавливаются все команды.
-	 * @param targetObject Объект, в котором будет производится поиск ссылки на команду.
+	 * @param targetObject Объект, в котором будет производится поиск ссылки на команды.
 	 */
 	public constructor(targetObject: IUniversalObject)
 
 	/**
-	 * Конструктор команды Стоп. Останавливается определенная команда
+	 * Конструктор команды Стоп. Останавливается определенная команда.
 	 * @param stoppableCommandName Имя команды, которую надо остановить.
 	 * @param targetObject Объект, в котором будет производится поиск ссылки на команду.
 	 */
 	public constructor(stoppableCommandName: string, targetObject: IUniversalObject)
 
+	/**
+	 * Конструктор команды Стоп.
+	 * @param stoppableCommandNameOrTargetObject
+	 * @param targetObject
+	 */
 	public constructor(
 		stoppableCommandNameOrTargetObject: string | IUniversalObject,
 		targetObject?: IUniversalObject
@@ -51,7 +55,7 @@ export default class StopCommand implements ICommand {
 			this.stoppableCommandName = stoppableCommandNameOrTargetObject
 			this.targetObject = targetObject
 		} else {
-			throw new Error('Задана неправильные параметры')
+			throw new Error('Заданы неправильные параметры')
 		}
 	}
 
