@@ -1,5 +1,6 @@
-import {IStoppable, IWithStoppable, TStoppableKey} from 'khusamov-base-types';
+import {IStoppable} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
+import IWithStoppable, {TStoppableKey} from './IWithStoppable';
 
 export default class WithStoppableAdapter<S extends IStoppable = IStoppable> implements IWithStoppable<S> {
 	constructor(private universalObject: IUniversalObject) {}
