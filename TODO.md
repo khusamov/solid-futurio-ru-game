@@ -1,6 +1,8 @@
 TODO
 ====
 
+Перейти на parcel.
+
 В пакете khusamov-base-types разделить классы и интерфейсы по отдельным папкам.
 
 Удалить Адаптеры у всех приказов и избавиться от IUniversalObject для представления приказов.
@@ -14,11 +16,6 @@ htmlTemplate.js
 RollupConfigGenerator.js
 перенести в пакет:
 khusamov-rollup-config
-
-Перейти на parcel.
-
-От rtti избавиться окончательно.
-tsconfig.rtti.json
 
 Файлы 
 tsconfig.base.json
