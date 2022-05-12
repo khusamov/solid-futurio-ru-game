@@ -17,12 +17,6 @@ khusamov-rollup-config
 
 Удалить khusamov-format-code.
 
-Следующие пакеты удалить и перенести в отдельную директорию:
-khusamov-adapter-generator
-khusamov-adapter-generator-runtime
-khusamov-rollup-config
-Эти пакеты ценные, но в данном проекте уже не используются. Надо подумать куда их вообще деть.
-
 Перейти на parcel.
 
 От rtti избавиться окончательно.
