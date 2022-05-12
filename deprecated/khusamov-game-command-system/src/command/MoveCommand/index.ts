@@ -1,6 +1,0 @@
-export {default as IMovable} from './IMovable'
-export {default as MoveCommand} from './MoveCommand'
-export {default as MoveCorrectionCommand} from './MoveCorrectionCommand'
-export {default as TransformForceCommand} from './TransformForceCommand'
-export {default as ITransformForceOrder} from './ITransformForceOrder'
-export {default as transformForceResolver} from './transformForceResolver'
