@@ -10,7 +10,7 @@ export default class Transform {
 	}
 
 	public rotate(angle: number): this {
-		this.transforms.push(`rotate(${Angle.toDegree(angle)})`)
+		this.transforms.push(`rotate(${Convert.toDegree(angle)})`)
 		return this
 	}
 

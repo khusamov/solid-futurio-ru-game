@@ -1,4 +1,4 @@
-import {Angle, IDisposable} from 'khusamov-base-types';
+import {Convert, IDisposable} from 'khusamov-base-types';
 import {IIncreaseForceCommandOrder, IRotateForceCommandOrder} from 'khusamov-mechanical-motion';
 import IShortcutCommandOrder, {registerShortcutCommand} from '../../IShortcutCommandOrder';
 
@@ -41,7 +41,7 @@ const cwRotateForceShortcut: TSpaceshipShortcutCommand = {
 		order: {
 			type: 'RotateForceCommand',
 			targetObject: ['SelectedGameObject'],
-			increment: -Angle.toRadian(1)
+			increment: -Convert.toRadian(1)
 		}
 	}
 }
@@ -54,7 +54,7 @@ const ccwRotateForceShortcut: TSpaceshipShortcutCommand = {
 		order: {
 			type: 'RotateForceCommand',
 			targetObject: ['SelectedGameObject'],
-			increment: Angle.toRadian(1)
+			increment: Convert.toRadian(1)
 		}
 	}
 }
