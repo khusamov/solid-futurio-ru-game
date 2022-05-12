@@ -7,8 +7,6 @@ export {default as RepeatableCommand} from './command/RepeatableCommand'
 export {default as StartCommand} from './command/StartCommand'
 export {default as StopCommand} from './command/StopCommand'
 
-
-
 export {default as createCommandQueue, TCommandQueue} from './functions/createCommandQueue'
 
-export {default as WithStoppableAdapter} from './adapter/WithStoppableAdapter'
+export {default as IWithStoppable, WithStoppableAdapter, TStoppableKey} from './interfaces/IWithStoppable'
