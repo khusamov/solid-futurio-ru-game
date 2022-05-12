@@ -1,9 +1,19 @@
 TODO
 ====
 
+В пакете khusamov-base-types разделить классы и интерфейсы по отдельным папкам.
+
 Удалить Адаптеры у всех приказов и избавиться от IUniversalObject для представления приказов.
 Подумать - может Команда и Приказ должны быть всегда вместе?
 Если да - то избавиться от пакета khusamov-command-order-system
+
+Свойство `targetObject` в классах `StartCommand` и `StopCommand` заменить с `IUniversalObject` на `IWithStoppable`.
+
+Файлы
+htmlTemplate.js
+RollupConfigGenerator.js
+перенести в пакет:
+khusamov-rollup-config
 
 Удалить khusamov-format-code.
 
@@ -16,24 +26,14 @@ khusamov-rollup-config
 Перейти на parcel.
 
 От rtti избавиться окончательно.
-
-Свойство `targetObject` в классах `StartCommand` и `StopCommand` заменить с `IUniversalObject` на `IWithStoppable`.
-
-В пакете khusamov-base-types разделить классы и интерфейсы по отдельным папкам.
-
-Попробовать раскрыть workspaces в файле package.json - вроде тогда будет компилироваться в нужном порядке.
---topological вроде себя не оправдал?
-
-Файлы
-htmlTemplate.js
-RollupConfigGenerator.js
-перенести в пакет:
-khusamov-rollup-config
+tsconfig.rtti.json
 
 Файлы 
 tsconfig.base.json
-tsconfig.rtti.json
 перенести в отдельную папку
+
+Попробовать раскрыть workspaces в файле package.json - вроде тогда будет компилироваться в нужном порядке.
+--topological вроде себя не оправдал?
 
 Упростить классы:
 Queue
