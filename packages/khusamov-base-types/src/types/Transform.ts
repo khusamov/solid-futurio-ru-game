@@ -1,5 +1,5 @@
 import Vector from './Vector';
-import Angle from './Angle';
+import Convert from './Convert';
 
 export default class Transform {
 	private transforms: string[] = []
