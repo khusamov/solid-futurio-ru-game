@@ -1,6 +1,6 @@
 import {assert} from 'chai';
 import {ICommand} from 'khusamov-base-types';
-import {register, resolve} from 'khusamov-inversion-of-control';
+import {register, resolve, TResolveParameters} from 'khusamov-inversion-of-control';
 import {createUniversalObject} from 'khusamov-universal-object';
 import {IRelayCommandOrder, CommandOrderAdapter, relayCommandResolver, RelayCommandOrderAdapter} from '../src';
 
@@ -24,7 +24,7 @@ describe('IRelayCommandOrder', () => {
 
 		// Создаем приказ для изменения целевого объекта.
 		const relayCommandOrderObject = (
-			createUniversalObject<IRelayCommandOrder<typeof increaseLinearVelocityActionResolver>>({
+			createUniversalObject<IRelayCommandOrder<TResolveParameters<typeof increaseLinearVelocityActionResolver>>>({
 				type: 'RelayCommand',
 				name: 'IncreaseLinearVelocityCommand',
 				action: ['IncreaseLinearVelocityAction', 100]
@@ -41,7 +41,7 @@ describe('IRelayCommandOrder', () => {
 		function myActionResolver(increment: number) {return increment}
 
 		const relayCommandOrderObject = (
-			createUniversalObject<IRelayCommandOrder<typeof myActionResolver>>({
+			createUniversalObject<IRelayCommandOrder<TResolveParameters<typeof myActionResolver>>>({
 				type: 'RelayCommand',
 				name: 'IncreaseLinearVelocityCommand',
 				action: ['IncreaseLinearVelocityAction', 100]
