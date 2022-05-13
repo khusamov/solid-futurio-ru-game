@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom'
+import {createRoot} from 'react-dom/client';
 import {resolve} from 'khusamov-inversion-of-control';
 import {Timer} from 'khusamov-base-types';
 import Application from './components/Application';
@@ -7,4 +7,6 @@ import './game/register'
 
 resolve<Timer>('GameTimer').start()
 
-ReactDOM.render(<Application/>, document.getElementById('application'))
+const container = document.getElementById('application')
+const root = createRoot(container!)
+root.render(<Application/>)
