@@ -1,4 +1,3 @@
-export {useRequestAnimationFrame} from './useRequestAnimationFrame'
 export {isBrowser} from './isBrowser'
 export {toOneLine} from './toOneLine'
 
