@@ -65,8 +65,8 @@ export default function ToroidalRender({toroidalSurfaceSize, children, isVisible
 
 	return (
 		<g>
-			{offsets.map(([x, y]) => (
-				<g transform={`translate(${x}, ${y})`}>
+			{offsets.map(([x, y], index) => (
+				<g key={index} transform={`translate(${x}, ${y})`}>
 					{children}
 				</g>
 			))}

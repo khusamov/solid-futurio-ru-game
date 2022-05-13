@@ -36,6 +36,11 @@ export default function Application() {
 
 	const offset = selectedGameObjectMovable.position.inverse // Камера движется за кораблем.
 
+	const isIRenderablePredicate = (object: IUniversalObject) => {
+		const gameObject = new GameObjectAdapter(object)
+		return gameObject.kind.includes('IRenderable')
+	}
+
 	return (
 		<div className={styles.Application}>
 			<Params object={selectedGameObject} additionalParameters={additionalParameters}/>
@@ -45,35 +50,36 @@ export default function Application() {
 			>
 				<CanvasSizeContext.Consumer>
 					{canvasSize => (
-						gameObjectList.map(object => {
-							const gameObject = new GameObjectAdapter(object)
-							if (gameObject.kind.includes('IRenderable')) {
-								const renderable = new RenderableAdapter(object)
-								const RenderComponent = renderableMap[renderable.renderComponent]
-								if (!RenderComponent) {
-									throw new Error(`Не найден компонент '${renderable.renderComponent}'`)
-								}
-								const movable = new MovableAdapter(object)
+						gameObjectList.filter(isIRenderablePredicate).map((object, index) => {
+							const renderable = new RenderableAdapter(object)
+							const RenderComponent = renderableMap[renderable.renderComponent]
+							if (!RenderComponent) {
+								throw new Error(`Не найден компонент '${renderable.renderComponent}'`)
+							}
+							const movable = new MovableAdapter(object)
 
-								const isVisible = (position: Vector) => {
-									// Внимание, в SVG.transform действия производится задом наперед!
-									position = position
-										.translate(offset)
-										.scale(new Vector(2, 2))
-										.translate(new Vector(canvasSize.width / 2, canvasSize.height / 2))
-									return (
-										position.x >= 0 && position.x <= canvasSize.width &&
-										position.y >= 0 && position.y <= canvasSize.height
-									)
-								}
-
+							const isVisible = (position: Vector) => {
+								// Внимание, в SVG.transform действия производится задом наперед!
+								position = position
+									.translate(offset)
+									.scale(new Vector(2, 2))
+									.translate(new Vector(canvasSize.width / 2, canvasSize.height / 2))
 								return (
-									<ToroidalRender isVisible={isVisible} position={movable.position} toroidalSurfaceSize={theGameWorld.size}>
-										<RenderComponent object={object}/>
-									</ToroidalRender>
+									position.x >= 0 && position.x <= canvasSize.width &&
+									position.y >= 0 && position.y <= canvasSize.height
 								)
 							}
-							return null
+
+							return (
+								<ToroidalRender
+									key={index}
+									isVisible={isVisible}
+									position={movable.position}
+									toroidalSurfaceSize={theGameWorld.size}
+								>
+									<RenderComponent object={object}/>
+								</ToroidalRender>
+							)
 						})
 					)}
 				</CanvasSizeContext.Consumer>
