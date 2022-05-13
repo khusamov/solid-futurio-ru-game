@@ -13,6 +13,7 @@
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
 		"removeComments": false,
+		"isolatedModules": true,
 
 		"strict": true,
 		"noImplicitAny": true,
