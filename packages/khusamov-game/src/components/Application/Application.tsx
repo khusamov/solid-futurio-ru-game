@@ -1,4 +1,4 @@
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useState, WheelEvent} from 'react';
 import {useRequestAnimationFrame, Vector} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
@@ -41,12 +41,24 @@ export default function Application() {
 		return gameObject.kind.includes('IRenderable')
 	}
 
+	const [scale, setScale] = useState(2)
+
+	const onWheel = (event: WheelEvent<HTMLDivElement>) => {
+		setScale(scale => {
+			const scaleInterval = event.deltaY * 0.003
+			let newScale = scale - scaleInterval
+			newScale = newScale < 0.4 ? 0.4 : newScale
+			newScale = newScale > 4 ? 4 : newScale
+			return newScale
+		})
+	}
+
 	return (
-		<div className={styles.Application}>
+		<div className={styles.Application} onWheel={onWheel}>
 			<Params object={selectedGameObject} additionalParameters={additionalParameters}/>
 			<Canvas
 				offset={offset}
-				scale={new Vector(2, 2)} // Уменьшаем обзор камеры.
+				scale={new Vector(scale, scale)} // Уменьшаем обзор камеры.
 			>
 				<CanvasSizeContext.Consumer>
 					{canvasSize => (
@@ -62,7 +74,7 @@ export default function Application() {
 								// Внимание, в SVG.transform действия производится задом наперед!
 								position = position
 									.translate(offset)
-									.scale(new Vector(2, 2))
+									.scale(new Vector(scale, scale))
 									.translate(new Vector(canvasSize.width / 2, canvasSize.height / 2))
 								return (
 									position.x >= 0 && position.x <= canvasSize.width &&
