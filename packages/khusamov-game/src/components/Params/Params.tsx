@@ -26,14 +26,16 @@ export default function Params({object, additionalParameters = []}: IParamsProps
 		return (
 			<div className={styles.Params}>
 				<table>
-					{params.map(param => (
-						<tr style={{color: param.color}}>
-							<td>{param.title}:</td>
-							<td>{param.value}</td>
-							<td>{param.valueAlt}</td>
-							<td>{param.unit}</td>
-						</tr>
-					))}
+					<tbody>
+						{params.map((param, index) => (
+							<tr key={index} style={{color: param.color}}>
+								<td>{param.title}:</td>
+								<td>{param.value}</td>
+								<td>{param.valueAlt}</td>
+								<td>{param.unit}</td>
+							</tr>
+						))}
+					</tbody>
 				</table>
 			</div>
 		)
