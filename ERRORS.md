@@ -1,6 +1,32 @@
 Найденные ошибки
 ================
 
+No transformers found for SpaceshipImage.jsx with pipeline: 'jsx'
+-----------------------------------------------------------------
+
+Текст ошибки:
+
+```
+@parcel/core: No transformers found for 
+packages/khusamov-game/src/components/Spaceship/SpaceshipImage.jsx 
+with pipeline: 'jsx'.
+```
+
+На эту ошибку есть заявка:
+https://github.com/parcel-bundler/parcel/issues/7587
+
+Обходной путь прописать в файле `.parcelrc` пустышку:
+
+```json
+{
+	"extends": "@parcel/config-default",
+	"transformers": {
+		"jsx:*.svg": ["...", "@parcel/transformer-svg-react"],
+		"jsx:*": ["..."]
+	}
+}
+```
+
 Uncaught ReferenceError: LΦ_0 is not defined
 --------------------------------------------
 

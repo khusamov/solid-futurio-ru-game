@@ -1,6 +1,6 @@
 import {MovableAdapter} from 'khusamov-mechanical-motion';
 import {IUniversalObject} from 'khusamov-universal-object';
-import SpaceshipImage from './SpaceshipImage.svg'
+import SpaceshipImage from 'jsx:./SpaceshipImage.svg'
 import {Convert, ISize, Transform, Vector} from 'khusamov-base-types';
 import styles from './Spaceship.module.scss'
 
