@@ -1,3 +1,3 @@
-export {} from './Shortcut'
-export {} from './ShortcutDispatcher'
-export {} from './IKeyboardListeners'
+export {Shortcut} from './Shortcut'
+export {ShortcutDispatcher} from './ShortcutDispatcher'
+export type {IKeyboardListeners, TKeyboardListener} from './IKeyboardListeners'
