@@ -6,6 +6,8 @@
 
 Упрощение кода продолжается.
 
+Начал отказываться от `export default`.
+
 В пакетах `khusamov-command-order-system` и `khusamov-inversion-of-control`
 добавлено модульное тестирование на основе `Mocha` и `Chai`.
 
