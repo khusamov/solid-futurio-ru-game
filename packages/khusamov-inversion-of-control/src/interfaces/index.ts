@@ -1,1 +1,1 @@
-export {IContainer} from './IContainer'
+export type {IContainer} from './IContainer'

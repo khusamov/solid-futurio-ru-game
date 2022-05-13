@@ -1,6 +1,7 @@
 export {default as Adapter} from './types/Adapter'
 export {default as UniversalObject} from './types/UniversalObject'
-export {default as IUniversalObject, TUniversalItems, TUniversalValueName, isUniversalObject} from './types/IUniversalObject'
+export type {default as IUniversalObject, TUniversalItems, TUniversalValueName} from './types/IUniversalObject'
+export {isUniversalObject} from './types/IUniversalObject'
 export {default as UniversalObjectAdapter} from './types/UniversalObjectAdapter'
 
 export {default as createUniversalObject} from './functions/createUniversalObject'

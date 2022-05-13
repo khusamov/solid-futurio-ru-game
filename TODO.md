@@ -1,8 +1,6 @@
 TODO
 ====
 
-Перейти на parcel
-
 Файлы
 htmlTemplate.js
 RollupConfigGenerator.js

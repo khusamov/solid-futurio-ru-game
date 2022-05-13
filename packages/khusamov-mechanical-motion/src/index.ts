@@ -1,5 +1,7 @@
-export {default as ITransformable, TransformableAdapter} from './interfaces/ITransformable'
-export {default as IMovable, MovableAdapter} from './interfaces/IMovable'
+export type {default as ITransformable} from './interfaces/ITransformable'
+export type {default as IMovable} from './interfaces/IMovable'
+export {TransformableAdapter} from './interfaces/ITransformable'
+export {MovableAdapter} from './interfaces/IMovable'
 
 export {default as transformPositionForToroid} from './functions/transformPositionForToroid'
 
@@ -8,7 +10,11 @@ export {default as RotateForceCommand} from './translational-motion/RotateForceC
 export {default as IncreaseForceCommand} from './translational-motion/IncreaseForceCommand'
 export {default as ToroidalTransformCommand} from './translational-motion/ToroidalTransformCommand'
 
-export {default as IMoveCommandOrder, MoveCommandOrderAdapter, moveCommandResolver} from './translational-motion/orders/IMoveCommandOrder'
-export {default as IRotateForceCommandOrder, RotateForceCommandOrderAdapter, rotateForceCommandResolver} from './translational-motion/orders/IRotateForceCommandOrder'
-export {default as IIncreaseForceCommandOrder, IncreaseForceCommandOrderAdapter, increaseForceCommandResolver} from './translational-motion/orders/IIncreaseForceCommandOrder'
-export {default as IToroidalTransformCommandOrder, ToroidalTransformCommandOrderAdapter, toroidalTransformCommandResolver} from './translational-motion/orders/IToroidalTransformCommandOrder'
+export {MoveCommandOrderAdapter, moveCommandResolver} from './translational-motion/orders/IMoveCommandOrder'
+export {RotateForceCommandOrderAdapter, rotateForceCommandResolver} from './translational-motion/orders/IRotateForceCommandOrder'
+export {IncreaseForceCommandOrderAdapter, increaseForceCommandResolver} from './translational-motion/orders/IIncreaseForceCommandOrder'
+export {ToroidalTransformCommandOrderAdapter, toroidalTransformCommandResolver} from './translational-motion/orders/IToroidalTransformCommandOrder'
+export type {default as IMoveCommandOrder} from './translational-motion/orders/IMoveCommandOrder'
+export type {default as IRotateForceCommandOrder} from './translational-motion/orders/IRotateForceCommandOrder'
+export type {default as IIncreaseForceCommandOrder} from './translational-motion/orders/IIncreaseForceCommandOrder'
+export type {default as IToroidalTransformCommandOrder} from './translational-motion/orders/IToroidalTransformCommandOrder'

@@ -1,4 +1,4 @@
 export * from './TDependencyMap'
-export {TResolver} from './TResolver'
-export {TResolveParameters} from './TResolveParameters'
-export {TDependency} from './TDependency'
+export type {TResolver} from './TResolver'
+export type {TResolveParameters} from './TResolveParameters'
+export type {TDependency} from './TDependency'

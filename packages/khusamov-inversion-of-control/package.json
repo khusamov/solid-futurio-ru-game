@@ -1,20 +1,24 @@
 {
 	"name": "khusamov-inversion-of-control",
+	"description": "Инверсия контроля управления",
 	"version": "0.0.0",
 	"packageManager": "yarn@3.1.1",
 	"license": "MIT",
-	"main": "dist/index.js",
-	"module": "dist/index.es.js",
-	"jsnext:main": "dist/index.es.js",
-	"typings": "dist/index.d.ts",
+	"main": "dist/main.js",
+	"module": "dist/module.js",
+	"types": "dist/types.d.ts",
+	"source": "src/index.ts",
 	"files": [
 		"dist"
 	],
 	"scripts": {
-		"build": "rollup --config",
-		"build:watch": "rollup --config --watch",
+		"build": "parcel build",
+		"build:watch": "parcel watch",
 		"prepublishOnly": "yarn build",
 		"test": "mocha"
+	},
+	"dependencies": {
+		"khusamov-base-types": "workspaces:*"
 	},
 	"devDependencies": {
 		"@types/chai": "^4",
@@ -22,6 +26,7 @@
 		"chai": "^4.3.6",
 		"mocha": "^10.0.0",
 		"mocha-typescript": "^1.1.17",
+		"parcel": "^2.5.0",
 		"rollup": "^2.72.1",
 		"ts-node": "^9.1.1",
 		"typescript": "^4.6.4"

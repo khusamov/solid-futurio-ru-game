@@ -1,4 +1,3 @@
-import 'reflect-metadata'
 import ReactDOM from 'react-dom'
 import {resolve} from 'khusamov-inversion-of-control';
 import {Timer} from 'khusamov-base-types';

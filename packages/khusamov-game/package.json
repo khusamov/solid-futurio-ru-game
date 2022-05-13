@@ -4,14 +4,16 @@
   "version": "0.0.0",
   "packageManager": "yarn@3.1.1",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
+  "source": "src/index.html",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rollup --config",
-    "build:watch": "rollup --config --watch",
+    "start": "parcel",
+    "build": "parcel build",
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
@@ -29,6 +31,7 @@
     "khusamov-mechanical-motion": "workspace:*",
     "lodash": "^4.17.21",
     "node-sass": "^7.0.1",
+    "parcel": "^2.5.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "rollup": "^2.72.1",

@@ -3,9 +3,7 @@
 	"exclude": ["dist", "node_modules"],
 	"include": ["src/**/*"],
 	"compilerOptions": {
-		"outDir": "dist",
-		"baseUrl": "src",
-		"declarationDir": "."
+		"baseUrl": "src"
 	},
 	"ts-node": {
 		"compilerOptions": {
