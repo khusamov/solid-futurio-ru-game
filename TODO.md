@@ -57,3 +57,16 @@ if (gameObject) {
 	const movable = gameObject as IMovable
 }
 ```
+
+Статьи по теме
+---------------
+
+http://www.skipy.ru/architecture/module_design.html
+http://yugeon-dev.blogspot.com/2010/07/blog-post.html
+http://yugeon-dev.blogspot.com/2010/07/inversion-of-control-containers-and_21.html
+http://sergeyteplyakov.blogspot.com/2013/01/blog-post.html#AmbientContext
+http://sergeyteplyakov.blogspot.com/2013/03/di-service-locator.html
+
+https://eatdog.com.ua/assets/gamedev-slides/
+https://www.youtube.com/watch?v=-gsjAz9jR3Y
+http://gs-studio.com/news-about-it/30703----javascript
