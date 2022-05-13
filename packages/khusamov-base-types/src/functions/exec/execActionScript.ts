@@ -1,10 +1,10 @@
-import syntaxErrorHandler from './syntaxErrorHandler';
+import {syntaxErrorHandler} from './syntaxErrorHandler';
 
 /**
  * Выполнить скрипт из текста, который ничего не возвращает.
  * @param source
  */
-export default function execActionScript(source: string | undefined) {
+export function execActionScript(source: string | undefined) {
 	if (source) {
 		try {
 			const code = new Function('', source)

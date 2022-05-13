@@ -1,21 +1,19 @@
 TODO
 ====
 
-Перейти на parcel.
-
-В пакете khusamov-base-types разделить классы и интерфейсы по отдельным папкам.
-
-Удалить Адаптеры у всех приказов и избавиться от IUniversalObject для представления приказов.
-Подумать - может Команда и Приказ должны быть всегда вместе?
-Если да - то избавиться от пакета khusamov-command-order-system
-
-Свойство `targetObject` в классах `StartCommand` и `StopCommand` заменить с `IUniversalObject` на `IWithStoppable`.
+Перейти на parcel
 
 Файлы
 htmlTemplate.js
 RollupConfigGenerator.js
 перенести в пакет:
 khusamov-rollup-config
+
+Удалить Адаптеры у всех приказов и избавиться от IUniversalObject для представления приказов.
+Подумать - может Команда и Приказ должны быть всегда вместе?
+Если да - то избавиться от пакета khusamov-command-order-system
+
+Свойство `targetObject` в классах `StartCommand` и `StopCommand` заменить с `IUniversalObject` на `IWithStoppable`.
 
 Файлы 
 tsconfig.base.json

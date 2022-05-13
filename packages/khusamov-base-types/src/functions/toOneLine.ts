@@ -7,6 +7,6 @@ const trim = (message: string): string => message.trim()
  * пробельных символов (переносы, табы и т.п.).
  * @param message
  */
-export default function toOneLine(message: string) {
+export function toOneLine(message: string) {
 	return message.trim().split(EOL).map(trim).join(SPACE)
 }
