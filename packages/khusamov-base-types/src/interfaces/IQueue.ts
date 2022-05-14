@@ -8,21 +8,21 @@
  *
  * @link https://bit.ly/3tPM13G
  */
-export interface IQueue<T> {
+export interface IQueue<I> {
 	/**
 	 * Добавить в очередь элементы.
 	 * @param items
 	 */
-	enqueue(...items: T[]): void
+	enqueue<E extends I>(...items: E[]): void
 
 	/**
 	 * Извлечь из очереди один элемент.
 	 * Элемент в очереди будет удален.
 	 */
-	dequeue(): T | undefined
+	dequeue(): I | undefined
 
 	/**
 	 * Получить массив элементов из очереди.
 	 */
-	readonly items: Readonly<Array<T>>
+	readonly items: Readonly<Array<I>>
 }

@@ -3,18 +3,18 @@ import {IQueue} from '../interfaces';
 /**
  * Простая реализация очереди.
  */
-export class Queue<T> implements IQueue<T> {
-	private storage: Array<T> = []
+export class Queue<I> implements IQueue<I> {
+	private storage: Array<I> = []
 
-	public enqueue(...items: T[]): void {
+	public enqueue<E extends I>(...items: E[]): void {
 		this.storage.push(...items);
 	}
 
-	public dequeue(): T | undefined {
+	public dequeue(): I | undefined {
 		return this.storage.shift()
 	}
 
-	public get items(): Readonly<Array<T>> {
+	public get items(): Readonly<Array<I>> {
 		return this.storage
 	}
 }
