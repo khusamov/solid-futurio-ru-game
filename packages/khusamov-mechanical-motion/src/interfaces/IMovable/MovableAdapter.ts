@@ -19,14 +19,6 @@ export class MovableAdapter extends Adapter implements IMovable {
 		this.universalObject.setValue('mass', value)
 	}
 
-	public get position(): Vector {
-		return this.universalObject.getValue('position', new Vector)
-	}
-
-	public set position(value: Vector) {
-		this.universalObject.setValue('position', value)
-	}
-
 	public get appliedForce(): Vector {
 		return this.universalObject.getValue('appliedForce', new Vector)
 	}

@@ -18,14 +18,6 @@ export interface IMovable {
 	mass: number
 
 	/**
-	 * Координаты движущегося объекта.
-	 * Это свойство будет перемещено в ITransformable.
-	 * Метры.
-	 * @deprecated
-	 */
-	position: Vector
-
-	/**
 	 * Приложенная сила.
 	 * Ньютоны.
 	 */

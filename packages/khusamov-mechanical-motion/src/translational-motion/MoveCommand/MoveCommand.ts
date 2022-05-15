@@ -1,6 +1,6 @@
 import {Convert} from 'khusamov-base-types';
 import {ICommand} from 'khusamov-command-system';
-import {IMovable} from '../../interfaces';
+import {IMovable, ITransformable} from '../../interfaces';
 
 /**
  * Поступательное движение.
@@ -20,7 +20,7 @@ export class MoveCommand implements ICommand {
 	 * Используется для варианта игрового цикла с фиксированным шагом.
 	 */
 	public constructor(
-		private movable: IMovable, // TODO Добавить ITransformable
+		private movable: IMovable & ITransformable,
 		private fixedTimeInterval?: number
 	) {}
 

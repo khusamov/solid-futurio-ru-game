@@ -1,15 +1,13 @@
 import {ISize} from 'khusamov-base-types';
 import {ICommand} from 'khusamov-command-system';
 import {transformPositionForToroid} from '../../functions';
-import {IMovable} from '../../interfaces';
+import {IMovable, ITransformable} from '../../interfaces';
 
 export type TGetSize = () => ISize
 
 export class ToroidalTransformCommand implements ICommand {
-	public readonly name = 'ToroidalTransformCommand'
-
 	public constructor(
-		private readonly movable: IMovable,
+		private readonly movable: IMovable & ITransformable,
 		private readonly getToroidalSurfaceSize: TGetSize
 	) {}
 
