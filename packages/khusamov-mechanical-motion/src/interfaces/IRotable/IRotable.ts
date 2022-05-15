@@ -28,8 +28,9 @@ export interface IRotable {
 	//  * Момент силы (крутящий момент).
 	//  * Требуется для расчета столкновений.
 	//  * Пока не используется.
+	// 	* @link https://bit.ly/3Mm7QAa
  	//  */
-	// torque: number
+	// torque: Vector
 	//
 	// /**
 	//  * Угловой момент.
