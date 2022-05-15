@@ -1,5 +1,5 @@
-import {MovableAdapter} from 'khusamov-mechanical-motion';
-import {IUniversalObject} from 'khusamov-universal-object';
+import {MovableAdapter, RigidBodyAdapter, TransformableAdapter} from 'khusamov-mechanical-motion';
+import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
 import SpaceshipImage from 'jsx:./SpaceshipImage.svg'
 import {Convert, ISize, Transform, Vector} from 'khusamov-base-types';
 import {SpaceshipStyle, AppliedForceStyle} from './Spaceship.module.scss'
@@ -14,7 +14,7 @@ interface ISpaceshipProps {
 }
 
 export default function Spaceship({object}: ISpaceshipProps) {
-	const {position, linearVelocity, appliedForce} = new MovableAdapter(object)
+	const {position, linearVelocity, appliedForce} = createAdapter(object,TransformableAdapter, RigidBodyAdapter, MovableAdapter)
 	const {x, y} = position
 	const transform = (
 		new Transform()

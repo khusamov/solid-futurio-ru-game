@@ -2,7 +2,7 @@ import {FunctionComponent, useState, WheelEvent} from 'react';
 import {useRequestAnimationFrame, Vector} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
-import {MovableAdapter} from 'khusamov-mechanical-motion';
+import {TransformableAdapter} from 'khusamov-mechanical-motion';
 import GameObjectAdapter from '../../game/gameObject/GameObjectAdapter';
 import RenderableAdapter from '../../game/gameObject/RenderableAdapter';
 import ToroidalSurfaceAdapter from '../../game/gameObject/ToroidalSurfaceAdapter';
@@ -24,7 +24,7 @@ export default function Application() {
 	const [fps] = useRequestAnimationFrame()
 	const gameObjectList = resolve<TGameObjectList>('GameObjectList')
 	const selectedGameObject = resolve<IUniversalObject>('SelectedGameObject')
-	const selectedGameObjectMovable = new MovableAdapter(selectedGameObject)
+	const selectedGameObjectTransformable = new TransformableAdapter(selectedGameObject)
 
 	const theGameWorld = new ToroidalSurfaceAdapter(resolve<IUniversalObject>('GameObject', 'theGameWorld'))
 
@@ -34,7 +34,7 @@ export default function Application() {
 		value: fps.toFixed(0)
 	}]
 
-	const offset = selectedGameObjectMovable.position.inverse // Камера движется за кораблем.
+	const offset = selectedGameObjectTransformable.position.inverse // Камера движется за кораблем.
 
 	const isIRenderablePredicate = (object: IUniversalObject) => {
 		const gameObject = new GameObjectAdapter(object)
@@ -68,7 +68,7 @@ export default function Application() {
 							if (!RenderComponent) {
 								throw new Error(`Не найден компонент '${renderable.renderComponent}'`)
 							}
-							const movable = new MovableAdapter(object)
+							const transformable = new TransformableAdapter(object)
 
 							const isVisible = (position: Vector) => {
 								// Внимание, в SVG.transform действия производится задом наперед!
@@ -86,7 +86,7 @@ export default function Application() {
 								<ToroidalRender
 									key={index}
 									isVisible={isVisible}
-									position={movable.position}
+									position={transformable.position}
 									toroidalSurfaceSize={theGameWorld.size}
 								>
 									<RenderComponent object={object}/>

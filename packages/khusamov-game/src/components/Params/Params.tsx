@@ -1,8 +1,8 @@
-import {ParamTableStyle} from './Params.module.scss'
-import {IUniversalObject} from 'khusamov-universal-object';
-import GameObjectAdapter from '../../game/gameObject/GameObjectAdapter';
-import {IMovable, MovableAdapter} from 'khusamov-mechanical-motion';
 import {Convert} from 'khusamov-base-types';
+import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
+import {IMovable, IRigidBody, ITransformable, MovableAdapter, RigidBodyAdapter, TransformableAdapter} from 'khusamov-mechanical-motion';
+import GameObjectAdapter from '../../game/gameObject/GameObjectAdapter';
+import {ParamTableStyle} from './Params.module.scss'
 
 interface IParam {
 	title: string
@@ -21,7 +21,7 @@ export default function Params({object, additionalParameters = []}: IParamsProps
 	const gameObject = new GameObjectAdapter(object)
 
 	if (gameObject.kind.includes('IMovable')) {
-		const movable = new MovableAdapter(object)
+		const movable = createAdapter(object, TransformableAdapter, RigidBodyAdapter, MovableAdapter)
 		const params = [...getMovableParams(movable), ...additionalParameters]
 		return (
 			<div className={ParamTableStyle}>
@@ -44,7 +44,7 @@ export default function Params({object, additionalParameters = []}: IParamsProps
 	return null
 }
 
-function getMovableParams(movable: IMovable): IParam[] {
+function getMovableParams(movable: ITransformable & IRigidBody & IMovable): IParam[] {
 	return [{
 		title: 'Координаты',
 		value: movable.position.toString(),
