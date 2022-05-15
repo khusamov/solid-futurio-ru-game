@@ -3,8 +3,6 @@ import {ICommand} from 'khusamov-command-system';
 import {IMovable} from '../../interfaces';
 
 export class IncreaseForceCommand implements ICommand {
-	public readonly name = 'IncreaseForceCommand'
-
 	public constructor(
 		private readonly movable: IMovable,
 		private readonly increment: number

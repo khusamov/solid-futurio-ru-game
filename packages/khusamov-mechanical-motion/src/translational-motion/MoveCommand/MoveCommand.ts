@@ -11,8 +11,6 @@ import {IMovable, ITransformable} from '../../interfaces';
  * - вычисляемый промежуток времени (режим по умолчанию)
  */
 export class MoveCommand implements ICommand {
-	public readonly name = 'MoveCommand'
-
 	/**
 	 * Конструктор команды поступательного движения.
 	 * @param movable Движущийся объект.
