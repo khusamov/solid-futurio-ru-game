@@ -1,7 +1,7 @@
 import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {ICommand, NotFoundTargetObjectError} from 'khusamov-command-system';
-import {RotableAdapter, TransformableAdapter} from '../../interfaces';
+import {RigidBodyAdapter, RotableAdapter, TransformableAdapter} from '../../interfaces';
 import {IRotateCommandOrder} from './IRotateCommandOrder';
 import {RotateCommand} from './RotateCommand';
 
@@ -12,5 +12,5 @@ export function rotateCommandResolver(rotateCommandOrder: IRotateCommandOrder): 
 		throw new NotFoundTargetObjectError(rotateCommandOrder.targetObject)
 	}
 
-	return new RotateCommand(createAdapter(targetObject, TransformableAdapter, RotableAdapter))
+	return new RotateCommand(createAdapter(targetObject, TransformableAdapter, RigidBodyAdapter, RotableAdapter))
 }

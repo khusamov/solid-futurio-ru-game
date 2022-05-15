@@ -1,7 +1,7 @@
 import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {ICommand, NotFoundTargetObjectError} from 'khusamov-command-system';
-import {MovableAdapter, TransformableAdapter} from '../../interfaces';
+import {MovableAdapter, RigidBodyAdapter, TransformableAdapter} from '../../interfaces';
 import {IMoveCommandOrder} from './IMoveCommandOrder';
 import {MoveCommand} from './MoveCommand';
 
@@ -12,5 +12,5 @@ export function moveCommandResolver(moveCommandOrder: IMoveCommandOrder): IComma
 		throw new NotFoundTargetObjectError(moveCommandOrder.targetObject)
 	}
 
-	return new MoveCommand(createAdapter(targetObject, TransformableAdapter, MovableAdapter))
+	return new MoveCommand(createAdapter(targetObject, TransformableAdapter, RigidBodyAdapter, MovableAdapter))
 }

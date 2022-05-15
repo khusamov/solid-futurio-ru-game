@@ -1,7 +1,7 @@
-import {IUniversalObject} from 'khusamov-universal-object';
+import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {NotFoundTargetObjectError} from 'khusamov-command-system';
-import {MovableAdapter} from '../../interfaces';
+import {MovableAdapter, RigidBodyAdapter} from '../../interfaces';
 import {IncreaseForceCommand} from './IncreaseForceCommand';
 import {IIncreaseForceCommandOrder} from './IIncreaseForceCommandOrder';
 
@@ -14,7 +14,7 @@ export function increaseForceCommandResolver(increaseForceCommandOrder: IIncreas
 
 	return (
 		new IncreaseForceCommand(
-			new MovableAdapter(targetObject),
+			createAdapter(targetObject, RigidBodyAdapter, MovableAdapter),
 			increaseForceCommandOrder.increment
 		)
 	)

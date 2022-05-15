@@ -3,28 +3,12 @@ import {Adapter} from 'khusamov-universal-object';
 import {IMovable} from './IMovable';
 
 export class MovableAdapter extends Adapter implements IMovable {
-	public get time(): number {
-		return this.universalObject.getValue('time', 0)
+	public get movableTime(): number {
+		return this.universalObject.getValue('movableTime', 0)
 	}
 
-	public set time(value: number) {
-		this.universalObject.setValue('time', value)
-	}
-
-	public get mass(): number {
-		return this.universalObject.getValue('mass', 1)
-	}
-
-	public set mass(value: number) {
-		this.universalObject.setValue('mass', value)
-	}
-
-	public get appliedForce(): Vector {
-		return this.universalObject.getValue('appliedForce', new Vector)
-	}
-
-	public set appliedForce(value: Vector) {
-		this.universalObject.setValue('appliedForce', value)
+	public set movableTime(value: number) {
+		this.universalObject.setValue('movableTime', value)
 	}
 
 	public get linearAcceleration(): Vector {

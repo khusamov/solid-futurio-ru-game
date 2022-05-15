@@ -1,29 +1,9 @@
-import {Vector} from 'khusamov-base-types';
-
 export interface IRotable {
 	/**
 	 * Время, на которое были вычислены все параметры вращающегося объекта.
 	 * Миллисекунды.
 	 */
-	time: number
-
-	/**
-	 * Масса движущегося объекта.
-	 * Килограммы.
-	 */
-	mass: number
-
-	/**
-	 * Приложенная сила.
-	 * Ньютоны.
-	 */
-	appliedForce: Vector
-
-	/**
-	 * Расстояние от центра масс до точки приложения силы.
-	 * Метры.
-	 */
-	appliedForceRadius: number
+	rotableTime: number
 
 	/**
 	 * Момент инерции.

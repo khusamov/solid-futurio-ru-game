@@ -1,9 +1,9 @@
 import {ICommand} from 'khusamov-command-system';
-import {IMovable} from '../../interfaces';
+import {IMovable, IRigidBody} from '../../interfaces';
 
 export class RotateForceCommand implements ICommand {
 	public constructor(
-		private readonly movable: IMovable,
+		private readonly movable: IRigidBody & IMovable,
 		private readonly increment: number
 	) {}
 

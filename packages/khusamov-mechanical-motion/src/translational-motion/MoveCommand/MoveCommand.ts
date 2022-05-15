@@ -1,6 +1,6 @@
 import {Convert} from 'khusamov-base-types';
 import {ICommand} from 'khusamov-command-system';
-import {IMovable, ITransformable} from '../../interfaces';
+import {IMovable, IRigidBody, ITransformable} from '../../interfaces';
 
 /**
  * Поступательное движение.
@@ -18,14 +18,14 @@ export class MoveCommand implements ICommand {
 	 * Используется для варианта игрового цикла с фиксированным шагом.
 	 */
 	public constructor(
-		private movable: IMovable & ITransformable,
+		private movable: ITransformable & IRigidBody & IMovable,
 		private fixedTimeInterval?: number
 	) {}
 
 	public execute(): void {
 		const currentTime = Date.now()
-		const {time = currentTime} = this.movable
-		const timeInterval = currentTime - time
+		const {movableTime = currentTime} = this.movable
+		const timeInterval = currentTime - movableTime
 
 		// Если фиксированный интервал задан, то выполняем вычисления не чаще этого значения.
 		if (this.fixedTimeInterval && timeInterval < this.fixedTimeInterval) return
@@ -35,6 +35,6 @@ export class MoveCommand implements ICommand {
 		this.movable.linearVelocity = linearVelocity.translate(linearAcceleration.scale(Convert.toSecond(timeInterval)))
 		this.movable.position = position.translate(linearVelocity.scale(Convert.toSecond(timeInterval)))
 
-		this.movable.time = currentTime
+		this.movable.movableTime = currentTime
 	}
 }

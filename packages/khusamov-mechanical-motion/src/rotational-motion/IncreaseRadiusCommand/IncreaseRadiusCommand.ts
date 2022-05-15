@@ -1,9 +1,9 @@
 import {ICommand} from 'khusamov-command-system';
-import {IRotable} from '../../interfaces';
+import {IRigidBody, IRotable} from '../../interfaces';
 
 export class IncreaseRadiusCommand implements ICommand {
 	public constructor(
-		private readonly rotable: IRotable,
+		private readonly rotable: IRigidBody & IRotable,
 		private readonly increment: number
 	) {}
 

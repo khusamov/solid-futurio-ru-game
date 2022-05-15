@@ -1,38 +1,13 @@
 import {Adapter} from 'khusamov-universal-object';
 import {IRotable} from './IRotable';
-import {Vector} from 'khusamov-base-types';
 
 export class RotableAdapter extends Adapter implements IRotable {
-	public get time(): number {
-		return this.universalObject.getValue('time', 0)
+	public get rotableTime(): number {
+		return this.universalObject.getValue('rotableTime', 0)
 	}
 
-	public set time(value: number) {
-		this.universalObject.setValue('time', value)
-	}
-
-	public get mass(): number {
-		return this.universalObject.getValue('mass', 1)
-	}
-
-	public set mass(value: number) {
-		this.universalObject.setValue('mass', value)
-	}
-
-	public get appliedForce(): Vector {
-		return this.universalObject.getValue('appliedForce', new Vector)
-	}
-
-	public set appliedForce(value: Vector) {
-		this.universalObject.setValue('appliedForce', value)
-	}
-
-	public get appliedForceRadius(): number {
-		return this.universalObject.getValue('appliedForceRadius', 0)
-	}
-
-	public set appliedForceRadius(value: number) {
-		this.universalObject.setValue('appliedForceRadius', value)
+	public set rotableTime(value: number) {
+		this.universalObject.setValue('rotableTime', value)
 	}
 
 	public get rotationalInertia(): number {

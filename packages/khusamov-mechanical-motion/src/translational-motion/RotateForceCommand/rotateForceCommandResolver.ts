@@ -1,9 +1,9 @@
-import {IUniversalObject} from 'khusamov-universal-object';
+import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {NotFoundTargetObjectError} from 'khusamov-command-system';
 import {IRotateForceCommandOrder} from './IRotateForceCommandOrder';
 import {RotateForceCommand} from './RotateForceCommand';
-import {MovableAdapter} from '../../interfaces';
+import {MovableAdapter, RigidBodyAdapter} from '../../interfaces';
 
 export function rotateForceCommandResolver(rotateForceCommandOrder: IRotateForceCommandOrder) {
 	const targetObject = resolve<IUniversalObject | undefined>(...rotateForceCommandOrder.targetObject)
@@ -14,7 +14,7 @@ export function rotateForceCommandResolver(rotateForceCommandOrder: IRotateForce
 
 	return (
 		new RotateForceCommand(
-			new MovableAdapter(targetObject),
+			createAdapter(targetObject, RigidBodyAdapter, MovableAdapter),
 			rotateForceCommandOrder.increment
 		)
 	)
