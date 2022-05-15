@@ -1,12 +1,11 @@
-import {ICommandOrder} from 'khusamov-command-order-system';
+import {ICommandOrder} from 'khusamov-command-system';
 import {TResolveParameters, TResolver} from 'khusamov-inversion-of-control';
 
 /**
  * Демонстрационный приказ.
  * Приказ на уничтожение игрового объекта.
  */
-export default interface IDestroyOrder<R extends TResolver> extends ICommandOrder {
-	readonly type: 'Destroy'
+export interface IDestroyOrder<R extends TResolver = TResolver> extends ICommandOrder<'DestroyCommand'> {
 	readonly targetObject: TResolveParameters<R>
 }
 

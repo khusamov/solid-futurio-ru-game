@@ -1,11 +1,11 @@
 import {EventEmitter} from 'events';
-import {ICommand, IQueue} from 'khusamov-base-types';
+import {IQueue} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
-import {StopCommand} from 'khusamov-command-system';
-import {TGameObjectList} from '../../game/types';
+import {ICommand, StopCommand} from 'khusamov-command-system';
+import {TGameObjectList} from '../../../game/types';
 
-export default class DestroyCommand implements ICommand {
+export class DestroyCommand implements ICommand {
 	public readonly name: string = 'DestroyCommand'
 	public commandQueue?: IQueue<ICommand>
 
