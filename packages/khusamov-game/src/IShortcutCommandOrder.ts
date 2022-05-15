@@ -1,7 +1,6 @@
-import {ICommandOrder, IStartCommandOrder, IStopCommandOrder, TOrderQueue} from 'khusamov-command-order-system';
+import {ICommandOrder, IStartCommandOrder, IStopCommandOrder, TOrderQueue} from 'khusamov-command-system';
 import {IDisposable, Shortcut} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
-import {createUniversalObject} from 'khusamov-universal-object';
 
 // Подсистема создания шорткатов на команды.
 // Идея: за каждой клавишей закрепляется приказ, на основе которого создаются
@@ -40,23 +39,19 @@ export function registerShortcutCommand(shortcutCommand: IShortcutCommandOrder):
 	return (
 		Shortcut.register(shortcutCommand.key, {
 			down() {
-				resolve<TOrderQueue>('OrderQueue').enqueue(
-					createUniversalObject<IStartCommandOrder>({
-						type: 'StartCommand',
-						commandName: shortcutCommand.command.name,
-						targetObject: shortcutCommand.command.targetObject,
-						command: shortcutCommand.command.order
-					})
-				)
+				resolve<TOrderQueue>('OrderQueue').enqueue<IStartCommandOrder>({
+					type: 'StartCommand',
+					commandName: shortcutCommand.command.name,
+					targetObject: shortcutCommand.command.targetObject,
+					command: shortcutCommand.command.order
+				})
 			},
 			up() {
-				resolve<TOrderQueue>('OrderQueue').enqueue(
-					createUniversalObject<IStopCommandOrder>({
-						type: 'StopCommand',
-						commandName: shortcutCommand.command.name,
-						targetObject: shortcutCommand.command.targetObject
-					})
-				)
+				resolve<TOrderQueue>('OrderQueue').enqueue<IStopCommandOrder>({
+					type: 'StopCommand',
+					commandName: shortcutCommand.command.name,
+					targetObject: shortcutCommand.command.targetObject
+				})
 			}
 		})
 	)

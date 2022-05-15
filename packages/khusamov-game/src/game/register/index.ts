@@ -1,5 +1,5 @@
 import {register, resolve} from 'khusamov-inversion-of-control';
-import {InterpretOrderCommand, relayCommandResolver, startCommandResolver, stopCommandResolver, TOrderQueue} from 'khusamov-command-order-system';
+import {InterpretOrderCommand, relayCommandResolver, startCommandResolver, stopCommandResolver, TOrderQueue} from 'khusamov-command-system';
 import {
 	increaseForceCommandResolver,
 	moveCommandResolver,
