@@ -5,6 +5,8 @@ TODO
 Подумать - может Команда и Приказ должны быть всегда вместе?
 Если да - то избавиться от пакета khusamov-command-order-system
 
+Избавиться от ICommand.name
+
 Свойство `targetObject` в классах `StartCommand` и `StopCommand` заменить с `IUniversalObject` на `IWithStoppable`.
 
 Файлы 

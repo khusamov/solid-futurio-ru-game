@@ -11,7 +11,7 @@ export default function createGameTimer(DEBUG: boolean) {
 				const commandQueue = resolve<TCommandQueue>('CommandQueue')
 				const command = commandQueue.dequeue()
 				if (command) {
-					console.log(command.name)
+					console.log(command)
 					command.execute()
 					commandQueueEventEmitter.emit('execute', command)
 				}
