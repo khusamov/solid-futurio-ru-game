@@ -1,4 +1,4 @@
-import {createUniversalObject, IUniversalObject} from 'khusamov-universal-object';
+import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {NotFoundTargetObjectError} from '../../errors';
 import {RepeatableCommand} from '../RepeatableCommand';
@@ -13,7 +13,7 @@ export function startCommandResolver(startCommandOrder: IStartCommandOrder): ICo
 		throw new NotFoundTargetObjectError(startCommandOrder.targetObject)
 	}
 
-	const command = resolve<ICommand>(startCommandOrder.command.type, createUniversalObject(startCommandOrder.command))
+	const command = resolve<ICommand>(startCommandOrder.command.type, startCommandOrder.command)
 
 	return (
 		new StartCommand(
