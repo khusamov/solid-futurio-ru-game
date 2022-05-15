@@ -1,6 +1,9 @@
 TODO
 ====
 
+Отложенные задачи
+-----------------
+
 Свойство `targetObject` в классах `StartCommand` и `StopCommand` заменить с `IUniversalObject` на `IWithStoppable`.
 
 Файлы 
