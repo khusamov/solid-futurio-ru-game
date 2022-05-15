@@ -18,7 +18,6 @@
 	},
 	"dependencies": {
 		"khusamov-base-types": "workspaces:*",
-		"khusamov-command-order-system": "workspaces:*",
 		"khusamov-command-system": "workspaces:*",
 		"khusamov-inversion-of-control": "workspace:*",
 		"khusamov-universal-object": "workspace:*"
