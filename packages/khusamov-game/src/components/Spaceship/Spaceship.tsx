@@ -2,7 +2,7 @@ import {MovableAdapter} from 'khusamov-mechanical-motion';
 import {IUniversalObject} from 'khusamov-universal-object';
 import SpaceshipImage from 'jsx:./SpaceshipImage.svg'
 import {Convert, ISize, Transform, Vector} from 'khusamov-base-types';
-import styles from './Spaceship.module.scss'
+import {SpaceshipStyle, AppliedForceStyle} from './Spaceship.module.scss'
 
 const spaceshipImageSize: ISize = {
 	width: 21,
@@ -25,12 +25,12 @@ export default function Spaceship({object}: ISpaceshipProps) {
 			.translate(new Vector(spaceshipImageSize.width, spaceshipImageSize.height).scale(-1/2))
 	)
 	return (
-		<g className={styles.Spaceship} transform={`translate(${x}, ${y})`}>
+		<g className={SpaceshipStyle} transform={`translate(${x}, ${y})`}>
 			<g transform={transform.toString()}>
 				<SpaceshipImage/>
 			</g>
 			<line
-				className={styles.appliedForce}
+				className={AppliedForceStyle}
 				x1={0} y1={0}
 				x2={appliedForce.length / 50} y2={0}
 				transform={`rotate(${Convert.toDegree(appliedForce.angle)})`}

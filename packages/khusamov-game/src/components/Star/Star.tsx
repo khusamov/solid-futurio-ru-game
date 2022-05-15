@@ -1,6 +1,6 @@
 import {IUniversalObject} from 'khusamov-universal-object';
 import {TransformableAdapter} from 'khusamov-mechanical-motion';
-import styles from './Star.module.scss';
+import {StarStyle} from './Star.module.scss';
 import {Transform} from 'khusamov-base-types';
 
 interface IStarProps {
@@ -18,7 +18,7 @@ export default function Star({object}: IStarProps) {
 	)
 	return (
 		<circle
-			className={styles.Star}
+			className={StarStyle}
 			transform={transform.toString()}
 			r={radius}
 			cx={0}

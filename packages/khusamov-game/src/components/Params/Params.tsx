@@ -1,4 +1,4 @@
-import styles from './Params.module.scss'
+import {ParamTableStyle} from './Params.module.scss'
 import {IUniversalObject} from 'khusamov-universal-object';
 import GameObjectAdapter from '../../game/gameObject/GameObjectAdapter';
 import {IMovable, MovableAdapter} from 'khusamov-mechanical-motion';
@@ -24,7 +24,7 @@ export default function Params({object, additionalParameters = []}: IParamsProps
 		const movable = new MovableAdapter(object)
 		const params = [...getMovableParams(movable), ...additionalParameters]
 		return (
-			<div className={styles.Params}>
+			<div className={ParamTableStyle}>
 				<table>
 					<tbody>
 						{params.map((param, index) => (

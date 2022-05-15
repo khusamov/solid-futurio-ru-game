@@ -1,7 +1,7 @@
 import {SVGProps, PropsWithChildren, createContext} from 'react';
 import {ISize, Transform, Vector} from 'khusamov-base-types';
 import useResizeCanvas from './useResizeCanvas';
-import styles from './Canvas.module.scss'
+import {CanvasStyle, WrapStyle} from './Canvas.module.scss'
 
 export const CanvasSizeContext = createContext<ISize>({width: 0, height: 0})
 
@@ -11,7 +11,7 @@ export const CanvasSizeContext = createContext<ISize>({width: 0, height: 0})
 const svgProps: SVGProps<SVGSVGElement> = {
 	version: '1.1',
 	xmlns: 'http://www.w3.org/2000/svg',
-	className: styles.Canvas
+	className: CanvasStyle
 }
 
 export type TOnResizeHandler = (size: ISize) => void
@@ -39,7 +39,7 @@ export default function Canvas({children, onResize, offset = new Vector, scale =
 	)
 
 	return (
-		<div ref={ref} className={styles.Wrap}>
+		<div ref={ref} className={WrapStyle}>
 			<CanvasSizeContext.Provider value={size}>
 				<svg {...svgProps}>
 					<g transform={transform.toString()}>

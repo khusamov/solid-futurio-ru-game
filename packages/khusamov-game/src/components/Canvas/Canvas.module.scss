@@ -1,7 +1,7 @@
-div.Wrap {
+div.WrapStyle {
 	width: 100%;
 	height: 100%;
-	svg.Canvas {
+	svg.CanvasStyle {
 		display: block; // SVG по умолчанию не является блоком и потому рядом с ним невидимая строка есть.
 		width: 100%;
 		height: 100%;

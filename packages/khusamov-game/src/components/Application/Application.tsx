@@ -12,7 +12,7 @@ import Spaceship from '../Spaceship';
 import Canvas, {CanvasSizeContext} from '../Canvas';
 import Params from '../Params';
 import Star from '../Star';
-import styles from './Application.module.scss'
+import {ApplicationStyle} from './Application.module.scss'
 
 type TUniversalRenderComponent = FunctionComponent<{object: IUniversalObject}>
 const renderableMap: Record<string, TUniversalRenderComponent> = {
@@ -54,7 +54,7 @@ export default function Application() {
 	}
 
 	return (
-		<div className={styles.Application} onWheel={onWheel}>
+		<div className={ApplicationStyle} onWheel={onWheel}>
 			<Params object={selectedGameObject} additionalParameters={additionalParameters}/>
 			<Canvas
 				offset={offset}
