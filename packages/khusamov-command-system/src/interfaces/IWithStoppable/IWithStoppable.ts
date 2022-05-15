@@ -8,7 +8,7 @@ export type TStoppableKey = string
 /**
  * Объект, имеющий карту объектов, которые можно останавливать.
  */
-export default interface IWithStoppable<S extends IStoppable = IStoppable> {
+export interface IWithStoppable<S extends IStoppable = IStoppable> {
 	/**
 	 * Карта объектов, которые можно останавливать.
 	 *

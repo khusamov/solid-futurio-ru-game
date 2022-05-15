@@ -1,11 +1,7 @@
 TODO
 ====
 
-Удалить Адаптеры у всех приказов и избавиться от IUniversalObject для представления приказов.
-Подумать - может Команда и Приказ должны быть всегда вместе?
-Если да - то избавиться от пакета khusamov-command-order-system
-
-Избавиться от ICommand.name
+Удалить адаптеры приказов из khusamov-mechanical-motion
 
 Свойство `targetObject` в классах `StartCommand` и `StopCommand` заменить с `IUniversalObject` на `IWithStoppable`.
 

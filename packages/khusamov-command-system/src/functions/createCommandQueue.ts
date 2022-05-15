@@ -1,6 +1,6 @@
-import {ICommand, IQueue, Queue} from 'khusamov-base-types';
-
-export type TCommandQueue = IQueue<ICommand>
+import {Queue} from 'khusamov-base-types';
+import {TCommandQueue} from '../types';
+import {ICommand} from '../interfaces/ICommand';
 
 /**
  * Создать очередь команд.
@@ -8,7 +8,7 @@ export type TCommandQueue = IQueue<ICommand>
  * Отличие от обычной очереди: перед добавление команды в очередь
  * в свойство команды commandQueue помещается ссылка на саму очередь.
  */
-export default function createCommandQueue() {
+export function createCommandQueue() {
 	const commandQueueProxy = (
 		new Proxy(new Queue as TCommandQueue, {
 			get(target, property, receiver) {

@@ -61,3 +61,33 @@ register('StopCommand', createStopCommandByOrder)
 отправляется куда-либо еще, например размещается в очереди команд.
 
 Таким образом можно создавать разные форматы приказов и создавать разные конструкторы команд.
+
+Пример создания приказа `IRelayCommandOrder`
+--------------------------------------------
+
+```typescript
+register('RelayCommand', relayCommandResolver)
+
+const spaceship = {
+	linearVelocity: 100
+}
+
+function increaseLinearVelocityActionResolver(increment: number) {
+	return () => {
+		spaceship.linearVelocity += increment
+	}
+}
+
+register('IncreaseLinearVelocityAction', increaseLinearVelocityActionResolver)
+
+const relayCommandOrder = (
+	createUniversalObject<IRelayCommandOrder<typeof increaseLinearVelocityActionResolver>>({
+		type: 'RelayCommand',
+		name: 'IncreaseLinearVelocityCommand',
+		action: ['IncreaseLinearVelocityAction', 100]
+	})
+)
+
+const myCommand = resolve<ICommand>(new OrderAdapter(relayCommandOrder).type, relayCommandOrder)
+myCommand.execute()
+```

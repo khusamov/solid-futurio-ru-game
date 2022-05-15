@@ -1,2 +1,2 @@
-export {default, TStoppableKey} from './IWithStoppable'
-export {default as WithStoppableAdapter} from './WithStoppableAdapter'
+export type {IWithStoppable, TStoppableKey} from './IWithStoppable'
+export {WithStoppableAdapter} from './WithStoppableAdapter'

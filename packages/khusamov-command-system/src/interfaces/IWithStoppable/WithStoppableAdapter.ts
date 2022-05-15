@@ -1,10 +1,8 @@
 import {IStoppable} from 'khusamov-base-types';
-import {IUniversalObject} from 'khusamov-universal-object';
-import IWithStoppable, {TStoppableKey} from './IWithStoppable';
+import {Adapter} from 'khusamov-universal-object';
+import {TStoppableKey, IWithStoppable} from './IWithStoppable';
 
-export default class WithStoppableAdapter<S extends IStoppable = IStoppable> implements IWithStoppable<S> {
-	constructor(private universalObject: IUniversalObject) {}
-
+export class WithStoppableAdapter<S extends IStoppable = IStoppable> extends Adapter implements IWithStoppable<S> {
 	public get stoppableMap(): Map<TStoppableKey, S> | undefined {
 		return this.universalObject.getValue('stoppableMap')
 	}
