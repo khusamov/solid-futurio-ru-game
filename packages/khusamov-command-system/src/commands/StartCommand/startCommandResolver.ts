@@ -1,10 +1,10 @@
 import {createUniversalObject, IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {NotFoundTargetObjectError} from '../../errors';
-import RepeatableCommand from '../RepeatableCommand';
+import {RepeatableCommand} from '../RepeatableCommand';
 import {ICommand} from '../../interfaces';
-import IStartCommandOrder from './IStartCommandOrder';
-import StartCommand from './StartCommand';
+import {IStartCommandOrder} from './IStartCommandOrder';
+import {StartCommand} from './StartCommand';
 
 export function startCommandResolver(startCommandOrder: IStartCommandOrder): ICommand {
 	const targetObject = resolve<IUniversalObject | undefined>(...startCommandOrder.targetObject)
