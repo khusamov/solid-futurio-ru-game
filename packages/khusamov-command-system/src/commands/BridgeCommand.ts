@@ -1,5 +1,5 @@
 import {IQueue} from 'khusamov-base-types';
-import NotOperationCommand from './NotOperationCommand';
+import {NotOperationCommand} from './NotOperationCommand';
 import {ICommand, IInjectableCommand} from '../interfaces';
 
 /**
