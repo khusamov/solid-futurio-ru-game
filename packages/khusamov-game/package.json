@@ -10,7 +10,9 @@
   ],
   "scripts": {
     "start": "parcel",
-    "build": "parcel build --dist-dir ../../docs"
+    "check": "tsc --noEmit",
+    "build": "parcel build --dist-dir ../../docs",
+    "serve": "serve ../../docs"
   },
   "devDependencies": {
     "@parcel/packager-ts": "2.5.0",
