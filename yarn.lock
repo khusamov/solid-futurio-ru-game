@@ -1824,6 +1824,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@parcel/packager-ts@npm:2.5.0":
+  version: 2.5.0
+  resolution: "@parcel/packager-ts@npm:2.5.0"
+  dependencies:
+    "@parcel/plugin": 2.5.0
+  checksum: 5285f10f54461f1704e0cc4648914f5772f8a40b9dc25a34f2e0a23e16217113c51d5d58211fbfcd9d4f0bce62ad506ab704f3052b623cd59bfa898986b98448
+  languageName: node
+  linkType: hard
+
 "@parcel/plugin@npm:2.5.0":
   version: 2.5.0
   resolution: "@parcel/plugin@npm:2.5.0"
@@ -2097,6 +2106,32 @@ __metadata:
     posthtml-render: ^3.0.0
     semver: ^5.7.1
   checksum: 8ba385e8bd3aa9c35f2d71b04c5d475bc6e8d77e79c9a16e13d39e4fdeb3ef52f350acabb4dd3ffc402e92d302da13ba5daea157b6052e8be18fd9d7814daf2e
+  languageName: node
+  linkType: hard
+
+"@parcel/transformer-typescript-types@npm:2.5.0":
+  version: 2.5.0
+  resolution: "@parcel/transformer-typescript-types@npm:2.5.0"
+  dependencies:
+    "@parcel/diagnostic": 2.5.0
+    "@parcel/plugin": 2.5.0
+    "@parcel/source-map": ^2.0.0
+    "@parcel/ts-utils": 2.5.0
+    nullthrows: ^1.1.1
+  peerDependencies:
+    typescript: ">=3.0.0"
+  checksum: 1b3c0bc229750ed421959932f99567f4fae9d20740b0f2b662163562884688151508daa1cfe4caf3a47224959ebbcdc8b02c8a55456d7cfaa2770e3935928744
+  languageName: node
+  linkType: hard
+
+"@parcel/ts-utils@npm:2.5.0":
+  version: 2.5.0
+  resolution: "@parcel/ts-utils@npm:2.5.0"
+  dependencies:
+    nullthrows: ^1.1.1
+  peerDependencies:
+    typescript: ">=3.0.0"
+  checksum: 68e99b7decd0bc8bf72b9312ac28044bc944d066d098647022781ecad35da618ebd141c45dbf5503485a3603a85698b709ec6a525ebb6dd33c1718f410a4c51f
   languageName: node
   linkType: hard
 
@@ -5345,6 +5380,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-base-types@workspace:packages/khusamov-base-types"
   dependencies:
+    "@parcel/packager-ts": 2.5.0
+    "@parcel/transformer-typescript-types": 2.5.0
     "@types/react": ^18.0.9
     events: ^3.3.0
     parcel: ^2.5.0
@@ -5357,6 +5394,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-command-order-system@workspace:packages/khusamov-command-order-system"
   dependencies:
+    "@parcel/packager-ts": 2.5.0
+    "@parcel/transformer-typescript-types": 2.5.0
     "@types/chai": ^4
     "@types/mocha": ^9.1.1
     chai: ^4.3.6
@@ -5377,6 +5416,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-command-system@workspace:packages/khusamov-command-system"
   dependencies:
+    "@parcel/packager-ts": 2.5.0
+    "@parcel/transformer-typescript-types": 2.5.0
     khusamov-base-types: "workspace:*"
     khusamov-inversion-of-control: "workspace:*"
     khusamov-universal-object: "workspace:*"
@@ -5390,8 +5431,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-game@workspace:packages/khusamov-game"
   dependencies:
+    "@parcel/packager-ts": 2.5.0
     "@parcel/transformer-sass": 2.5.0
     "@parcel/transformer-svg-react": ^2.5.0
+    "@parcel/transformer-typescript-types": 2.5.0
     "@types/events": ^3.0.0
     "@types/lodash": ^4.14.182
     "@types/lodash.mergewith": ^4.6.7
@@ -5418,6 +5461,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-inversion-of-control@workspace:packages/khusamov-inversion-of-control"
   dependencies:
+    "@parcel/packager-ts": 2.5.0
+    "@parcel/transformer-typescript-types": 2.5.0
     "@types/chai": ^4
     "@types/mocha": ^9.1.1
     chai: ^4.3.6
@@ -5435,6 +5480,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-mechanical-motion@workspace:packages/khusamov-mechanical-motion"
   dependencies:
+    "@parcel/packager-ts": 2.5.0
+    "@parcel/transformer-typescript-types": 2.5.0
     khusamov-base-types: "workspaces:*"
     khusamov-command-order-system: "workspaces:*"
     khusamov-command-system: "workspaces:*"
@@ -5450,6 +5497,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "khusamov-universal-object@workspace:packages/khusamov-universal-object"
   dependencies:
+    "@parcel/packager-ts": 2.5.0
+    "@parcel/transformer-typescript-types": 2.5.0
     khusamov-base-types: "workspace:*"
     khusamov-inversion-of-control: "workspace:*"
     parcel: ^2.5.0
@@ -8004,6 +8053,7 @@ __metadata:
   resolution: "solid-futurio-ru-game@workspace:."
   dependencies:
     lerna: ^4.0.0
+    typescript: ^4.6.4
   languageName: unknown
   linkType: soft
 
