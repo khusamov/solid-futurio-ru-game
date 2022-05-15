@@ -10,8 +10,7 @@
   ],
   "scripts": {
     "start": "parcel",
-    "build": "parcel build",
-    "prepublishOnly": "yarn build"
+    "build": "parcel build --dist-dir ../../docs"
   },
   "devDependencies": {
     "@parcel/packager-ts": "2.5.0",
