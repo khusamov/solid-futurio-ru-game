@@ -169,6 +169,15 @@ export class Vector implements IPoint {
 		)
 	}
 
+	/**
+	 * Проекция вектора на вектор vector.
+	 * @link https://bit.ly/3yCvHr6
+	 * @param vector
+	 */
+	public project(vector: Vector): Vector {
+		return vector.scale(this.dot(vector) / vector.dot(vector))
+	}
+
 	public clone() {
 		return new Vector(this.x, this.y)
 	}
