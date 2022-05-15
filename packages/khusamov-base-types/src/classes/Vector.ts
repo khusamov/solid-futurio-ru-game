@@ -147,11 +147,15 @@ export class Vector implements IPoint {
 	 * Скалярным произведением двух векторов называется число (скаляр),
 	 * равное произведению длин этих векторов на косинус угла между ними.
 	 * Длина вектора является его модулем.
+	 *
+	 * Скалярное произведение через компоненты.
+	 * Скалярное произведение двух векторов равно сумме попарных произведений
+	 * соответствующих компонент.
+	 * @link https://bit.ly/3yCvHr6
 	 * @param vector
 	 */
-	public multiply(vector: Vector): number {
-		Object.defineProperty(this, 'Эту строку удалить после реализации метода', {value: vector})
-		throw new Error('Метод не реализован Vector.multiply()')
+	public dot(vector: Vector): number {
+		return this.x * vector.x + this.y + vector.y
 	}
 
 	/**
