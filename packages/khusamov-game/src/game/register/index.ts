@@ -36,7 +36,7 @@ register('SelectedGameObject', () => resolve<IUniversalObject>('GameObject', 'th
 
 const orderQueue: TOrderQueue = createOrderQueue(LOG)
 const commandQueue: TCommandQueue = createCommandQueue() // Очередь команд создается по особому!
-const commandQueueEventEmitter = new EventEmitter()
+const commandQueueEventEmitter = new EventEmitter() // Используется в createGameTimer() и DestroyCommand.
 const gameObjectList: TGameObjectList = []
 const gameTimer = createGameTimer(DEBUG)
 
