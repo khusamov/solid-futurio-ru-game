@@ -1,2 +1,2 @@
-export {default} from './IMovable'
-export {default as MovableAdapter} from './MovableAdapter'
+export type {IMovable} from './IMovable'
+export {MovableAdapter} from './MovableAdapter'

@@ -1,5 +1,6 @@
-import {Convert, ICommand} from 'khusamov-base-types';
-import IMovable from '../interfaces/IMovable';
+import {Convert} from 'khusamov-base-types';
+import {ICommand} from 'khusamov-command-system';
+import {IMovable} from '../../interfaces';
 
 /**
  * Поступательное движение.
@@ -9,7 +10,7 @@ import IMovable from '../interfaces/IMovable';
  * - фиксированный промежуток времени (нужно определить fixedTimeInterval)
  * - вычисляемый промежуток времени (режим по умолчанию)
  */
-export default class MoveCommand implements ICommand {
+export class MoveCommand implements ICommand {
 	public readonly name = 'MoveCommand'
 
 	/**

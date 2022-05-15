@@ -4,7 +4,7 @@ import {Vector} from 'khusamov-base-types';
  * Интерфейс объекта, для которого вычисляется механическое движение.
  * @adaptable
  */
-export default interface IMovable {
+export interface IMovable {
 	/**
 	 * Время, на которое были вычислены все параметры движущегося объекта.
 	 * Миллисекунды.

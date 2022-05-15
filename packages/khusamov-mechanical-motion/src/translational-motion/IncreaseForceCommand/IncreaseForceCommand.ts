@@ -1,7 +1,8 @@
-import {ICommand, Vector} from 'khusamov-base-types';
-import IMovable from '../interfaces/IMovable';
+import {Vector} from 'khusamov-base-types';
+import {ICommand} from 'khusamov-command-system';
+import {IMovable} from '../../interfaces';
 
-export default class IncreaseForceCommand implements ICommand {
+export class IncreaseForceCommand implements ICommand {
 	public readonly name = 'IncreaseForceCommand'
 
 	public constructor(

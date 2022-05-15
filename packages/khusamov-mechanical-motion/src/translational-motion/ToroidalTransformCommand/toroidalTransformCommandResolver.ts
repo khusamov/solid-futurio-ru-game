@@ -1,14 +1,12 @@
 import {ISize} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
-import {NotFoundTargetObjectError} from 'khusamov-command-order-system';
-import {MovableAdapter} from '../../../interfaces/IMovable';
-import ToroidalTransformCommand from '../../ToroidalTransformCommand';
-import ToroidalTransformCommandOrderAdapter from './ToroidalTransformCommandOrderAdapter';
+import {NotFoundTargetObjectError} from 'khusamov-command-system';
+import {MovableAdapter} from '../../interfaces';
+import {IToroidalTransformCommandOrder} from './IToroidalTransformCommandOrder';
+import {ToroidalTransformCommand} from './ToroidalTransformCommand';
 
-export default function toroidalTransformCommandResolver(toroidalTransformCommandOrderObject: IUniversalObject) {
-	const toroidalTransformCommandOrder = new ToroidalTransformCommandOrderAdapter(toroidalTransformCommandOrderObject)
-
+export function toroidalTransformCommandResolver(toroidalTransformCommandOrder: IToroidalTransformCommandOrder) {
 	const targetObject = resolve<IUniversalObject | undefined>(...toroidalTransformCommandOrder.targetObject)
 
 	if (!targetObject) {

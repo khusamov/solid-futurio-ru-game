@@ -4,7 +4,7 @@ import {Vector} from 'khusamov-base-types';
  * Интерфейс объекта, для которого вычисляется координаты и вращение.
  * @adaptable
  */
-export default interface ITransformable {
+export interface ITransformable {
 	/**
 	 * Координаты объекта.
 	 * Метры.

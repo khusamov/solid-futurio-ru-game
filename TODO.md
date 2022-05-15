@@ -1,8 +1,6 @@
 TODO
 ====
 
-Удалить адаптеры приказов из khusamov-mechanical-motion
-
 Свойство `targetObject` в классах `StartCommand` и `StopCommand` заменить с `IUniversalObject` на `IWithStoppable`.
 
 Файлы 

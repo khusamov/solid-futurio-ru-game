@@ -1,8 +1,8 @@
 import {Vector} from 'khusamov-base-types';
 import {Adapter} from 'khusamov-universal-object';
-import ITransformable from './ITransformable';
+import {ITransformable} from './ITransformable';
 
-export default class TransformableAdapter extends Adapter implements ITransformable {
+export class TransformableAdapter extends Adapter implements ITransformable {
 	public get position(): Vector {
 		return this.universalObject.getValue('position', new Vector(0, 0))
 	}

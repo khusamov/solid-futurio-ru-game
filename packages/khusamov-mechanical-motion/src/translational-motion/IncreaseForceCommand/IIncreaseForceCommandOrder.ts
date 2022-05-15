@@ -1,9 +1,7 @@
-import {ICommandOrder} from 'khusamov-command-order-system';
+import {ICommandOrder} from 'khusamov-command-system';
 import {TResolveParameters, TResolver} from 'khusamov-inversion-of-control';
 
-export default interface IIncreaseForceCommandOrder<R extends TResolver = TResolver> extends ICommandOrder {
-	readonly type: 'IncreaseForceCommand'
-
+export interface IIncreaseForceCommandOrder<R extends TResolver = TResolver> extends ICommandOrder<'IncreaseForceCommand'> {
 	/**
 	 * Параметры зависимости для вычисления объекта,
 	 * для которого требуется увеличить приложенную силу.

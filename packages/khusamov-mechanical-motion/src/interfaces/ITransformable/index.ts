@@ -1,2 +1,2 @@
-export {default} from './ITransformable'
-export {default as TransformableAdapter} from './TransformableAdapter'
+export type {ITransformable} from './ITransformable'
+export {TransformableAdapter} from './TransformableAdapter'

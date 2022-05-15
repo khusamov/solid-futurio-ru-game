@@ -1,7 +1,7 @@
-import {ICommand} from 'khusamov-base-types';
-import IMovable from '../interfaces/IMovable';
+import {ICommand} from 'khusamov-command-system';
+import {IMovable} from '../../interfaces';
 
-export default class RotateForceCommand implements ICommand {
+export class RotateForceCommand implements ICommand {
 	public readonly name = 'RotateForceCommand'
 
 	public constructor(

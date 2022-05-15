@@ -6,7 +6,7 @@ import {ISize, Vector} from 'khusamov-base-types';
  * @param position
  * @param toroidalSurfaceSize
  */
-export default function transformPositionForToroid(position: Vector, {width, height}: ISize): Vector {
+export function transformPositionForToroid(position: Vector, {width, height}: ISize): Vector {
 	// Ограничить по положительной полуоси.
 	const result = position.mod(new Vector(width, height))
 	// Ограничить по отрицательной полуоси.
