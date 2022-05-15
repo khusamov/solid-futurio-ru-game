@@ -11,7 +11,6 @@ import {TOrderQueue} from '../types';
  * @link https://stepik.org/lesson/664251/step/1?unit=662137
  */
 export class InterpretOrderCommand implements ICommand {
-	public readonly name: string = 'InterpretOrderCommand'
 	public commandQueue?: IQueue<ICommand>
 
 	public execute(): void {
