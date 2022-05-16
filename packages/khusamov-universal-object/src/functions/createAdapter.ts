@@ -12,6 +12,8 @@ type AC = typeof Adapter
 export default function createAdapter<A1 extends AC>(universalObject: IUniversalObject, AC1: A1): IT<A1>
 export default function createAdapter<A1 extends AC, A2 extends AC>(universalObject: IUniversalObject, AC1: A1, AC2: A2): IT<A1> & IT<A2>
 export default function createAdapter<A1 extends AC, A2 extends AC, A3 extends AC>(universalObject: IUniversalObject, AC1: A1, AC2: A2, AC3: A3): IT<A1> & IT<A2> & IT<A3>
+export default function createAdapter<A1 extends AC, A2 extends AC, A3 extends AC, A4 extends AC>(universalObject: IUniversalObject, AC1: A1, AC2: A2, AC3: A3, AC4: A4): IT<A1> & IT<A2> & IT<A3> & IT<A4>
+export default function createAdapter<A1 extends AC, A2 extends AC, A3 extends AC, A4 extends AC, A5 extends AC>(universalObject: IUniversalObject, AC1: A1, AC2: A2, AC3: A3, AC4: A4, AC5: A5): IT<A1> & IT<A2> & IT<A3> & IT<A4> & IT<A5>
 export default function createAdapter(universalObject: IUniversalObject, ...adapterClasses: Array<typeof Adapter>): any {
 	if (adapterClasses.length === 0) {
 		throw new Error('Не определены классы адаптеров')
