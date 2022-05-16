@@ -16,7 +16,9 @@ export class IncreaseForceCommand implements ICommand {
 
 		this.movable.appliedForce = (
 			this.movable.appliedForce.isNull
+				// Если приложенная сила равна нулю, то при ее увеличении угол берем из вектора скорости.
 				? this.movable.linearVelocity.identity.scale(this.increment)
+				// Иначе просто увеличиваем приложенную силу.
 				: this.movable.appliedForce.translate(this.movable.appliedForce.identity.scale(this.increment))
 		)
 	}
