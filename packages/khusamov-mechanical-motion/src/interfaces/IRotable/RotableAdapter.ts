@@ -10,14 +10,6 @@ export class RotableAdapter extends Adapter implements IRotable {
 		this.universalObject.setValue('rotableTime', value)
 	}
 
-	public get rotationalInertia(): number {
-		return this.universalObject.getValue('rotationalInertia', 0)
-	}
-
-	public set rotationalInertia(value: number) {
-		this.universalObject.setValue('rotationalInertia', value)
-	}
-
 	public get angularAcceleration(): number {
 		return this.universalObject.getValue('angularAcceleration', 0)
 	}
