@@ -6,7 +6,6 @@ import {ICommand, StopCommand} from 'khusamov-command-system';
 import {TGameObjectList} from '../../../game/types';
 
 export class DestroyCommand implements ICommand {
-	public readonly name: string = 'DestroyCommand'
 	public commandQueue?: IQueue<ICommand>
 
 	public constructor(
