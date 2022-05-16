@@ -18,7 +18,8 @@ https://ts-ast-viewer.com/
 https://docs.google.com/document/d/1SSsz9gVGthgEFbdx3eZ4kWGBbKS_tdiEo9yVEVhBGHA/edit
 
 О векторах в играх:  
-https://habr.com/ru/post/131931/
+https://habr.com/ru/post/131931/  
+https://habr.com/ru/post/430146/  
 
 Приказы (сообщения) и команды
 -----------------------------
