@@ -1,4 +1,5 @@
 import {IPoint} from '../interfaces';
+import {Vector3} from './Vector3';
 
 /*
  * Увеличить длину вектора можно так:
@@ -156,6 +157,14 @@ export class Vector implements IPoint {
 	 */
 	public dot(vector: Vector): number {
 		return this.x * vector.x + this.y + vector.y
+	}
+
+	/**
+	 * Векторное произведение.
+	 * @param vector
+	 */
+	public cross(vector: Vector): Vector3 {
+		return new Vector3(this.x, this.y, 0).cross(new Vector3(vector.x, vector.y, 0))
 	}
 
 	/**
