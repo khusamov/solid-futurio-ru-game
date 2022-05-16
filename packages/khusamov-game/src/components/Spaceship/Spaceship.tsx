@@ -1,8 +1,9 @@
-import {MovableAdapter, RigidBodyAdapter, TransformableAdapter} from 'khusamov-mechanical-motion';
+import {MovableAdapter, RigidBodyAdapter, RotableAdapter, TransformableAdapter} from 'khusamov-mechanical-motion';
 import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
 import SpaceshipImage from 'jsx:./SpaceshipImage.svg'
 import {Convert, ISize, Transform, Vector} from 'khusamov-base-types';
 import {SpaceshipStyle, AppliedForceStyle} from './Spaceship.module.scss'
+import {CobraSpaceshipAdapter} from '../../interfaces';
 
 const spaceshipImageSize: ISize = {
 	width: 21,
@@ -14,13 +15,21 @@ interface ISpaceshipProps {
 }
 
 export default function Spaceship({object}: ISpaceshipProps) {
-	const {position, linearVelocity, appliedForce} = createAdapter(object,TransformableAdapter, RigidBodyAdapter, MovableAdapter)
+	const {position, rotation, appliedForce} = (
+		createAdapter(
+			object,
+			CobraSpaceshipAdapter,
+			MovableAdapter,
+			RotableAdapter,
+			RigidBodyAdapter,
+			TransformableAdapter
+		)
+	)
 	const {x, y} = position
 	const transform = (
 		new Transform()
-			// Поворачиваем изображение корабля по вектору скорости.
-			// Считаем, что в редакторе нос корабля смотрит строго наверх.
-			.rotate(linearVelocity.rotate(Convert.toRadian(90)).angle)
+			// Поворачиваем изображение корабля по вектору rotation.
+			.rotate(rotation.angle)
 			// Смещение изображения по центру.
 			.translate(new Vector(spaceshipImageSize.width, spaceshipImageSize.height).scale(-1/2))
 	)
