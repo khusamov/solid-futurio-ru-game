@@ -14,8 +14,8 @@ export interface IRigidBody {
 	appliedForce: Vector
 
 	/**
-	 * Расстояние от центра масс до точки приложения силы.
+	 * Точка приложения силы.
 	 * Метры.
 	 */
-	appliedForceRadius: number
+	appliedForcePoint: Vector
 }

@@ -19,11 +19,11 @@ export class RigidBodyAdapter extends Adapter implements IRigidBody {
 		this.universalObject.setValue('appliedForce', value)
 	}
 
-	public get appliedForceRadius(): number {
-		return this.universalObject.getValue('appliedForceRadius', 0)
+	public get appliedForcePoint(): Vector {
+		return this.universalObject.getValue('appliedForcePoint', new Vector)
 	}
 
-	public set appliedForceRadius(value: number) {
-		this.universalObject.setValue('appliedForceRadius', value)
+	public set appliedForcePoint(value: Vector) {
+		this.universalObject.setValue('appliedForcePoint', value)
 	}
 }
