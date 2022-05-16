@@ -1,5 +1,6 @@
 export {Lazy} from './Lazy'
 export {Vector} from './Vector'
+export {Vector3} from './Vector3'
 export {Timer} from './Timer'
 export {Convert} from './Convert'
 export {Transform} from './Transform'
