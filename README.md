@@ -21,6 +21,10 @@ https://docs.google.com/document/d/1SSsz9gVGthgEFbdx3eZ4kWGBbKS_tdiEo9yVEVhBGHA/
 https://habr.com/ru/post/131931/  
 https://habr.com/ru/post/430146/  
 
+Box2D  
+https://www.npmjs.com/package/@box2d/core  
+https://github.com/flyover/box2d.ts
+
 Приказы (сообщения) и команды
 -----------------------------
 
