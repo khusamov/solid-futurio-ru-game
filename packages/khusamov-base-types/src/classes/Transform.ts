@@ -9,6 +9,9 @@ export class Transform {
 		return this
 	}
 
+	/**
+	 * @param angle Угол в радианах.
+	 */
 	public rotate(angle: number): this {
 		this.transforms.push(`rotate(${Convert.toDegree(angle)})`)
 		return this
