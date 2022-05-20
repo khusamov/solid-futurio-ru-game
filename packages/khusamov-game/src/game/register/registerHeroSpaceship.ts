@@ -1,5 +1,6 @@
 import {resolve} from 'khusamov-inversion-of-control';
 import {TGameObjectList} from '../types';
+import {Vector} from 'khusamov-base-types';
 import {createUniversalObject} from 'khusamov-universal-object';
 import IGameObject from '../gameObject/IGameObject';
 import {
@@ -15,8 +16,9 @@ import IRenderable from '../gameObject/IRenderable';
 import {IStartCommandOrder, TOrderQueue} from 'khusamov-command-system';
 import {TGameObjectResolver} from '../resolvers/gameObjectResolver';
 import {IUpdateCobraSpaceshipCommandOrder} from '../../command-system/commands/UpdateCobraSpaceshipCommand';
+import {ICobraSpaceship} from '../../interfaces';
 
-type THeroSpaceship = IGameObject & ITransformable & IRigidBody & IMovable & IRenderable & IRotable
+type THeroSpaceship = IGameObject & ITransformable & IRigidBody & IMovable & IRenderable & IRotable & ICobraSpaceship
 
 /**
  * Генерация космического корабля главного героя.
@@ -28,9 +30,11 @@ export default function registerHeroSpaceship() {
 	gameObjectList.push(
 		createUniversalObject<Partial<THeroSpaceship>>({
 			name: 'theSpaceship',
-			kind: ['IGameObject', 'ITransformable', 'IRigidBody', 'IMovable', 'IRenderable', 'IRotable'],
+			kind: ['IGameObject', 'ITransformable', 'IRigidBody', 'IMovable', 'IRenderable', 'IRotable', 'ICobraSpaceship'],
 			renderComponent: 'Spaceship',
-			mass: 1000
+			mass: 1000,
+			distanceBetweenEngines: 100,
+			rotation: new Vector(1, 0)
 		})
 	)
 
