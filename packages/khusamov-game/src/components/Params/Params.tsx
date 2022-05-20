@@ -1,8 +1,17 @@
 import {Convert} from 'khusamov-base-types';
 import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
-import {IMovable, IRigidBody, ITransformable, MovableAdapter, RigidBodyAdapter, TransformableAdapter} from 'khusamov-mechanical-motion';
+import {
+	IMovable,
+	IRigidBody, IRotable,
+	ITransformable,
+	MovableAdapter,
+	RigidBodyAdapter,
+	RotableAdapter,
+	TransformableAdapter
+} from 'khusamov-mechanical-motion';
 import GameObjectAdapter from '../../game/gameObject/GameObjectAdapter';
 import {ParamTableStyle} from './Params.module.scss'
+import {CobraSpaceshipAdapter, ICobraSpaceship} from '../../interfaces';
 
 interface IParam {
 	title: string
@@ -21,7 +30,16 @@ export default function Params({object, additionalParameters = []}: IParamsProps
 	const gameObject = new GameObjectAdapter(object)
 
 	if (gameObject.kind.includes('IMovable')) {
-		const movable = createAdapter(object, TransformableAdapter, RigidBodyAdapter, MovableAdapter)
+		const movable = (
+			createAdapter(
+				object,
+				CobraSpaceshipAdapter,
+				MovableAdapter,
+				RotableAdapter,
+				RigidBodyAdapter,
+				TransformableAdapter
+			)
+		)
 		const params = [...getMovableParams(movable), ...additionalParameters]
 		return (
 			<div className={ParamTableStyle}>
@@ -44,26 +62,57 @@ export default function Params({object, additionalParameters = []}: IParamsProps
 	return null
 }
 
-function getMovableParams(movable: ITransformable & IRigidBody & IMovable): IParam[] {
+type THeroSpaceship = ICobraSpaceship & ITransformable & IRigidBody & IMovable & IRotable
+
+function getMovableParams(movable: THeroSpaceship): IParam[] {
 	return [{
-		title: 'Координаты',
-		value: movable.position.toString(),
-		unit: 'Метры'
-	}, {
-		title: 'Скорость',
-		value: movable.linearVelocity.toString(),
-		valueAlt: movable.linearVelocity.length.toFixed(2),
-		unit: 'Метры в секунду',
-		color: 'blue'
+		title: 'Сила движения',
+		value: `${movable.appliedMotionForce.length.toFixed(2)} / ${Convert.toDegree(movable.appliedMotionForce.angle).toFixed(2)}`,
+		unit: 'Ньютон / Градус',
+		color: 'cyan'
 	}, {
 		title: 'Ускорение',
 		value: movable.linearAcceleration.toString(),
 		valueAlt: movable.linearAcceleration.length.toFixed(2),
 		unit: 'Метры в секунду в квадрате'
 	}, {
-		title: 'Сила',
-		value: `${movable.appliedForce.length.toFixed(2)} / ${Convert.toDegree(movable.appliedForce.angle).toFixed(2)}`,
+		title: 'Скорость',
+		value: movable.linearVelocity.toString(),
+		valueAlt: movable.linearVelocity.length.toFixed(2),
+		unit: 'Метры в секунду'
+	}, {
+		title: 'Координаты',
+		value: movable.position.toString(),
+		unit: 'Метры'
+	}, {
+		title: 'Сила вращения',
+		value: `${movable.appliedRotationalForce.length.toFixed(2)} / ${Convert.toDegree(movable.appliedRotationalForce.angle).toFixed(2)}`,
 		unit: 'Ньютон / Градус',
 		color: 'red'
+	}, {
+		title: 'Плечо крутящего момента',
+		value: `${movable.appliedRotationalForcePoint.length.toFixed(2)} / ${Convert.toDegree(movable.appliedRotationalForcePoint.angle).toFixed(2)}`,
+		unit: 'Метры / Градус'
+	}, {
+		title: 'Момент инерции (аналог массы)',
+		value: Convert.toDegree(movable.rotationalInertia).toFixed(2),
+		unit: 'Килограмм на метр в квадрате'
+	}, {
+		title: 'Момент силы (аналог силы)',
+		value: movable.torque.toString(),
+		unit: 'Ньютон на метр'
+	}, {
+		title: 'Угловое ускорение',
+		value: Convert.toDegree(movable.angularAcceleration).toFixed(2),
+		unit: 'Градусы в секунду в квадрате'
+	}, {
+		title: 'Угловая скорость',
+		value: Convert.toDegree(movable.angularVelocity).toFixed(2),
+		unit: 'Градусы в секунду'
+	}, {
+		title: 'Угол корабля',
+		value: Convert.toDegree(movable.rotation.angle).toFixed(2),
+		unit: 'Градус',
+		color: 'blue'
 	}]
 }
