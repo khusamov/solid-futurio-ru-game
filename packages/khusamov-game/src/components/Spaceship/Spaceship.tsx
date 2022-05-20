@@ -1,21 +1,28 @@
 import {MovableAdapter, RigidBodyAdapter, RotableAdapter, TransformableAdapter} from 'khusamov-mechanical-motion';
 import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
-import SpaceshipImage from 'jsx:./SpaceshipImage.svg'
-import {Convert, ISize, Transform, Vector} from 'khusamov-base-types';
-import {SpaceshipStyle, AppliedForceStyle} from './Spaceship.module.scss'
+import {Transform, Vector} from 'khusamov-base-types';
+import {SpaceshipStyle, AppliedRotationalForceStyle, AppliedEngineForceStyle, MassCenter, SpaceshipImageStyle, AppliedMotionForceStyle} from './Spaceship.module.scss'
 import {CobraSpaceshipAdapter} from '../../interfaces';
 
-const spaceshipImageSize: ISize = {
-	width: 21,
-	height: 38
-}
+const forceRenderScale = 1 / 50
+
+const path = (distanceBetweenEngines: number) => `
+	M 0, 0
+	L ${distanceBetweenEngines / 2}, 0 
+	L 0, ${distanceBetweenEngines * 2} 
+	L -${distanceBetweenEngines / 2}, 0 
+	Z
+`
 
 interface ISpaceshipProps {
 	object: IUniversalObject
 }
 
 export default function Spaceship({object}: ISpaceshipProps) {
-	const {position, rotation, appliedForce} = (
+	const {
+		position, rotation, appliedMotionForce, appliedRotationalForce, appliedRotationalForcePoint,
+		appliedLeftForce, appliedRightForce, distanceBetweenEngines
+	} = (
 		createAdapter(
 			object,
 			CobraSpaceshipAdapter,
@@ -26,23 +33,66 @@ export default function Spaceship({object}: ISpaceshipProps) {
 		)
 	)
 	const {x, y} = position
-	const transform = (
+	const spaceshipImageTransform = (
 		new Transform()
 			// Поворачиваем изображение корабля по вектору rotation.
-			.rotate(rotation.angle)
-			// Смещение изображения по центру.
-			.translate(new Vector(spaceshipImageSize.width, spaceshipImageSize.height).scale(-1/2))
+			// Поворот Math.PI/2 это из-за того, что он нарисован под 90 градусов наверх.
+			.rotate(rotation.angle -  Math.PI/2)
 	)
+
+	const appliedMotionForceTransform = (
+		new Transform()
+			.rotate(appliedMotionForce.angle)
+	)
+
+	const appliedRotationalForceTransform = (
+		new Transform()
+			// Смещаем приложенную силу в точку ее приложения.
+			.translate(appliedRotationalForcePoint)
+			.rotate(appliedRotationalForce.angle)
+	)
+
+	const appliedLeftForceTransform = (
+		new Transform()
+			.rotate(appliedLeftForce.angle)
+			.translate(new Vector(0, -distanceBetweenEngines / 2))
+	)
+
+	const appliedRightForceTransform = (
+		new Transform()
+			.rotate(appliedRightForce.angle)
+			.translate(new Vector(0, distanceBetweenEngines / 2))
+	)
+
 	return (
 		<g className={SpaceshipStyle} transform={`translate(${x}, ${y})`}>
-			<g transform={transform.toString()}>
-				<SpaceshipImage/>
+			<g className={SpaceshipImageStyle} transform={spaceshipImageTransform.toString()}>
+				<path d={path(distanceBetweenEngines)}/>
 			</g>
+			<circle r={2} className={MassCenter}/>
 			<line
-				className={AppliedForceStyle}
+				className={AppliedMotionForceStyle}
+				transform={appliedMotionForceTransform.toString()}
 				x1={0} y1={0}
-				x2={appliedForce.length / 50} y2={0}
-				transform={`rotate(${Convert.toDegree(appliedForce.angle)})`}
+				x2={appliedMotionForce.length * forceRenderScale} y2={0}
+			/>
+			<line
+				className={AppliedRotationalForceStyle}
+				transform={appliedRotationalForceTransform.toString()}
+				x1={0} y1={0}
+				x2={appliedRotationalForce.length * forceRenderScale} y2={0}
+			/>
+			<line
+				className={AppliedEngineForceStyle}
+				transform={appliedLeftForceTransform.toString()}
+				x1={0} y1={0}
+				x2={-appliedLeftForce.length * forceRenderScale} y2={0}
+			/>
+			<line
+				className={AppliedEngineForceStyle}
+				transform={appliedRightForceTransform.toString()}
+				x1={0} y1={0}
+				x2={-appliedRightForce.length * forceRenderScale} y2={0}
 			/>
 		</g>
 	)
