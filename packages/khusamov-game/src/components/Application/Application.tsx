@@ -30,7 +30,7 @@ export default function Application() {
 
 	const additionalParameters = [{
 		title: 'FPS',
-		unit: 'Кадры в секунды',
+		unit: 'Кадры в секунду',
 		value: fps.toFixed(0)
 	}]
 
