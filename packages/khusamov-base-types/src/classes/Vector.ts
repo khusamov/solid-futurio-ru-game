@@ -156,7 +156,7 @@ export class Vector implements IPoint {
 	 * @param vector
 	 */
 	public dot(vector: Vector): number {
-		return this.x * vector.x + this.y + vector.y
+		return this.x * vector.x + this.y * vector.y
 	}
 
 	/**
