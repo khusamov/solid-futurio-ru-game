@@ -156,7 +156,7 @@ export class Vector implements IPoint {
 	 * @param vector
 	 */
 	public dot(vector: Vector): number {
-		return this.x * vector.x + this.y + vector.y
+		return this.x * vector.x + this.y * vector.y
 	}
 
 	/**
@@ -184,6 +184,10 @@ export class Vector implements IPoint {
 	 * @param vector
 	 */
 	public project(vector: Vector): Vector {
+		if (this.isNull || vector.isNull) {
+			return new Vector(0, 0)
+		}
+
 		return vector.scale(this.dot(vector) / vector.dot(vector))
 	}
 

@@ -2,7 +2,7 @@ import {register, resolve} from 'khusamov-inversion-of-control';
 import {InterpretOrderCommand, relayCommandResolver, startCommandResolver, stopCommandResolver, TOrderQueue} from 'khusamov-command-system';
 import {
 	increaseForceCommandResolver,
-	moveCommandResolver,
+	moveCommandResolver, rotateCommandResolver,
 	rotateForceCommandResolver,
 	toroidalTransformCommandResolver
 } from 'khusamov-mechanical-motion';
@@ -18,6 +18,8 @@ import registerStaticStarCluster from './registerStaticStarCluster';
 import {registerShortcuts} from './registerShortcuts';
 import createGameTimer from '../createGameTimer';
 import gameWorldSizeResolver from '../resolvers/gameWorldSizeResolver';
+import {updateCobraSpaceshipCommandResolver} from '../../command-system/commands/UpdateCobraSpaceshipCommand';
+import {controlCobraSpaceshipCommandResolver} from '../../command-system/commands/ControlCobraSpaceshipCommand';
 
 const DEBUG = false
 const LOG = false
@@ -26,6 +28,9 @@ register('StartCommand', startCommandResolver)
 register('StopCommand', stopCommandResolver)
 register('RelayCommand', relayCommandResolver)
 register('MoveCommand', moveCommandResolver)
+register('RotateCommand', rotateCommandResolver)
+register('UpdateCobraSpaceshipCommand', updateCobraSpaceshipCommandResolver)
+register('ControlCobraSpaceshipCommand', controlCobraSpaceshipCommandResolver)
 register('IncreaseForceCommand', increaseForceCommandResolver)
 register('RotateForceCommand', rotateForceCommandResolver)
 register('ToroidalTransformCommand', toroidalTransformCommandResolver)

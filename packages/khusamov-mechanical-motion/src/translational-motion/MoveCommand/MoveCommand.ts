@@ -30,8 +30,8 @@ export class MoveCommand implements ICommand {
 		// Если фиксированный интервал задан, то выполняем вычисления не чаще этого значения.
 		if (this.fixedTimeInterval && timeInterval < this.fixedTimeInterval) return
 
-		const {mass, position, linearAcceleration, linearVelocity, appliedForce} = this.movable
-		this.movable.linearAcceleration = appliedForce.scale(1 / mass)
+		const {mass, position, linearAcceleration, linearVelocity, appliedMotionForce} = this.movable
+		this.movable.linearAcceleration = appliedMotionForce.scale(1 / mass)
 		this.movable.linearVelocity = linearVelocity.translate(linearAcceleration.scale(Convert.toSecond(timeInterval)))
 		this.movable.position = position.translate(linearVelocity.scale(Convert.toSecond(timeInterval)))
 

@@ -8,6 +8,6 @@ export class RotateForceCommand implements ICommand {
 	) {}
 
 	public execute(): void {
-		this.movable.appliedForce = this.movable.appliedForce.rotate(this.increment)
+		this.movable.appliedMotionForce = this.movable.appliedMotionForce.rotate(this.increment)
 	}
 }

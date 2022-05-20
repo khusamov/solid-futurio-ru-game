@@ -1,9 +1,23 @@
 
 .SpaceshipStyle {
-	line.AppliedForceStyle {
+	.MassCenter {
+		stroke: transparent;
+		fill: black;
+	}
+	line.AppliedMotionForceStyle {
+		stroke: cyan;
+	}
+	line.AppliedRotationalForceStyle {
 		stroke: red;
 	}
-	path {
-		stroke: blue;
+	line.AppliedEngineForceStyle {
+		stroke: #d224fc;
+	}
+	.SpaceshipImageStyle {
+		path {
+			stroke: blue;
+			fill: transparent;
+			fill: transparent;
+		}
 	}
 }

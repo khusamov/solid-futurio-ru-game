@@ -12,6 +12,12 @@ export interface IMovable {
 	movableTime: number
 
 	/**
+	 * Приложенная к центру масс сила.
+	 * Ньютоны.
+	 */
+	appliedMotionForce: Vector
+
+	/**
 	 * Линейное ускорение.
 	 * Метры в секунду в квадрате.
 	 */

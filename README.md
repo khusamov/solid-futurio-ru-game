@@ -25,6 +25,9 @@ Box2D
 https://www.npmjs.com/package/@box2d/core  
 https://github.com/flyover/box2d.ts
 
+Top Games made with Box2D tagged 2D  
+https://itch.io/games/made-with-box2d/tag-2d
+
 Приказы (сообщения) и команды
 -----------------------------
 
