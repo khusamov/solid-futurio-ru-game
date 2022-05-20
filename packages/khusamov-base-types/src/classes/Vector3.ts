@@ -46,4 +46,16 @@ export class Vector3 {
 				: new Vector3(this.x * scale, this.y * scale, this.z * scale)
 		)
 	}
+
+	public clone() {
+		return new Vector3(this.x, this.y, this.z)
+	}
+
+	public toArray() {
+		return [this.x, this.y, this.z]
+	}
+
+	public toString(digits: number = 2) {
+		return `[${this.x.toFixed(digits)}, ${this.y.toFixed(digits)}, ${this.z.toFixed(digits)}]`
+	}
 }
