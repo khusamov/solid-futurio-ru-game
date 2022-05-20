@@ -184,6 +184,10 @@ export class Vector implements IPoint {
 	 * @param vector
 	 */
 	public project(vector: Vector): Vector {
+		if (this.isNull || vector.isNull) {
+			return new Vector(0, 0)
+		}
+
 		return vector.scale(this.dot(vector) / vector.dot(vector))
 	}
 
