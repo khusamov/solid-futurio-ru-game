@@ -1,7 +1,8 @@
 @import 'absoluteBlockAlign';
 
 .ParamTableStyle {
-	@include absolute-bottom-center;
+	@include absolute-bottom-left;
+	font-size: 90%;
 	padding: 10px;
 	background-color: rgba(255, 255, 255, 0.9);
 	box-shadow: 4px 4px 29px -2px #e3e3e3;
@@ -9,7 +10,7 @@
 	table {
 		td {
 			white-space: nowrap;
-			padding: 5px;
+			padding: 2px 5px;
 		}
 	}
 }
