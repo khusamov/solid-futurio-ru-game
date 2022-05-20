@@ -11,6 +11,14 @@ export class MovableAdapter extends Adapter implements IMovable {
 		this.universalObject.setValue('movableTime', value)
 	}
 
+	public get appliedMotionForce(): Vector {
+		return this.universalObject.getValue('appliedMotionForce', new Vector)
+	}
+
+	public set appliedMotionForce(value: Vector) {
+		this.universalObject.setValue('appliedMotionForce', value)
+	}
+
 	public get linearAcceleration(): Vector {
 		return this.universalObject.getValue('linearAcceleration', new Vector)
 	}
