@@ -18,4 +18,12 @@ export class CobraSpaceshipAdapter extends Adapter implements ICobraSpaceship {
 	public set appliedRightForce(value: Vector) {
 		this.universalObject.setValue('appliedRightForce', value)
 	}
+
+	public get distanceBetweenEngines(): number {
+		return this.universalObject.getValue('distanceBetweenEngines', 0)
+	}
+
+	public set distanceBetweenEngines(value: number) {
+		this.universalObject.setValue('distanceBetweenEngines', value)
+	}
 }
