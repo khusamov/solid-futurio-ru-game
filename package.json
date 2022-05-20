@@ -22,8 +22,6 @@
 		"universal-object:build:watch": "yarn workspaces foreach --include 'khusamov-universal-object' run build:watch",
 		"command-system:build": "yarn workspaces foreach --include 'khusamov-command-system' run build",
 		"command-system:build:watch": "yarn workspaces foreach --include 'khusamov-command-system' run build:watch",
-		"command-order-system:build": "yarn workspaces foreach --include 'khusamov-command-order-system' run build",
-		"command-order-system:build:watch": "yarn workspaces foreach --include 'khusamov-command-order-system' run build:watch",
 		"mechanical-motion:build": "yarn workspaces foreach --include 'khusamov-mechanical-motion' run build",
 		"mechanical-motion:build:watch": "yarn workspaces foreach --include 'khusamov-mechanical-motion' run build:watch"
 	}
