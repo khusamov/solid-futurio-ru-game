@@ -3,6 +3,8 @@ import {IIncreaseForceCommandOrder, IRotateForceCommandOrder} from 'khusamov-mec
 import IShortcutCommandOrder, {registerShortcutCommand} from '../../IShortcutCommandOrder';
 import {CobraEngine, IControlCobraSpaceshipCommandOrder} from '../../command-system/commands/ControlCobraSpaceshipCommand';
 
+const forceIncrement = 20
+
 type TSpaceshipShortcutCommand = (
 	| IShortcutCommandOrder<IIncreaseForceCommandOrder>
 	| IShortcutCommandOrder<IRotateForceCommandOrder>
@@ -17,7 +19,7 @@ const increaseForceShortcut: TSpaceshipShortcutCommand = {
 		order: {
 			type: 'IncreaseForceCommand',
 			targetObject: ['SelectedGameObject'],
-			increment: 200
+			increment: forceIncrement
 		}
 	}
 }
@@ -30,7 +32,7 @@ const decreaseForceShortcut: TSpaceshipShortcutCommand = {
 		order: {
 			type: 'IncreaseForceCommand',
 			targetObject: ['SelectedGameObject'],
-			increment: -200
+			increment: -forceIncrement
 		}
 	}
 }
@@ -70,7 +72,7 @@ const increaseLeftEngineSpaceshipShortcut: TSpaceshipShortcutCommand = {
 			type: 'ControlCobraSpaceshipCommand',
 			targetObject: ['SelectedGameObject'],
 			engine: CobraEngine.Left,
-			increment: 200
+			increment: forceIncrement
 		}
 	}
 }
@@ -84,7 +86,7 @@ const dereaseLeftEngineSpaceshipShortcut: TSpaceshipShortcutCommand = {
 			type: 'ControlCobraSpaceshipCommand',
 			targetObject: ['SelectedGameObject'],
 			engine: CobraEngine.Left,
-			increment: -200
+			increment: -forceIncrement
 		}
 	}
 }
@@ -98,7 +100,7 @@ const increaseRightEngineSpaceshipShortcut: TSpaceshipShortcutCommand = {
 			type: 'ControlCobraSpaceshipCommand',
 			targetObject: ['SelectedGameObject'],
 			engine: CobraEngine.Right,
-			increment: 200
+			increment: forceIncrement
 		}
 	}
 }
@@ -112,7 +114,7 @@ const dereaseRightEngineSpaceshipShortcut: TSpaceshipShortcutCommand = {
 			type: 'ControlCobraSpaceshipCommand',
 			targetObject: ['SelectedGameObject'],
 			engine: CobraEngine.Right,
-			increment: -200
+			increment: -forceIncrement
 		}
 	}
 }
