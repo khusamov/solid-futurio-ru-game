@@ -3,8 +3,8 @@ import {IControlCobraSpaceshipCommandOrder} from './IControlCobraSpaceshipComman
 import {resolve} from 'khusamov-inversion-of-control';
 import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
 import {ControlCobraSpaceshipCommand} from './ControlCobraSpaceshipCommand';
-import {CobraSpaceshipAdapter} from '../../../interfaces';
 import {MovableAdapter, RigidBodyAdapter, RotableAdapter, TransformableAdapter} from 'khusamov-mechanical-motion';
+import {CobraSpaceshipAdapter} from '../ICobraSpaceship/CobraSpaceshipAdapter';
 
 export function controlCobraSpaceshipCommandResolver(controlCobraSpaceshipCommandOrder: IControlCobraSpaceshipCommandOrder): ICommand {
 	const targetObject = resolve<IUniversalObject | undefined>(...controlCobraSpaceshipCommandOrder.targetObject)

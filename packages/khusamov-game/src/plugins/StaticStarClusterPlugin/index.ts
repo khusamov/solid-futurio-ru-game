@@ -1,0 +1,1 @@
+export {StaticStarClusterPlugin} from './StaticStarClusterPlugin'

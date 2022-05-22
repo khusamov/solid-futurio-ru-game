@@ -1,0 +1,1 @@
+export {GlobalGameObjectPlugin} from './GlobalGameObjectPlugin'

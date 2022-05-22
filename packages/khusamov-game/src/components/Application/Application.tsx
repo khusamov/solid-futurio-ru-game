@@ -8,10 +8,10 @@ import RenderableAdapter from '../../game/gameObject/RenderableAdapter';
 import ToroidalSurfaceAdapter from '../../game/gameObject/ToroidalSurfaceAdapter';
 import {TGameObjectList} from '../../game/types';
 import ToroidalRender from '../ToroidalRender';
-import Spaceship from '../Spaceship';
+import Spaceship from '../../plugins/CobraSpaceshipPlugin/Spaceship';
 import Canvas, {CanvasSizeContext} from '../Canvas';
-import Params from '../Params';
-import Star from '../Star';
+import Params from '../../plugins/CobraSpaceshipPlugin/Params';
+import Star from '../../plugins/StaticStarClusterPlugin/Star';
 import {ApplicationStyle} from './Application.module.scss'
 
 type TUniversalRenderComponent = FunctionComponent<{object: IUniversalObject}>

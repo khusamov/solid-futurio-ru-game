@@ -9,9 +9,10 @@ import {
 	RotableAdapter,
 	TransformableAdapter
 } from 'khusamov-mechanical-motion';
-import GameObjectAdapter from '../../game/gameObject/GameObjectAdapter';
-import {ParamTableStyle} from './Params.module.scss'
-import {CobraSpaceshipAdapter, ICobraSpaceship} from '../../interfaces';
+import GameObjectAdapter from '../../../game/gameObject/GameObjectAdapter';
+import {ParamTableStyle} from './Params.module.scss';
+import {CobraSpaceshipAdapter} from '../ICobraSpaceship/CobraSpaceshipAdapter';
+import {ICobraSpaceship} from '../ICobraSpaceship/ICobraSpaceship';
 
 interface IParam {
 	title: string

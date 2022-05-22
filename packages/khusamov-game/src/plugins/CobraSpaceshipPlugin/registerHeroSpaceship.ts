@@ -1,8 +1,8 @@
 import {resolve} from 'khusamov-inversion-of-control';
-import {TGameObjectList} from '../types';
+import {TGameObjectList} from '../../game/types';
 import {Vector} from 'khusamov-base-types';
 import {createUniversalObject} from 'khusamov-universal-object';
-import IGameObject from '../gameObject/IGameObject';
+import IGameObject from '../../game/gameObject/IGameObject';
 import {
 	IMovable,
 	IMoveCommandOrder,
@@ -12,11 +12,11 @@ import {
 	IToroidalTransformCommandOrder,
 	ITransformable
 } from 'khusamov-mechanical-motion';
-import IRenderable from '../gameObject/IRenderable';
+import IRenderable from '../../game/gameObject/IRenderable';
 import {IStartCommandOrder, TOrderQueue} from 'khusamov-command-system';
-import {TGameObjectResolver} from '../resolvers/gameObjectResolver';
-import {IUpdateCobraSpaceshipCommandOrder} from '../../command-system/commands/UpdateCobraSpaceshipCommand';
-import {ICobraSpaceship} from '../../interfaces';
+import {TGameObjectResolver} from '../GlobalGameObjectPlugin/gameObjectResolver';
+import {IUpdateCobraSpaceshipCommandOrder} from './UpdateCobraSpaceshipCommand';
+import {ICobraSpaceship} from './ICobraSpaceship';
 
 type THeroSpaceship = IGameObject & ITransformable & IRigidBody & IMovable & IRenderable & IRotable & ICobraSpaceship
 

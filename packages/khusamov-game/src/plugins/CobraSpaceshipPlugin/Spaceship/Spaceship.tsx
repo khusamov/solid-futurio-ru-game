@@ -2,7 +2,7 @@ import {MovableAdapter, RigidBodyAdapter, RotableAdapter, TransformableAdapter} 
 import {createAdapter, IUniversalObject} from 'khusamov-universal-object';
 import {Transform, Vector} from 'khusamov-base-types';
 import {SpaceshipStyle, AppliedRotationalForceStyle, AppliedEngineForceStyle, MassCenter, SpaceshipImageStyle, AppliedMotionForceStyle} from './Spaceship.module.scss'
-import {CobraSpaceshipAdapter} from '../../interfaces';
+import {CobraSpaceshipAdapter} from '../ICobraSpaceship/CobraSpaceshipAdapter';
 
 const forceRenderScale = 1 / 50
 

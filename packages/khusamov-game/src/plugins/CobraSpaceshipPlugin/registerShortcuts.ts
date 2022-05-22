@@ -1,7 +1,7 @@
 import {Convert, IDisposable} from 'khusamov-base-types';
 import {IIncreaseForceCommandOrder, IRotateForceCommandOrder} from 'khusamov-mechanical-motion';
-import IShortcutCommandOrder, {registerShortcutCommand} from '../../IShortcutCommandOrder';
-import {CobraEngine, IControlCobraSpaceshipCommandOrder} from '../../command-system/commands/ControlCobraSpaceshipCommand';
+import IShortcutCommandOrder, {registerShortcutCommand} from './IShortcutCommandOrder';
+import {CobraEngine, IControlCobraSpaceshipCommandOrder} from './ControlCobraSpaceshipCommand';
 
 const forceIncrement = 20
 
