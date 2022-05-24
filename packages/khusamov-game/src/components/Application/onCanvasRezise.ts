@@ -1,7 +1,7 @@
 import {ISize} from 'khusamov-base-types';
 import {resolve} from 'khusamov-inversion-of-control';
 import {IUniversalObject} from 'khusamov-universal-object';
-import ToroidalSurfaceAdapter from '../../game/gameObject/ToroidalSurfaceAdapter';
+import ToroidalSurfaceAdapter from '../../plugins/GameWorldPlugin/IToroidalSurface/ToroidalSurfaceAdapter';
 
 /**
  * При изменении размеров холста игры (игрового поля) необходимо поменять размеры игрового мира.

@@ -1,8 +1,8 @@
 import {GamePlugin} from '../classes/GamePlugin';
 import {resolve} from 'khusamov-inversion-of-control';
-import {TGameObjectList} from '../game/types';
+import {TGameObjectList} from './GlobalGameObjectPlugin/types';
 import {createUniversalObject} from 'khusamov-universal-object';
-import IGameObject from '../game/gameObject/IGameObject';
+import IGameObject from './GlobalGameObjectPlugin/IGameObject/IGameObject';
 import {ITransformable} from 'khusamov-mechanical-motion';
 
 export class GameCameraPlugin extends GamePlugin {

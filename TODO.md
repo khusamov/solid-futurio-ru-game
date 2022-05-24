@@ -1,12 +1,6 @@
 TODO
 ====
 
-Определиться в какие плагины переместить следующие файлы:  
-    packages/khusamov-game/src/game/gameObject
-    packages/khusamov-game/src/game/types.ts
-    packages/khusamov-game/src/components/ToroidalRender
-    packages/khusamov-game/src/command-system/commands
-
 Cделать клиент-серверный вариант игры.
 
 Отложенные задачи

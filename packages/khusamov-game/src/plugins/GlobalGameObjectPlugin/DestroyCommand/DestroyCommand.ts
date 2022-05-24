@@ -3,7 +3,7 @@ import {IQueue} from 'khusamov-base-types';
 import {IUniversalObject} from 'khusamov-universal-object';
 import {resolve} from 'khusamov-inversion-of-control';
 import {ICommand, StopCommand} from 'khusamov-command-system';
-import {TGameObjectList} from '../../../game/types';
+import {TGameObjectList} from '../types';
 
 export class DestroyCommand implements ICommand {
 	public commandQueue?: IQueue<ICommand>

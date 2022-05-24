@@ -1,12 +1,12 @@
 import {GamePlugin} from '../../classes/GamePlugin';
 import {resolve} from 'khusamov-inversion-of-control';
-import {TGameObjectList} from '../../game/types';
-import ToroidalSurfaceAdapter from '../../game/gameObject/ToroidalSurfaceAdapter';
+import {TGameObjectList} from '../GlobalGameObjectPlugin/types';
+import ToroidalSurfaceAdapter from '../GameWorldPlugin/IToroidalSurface/ToroidalSurfaceAdapter';
 import {createUniversalObject, IUniversalObject} from 'khusamov-universal-object';
 import {Vector} from 'khusamov-base-types';
-import IGameObject from '../../game/gameObject/IGameObject';
+import IGameObject from '../GlobalGameObjectPlugin/IGameObject/IGameObject';
 import {ITransformable} from 'khusamov-mechanical-motion';
-import IRenderable from '../../game/gameObject/IRenderable';
+import IRenderable from '../GlobalGameObjectPlugin/IRenderable/IRenderable';
 
 /**
  * Генерация статических звезд.

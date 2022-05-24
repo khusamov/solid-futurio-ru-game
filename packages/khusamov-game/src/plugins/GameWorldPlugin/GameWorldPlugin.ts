@@ -1,9 +1,9 @@
-import {GamePlugin} from '../classes/GamePlugin';
 import {resolve} from 'khusamov-inversion-of-control';
-import {TGameObjectList} from '../game/types';
 import {createUniversalObject} from 'khusamov-universal-object';
-import IGameObject from '../game/gameObject/IGameObject';
-import IToroidalSurface from '../game/gameObject/IToroidalSurface';
+import {GamePlugin} from '../../classes/GamePlugin';
+import {TGameObjectList} from '../GlobalGameObjectPlugin/types';
+import IToroidalSurface from './IToroidalSurface/IToroidalSurface';
+import IGameObject from '../GlobalGameObjectPlugin/IGameObject/IGameObject';
 
 export class GameWorldPlugin extends GamePlugin {
 	init(): void {

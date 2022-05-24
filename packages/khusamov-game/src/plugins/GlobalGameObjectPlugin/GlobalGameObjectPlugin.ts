@@ -3,7 +3,7 @@ import {register, resolve} from 'khusamov-inversion-of-control';
 import gameObjectResolver from './gameObjectResolver';
 import gameWorldSizeResolver from './gameWorldSizeResolver';
 import {IUniversalObject} from 'khusamov-universal-object';
-import {TGameObjectList} from '../../game/types';
+import {TGameObjectList} from './types';
 import createGameTimer from './createGameTimer';
 
 const DEBUG = false

@@ -9,7 +9,7 @@ import {
 	RotableAdapter,
 	TransformableAdapter
 } from 'khusamov-mechanical-motion';
-import GameObjectAdapter from '../../../game/gameObject/GameObjectAdapter';
+import GameObjectAdapter from '../../GlobalGameObjectPlugin/IGameObject/GameObjectAdapter';
 import {ParamTableStyle} from './Params.module.scss';
 import {CobraSpaceshipAdapter} from '../ICobraSpaceship/CobraSpaceshipAdapter';
 import {ICobraSpaceship} from '../ICobraSpaceship/ICobraSpaceship';

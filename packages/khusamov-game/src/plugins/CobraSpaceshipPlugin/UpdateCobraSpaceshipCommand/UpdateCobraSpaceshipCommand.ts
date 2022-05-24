@@ -1,7 +1,7 @@
 import {ICommand} from 'khusamov-command-system';
-import {ICobraSpaceship} from '../../../interfaces';
 import {IMovable, IRigidBody, IRotable, ITransformable} from 'khusamov-mechanical-motion';
 import {Convert, Vector} from 'khusamov-base-types';
+import {ICobraSpaceship} from '../ICobraSpaceship';
 
 export class UpdateCobraSpaceshipCommand implements ICommand {
 	public constructor(
