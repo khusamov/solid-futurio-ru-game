@@ -14,6 +14,7 @@
 		"build": "yarn workspaces foreach --topological run build",
 		"game:start": "yarn workspaces foreach --include 'khusamov-game' run start",
 		"game:build": "yarn workspaces foreach --include 'khusamov-game' run build",
+		"game:type-check": "yarn workspaces foreach --include 'khusamov-game' run check",
 		"base-types:build": "yarn workspaces foreach --include 'khusamov-base-types' run build",
 		"base-types:build:watch": "yarn workspaces foreach --include 'khusamov-base-types' run build:watch",
 		"inversion-of-control:build": "yarn workspaces foreach --include 'khusamov-inversion-of-control' run build",
