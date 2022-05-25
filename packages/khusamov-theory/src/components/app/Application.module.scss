@@ -1,0 +1,9 @@
+.ApplicationStyle {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	> div {
+		position: relative;
+		flex: 1 1 auto;
+	}
+}

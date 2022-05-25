@@ -1,0 +1,1 @@
+export const lerp = (start: number, finish: number, time: number) => start + (finish - start) * time
