@@ -57,7 +57,7 @@ class GameScene {
     if (this.game.keys['27']) this.game.setScene(MenuScene); // Back to menu
   }
   render(dt, ctx, canvas) {
-    ...
+    //...
     ctx.fillStyle = '#0d0';
     ctx.fillRect(posX, posY, rectSize, rectSize);
   }
